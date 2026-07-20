@@ -3,23 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PrevIA V4</title>
+  <title>PrevIA V5</title>
   <style>
-    :root{--bg:#f4f6fb;--card:#fff;--navy:#10274d;--blue:#3568f4;--text:#1f2d48;--muted:#6d7a91;--line:#e3e8f1;--soft:#eef4ff}
+    :root{
+      --bg:#f4f6fb;--card:#fff;--navy:#10274d;--blue:#3568f4;--text:#1f2d48;
+      --muted:#6d7a91;--line:#e3e8f1;--soft:#eef4ff;--ok:#1f8f61;--warn:#c97a13;
+      --danger:#bf3d4a;
+    }
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    button,input{font:inherit}
+    button,input,select{font:inherit}
     .shell{max-width:1180px;margin:auto;padding:20px}
     .top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}
     .top h1{margin:0}.top p{margin:4px 0 0;color:var(--muted)}
     .badge{background:var(--soft);color:var(--blue);padding:8px 12px;border-radius:999px;font-weight:700}
-    .layout{display:grid;grid-template-columns:360px 1fr;gap:18px}
+    .layout{display:grid;grid-template-columns:380px 1fr;gap:18px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 22px rgba(13,35,68,.05)}
-    .form{position:sticky;top:14px;align-self:start}
+    .wizard{position:sticky;top:14px;align-self:start}
+    .progress{height:10px;background:#e8edf7;border-radius:99px;overflow:hidden;margin:10px 0 20px}
+    .progress span{display:block;height:100%;width:25%;background:var(--blue);transition:.25s}
+    .step{display:none}.step.active{display:block}
     label{display:block;font-size:14px;font-weight:700;margin:13px 0 6px}
-    input{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}
+    input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--text)}
     .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .btn{width:100%;margin-top:16px;background:var(--blue);border:0;color:#fff;padding:13px;border-radius:12px;font-weight:800}
+    .choices{display:grid;gap:10px;margin-top:10px}
+    .choice{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;cursor:pointer;text-align:left}
+    .choice.active{border-color:var(--blue);background:var(--soft);color:var(--navy);font-weight:700}
+    .actions{display:flex;gap:10px;margin-top:18px}
+    .btn{flex:1;background:var(--blue);border:0;color:#fff;padding:13px;border-radius:12px;font-weight:800;cursor:pointer}
     .btn.secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
     .small{font-size:13px;color:var(--muted);line-height:1.5}
     .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -29,7 +40,7 @@
     .priority{margin-top:14px;padding:18px;border-radius:16px;background:var(--soft);border:1px solid #d9e4ff}
     .priority .big{font-size:34px;font-weight:900}
     .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-    .tabs button{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:10px;font-weight:700}
+    .tabs button{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:10px;font-weight:700;cursor:pointer}
     .tabs button.active{background:var(--navy);color:#fff}
     .panel{display:none}.panel.active{display:block}
     .big{font-size:37px;font-weight:900}
@@ -37,184 +48,350 @@
     .bar{height:12px;background:#e8edf7;border-radius:99px;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;background:var(--blue)}
     .note{padding:15px;border-radius:14px;background:#f8faff;margin-top:14px;line-height:1.55}
     .warning{margin-top:16px;padding:12px;border-radius:12px;background:#fff8e9;border:1px solid #f1ddb5;color:#76541f;font-size:13px}
-    @media(max-width:900px){.layout{grid-template-columns:1fr}.form{position:static}}
+    .summary{display:grid;gap:10px}
+    .hidden{display:none}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.wizard{position:static}}
     @media(max-width:560px){.metrics,.two{grid-template-columns:1fr}.shell{padding:13px}.big{font-size:31px}.priority .big{font-size:28px}}
   </style>
 </head>
 <body>
 <main class="shell">
   <header class="top">
-    <div><h1>PrevIA V4</h1><p>Votre situation financi&#232;re, expliqu&#233;e simplement.</p></div>
-    <div class="badge">Prototype interactif</div>
+    <div>
+      <h1>PrevIA V5</h1>
+      <p>Quelques questions simples. Une analyse claire.</p>
+    </div>
+    <div class="badge">Parcours guid&#233;</div>
   </header>
 
   <div class="layout">
-    <aside class="card form">
-      <h2>Votre situation</h2>
-      <p class="small">Modifiez les donn&#233;es, puis cliquez sur &#171; Recalculer &#187;.</p>
+    <aside class="card wizard">
+      <div class="small" id="stepLabel">ETAPE 1 SUR 4</div>
+      <div class="progress"><span id="progressBar"></span></div>
 
-      <div class="two">
-        <div><label for="age">&#194;ge</label><input id="age" type="number" value="38"></div>
-        <div><label for="retAge">&#194;ge de retraite</label><input id="retAge" type="number" value="65"></div>
+      <section class="step active" data-step="1">
+        <h2>Parlons de vous</h2>
+        <p class="small">Nous commen&#231;ons uniquement avec des informations faciles &#224; conna&#238;tre.</p>
+        <div class="two">
+          <div>
+            <label for="age">Votre &#226;ge</label>
+            <input id="age" type="number" value="38" min="18" max="70">
+          </div>
+          <div>
+            <label for="retAge">Retraite souhait&#233;e</label>
+            <input id="retAge" type="number" value="65" min="58" max="70">
+          </div>
+        </div>
+
+        <label>Situation familiale</label>
+        <div class="choices" id="civilChoices">
+          <button type="button" class="choice" data-value="single">C&#233;libataire</button>
+          <button type="button" class="choice active" data-value="couple">En couple / concubinage</button>
+          <button type="button" class="choice" data-value="married">Mari&#233;(e)</button>
+        </div>
+
+        <label for="children">Nombre d'enfants</label>
+        <input id="children" type="number" value="2" min="0" max="10">
+      </section>
+
+      <section class="step" data-step="2">
+        <h2>Vos revenus</h2>
+        <label for="salary">Votre salaire brut annuel</label>
+        <input id="salary" type="number" value="110000" min="0" step="1000">
+
+        <div id="spouseBlock">
+          <label for="spouseSalary">Salaire brut annuel du conjoint</label>
+          <input id="spouseSalary" type="number" value="65000" min="0" step="1000">
+        </div>
+
+        <label for="income">Revenu mensuel net du m&#233;nage</label>
+        <input id="income" type="number" value="10500" min="0" step="100">
+      </section>
+
+      <section class="step" data-step="3">
+        <h2>Votre niveau de vie</h2>
+        <label for="need">De combien votre m&#233;nage a-t-il besoin chaque mois pour vivre confortablement ?</label>
+        <input id="need" type="number" value="7000" min="0" step="100">
+
+        <label>Etes-vous propri&#233;taire ?</label>
+        <div class="choices" id="ownerChoices">
+          <button type="button" class="choice active" data-value="yes">Oui</button>
+          <button type="button" class="choice" data-value="no">Non</button>
+        </div>
+
+        <div id="housingBlock">
+          <label for="housing">Co&#251;t mensuel actuel du logement</label>
+          <input id="housing" type="number" value="2350" min="0" step="50">
+        </div>
+      </section>
+
+      <section class="step" data-step="4">
+        <h2>Votre protection</h2>
+        <p class="small">Derni&#232;re question : quel revenu resterait au m&#233;nage si l'un des deux revenus disparaissait ?</p>
+        <label for="survivor">Revenu mensuel restant estim&#233;</label>
+        <input id="survivor" type="number" value="5100" min="0" step="100">
+
+        <div class="summary">
+          <div class="note">
+            PrevIA estimera automatiquement :
+            <br>&#8226; votre capital LPP probable ;
+            <br>&#8226; votre revenu de retraite ;
+            <br>&#8226; votre &#233;conomie fiscale potentielle ;
+            <br>&#8226; votre priorit&#233; principale.
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn secondary hidden" id="backBtn" type="button">Retour</button>
+        <button class="btn" id="nextBtn" type="button">Continuer</button>
       </div>
 
-      <label for="salary">Salaire brut annuel</label>
-      <input id="salary" type="number" value="110000">
-
-      <label for="income">Revenu mensuel actuel</label>
-      <input id="income" type="number" value="8200">
-
-      <label for="lpp">Capital LPP actuel</label>
-      <input id="lpp" type="number" value="220000">
-
-      <label for="pillar3">Capital 3e pilier</label>
-      <input id="pillar3" type="number" value="55000">
-
-      <label for="housing">Co&#251;t mensuel du logement</label>
-      <input id="housing" type="number" value="2350">
-
-      <label for="survivor">Revenu familial apr&#232;s d&#233;c&#232;s</label>
-      <input id="survivor" type="number" value="5100">
-
-      <label for="tax">&#201;conomie fiscale estim&#233;e/an</label>
-      <input id="tax" type="number" value="2150">
-
-      <button class="btn" id="calc">Recalculer l&#8217;analyse</button>
-      <button class="btn secondary" id="reset">R&#233;initialiser</button>
-
-      <div class="warning">Calculs de d&#233;monstration simplifi&#233;s. Cette version ne constitue pas encore un calcul officiel AVS/LPP.</div>
+      <div class="warning">Version de d&#233;monstration : les calculs sont encore simplifi&#233;s et devront &#234;tre valid&#233;s avec les r&#232;gles suisses AVS, LPP, fiscales et hypoth&#233;caires.</div>
     </aside>
 
     <section>
       <div class="metrics">
-        <article class="metric"><div class="label">Indice PrevIA</div><div class="value" id="score">82/100</div><div id="scoreText">Situation globalement saine</div></article>
-        <article class="metric"><div class="label">Retraite estim&#233;e</div><div class="value" id="retMetric">CHF 6'400</div><div id="rateMetric">78 % du revenu actuel</div></article>
-        <article class="metric"><div class="label">Protection famille</div><div class="value" id="famMetric">- CHF 3'100</div><div>D&#233;ficit mensuel estim&#233;</div></article>
-        <article class="metric"><div class="label">Fiscalit&#233;</div><div class="value" id="taxMetric">CHF 2'150</div><div>&#201;conomie annuelle potentielle</div></article>
+        <article class="metric">
+          <div class="label">Indice PrevIA</div>
+          <div class="value" id="score">--/100</div>
+          <div id="scoreText">Compl&#233;tez le parcours</div>
+        </article>
+        <article class="metric">
+          <div class="label">Retraite estim&#233;e</div>
+          <div class="value" id="retMetric">CHF 0</div>
+          <div id="rateMetric">0 % du besoin mensuel</div>
+        </article>
+        <article class="metric">
+          <div class="label">Capital LPP estim&#233;</div>
+          <div class="value" id="lppMetric">CHF 0</div>
+          <div>Projection indicative</div>
+        </article>
+        <article class="metric">
+          <div class="label">Fiscalit&#233;</div>
+          <div class="value" id="taxMetric">CHF 0</div>
+          <div>Economie annuelle potentielle</div>
+        </article>
       </div>
 
       <div class="priority">
         <strong>Priorit&#233; n&#176;1</strong>
-        <div class="big" id="priority">Prot&#233;ger votre famille</div>
-        <div id="priorityWhy">Le d&#233;ficit mensuel apr&#232;s un d&#233;c&#232;s est trop important.</div>
+        <div class="big" id="priority">Compl&#233;tez l'analyse</div>
+        <div id="priorityWhy">PrevIA identifiera automatiquement le point le plus important.</div>
       </div>
 
       <nav class="tabs">
-        <button class="active" data-panel="ret">&#127958; Retraite</button>
-        <button data-panel="fam">&#10084;&#65039; Famille</button>
-        <button data-panel="imm">&#127968; Immobilier</button>
-        <button data-panel="fis">&#128176; Fiscalit&#233;</button>
+        <button class="active" data-panel="ret">Retraite</button>
+        <button data-panel="fam">Famille</button>
+        <button data-panel="imm">Immobilier</button>
+        <button data-panel="fis">Fiscalit&#233;</button>
       </nav>
 
       <article class="card panel active" id="ret">
-        <div class="small">LE CHIFFRE &#192; RETENIR</div>
+        <div class="small">LE CHIFFRE A RETENIR</div>
         <h2>Votre retraite</h2>
-        <div class="big" id="retMain">CHF 6'400 / mois</div>
-        <p>Soit environ <strong id="rateMain">78 %</strong> de votre revenu actuel.</p>
-        <div class="bar"><span id="bar"></span></div>
-        <div class="row"><span>Estimation AVS</span><strong id="avs">CHF 2'520</strong></div>
-        <div class="row"><span>Estimation LPP</span><strong id="lppOut">CHF 3'130</strong></div>
-        <div class="row"><span>Estimation 3e pilier</span><strong id="p3Out">CHF 750</strong></div>
-        <div class="note" id="retNote"></div>
+        <div class="big" id="retMain">CHF 0 / mois</div>
+        <p>Soit environ <strong id="rateMain">0 %</strong> de votre besoin mensuel.</p>
+        <div class="bar"><span id="bar" style="width:0%"></span></div>
+        <div class="row"><span>Estimation AVS</span><strong id="avs">CHF 0</strong></div>
+        <div class="row"><span>Estimation LPP</span><strong id="lppOut">CHF 0</strong></div>
+        <div class="row"><span>Estimation &#233;pargne priv&#233;e</span><strong id="p3Out">CHF 0</strong></div>
+        <div class="note" id="retNote">L'analyse appara&#238;tra apr&#232;s la derni&#232;re &#233;tape.</div>
       </article>
 
       <article class="card panel" id="fam">
-        <div class="small">LE CHIFFRE &#192; RETENIR</div>
+        <div class="small">LE CHIFFRE A RETENIR</div>
         <h2>Votre famille</h2>
-        <div class="row"><span>Revenu actuel</span><strong id="famNow"></strong></div>
-        <div class="row"><span>Apr&#232;s un d&#233;c&#232;s</span><strong id="famAfter"></strong></div>
-        <div class="big" id="famGap"></div>
-        <div class="note" id="famNote"></div>
+        <div class="row"><span>Besoin mensuel du m&#233;nage</span><strong id="famNeed">CHF 0</strong></div>
+        <div class="row"><span>Revenu restant estim&#233;</span><strong id="famAfter">CHF 0</strong></div>
+        <div class="big" id="famGap">D&#233;ficit : CHF 0/mois</div>
+        <div class="note" id="famNote">L'analyse appara&#238;tra apr&#232;s la derni&#232;re &#233;tape.</div>
       </article>
 
       <article class="card panel" id="imm">
-        <div class="small">LE CHIFFRE &#192; RETENIR</div>
+        <div class="small">LE CHIFFRE A RETENIR</div>
         <h2>Votre logement</h2>
-        <div class="row"><span>Co&#251;t mensuel</span><strong id="houseCost"></strong></div>
-        <div class="row"><span>Revenu &#224; la retraite</span><strong id="houseRet"></strong></div>
-        <div class="big" id="remaining"></div>
-        <div class="note" id="houseNote"></div>
+        <div class="row"><span>Co&#251;t mensuel du logement</span><strong id="houseCost">CHF 0</strong></div>
+        <div class="row"><span>Revenu estim&#233; &#224; la retraite</span><strong id="houseRet">CHF 0</strong></div>
+        <div class="big" id="remaining">Reste disponible : CHF 0</div>
+        <div class="note" id="houseNote">L'analyse appara&#238;tra apr&#232;s la derni&#232;re &#233;tape.</div>
       </article>
 
       <article class="card panel" id="fis">
-        <div class="small">LE CHIFFRE &#192; RETENIR</div>
+        <div class="small">LE CHIFFRE A RETENIR</div>
         <h2>Votre fiscalit&#233;</h2>
-        <div class="big" id="taxMain"></div>
-        <div class="note">Le potentiel d&#233;pend notamment du 3e pilier, des rachats LPP et de la planification des retraits.</div>
+        <div class="big" id="taxMain">CHF 0 / an</div>
+        <div class="note" id="taxNote">PrevIA estimera automatiquement le potentiel fiscal &#224; partir des revenus et de la situation familiale.</div>
       </article>
     </section>
   </div>
 </main>
 
 <script>
-const d={age:38,retAge:65,salary:110000,income:8200,lpp:220000,pillar3:55000,housing:2350,survivor:5100,tax:2150};
-const n=id=>Math.max(0,Number(document.getElementById(id).value)||0);
-const money=v=>"CHF "+Math.round(v).toLocaleString("fr-CH").replace(/\u202f/g,"'");
+let currentStep = 1;
+let civilStatus = "couple";
+let owner = "yes";
 
-function calculate(){
-  const age=n("age"),retAge=Math.max(age,n("retAge")),salary=n("salary"),income=n("income"),
-  lpp=n("lpp"),p3=n("pillar3"),housing=n("housing"),survivor=n("survivor"),tax=n("tax");
-  const years=Math.max(0,retAge-age);
-  const avs=Math.min(2520,Math.max(1300,salary*0.025));
-  const projectedLpp=lpp*Math.pow(1.018,years)+salary*0.095*years;
-  const lppMonthly=projectedLpp*0.05/12;
-  const projected3=p3*Math.pow(1.025,years);
-  const p3Monthly=projected3/240;
-  const retirement=avs+lppMonthly+p3Monthly;
-  const rate=income?retirement/income*100:0;
-  const gap=Math.max(0,income-survivor);
-  const left=retirement-housing;
+const money = value => "CHF " + Math.round(value).toLocaleString("fr-CH").replace(/\u202f/g, "'");
+const numberValue = id => Math.max(0, Number(document.getElementById(id).value) || 0);
 
-  let score=100;
-  if(rate<80) score-=Math.min(25,(80-rate)*0.9);
-  if(gap>1000) score-=Math.min(25,gap/180);
-  if(left<2500) score-=Math.min(20,(2500-left)/100);
-  if(tax<1000) score-=5;
-  score=Math.max(25,Math.min(100,Math.round(score)));
-
-  document.getElementById("score").textContent=score+"/100";
-  document.getElementById("scoreText").textContent=score>=80?"Situation globalement saine":score>=60?"Quelques points \u00e0 am\u00e9liorer":"Plusieurs priorit\u00e9s \u00e0 traiter";
-  document.getElementById("retMetric").textContent=money(retirement);
-  document.getElementById("rateMetric").textContent=Math.round(rate)+" % du revenu actuel";
-  document.getElementById("famMetric").textContent=gap?"- "+money(gap):money(0);
-  document.getElementById("taxMetric").textContent=money(tax);
-
-  document.getElementById("retMain").textContent=money(retirement)+" / mois";
-  document.getElementById("rateMain").textContent=Math.round(rate)+" %";
-  document.getElementById("bar").style.width=Math.min(100,rate)+"%";
-  document.getElementById("avs").textContent=money(avs);
-  document.getElementById("lppOut").textContent=money(lppMonthly);
-  document.getElementById("p3Out").textContent=money(p3Monthly);
-  document.getElementById("retNote").textContent=rate>=80?"Votre niveau de vie devrait rester globalement confortable.":"Un effort d\u2019\u00e9pargne compl\u00e9mentaire pourrait am\u00e9liorer cette projection.";
-
-  document.getElementById("famNow").textContent=money(income)+"/mois";
-  document.getElementById("famAfter").textContent=money(survivor)+"/mois";
-  document.getElementById("famGap").textContent="D\u00e9ficit : "+money(gap)+"/mois";
-  document.getElementById("famNote").textContent=gap>1500?"La protection familiale doit \u00eatre analys\u00e9e en priorit\u00e9.":gap>0?"Le d\u00e9ficit para\u00eet limit\u00e9, mais doit \u00eatre compar\u00e9 aux charges r\u00e9elles.":"Aucun d\u00e9ficit mensuel dans cette simulation.";
-
-  document.getElementById("houseCost").textContent=money(housing);
-  document.getElementById("houseRet").textContent=money(retirement);
-  document.getElementById("remaining").textContent="Reste disponible : "+money(left);
-  document.getElementById("houseNote").textContent=left>=3000?"Votre logement para\u00eet soutenable dans ce sc\u00e9nario.":left>=1500?"La tenue des charges doit \u00eatre contr\u00f4l\u00e9e avec prudence.":"Le co\u00fbt du logement para\u00eet trop \u00e9lev\u00e9.";
-
-  document.getElementById("taxMain").textContent=money(tax)+" / an";
-
-  let p="Optimiser votre fiscalit\u00e9",w="Votre situation para\u00eet \u00e9quilibr\u00e9e.";
-  if(gap>1500){p="Prot\u00e9ger votre famille";w="Le d\u00e9ficit mensuel apr\u00e8s un d\u00e9c\u00e8s est trop important."}
-  else if(rate<75){p="Renforcer votre retraite";w="Votre revenu estim\u00e9 est inf\u00e9rieur \u00e0 75 % du revenu actuel."}
-  else if(left<2000){p="S\u00e9curiser votre logement";w="Les charges immobili\u00e8res p\u00e8sent fortement sur le revenu futur."}
-  document.getElementById("priority").textContent=p;
-  document.getElementById("priorityWhy").textContent=w;
+function updateWizard(){
+  document.querySelectorAll(".step").forEach(step => {
+    step.classList.toggle("active", Number(step.dataset.step) === currentStep);
+  });
+  document.getElementById("stepLabel").textContent = "ETAPE " + currentStep + " SUR 4";
+  document.getElementById("progressBar").style.width = (currentStep * 25) + "%";
+  document.getElementById("backBtn").classList.toggle("hidden", currentStep === 1);
+  document.getElementById("nextBtn").textContent = currentStep === 4 ? "Generer mon analyse" : "Continuer";
 }
 
-document.getElementById("calc").addEventListener("click",calculate);
-document.getElementById("reset").addEventListener("click",()=>{Object.entries(d).forEach(([k,v])=>document.getElementById(k).value=v);calculate()});
-document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
-  document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");document.getElementById(b.dataset.panel).classList.add("active");
-}));
-calculate();
+function bindChoice(containerId, callback){
+  document.querySelectorAll("#" + containerId + " .choice").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#" + containerId + " .choice").forEach(x => x.classList.remove("active"));
+      button.classList.add("active");
+      callback(button.dataset.value);
+    });
+  });
+}
+
+bindChoice("civilChoices", value => {
+  civilStatus = value;
+  document.getElementById("spouseBlock").style.display = value === "single" ? "none" : "block";
+});
+
+bindChoice("ownerChoices", value => {
+  owner = value;
+  document.getElementById("housingBlock").style.display = value === "yes" ? "block" : "none";
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if(currentStep < 4){
+    currentStep += 1;
+    updateWizard();
+  }else{
+    calculate();
+  }
+});
+
+document.getElementById("backBtn").addEventListener("click", () => {
+  if(currentStep > 1){
+    currentStep -= 1;
+    updateWizard();
+  }
+});
+
+document.querySelectorAll(".tabs button").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".tabs button").forEach(x => x.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(x => x.classList.remove("active"));
+    button.classList.add("active");
+    document.getElementById(button.dataset.panel).classList.add("active");
+  });
+});
+
+function calculate(){
+  const age = numberValue("age");
+  const retAge = Math.max(age, numberValue("retAge"));
+  const salary = numberValue("salary");
+  const spouseSalary = civilStatus === "single" ? 0 : numberValue("spouseSalary");
+  const householdIncome = numberValue("income");
+  const need = numberValue("need");
+  const children = numberValue("children");
+  const housing = owner === "yes" ? numberValue("housing") : 0;
+  const survivor = numberValue("survivor");
+  const years = Math.max(0, retAge - age);
+  const totalSalary = salary + spouseSalary;
+
+  const avsIndividual = Math.min(2520, Math.max(1300, salary * 0.025));
+  const spouseAvs = spouseSalary > 0 ? Math.min(2520, Math.max(1300, spouseSalary * 0.025)) : 0;
+  let avs = avsIndividual + spouseAvs;
+  if(civilStatus === "married") avs = Math.min(3780, avs);
+
+  const estimatedCurrentLpp = Math.max(0, totalSalary * Math.max(0, age - 25) * 0.065);
+  const projectedLpp = estimatedCurrentLpp * Math.pow(1.018, years) + totalSalary * 0.09 * years;
+  const lppMonthly = projectedLpp * 0.05 / 12;
+
+  const privateSavingMonthly = Math.max(0, totalSalary * 0.006 / 12);
+  const retirement = avs + lppMonthly + privateSavingMonthly;
+  const coverageRate = need > 0 ? retirement / need * 100 : 0;
+
+  const familyGap = Math.max(0, need - survivor);
+  const remaining = retirement - housing;
+
+  let taxPotential = totalSalary * 0.018;
+  if(civilStatus === "married") taxPotential *= 1.1;
+  if(children > 0) taxPotential += Math.min(1200, children * 300);
+  taxPotential = Math.max(500, Math.min(9000, taxPotential));
+
+  let score = 100;
+  if(coverageRate < 100) score -= Math.min(30, (100 - coverageRate) * 0.55);
+  if(familyGap > 1000) score -= Math.min(25, familyGap / 170);
+  if(owner === "yes" && remaining < need * 0.35) score -= 15;
+  if(taxPotential > 3000) score -= 5;
+  score = Math.max(25, Math.min(100, Math.round(score)));
+
+  document.getElementById("score").textContent = score + "/100";
+  document.getElementById("scoreText").textContent =
+    score >= 80 ? "Situation globalement saine" :
+    score >= 60 ? "Quelques points \u00e0 am\u00e9liorer" :
+    "Plusieurs priorit\u00e9s \u00e0 traiter";
+
+  document.getElementById("retMetric").textContent = money(retirement);
+  document.getElementById("rateMetric").textContent = Math.round(coverageRate) + " % du besoin mensuel";
+  document.getElementById("lppMetric").textContent = money(projectedLpp);
+  document.getElementById("taxMetric").textContent = money(taxPotential);
+
+  document.getElementById("retMain").textContent = money(retirement) + " / mois";
+  document.getElementById("rateMain").textContent = Math.round(coverageRate) + " %";
+  document.getElementById("bar").style.width = Math.min(100, coverageRate) + "%";
+  document.getElementById("avs").textContent = money(avs);
+  document.getElementById("lppOut").textContent = money(lppMonthly);
+  document.getElementById("p3Out").textContent = money(privateSavingMonthly);
+  document.getElementById("retNote").textContent =
+    coverageRate >= 100 ? "Votre revenu estim\u00e9 couvre votre besoin mensuel d\u00e9clar\u00e9." :
+    coverageRate >= 80 ? "Votre retraite para\u00eet proche de votre besoin, mais un compl\u00e9ment serait utile." :
+    "Votre revenu estim\u00e9 \u00e0 la retraite est inf\u00e9rieur \u00e0 votre besoin mensuel.";
+
+  document.getElementById("famNeed").textContent = money(need) + "/mois";
+  document.getElementById("famAfter").textContent = money(survivor) + "/mois";
+  document.getElementById("famGap").textContent = "D\u00e9ficit : " + money(familyGap) + "/mois";
+  document.getElementById("famNote").textContent =
+    familyGap > 1500 ? "La protection familiale doit \u00eatre analys\u00e9e en priorit\u00e9." :
+    familyGap > 0 ? "Le d\u00e9ficit para\u00eet limit\u00e9, mais doit \u00eatre compar\u00e9 aux charges r\u00e9elles." :
+    "Le revenu restant couvre le besoin mensuel d\u00e9clar\u00e9.";
+
+  document.getElementById("houseCost").textContent = owner === "yes" ? money(housing) : "Non propri\u00e9taire";
+  document.getElementById("houseRet").textContent = money(retirement);
+  document.getElementById("remaining").textContent =
+    owner === "yes" ? "Reste disponible : " + money(remaining) : "Aucune charge immobili\u00e8re saisie";
+  document.getElementById("houseNote").textContent =
+    owner === "no" ? "Le module immobilier sera adapt\u00e9 aux locataires dans une prochaine version." :
+    remaining >= need * 0.5 ? "Votre logement para\u00eet soutenable dans ce sc\u00e9nario." :
+    remaining >= need * 0.3 ? "La tenue des charges devra \u00eatre contr\u00f4l\u00e9e avec prudence." :
+    "Le co\u00fbt du logement para\u00eet \u00e9lev\u00e9 par rapport au revenu futur.";
+
+  document.getElementById("taxMain").textContent = money(taxPotential) + " / an";
+  document.getElementById("taxNote").textContent =
+    "Estimation automatique bas\u00e9e sur les revenus, la situation familiale et les leviers 3a/LPP.";
+
+  let priority = "Optimiser votre fiscalit\u00e9";
+  let why = "Votre situation para\u00eet \u00e9quilibr\u00e9e ; l'optimisation fiscale devient le principal levier.";
+  if(familyGap > 1500){
+    priority = "Prot\u00e9ger votre famille";
+    why = "Le revenu restant ne couvre pas le besoin mensuel du m\u00e9nage.";
+  }else if(coverageRate < 85){
+    priority = "Renforcer votre retraite";
+    why = "Votre revenu estim\u00e9 \u00e0 la retraite est inf\u00e9rieur \u00e0 votre besoin mensuel.";
+  }else if(owner === "yes" && remaining < need * 0.3){
+    priority = "S\u00e9curiser votre logement";
+    why = "Les charges immobili\u00e8res p\u00e8sent fortement sur votre revenu futur.";
+  }
+  document.getElementById("priority").textContent = priority;
+  document.getElementById("priorityWhy").textContent = why;
+}
+
+updateWizard();
 </script>
 </body>
 </html>
