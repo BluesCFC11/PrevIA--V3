@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrevIA V3</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrevIA V4</title>
   <style>
-    :root{
-      --bg:#f4f6fb;--card:#fff;--navy:#0f274f;--blue:#3568f4;--text:#1e2d49;
-      --muted:#6f7d95;--line:#e4e9f2;--soft:#eef4ff;
-    }
+    :root{--bg:#f4f6fb;--card:#fff;--navy:#10274d;--blue:#3568f4;--text:#1f2d48;--muted:#6d7a91;--line:#e3e8f1;--soft:#eef4ff}
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    button{font:inherit}
-    .shell{max-width:1180px;margin:auto;padding:24px}
-    .hero{padding:34px;border-radius:24px;background:linear-gradient(135deg,#0f274f,#1e559e);color:#fff}
-    .hero p{color:#dbe7fb;line-height:1.6}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 22px rgba(13,35,68,.06)}
-    .choice{cursor:pointer;transition:.2s}.choice:hover{transform:translateY(-3px)}
-    .btn{background:var(--blue);border:0;color:#fff;padding:12px 16px;border-radius:11px;font-weight:700;cursor:pointer}
+    button,input{font:inherit}
+    .shell{max-width:1180px;margin:auto;padding:20px}
+    .top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}
+    .top h1{margin:0}.top p{margin:4px 0 0;color:var(--muted)}
+    .badge{background:var(--soft);color:var(--blue);padding:8px 12px;border-radius:999px;font-weight:700}
+    .layout{display:grid;grid-template-columns:360px 1fr;gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 22px rgba(13,35,68,.05)}
+    .form{position:sticky;top:14px;align-self:start}
+    label{display:block;font-size:14px;font-weight:700;margin:13px 0 6px}
+    input{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btn{width:100%;margin-top:16px;background:var(--blue);border:0;color:#fff;padding:13px;border-radius:12px;font-weight:800}
     .btn.secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
-    .top{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .small{font-size:14px;color:var(--muted);line-height:1.5}
-    .metric{font-size:44px;font-weight:900;letter-spacing:-.04em}
-    .nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
-    .nav button{background:#fff;border:1px solid var(--line);color:var(--text);padding:11px 14px;border-radius:10px;cursor:pointer;font-weight:700}
-    .nav button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-    .panel{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:18px}
-    .panel.active{display:block}
-    .big{font-size:40px;font-weight:900;letter-spacing:-.035em}
-    .bar{height:12px;background:#e8edf7;border-radius:99px;overflow:hidden}.bar span{display:block;width:78%;height:100%;background:var(--blue)}
-    .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #edf1f6;padding:12px 0}.row:last-child{border-bottom:0}
-    .note{margin-top:18px;padding:17px;background:var(--soft);border-radius:15px;border:1px solid #d9e4ff}
-    .detail{margin-top:18px;padding:17px;border-radius:15px;background:#f8faff}
-    #app{display:none}
-    @media(max-width:700px){.shell{padding:16px}.top{display:block}.top .actions{margin-top:12px}.metric{font-size:37px}.big{font-size:33px}}
+    .small{font-size:13px;color:var(--muted);line-height:1.5}
+    .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .metric{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+    .metric .label{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase}
+    .metric .value{font-size:33px;font-weight:900;margin:5px 0}
+    .priority{margin-top:14px;padding:18px;border-radius:16px;background:var(--soft);border:1px solid #d9e4ff}
+    .priority .big{font-size:34px;font-weight:900}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+    .tabs button{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:10px;font-weight:700}
+    .tabs button.active{background:var(--navy);color:#fff}
+    .panel{display:none}.panel.active{display:block}
+    .big{font-size:37px;font-weight:900}
+    .row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid #edf1f6}
+    .bar{height:12px;background:#e8edf7;border-radius:99px;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;background:var(--blue)}
+    .note{padding:15px;border-radius:14px;background:#f8faff;margin-top:14px;line-height:1.55}
+    .warning{margin-top:16px;padding:12px;border-radius:12px;background:#fff8e9;border:1px solid #f1ddb5;color:#76541f;font-size:13px}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.form{position:static}}
+    @media(max-width:560px){.metrics,.two{grid-template-columns:1fr}.shell{padding:13px}.big{font-size:31px}.priority .big{font-size:28px}}
   </style>
 </head>
 <body>
-  <main class="shell">
-    <section id="home">
-      <div class="hero">
-        <h1>PrevIA V3</h1>
-        <p>Comprendre aujourd’hui. Décider sereinement demain.</p>
-      </div>
-      <h2>Choisissez votre mode</h2>
-      <div class="grid">
-        <article class="card choice" onclick="start('particulier')">
-          <div style="font-size:42px">👤</div>
-          <h2>Particulier</h2>
-          <p class="small">Des réponses simples, des montants concrets et une priorité claire.</p>
-          <button class="btn">Tester ce mode</button>
-        </article>
-        <article class="card choice" onclick="start('conseiller')">
-          <div style="font-size:42px">🧑‍💼</div>
-          <h2>Conseiller</h2>
-          <p class="small">Les mêmes conclusions avec les détails techniques et les hypothèses.</p>
-          <button class="btn">Tester ce mode</button>
-        </article>
-      </div>
-    </section>
+<main class="shell">
+  <header class="top">
+    <div><h1>PrevIA V4</h1><p>Votre situation financiÃ¨re, expliquÃ©e simplement.</p></div>
+    <div class="badge">Prototype interactif</div>
+  </header>
 
-    <section id="app">
-      <div class="top">
-        <div>
-          <h1 id="title" style="margin-bottom:4px"></h1>
-          <div class="small" id="subtitle"></div>
-        </div>
-        <div class="actions">
-          <button class="btn secondary" onclick="goHome()">Accueil</button>
-          <button class="btn" id="switchBtn" onclick="toggleMode()"></button>
-        </div>
+  <div class="layout">
+    <aside class="card form">
+      <h2>Votre situation</h2>
+      <p class="small">Modifiez les donnÃ©es, puis cliquez sur Â« Recalculer Â».</p>
+
+      <div class="two">
+        <div><label for="age">Ãge</label><input id="age" type="number" value="38"></div>
+        <div><label for="retAge">Ãge de retraite</label><input id="retAge" type="number" value="65"></div>
       </div>
 
-      <div class="grid">
-        <div class="card"><div class="small">Indice PrevIA</div><div class="metric">82/100</div><div>😊 Situation globalement saine</div></div>
-        <div class="card"><div class="small">Retraite</div><div class="metric">CHF 6'400</div><div>78 % du revenu actuel</div></div>
-        <div class="card"><div class="small">Famille</div><div class="metric">- CHF 3'000</div><div>Déficit mensuel en cas de décès</div></div>
-        <div class="card"><div class="small">Fiscalité</div><div class="metric">CHF 2'150</div><div>Économie annuelle potentielle</div></div>
+      <label for="salary">Salaire brut annuel</label>
+      <input id="salary" type="number" value="110000">
+
+      <label for="income">Revenu mensuel actuel</label>
+      <input id="income" type="number" value="8200">
+
+      <label for="lpp">Capital LPP actuel</label>
+      <input id="lpp" type="number" value="220000">
+
+      <label for="pillar3">Capital 3e pilier</label>
+      <input id="pillar3" type="number" value="55000">
+
+      <label for="housing">CoÃ»t mensuel du logement</label>
+      <input id="housing" type="number" value="2350">
+
+      <label for="survivor">Revenu familial aprÃ¨s dÃ©cÃ¨s</label>
+      <input id="survivor" type="number" value="5100">
+
+      <label for="tax">Ãconomie fiscale estimÃ©e/an</label>
+      <input id="tax" type="number" value="2150">
+
+      <button class="btn" id="calc">Recalculer lâanalyse</button>
+      <button class="btn secondary" id="reset">RÃ©initialiser</button>
+
+      <div class="warning">Calculs de dÃ©monstration simplifiÃ©s. Cette version ne constitue pas encore un calcul officiel AVS/LPP.</div>
+    </aside>
+
+    <section>
+      <div class="metrics">
+        <article class="metric"><div class="label">Indice PrevIA</div><div class="value" id="score">82/100</div><div id="scoreText">Situation globalement saine</div></article>
+        <article class="metric"><div class="label">Retraite estimÃ©e</div><div class="value" id="retMetric">CHF 6'400</div><div id="rateMetric">78 % du revenu actuel</div></article>
+        <article class="metric"><div class="label">Protection famille</div><div class="value" id="famMetric">- CHF 3'100</div><div>DÃ©ficit mensuel estimÃ©</div></article>
+        <article class="metric"><div class="label">FiscalitÃ©</div><div class="value" id="taxMetric">CHF 2'150</div><div>Ãconomie annuelle potentielle</div></article>
       </div>
 
-      <nav class="nav">
-        <button class="active" onclick="showPanel('ret',this)">🏖 Retraite</button>
-        <button onclick="showPanel('fam',this)">❤️ Famille</button>
-        <button onclick="showPanel('imm',this)">🏠 Immobilier</button>
-        <button onclick="showPanel('tax',this)">💰 Fiscalité</button>
-        <button onclick="showPanel('ai',this)">🤖 Assistant</button>
+      <div class="priority">
+        <strong>PrioritÃ© nÂ°1</strong>
+        <div class="big" id="priority">ProtÃ©ger votre famille</div>
+        <div id="priorityWhy">Le dÃ©ficit mensuel aprÃ¨s un dÃ©cÃ¨s est trop important.</div>
+      </div>
+
+      <nav class="tabs">
+        <button class="active" data-panel="ret">ð Retraite</button>
+        <button data-panel="fam">â¤ï¸ Famille</button>
+        <button data-panel="imm">ð  Immobilier</button>
+        <button data-panel="fis">ð° FiscalitÃ©</button>
       </nav>
 
-      <section class="panel active" id="ret">
-        <div class="small">LE CHIFFRE À RETENIR</div>
+      <article class="card panel active" id="ret">
+        <div class="small">LE CHIFFRE Ã RETENIR</div>
         <h2>Votre retraite</h2>
-        <div class="big">CHF 6'400 / mois</div>
-        <p>Soit environ <strong>78 % de votre revenu actuel</strong>.</p>
-        <div class="bar"><span></span></div>
-        <div class="note">Votre niveau de vie devrait rester globalement confortable.</div>
-        <div id="retDetail"></div>
-      </section>
+        <div class="big" id="retMain">CHF 6'400 / mois</div>
+        <p>Soit environ <strong id="rateMain">78 %</strong> de votre revenu actuel.</p>
+        <div class="bar"><span id="bar"></span></div>
+        <div class="row"><span>Estimation AVS</span><strong id="avs">CHF 2'520</strong></div>
+        <div class="row"><span>Estimation LPP</span><strong id="lppOut">CHF 3'130</strong></div>
+        <div class="row"><span>Estimation 3e pilier</span><strong id="p3Out">CHF 750</strong></div>
+        <div class="note" id="retNote"></div>
+      </article>
 
-      <section class="panel" id="fam">
-        <div class="small">LE CHIFFRE À RETENIR</div>
+      <article class="card panel" id="fam">
+        <div class="small">LE CHIFFRE Ã RETENIR</div>
         <h2>Votre famille</h2>
-        <div class="row"><span>Revenus actuels</span><strong>CHF 9'100/mois</strong></div>
-        <div class="row"><span>Après un décès</span><strong>CHF 6'100/mois</strong></div>
-        <div class="big" style="margin-top:18px">Déficit : CHF 3'000/mois</div>
-        <div class="note">La protection familiale est actuellement la priorité principale.</div>
-        <div id="famDetail"></div>
-      </section>
+        <div class="row"><span>Revenu actuel</span><strong id="famNow"></strong></div>
+        <div class="row"><span>AprÃ¨s un dÃ©cÃ¨s</span><strong id="famAfter"></strong></div>
+        <div class="big" id="famGap"></div>
+        <div class="note" id="famNote"></div>
+      </article>
 
-      <section class="panel" id="imm">
-        <div class="small">LE CHIFFRE À RETENIR</div>
+      <article class="card panel" id="imm">
+        <div class="small">LE CHIFFRE Ã RETENIR</div>
         <h2>Votre logement</h2>
-        <div class="row"><span>Charges mensuelles</span><strong>CHF 2'350</strong></div>
-        <div class="row"><span>Revenu à la retraite</span><strong>CHF 6'400</strong></div>
-        <div class="big" style="margin-top:18px">Reste disponible : CHF 4'050</div>
-        <div class="note">Votre logement paraît soutenable dans ce scénario.</div>
-        <div id="immDetail"></div>
-      </section>
+        <div class="row"><span>CoÃ»t mensuel</span><strong id="houseCost"></strong></div>
+        <div class="row"><span>Revenu Ã  la retraite</span><strong id="houseRet"></strong></div>
+        <div class="big" id="remaining"></div>
+        <div class="note" id="houseNote"></div>
+      </article>
 
-      <section class="panel" id="tax">
-        <div class="small">LE CHIFFRE À RETENIR</div>
-        <h2>Votre fiscalité</h2>
-        <div class="big">CHF 2'150 / an</div>
-        <p>Économie fiscale potentielle.</p>
-        <div class="note">Les principaux leviers sont le 3e pilier, les rachats LPP et la planification des retraits.</div>
-        <div id="taxDetail"></div>
-      </section>
-
-      <section class="panel" id="ai">
-        <h2>Assistant PrevIA</h2>
-        <p class="small">Cliquez sur une question.</p>
-        <div class="nav">
-          <button onclick="answer('78')">Pourquoi seulement 78 % ?</button>
-          <button onclick="answer('63')">Puis-je partir à 63 ans ?</button>
-          <button onclick="answer('famille')">Ma famille est-elle protégée ?</button>
-        </div>
-        <div class="detail" id="answerBox">Sélectionnez une question.</div>
-      </section>
+      <article class="card panel" id="fis">
+        <div class="small">LE CHIFFRE Ã RETENIR</div>
+        <h2>Votre fiscalitÃ©</h2>
+        <div class="big" id="taxMain"></div>
+        <div class="note">Le potentiel dÃ©pend notamment du 3e pilier, des rachats LPP et de la planification des retraits.</div>
+      </article>
     </section>
-  </main>
+  </div>
+</main>
 
-  <script>
-    let mode = 'particulier';
+<script>
+const d={age:38,retAge:65,salary:110000,income:8200,lpp:220000,pillar3:55000,housing:2350,survivor:5100,tax:2150};
+const n=id=>Math.max(0,Number(document.getElementById(id).value)||0);
+const money=v=>"CHF "+Math.round(v).toLocaleString("fr-CH").replace(/\u202f/g,"'");
 
-    function start(selectedMode){
-      mode = selectedMode;
-      document.getElementById('home').style.display = 'none';
-      document.getElementById('app').style.display = 'block';
-      renderMode();
-      window.scrollTo(0,0);
-    }
+function calculate(){
+  const age=n("age"),retAge=Math.max(age,n("retAge")),salary=n("salary"),income=n("income"),
+  lpp=n("lpp"),p3=n("pillar3"),housing=n("housing"),survivor=n("survivor"),tax=n("tax");
+  const years=Math.max(0,retAge-age);
+  const avs=Math.min(2520,Math.max(1300,salary*0.025));
+  const projectedLpp=lpp*Math.pow(1.018,years)+salary*0.095*years;
+  const lppMonthly=projectedLpp*0.05/12;
+  const projected3=p3*Math.pow(1.025,years);
+  const p3Monthly=projected3/240;
+  const retirement=avs+lppMonthly+p3Monthly;
+  const rate=income?retirement/income*100:0;
+  const gap=Math.max(0,income-survivor);
+  const left=retirement-housing;
 
-    function goHome(){
-      document.getElementById('app').style.display = 'none';
-      document.getElementById('home').style.display = 'block';
-      window.scrollTo(0,0);
-    }
+  let score=100;
+  if(rate<80) score-=Math.min(25,(80-rate)*0.9);
+  if(gap>1000) score-=Math.min(25,gap/180);
+  if(left<2500) score-=Math.min(20,(2500-left)/100);
+  if(tax<1000) score-=5;
+  score=Math.max(25,Math.min(100,Math.round(score)));
 
-    function toggleMode(){
-      mode = mode === 'particulier' ? 'conseiller' : 'particulier';
-      renderMode();
-    }
+  document.getElementById("score").textContent=score+"/100";
+  document.getElementById("scoreText").textContent=score>=80?"Situation globalement saine":score>=60?"Quelques points Ã  amÃ©liorer":"Plusieurs prioritÃ©s Ã  traiter";
+  document.getElementById("retMetric").textContent=money(retirement);
+  document.getElementById("rateMetric").textContent=Math.round(rate)+" % du revenu actuel";
+  document.getElementById("famMetric").textContent=gap?"- "+money(gap):money(0);
+  document.getElementById("taxMetric").textContent=money(tax);
 
-    function renderMode(){
-      const adviser = mode === 'conseiller';
-      document.getElementById('title').textContent = adviser ? 'Dossier client — Jeremy Dubosson' : 'Bienvenue Jeremy';
-      document.getElementById('subtitle').textContent = adviser ? 'Mode expert avec hypothèses et détails' : 'Votre copilote financier';
-      document.getElementById('switchBtn').textContent = adviser ? 'Passer en mode particulier' : 'Passer en mode conseiller';
+  document.getElementById("retMain").textContent=money(retirement)+" / mois";
+  document.getElementById("rateMain").textContent=Math.round(rate)+" %";
+  document.getElementById("bar").style.width=Math.min(100,rate)+"%";
+  document.getElementById("avs").textContent=money(avs);
+  document.getElementById("lppOut").textContent=money(lppMonthly);
+  document.getElementById("p3Out").textContent=money(p3Monthly);
+  document.getElementById("retNote").textContent=rate>=80?"Votre niveau de vie devrait rester globalement confortable.":"Un effort dâÃ©pargne complÃ©mentaire pourrait amÃ©liorer cette projection.";
 
-      document.getElementById('retDetail').innerHTML = adviser
-        ? `<div class="detail"><strong>Détails techniques</strong>
-             <div class="row"><span>AVS</span><strong>CHF 2'650</strong></div>
-             <div class="row"><span>LPP</span><strong>CHF 2'950</strong></div>
-             <div class="row"><span>3e pilier</span><strong>CHF 800</strong></div>
-             <div class="row"><span>Total</span><strong>CHF 6'400</strong></div>
-           </div>`
-        : `<div class="detail">En clair : vous conserveriez environ 78 % de votre revenu actuel.</div>`;
+  document.getElementById("famNow").textContent=money(income)+"/mois";
+  document.getElementById("famAfter").textContent=money(survivor)+"/mois";
+  document.getElementById("famGap").textContent="DÃ©ficit : "+money(gap)+"/mois";
+  document.getElementById("famNote").textContent=gap>1500?"La protection familiale doit Ãªtre analysÃ©e en prioritÃ©.":gap>0?"Le dÃ©ficit paraÃ®t limitÃ©, mais doit Ãªtre comparÃ© aux charges rÃ©elles.":"Aucun dÃ©ficit mensuel dans cette simulation.";
 
-      document.getElementById('famDetail').innerHTML = adviser
-        ? `<div class="detail"><strong>Analyse conseiller</strong><ul><li>Contrôler les prestations survivants.</li><li>Tester le maintien de l’hypothèque.</li><li>Calculer le capital décès nécessaire.</li></ul></div>`
-        : `<div class="detail">Une protection complémentaire pourrait réduire ce déficit.</div>`;
+  document.getElementById("houseCost").textContent=money(housing);
+  document.getElementById("houseRet").textContent=money(retirement);
+  document.getElementById("remaining").textContent="Reste disponible : "+money(left);
+  document.getElementById("houseNote").textContent=left>=3000?"Votre logement paraÃ®t soutenable dans ce scÃ©nario.":left>=1500?"La tenue des charges doit Ãªtre contrÃ´lÃ©e avec prudence.":"Le coÃ»t du logement paraÃ®t trop Ã©levÃ©.";
 
-      document.getElementById('immDetail').innerHTML = adviser
-        ? `<div class="detail"><strong>Analyse bancaire</strong><ul><li>Tenue des charges à la retraite.</li><li>Stress test des taux.</li><li>Impact d’un amortissement supplémentaire.</li></ul></div>`
-        : `<div class="detail">Le calcul devra être confirmé avec les charges et taux réels.</div>`;
+  document.getElementById("taxMain").textContent=money(tax)+" / an";
 
-      document.getElementById('taxDetail').innerHTML = adviser
-        ? `<div class="detail"><strong>Pistes techniques</strong><ul><li>Maximisation du 3a.</li><li>Rachats LPP échelonnés.</li><li>Planification fiscale des retraits.</li></ul></div>`
-        : `<div class="detail">Votre 3e pilier pourrait encore être optimisé.</div>`;
-    }
+  let p="Optimiser votre fiscalitÃ©",w="Votre situation paraÃ®t Ã©quilibrÃ©e.";
+  if(gap>1500){p="ProtÃ©ger votre famille";w="Le dÃ©ficit mensuel aprÃ¨s un dÃ©cÃ¨s est trop important."}
+  else if(rate<75){p="Renforcer votre retraite";w="Votre revenu estimÃ© est infÃ©rieur Ã  75 % du revenu actuel."}
+  else if(left<2000){p="SÃ©curiser votre logement";w="Les charges immobiliÃ¨res pÃ¨sent fortement sur le revenu futur."}
+  document.getElementById("priority").textContent=p;
+  document.getElementById("priorityWhy").textContent=w;
+}
 
-    function showPanel(id, button){
-      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('.nav > button').forEach(b => b.classList.remove('active'));
-      button.classList.add('active');
-    }
-
-    function answer(type){
-      const adviser = mode === 'conseiller';
-      let text = '';
-      if(type === '78'){
-        text = adviser
-          ? "Le taux de remplacement correspond à CHF 6'400 divisés par CHF 8'200. Les hypothèses AVS, LPP et 3a doivent encore être validées."
-          : "Parce que votre revenu estimé à la retraite est de CHF 6'400 par mois, contre CHF 8'200 aujourd’hui.";
-      } else if(type === '63'){
-        text = adviser
-          ? "Il faut simuler la réduction LPP, le pont AVS, la fiscalité des retraits et la tenue des charges immobilières."
-          : "Un départ à 63 ans est peut-être possible, mais il réduira probablement votre revenu mensuel.";
-      } else {
-        text = adviser
-          ? "Le déficit estimé est de CHF 3'000 par mois. Le capital nécessaire dépend des prestations survivants, de la dette et de la durée de couverture."
-          : "Pas complètement : il manquerait environ CHF 3'000 par mois en cas de décès.";
-      }
-      document.getElementById('answerBox').textContent = text;
-    }
-  </script>
+document.getElementById("calc").addEventListener("click",calculate);
+document.getElementById("reset").addEventListener("click",()=>{Object.entries(d).forEach(([k,v])=>document.getElementById(k).value=v);calculate()});
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");document.getElementById(b.dataset.panel).classList.add("active");
+}));
+calculate();
+</script>
 </body>
 </html>
