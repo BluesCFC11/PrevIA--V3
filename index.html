@@ -44,18 +44,18 @@
 <body>
 <main class="shell">
   <header class="top">
-    <div><h1>PrevIA V4</h1><p>Votre situation financiÃ¨re, expliquÃ©e simplement.</p></div>
+    <div><h1>PrevIA V4</h1><p>Votre situation financi&#232;re, expliqu&#233;e simplement.</p></div>
     <div class="badge">Prototype interactif</div>
   </header>
 
   <div class="layout">
     <aside class="card form">
       <h2>Votre situation</h2>
-      <p class="small">Modifiez les donnÃ©es, puis cliquez sur Â« Recalculer Â».</p>
+      <p class="small">Modifiez les donn&#233;es, puis cliquez sur &#171; Recalculer &#187;.</p>
 
       <div class="two">
-        <div><label for="age">Ãge</label><input id="age" type="number" value="38"></div>
-        <div><label for="retAge">Ãge de retraite</label><input id="retAge" type="number" value="65"></div>
+        <div><label for="age">&#194;ge</label><input id="age" type="number" value="38"></div>
+        <div><label for="retAge">&#194;ge de retraite</label><input id="retAge" type="number" value="65"></div>
       </div>
 
       <label for="salary">Salaire brut annuel</label>
@@ -70,44 +70,44 @@
       <label for="pillar3">Capital 3e pilier</label>
       <input id="pillar3" type="number" value="55000">
 
-      <label for="housing">CoÃ»t mensuel du logement</label>
+      <label for="housing">Co&#251;t mensuel du logement</label>
       <input id="housing" type="number" value="2350">
 
-      <label for="survivor">Revenu familial aprÃ¨s dÃ©cÃ¨s</label>
+      <label for="survivor">Revenu familial apr&#232;s d&#233;c&#232;s</label>
       <input id="survivor" type="number" value="5100">
 
-      <label for="tax">Ãconomie fiscale estimÃ©e/an</label>
+      <label for="tax">&#201;conomie fiscale estim&#233;e/an</label>
       <input id="tax" type="number" value="2150">
 
-      <button class="btn" id="calc">Recalculer lâanalyse</button>
-      <button class="btn secondary" id="reset">RÃ©initialiser</button>
+      <button class="btn" id="calc">Recalculer l&#8217;analyse</button>
+      <button class="btn secondary" id="reset">R&#233;initialiser</button>
 
-      <div class="warning">Calculs de dÃ©monstration simplifiÃ©s. Cette version ne constitue pas encore un calcul officiel AVS/LPP.</div>
+      <div class="warning">Calculs de d&#233;monstration simplifi&#233;s. Cette version ne constitue pas encore un calcul officiel AVS/LPP.</div>
     </aside>
 
     <section>
       <div class="metrics">
         <article class="metric"><div class="label">Indice PrevIA</div><div class="value" id="score">82/100</div><div id="scoreText">Situation globalement saine</div></article>
-        <article class="metric"><div class="label">Retraite estimÃ©e</div><div class="value" id="retMetric">CHF 6'400</div><div id="rateMetric">78 % du revenu actuel</div></article>
-        <article class="metric"><div class="label">Protection famille</div><div class="value" id="famMetric">- CHF 3'100</div><div>DÃ©ficit mensuel estimÃ©</div></article>
-        <article class="metric"><div class="label">FiscalitÃ©</div><div class="value" id="taxMetric">CHF 2'150</div><div>Ãconomie annuelle potentielle</div></article>
+        <article class="metric"><div class="label">Retraite estim&#233;e</div><div class="value" id="retMetric">CHF 6'400</div><div id="rateMetric">78 % du revenu actuel</div></article>
+        <article class="metric"><div class="label">Protection famille</div><div class="value" id="famMetric">- CHF 3'100</div><div>D&#233;ficit mensuel estim&#233;</div></article>
+        <article class="metric"><div class="label">Fiscalit&#233;</div><div class="value" id="taxMetric">CHF 2'150</div><div>&#201;conomie annuelle potentielle</div></article>
       </div>
 
       <div class="priority">
-        <strong>PrioritÃ© nÂ°1</strong>
-        <div class="big" id="priority">ProtÃ©ger votre famille</div>
-        <div id="priorityWhy">Le dÃ©ficit mensuel aprÃ¨s un dÃ©cÃ¨s est trop important.</div>
+        <strong>Priorit&#233; n&#176;1</strong>
+        <div class="big" id="priority">Prot&#233;ger votre famille</div>
+        <div id="priorityWhy">Le d&#233;ficit mensuel apr&#232;s un d&#233;c&#232;s est trop important.</div>
       </div>
 
       <nav class="tabs">
-        <button class="active" data-panel="ret">ð Retraite</button>
-        <button data-panel="fam">â¤ï¸ Famille</button>
-        <button data-panel="imm">ð  Immobilier</button>
-        <button data-panel="fis">ð° FiscalitÃ©</button>
+        <button class="active" data-panel="ret">&#127958; Retraite</button>
+        <button data-panel="fam">&#10084;&#65039; Famille</button>
+        <button data-panel="imm">&#127968; Immobilier</button>
+        <button data-panel="fis">&#128176; Fiscalit&#233;</button>
       </nav>
 
       <article class="card panel active" id="ret">
-        <div class="small">LE CHIFFRE Ã RETENIR</div>
+        <div class="small">LE CHIFFRE &#192; RETENIR</div>
         <h2>Votre retraite</h2>
         <div class="big" id="retMain">CHF 6'400 / mois</div>
         <p>Soit environ <strong id="rateMain">78 %</strong> de votre revenu actuel.</p>
@@ -119,28 +119,28 @@
       </article>
 
       <article class="card panel" id="fam">
-        <div class="small">LE CHIFFRE Ã RETENIR</div>
+        <div class="small">LE CHIFFRE &#192; RETENIR</div>
         <h2>Votre famille</h2>
         <div class="row"><span>Revenu actuel</span><strong id="famNow"></strong></div>
-        <div class="row"><span>AprÃ¨s un dÃ©cÃ¨s</span><strong id="famAfter"></strong></div>
+        <div class="row"><span>Apr&#232;s un d&#233;c&#232;s</span><strong id="famAfter"></strong></div>
         <div class="big" id="famGap"></div>
         <div class="note" id="famNote"></div>
       </article>
 
       <article class="card panel" id="imm">
-        <div class="small">LE CHIFFRE Ã RETENIR</div>
+        <div class="small">LE CHIFFRE &#192; RETENIR</div>
         <h2>Votre logement</h2>
-        <div class="row"><span>CoÃ»t mensuel</span><strong id="houseCost"></strong></div>
-        <div class="row"><span>Revenu Ã  la retraite</span><strong id="houseRet"></strong></div>
+        <div class="row"><span>Co&#251;t mensuel</span><strong id="houseCost"></strong></div>
+        <div class="row"><span>Revenu &#224; la retraite</span><strong id="houseRet"></strong></div>
         <div class="big" id="remaining"></div>
         <div class="note" id="houseNote"></div>
       </article>
 
       <article class="card panel" id="fis">
-        <div class="small">LE CHIFFRE Ã RETENIR</div>
-        <h2>Votre fiscalitÃ©</h2>
+        <div class="small">LE CHIFFRE &#192; RETENIR</div>
+        <h2>Votre fiscalit&#233;</h2>
         <div class="big" id="taxMain"></div>
-        <div class="note">Le potentiel dÃ©pend notamment du 3e pilier, des rachats LPP et de la planification des retraits.</div>
+        <div class="note">Le potentiel d&#233;pend notamment du 3e pilier, des rachats LPP et de la planification des retraits.</div>
       </article>
     </section>
   </div>
@@ -173,7 +173,7 @@ function calculate(){
   score=Math.max(25,Math.min(100,Math.round(score)));
 
   document.getElementById("score").textContent=score+"/100";
-  document.getElementById("scoreText").textContent=score>=80?"Situation globalement saine":score>=60?"Quelques points Ã  amÃ©liorer":"Plusieurs prioritÃ©s Ã  traiter";
+  document.getElementById("scoreText").textContent=score>=80?"Situation globalement saine":score>=60?"Quelques points \u00e0 am\u00e9liorer":"Plusieurs priorit\u00e9s \u00e0 traiter";
   document.getElementById("retMetric").textContent=money(retirement);
   document.getElementById("rateMetric").textContent=Math.round(rate)+" % du revenu actuel";
   document.getElementById("famMetric").textContent=gap?"- "+money(gap):money(0);
@@ -185,24 +185,24 @@ function calculate(){
   document.getElementById("avs").textContent=money(avs);
   document.getElementById("lppOut").textContent=money(lppMonthly);
   document.getElementById("p3Out").textContent=money(p3Monthly);
-  document.getElementById("retNote").textContent=rate>=80?"Votre niveau de vie devrait rester globalement confortable.":"Un effort dâÃ©pargne complÃ©mentaire pourrait amÃ©liorer cette projection.";
+  document.getElementById("retNote").textContent=rate>=80?"Votre niveau de vie devrait rester globalement confortable.":"Un effort d\u2019\u00e9pargne compl\u00e9mentaire pourrait am\u00e9liorer cette projection.";
 
   document.getElementById("famNow").textContent=money(income)+"/mois";
   document.getElementById("famAfter").textContent=money(survivor)+"/mois";
-  document.getElementById("famGap").textContent="DÃ©ficit : "+money(gap)+"/mois";
-  document.getElementById("famNote").textContent=gap>1500?"La protection familiale doit Ãªtre analysÃ©e en prioritÃ©.":gap>0?"Le dÃ©ficit paraÃ®t limitÃ©, mais doit Ãªtre comparÃ© aux charges rÃ©elles.":"Aucun dÃ©ficit mensuel dans cette simulation.";
+  document.getElementById("famGap").textContent="D\u00e9ficit : "+money(gap)+"/mois";
+  document.getElementById("famNote").textContent=gap>1500?"La protection familiale doit \u00eatre analys\u00e9e en priorit\u00e9.":gap>0?"Le d\u00e9ficit para\u00eet limit\u00e9, mais doit \u00eatre compar\u00e9 aux charges r\u00e9elles.":"Aucun d\u00e9ficit mensuel dans cette simulation.";
 
   document.getElementById("houseCost").textContent=money(housing);
   document.getElementById("houseRet").textContent=money(retirement);
   document.getElementById("remaining").textContent="Reste disponible : "+money(left);
-  document.getElementById("houseNote").textContent=left>=3000?"Votre logement paraÃ®t soutenable dans ce scÃ©nario.":left>=1500?"La tenue des charges doit Ãªtre contrÃ´lÃ©e avec prudence.":"Le coÃ»t du logement paraÃ®t trop Ã©levÃ©.";
+  document.getElementById("houseNote").textContent=left>=3000?"Votre logement para\u00eet soutenable dans ce sc\u00e9nario.":left>=1500?"La tenue des charges doit \u00eatre contr\u00f4l\u00e9e avec prudence.":"Le co\u00fbt du logement para\u00eet trop \u00e9lev\u00e9.";
 
   document.getElementById("taxMain").textContent=money(tax)+" / an";
 
-  let p="Optimiser votre fiscalitÃ©",w="Votre situation paraÃ®t Ã©quilibrÃ©e.";
-  if(gap>1500){p="ProtÃ©ger votre famille";w="Le dÃ©ficit mensuel aprÃ¨s un dÃ©cÃ¨s est trop important."}
-  else if(rate<75){p="Renforcer votre retraite";w="Votre revenu estimÃ© est infÃ©rieur Ã  75 % du revenu actuel."}
-  else if(left<2000){p="SÃ©curiser votre logement";w="Les charges immobiliÃ¨res pÃ¨sent fortement sur le revenu futur."}
+  let p="Optimiser votre fiscalit\u00e9",w="Votre situation para\u00eet \u00e9quilibr\u00e9e.";
+  if(gap>1500){p="Prot\u00e9ger votre famille";w="Le d\u00e9ficit mensuel apr\u00e8s un d\u00e9c\u00e8s est trop important."}
+  else if(rate<75){p="Renforcer votre retraite";w="Votre revenu estim\u00e9 est inf\u00e9rieur \u00e0 75 % du revenu actuel."}
+  else if(left<2000){p="S\u00e9curiser votre logement";w="Les charges immobili\u00e8res p\u00e8sent fortement sur le revenu futur."}
   document.getElementById("priority").textContent=p;
   document.getElementById("priorityWhy").textContent=w;
 }
