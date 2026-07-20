@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrevIA V3</title>
+  <style>
+    :root{
+      --bg:#f4f6fb;--card:#fff;--navy:#0f274f;--blue:#3568f4;--text:#1e2d49;
+      --muted:#6f7d95;--line:#e4e9f2;--soft:#eef4ff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    button{font:inherit}
+    .shell{max-width:1180px;margin:auto;padding:24px}
+    .hero{padding:34px;border-radius:24px;background:linear-gradient(135deg,#0f274f,#1e559e);color:#fff}
+    .hero p{color:#dbe7fb;line-height:1.6}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 22px rgba(13,35,68,.06)}
+    .choice{cursor:pointer;transition:.2s}.choice:hover{transform:translateY(-3px)}
+    .btn{background:var(--blue);border:0;color:#fff;padding:12px 16px;border-radius:11px;font-weight:700;cursor:pointer}
+    .btn.secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .small{font-size:14px;color:var(--muted);line-height:1.5}
+    .metric{font-size:44px;font-weight:900;letter-spacing:-.04em}
+    .nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+    .nav button{background:#fff;border:1px solid var(--line);color:var(--text);padding:11px 14px;border-radius:10px;cursor:pointer;font-weight:700}
+    .nav button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .panel{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:18px}
+    .panel.active{display:block}
+    .big{font-size:40px;font-weight:900;letter-spacing:-.035em}
+    .bar{height:12px;background:#e8edf7;border-radius:99px;overflow:hidden}.bar span{display:block;width:78%;height:100%;background:var(--blue)}
+    .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #edf1f6;padding:12px 0}.row:last-child{border-bottom:0}
+    .note{margin-top:18px;padding:17px;background:var(--soft);border-radius:15px;border:1px solid #d9e4ff}
+    .detail{margin-top:18px;padding:17px;border-radius:15px;background:#f8faff}
+    #app{display:none}
+    @media(max-width:700px){.shell{padding:16px}.top{display:block}.top .actions{margin-top:12px}.metric{font-size:37px}.big{font-size:33px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section id="home">
+      <div class="hero">
+        <h1>PrevIA V3</h1>
+        <p>Comprendre aujourd’hui. Décider sereinement demain.</p>
+      </div>
+      <h2>Choisissez votre mode</h2>
+      <div class="grid">
+        <article class="card choice" onclick="start('particulier')">
+          <div style="font-size:42px">👤</div>
+          <h2>Particulier</h2>
+          <p class="small">Des réponses simples, des montants concrets et une priorité claire.</p>
+          <button class="btn">Tester ce mode</button>
+        </article>
+        <article class="card choice" onclick="start('conseiller')">
+          <div style="font-size:42px">🧑‍💼</div>
+          <h2>Conseiller</h2>
+          <p class="small">Les mêmes conclusions avec les détails techniques et les hypothèses.</p>
+          <button class="btn">Tester ce mode</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="app">
+      <div class="top">
+        <div>
+          <h1 id="title" style="margin-bottom:4px"></h1>
+          <div class="small" id="subtitle"></div>
+        </div>
+        <div class="actions">
+          <button class="btn secondary" onclick="goHome()">Accueil</button>
+          <button class="btn" id="switchBtn" onclick="toggleMode()"></button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card"><div class="small">Indice PrevIA</div><div class="metric">82/100</div><div>😊 Situation globalement saine</div></div>
+        <div class="card"><div class="small">Retraite</div><div class="metric">CHF 6'400</div><div>78 % du revenu actuel</div></div>
+        <div class="card"><div class="small">Famille</div><div class="metric">- CHF 3'000</div><div>Déficit mensuel en cas de décès</div></div>
+        <div class="card"><div class="small">Fiscalité</div><div class="metric">CHF 2'150</div><div>Économie annuelle potentielle</div></div>
+      </div>
+
+      <nav class="nav">
+        <button class="active" onclick="showPanel('ret',this)">🏖 Retraite</button>
+        <button onclick="showPanel('fam',this)">❤️ Famille</button>
+        <button onclick="showPanel('imm',this)">🏠 Immobilier</button>
+        <button onclick="showPanel('tax',this)">💰 Fiscalité</button>
+        <button onclick="showPanel('ai',this)">🤖 Assistant</button>
+      </nav>
+
+      <section class="panel active" id="ret">
+        <div class="small">LE CHIFFRE À RETENIR</div>
+        <h2>Votre retraite</h2>
+        <div class="big">CHF 6'400 / mois</div>
+        <p>Soit environ <strong>78 % de votre revenu actuel</strong>.</p>
+        <div class="bar"><span></span></div>
+        <div class="note">Votre niveau de vie devrait rester globalement confortable.</div>
+        <div id="retDetail"></div>
+      </section>
+
+      <section class="panel" id="fam">
+        <div class="small">LE CHIFFRE À RETENIR</div>
+        <h2>Votre famille</h2>
+        <div class="row"><span>Revenus actuels</span><strong>CHF 9'100/mois</strong></div>
+        <div class="row"><span>Après un décès</span><strong>CHF 6'100/mois</strong></div>
+        <div class="big" style="margin-top:18px">Déficit : CHF 3'000/mois</div>
+        <div class="note">La protection familiale est actuellement la priorité principale.</div>
+        <div id="famDetail"></div>
+      </section>
+
+      <section class="panel" id="imm">
+        <div class="small">LE CHIFFRE À RETENIR</div>
+        <h2>Votre logement</h2>
+        <div class="row"><span>Charges mensuelles</span><strong>CHF 2'350</strong></div>
+        <div class="row"><span>Revenu à la retraite</span><strong>CHF 6'400</strong></div>
+        <div class="big" style="margin-top:18px">Reste disponible : CHF 4'050</div>
+        <div class="note">Votre logement paraît soutenable dans ce scénario.</div>
+        <div id="immDetail"></div>
+      </section>
+
+      <section class="panel" id="tax">
+        <div class="small">LE CHIFFRE À RETENIR</div>
+        <h2>Votre fiscalité</h2>
+        <div class="big">CHF 2'150 / an</div>
+        <p>Économie fiscale potentielle.</p>
+        <div class="note">Les principaux leviers sont le 3e pilier, les rachats LPP et la planification des retraits.</div>
+        <div id="taxDetail"></div>
+      </section>
+
+      <section class="panel" id="ai">
+        <h2>Assistant PrevIA</h2>
+        <p class="small">Cliquez sur une question.</p>
+        <div class="nav">
+          <button onclick="answer('78')">Pourquoi seulement 78 % ?</button>
+          <button onclick="answer('63')">Puis-je partir à 63 ans ?</button>
+          <button onclick="answer('famille')">Ma famille est-elle protégée ?</button>
+        </div>
+        <div class="detail" id="answerBox">Sélectionnez une question.</div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    let mode = 'particulier';
+
+    function start(selectedMode){
+      mode = selectedMode;
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      renderMode();
+      window.scrollTo(0,0);
+    }
+
+    function goHome(){
+      document.getElementById('app').style.display = 'none';
+      document.getElementById('home').style.display = 'block';
+      window.scrollTo(0,0);
+    }
+
+    function toggleMode(){
+      mode = mode === 'particulier' ? 'conseiller' : 'particulier';
+      renderMode();
+    }
+
+    function renderMode(){
+      const adviser = mode === 'conseiller';
+      document.getElementById('title').textContent = adviser ? 'Dossier client — Jeremy Dubosson' : 'Bienvenue Jeremy';
+      document.getElementById('subtitle').textContent = adviser ? 'Mode expert avec hypothèses et détails' : 'Votre copilote financier';
+      document.getElementById('switchBtn').textContent = adviser ? 'Passer en mode particulier' : 'Passer en mode conseiller';
+
+      document.getElementById('retDetail').innerHTML = adviser
+        ? `<div class="detail"><strong>Détails techniques</strong>
+             <div class="row"><span>AVS</span><strong>CHF 2'650</strong></div>
+             <div class="row"><span>LPP</span><strong>CHF 2'950</strong></div>
+             <div class="row"><span>3e pilier</span><strong>CHF 800</strong></div>
+             <div class="row"><span>Total</span><strong>CHF 6'400</strong></div>
+           </div>`
+        : `<div class="detail">En clair : vous conserveriez environ 78 % de votre revenu actuel.</div>`;
+
+      document.getElementById('famDetail').innerHTML = adviser
+        ? `<div class="detail"><strong>Analyse conseiller</strong><ul><li>Contrôler les prestations survivants.</li><li>Tester le maintien de l’hypothèque.</li><li>Calculer le capital décès nécessaire.</li></ul></div>`
+        : `<div class="detail">Une protection complémentaire pourrait réduire ce déficit.</div>`;
+
+      document.getElementById('immDetail').innerHTML = adviser
+        ? `<div class="detail"><strong>Analyse bancaire</strong><ul><li>Tenue des charges à la retraite.</li><li>Stress test des taux.</li><li>Impact d’un amortissement supplémentaire.</li></ul></div>`
+        : `<div class="detail">Le calcul devra être confirmé avec les charges et taux réels.</div>`;
+
+      document.getElementById('taxDetail').innerHTML = adviser
+        ? `<div class="detail"><strong>Pistes techniques</strong><ul><li>Maximisation du 3a.</li><li>Rachats LPP échelonnés.</li><li>Planification fiscale des retraits.</li></ul></div>`
+        : `<div class="detail">Votre 3e pilier pourrait encore être optimisé.</div>`;
+    }
+
+    function showPanel(id, button){
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav > button').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+    }
+
+    function answer(type){
+      const adviser = mode === 'conseiller';
+      let text = '';
+      if(type === '78'){
+        text = adviser
+          ? "Le taux de remplacement correspond à CHF 6'400 divisés par CHF 8'200. Les hypothèses AVS, LPP et 3a doivent encore être validées."
+          : "Parce que votre revenu estimé à la retraite est de CHF 6'400 par mois, contre CHF 8'200 aujourd’hui.";
+      } else if(type === '63'){
+        text = adviser
+          ? "Il faut simuler la réduction LPP, le pont AVS, la fiscalité des retraits et la tenue des charges immobilières."
+          : "Un départ à 63 ans est peut-être possible, mais il réduira probablement votre revenu mensuel.";
+      } else {
+        text = adviser
+          ? "Le déficit estimé est de CHF 3'000 par mois. Le capital nécessaire dépend des prestations survivants, de la dette et de la durée de couverture."
+          : "Pas complètement : il manquerait environ CHF 3'000 par mois en cas de décès.";
+      }
+      document.getElementById('answerBox').textContent = text;
+    }
+  </script>
+</body>
+</html>
