@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.10 — Prototype interactif</title>
+<title>PrevIA V9.13 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -11,12 +11,40 @@ main{padding:28px 34px;max-width:1500px;width:100%}.screen{display:none}.screen.
 .card,.hero{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 10px 30px #1827440d}.hero{background:linear-gradient(115deg,#ececff,#fff 60%,#e9f5ff);padding:27px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.btn{border:1px solid var(--line);background:white;border-radius:11px;padding:11px 15px;font-weight:700;color:var(--ink)}.primary{background:linear-gradient(90deg,var(--p),var(--p2));border:0;color:white}.quote{font-size:21px;line-height:1.45}.metric{font-size:30px;font-weight:850}.status{display:inline-block;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:850}.green{background:#eaf8ef;color:var(--green)}.orange{background:#fff4e4;color:var(--orange)}.red{background:#fff0ef;color:var(--red)}.blue{background:#eaf4fb;color:var(--blue)}.pill{display:inline-block;border-radius:999px;padding:6px 9px;background:#eef0ff;color:#5058c6;font-size:11px;font-weight:750;margin:3px}.bar{height:11px;background:#edf0f6;border-radius:999px;overflow:hidden;margin:12px 0}.bar>div{height:100%;background:linear-gradient(90deg,var(--p),var(--p2))}.bar.danger>div{background:linear-gradient(90deg,#db7c4b,#c94e49)}.callout{padding:15px;border-radius:13px;background:#f3f4ff;border:1px solid #dfe2ff}.callout.warn{background:#fff8ea;border-color:#f0ddba}.callout.danger{background:#fff3f2;border-color:#efd1ce}.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.action{display:flex;gap:10px;margin:10px 0}.num{width:28px;height:28px;border-radius:8px;background:#eef0ff;color:#4f56cb;display:grid;place-items:center;font-weight:850;flex:none}
 label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6px}input,select{width:100%;padding:11px;border:1px solid #d9deea;border-radius:10px;background:#fff}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.choicegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{border:1px solid var(--line);background:white;border-radius:14px;padding:15px;text-align:left;min-height:98px}.choice.active{background:#eef0ff;border-color:#9ba1f4;box-shadow:0 0 0 2px #dfe2ff inset}.choice b{display:block;margin-top:7px}.seg{display:flex;gap:8px;flex-wrap:wrap}.seg button{border:1px solid var(--line);background:white;border-radius:10px;padding:9px 12px}.seg button.active{background:#eef0ff;border-color:#cbd0ff;color:#4f56cb}.scenario-table{width:100%;border-collapse:collapse}.scenario-table th,.scenario-table td{padding:13px 10px;border-bottom:1px solid var(--line);text-align:left}.scenario-table th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}.tag{font-size:11px;font-weight:800;border-radius:999px;padding:5px 8px;display:inline-block}.hidden{display:none!important}
 @media(max-width:1000px){.app{grid-template-columns:1fr}aside{height:auto;position:relative}.side{display:none}aside nav{display:grid;grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){main{padding:18px}.grid2,.grid3,.grid4,.formgrid,.choicegrid{grid-template-columns:1fr}.top{flex-direction:column}aside nav{grid-template-columns:1fr 1fr}.scenario-table{font-size:13px}}
-.analysis-needed{font-size:12px;color:#7a5700;font-weight:800} @media(max-width:760px){.seg{display:flex;overflow-x:auto;gap:8px}.seg button{white-space:nowrap}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}</style></head>
+.analysis-needed{font-size:12px;color:#7a5700;font-weight:800} @media(max-width:760px){.seg{display:flex;overflow-x:auto;gap:8px}.seg button{white-space:nowrap}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tax-progress{height:14px;background:#e8eaf2;border-radius:999px;overflow:hidden;margin:10px 0 6px}
+.tax-progress>div{height:100%;background:linear-gradient(90deg,#6757d9,#8c7cf0);border-radius:999px}
+.tax-kpi{padding:14px;background:#f6f7fb;border-radius:12px}
+.tax-kpi .row:last-child{border-bottom:0}
+
+.timeline-chart{position:relative;margin-top:14px;padding:22px 16px 12px;background:#f8f9fc;border:1px solid var(--line);border-radius:16px}
+.timeline-axis{position:relative;height:42px;margin:0 12px 10px;border-bottom:2px solid #ccd2df}
+.timeline-tick{position:absolute;bottom:-7px;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--p);border:3px solid white;box-shadow:0 0 0 1px #bcc4d4}
+.timeline-label{position:absolute;top:18px;transform:translateX(-50%);font-size:11px;color:var(--muted);white-space:nowrap}
+.coverage-row{display:grid;grid-template-columns:155px 1fr 92px;gap:12px;align-items:center;margin:12px 0}
+.coverage-track{height:18px;background:#e8ebf3;border-radius:999px;position:relative;overflow:hidden}
+.coverage-segment{height:100%;position:absolute;left:0;border-radius:999px;background:linear-gradient(90deg,var(--p),var(--p2))}
+.coverage-segment.secondary{background:linear-gradient(90deg,#3f8cc0,#64a9d1)}
+.coverage-segment.warning{background:linear-gradient(90deg,#d79b3d,#c47718)}
+.coverage-event{position:absolute;top:-4px;width:2px;height:26px;background:#8e96a8}
+.coverage-value{text-align:right;font-size:12px;font-weight:800}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted)}
+.legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:var(--p)}
+.legend-dot.secondary{background:#4d98c7}.legend-dot.warning{background:#c98525}
+.step-chart{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end;height:240px;padding:20px 6px 4px}
+.step-column{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:7px}
+.step-bar{width:min(74px,75%);border-radius:12px 12px 4px 4px;background:linear-gradient(180deg,var(--p2),var(--p));min-height:4px;position:relative}
+.step-bar.secondary{background:linear-gradient(180deg,#62abd4,#327fab)}
+.step-bar.warning{background:linear-gradient(180deg,#e0a149,#b87015)}
+.step-value{font-size:12px;font-weight:850}
+.step-label{text-align:center;font-size:11px;color:var(--muted);min-height:30px}
+@media(max-width:700px){.coverage-row{grid-template-columns:105px 1fr}.coverage-value{grid-column:2}.step-chart{gap:4px}.step-value{font-size:10px}.step-label{font-size:10px}}
+</style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.10</small></div><nav>
-<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.13</small></div><nav>
+<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
-<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.10</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Nouveautés V9.10</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div></div></div></div></section>
+<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.13</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Nouveautés V9.13</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div><div class="row"><span>Bonifications éducatives AVS/AI intégrées en arrière-plan</span><b>✓</b></div><div class="row"><span>Retrait EPL et prestations LPP corrigées</span><b>✓</b></div><div class="row"><span>Évolution graphique des couvertures dans le temps</span><b>✓</b></div></div></div></div></section>
 
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
 <div class="card"><div class="choicegrid" id="choices">
@@ -32,26 +60,94 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div><label>Âge de la personne 1</label><input id="fAge1" type="number" value="55"></div><div id="age2Wrap"><label>Âge de la personne 2</label><input id="fAge2" type="number" value="53"></div>
 <div><label>Revenu brut annuel de la personne 1</label><input id="fIncome1" type="number" value="120000"></div><div id="income2Wrap"><label>Revenu brut annuel de la personne 2</label><input id="fIncome2" type="number" value="100000"></div>
 <div><label>Statut professionnel personne 1</label><select id="fJob1"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div><div id="job2Wrap"><label>Statut professionnel personne 2</label><select id="fJob2"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div>
-<div><label>Nombre d'enfants à charge</label><input id="fChildren" type="number" value="2"></div><div><label>Âge du plus jeune enfant</label><input id="fYoungest" type="number" value="8"></div>
+<div><label>Nombre total d'enfants</label><input id="fChildren" type="number" min="0" value="2"></div>
+<div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" type="number" min="0" max="28" value="4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
+<div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
+<div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" type="number" min="0" max="25" value="8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
 <div><label>Épargne disponible</label><input id="fSavings" type="number" value="80000"></div><div><label>Capital décès / 3e pilier – personne 1</label><input id="fP3P1" type="number" value="55000"></div><div id="p3p2Wrap"><label>Capital décès / 3e pilier – personne 2</label><input id="fP3P2" type="number" value="0"></div>
 <div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="GE">Genève</option><option value="FR">Fribourg</option><option value="NE">Neuchâtel</option><option value="JU">Jura</option></select></div>
 <div class="ownerField"><label>Valeur approximative du logement</label><input id="fHome" type="number" value="1000000"></div><div class="ownerField"><label>Dette hypothécaire restante</label><input id="fMortgage" type="number" value="800000"></div>
-<div><label>Versement annuel envisagé au 3e pilier</label><input id="fContribution" type="number" value="3000"></div>
-</div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Elles devront ensuite être confirmées avec le certificat de caisse de pension et les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
+<div class="ownerField"><label>Avez-vous retiré du 2e pilier pour financer ce logement ?</label><select id="fEpl"><option value="no">Non</option><option value="yes">Oui</option></select></div>
+<div class="ownerField eplField hidden"><label>Solde EPL restant – personne 1</label><input id="fEpl1" type="number" min="0" value="80000"></div>
+<div class="ownerField eplField hidden" id="epl2Wrap"><label>Solde EPL restant – personne 2</label><input id="fEpl2" type="number" min="0" value="0"></div>
+<div><label>Versement annuel actuel au 3e pilier – personne 1</label><input id="fContribution1" type="number" min="0" value="3000"></div>
+<div id="contribution2Wrap"><label>Versement annuel actuel au 3e pilier – personne 2</label><input id="fContribution2" type="number" min="0" value="0"></div>
+</div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. Les résultats devront ensuite être confirmés avec les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
 
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Votre analyse</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
 <div class="hero"><div class="eyebrow">La question que vous souhaitez résoudre</div><h2 id="concernTitle"></h2></div>
 <div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card"><span class="status red">Priorité</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">PrevIA a classé les actions selon leur impact potentiel sur votre situation.</p></div></div>
-<div class="grid4" style="margin-top:15px"><div class="card"><div class="eyebrow">Famille</div><div class="metric" id="familyMetric">–</div><p class="muted tiny">Revenu maintenu dans le scénario le plus fragile</p></div><div class="card"><div class="eyebrow">Retraite</div><div class="metric" id="retMetric">–</div><p class="muted tiny">Taux de remplacement estimé</p></div><div class="card"><div class="eyebrow">Logement</div><div class="metric" id="homeMetric">–</div><p class="muted tiny">Ratio théorique à la retraite</p></div><div class="card"><div class="eyebrow">Fiscalité</div><div class="metric" id="taxMetric">–</div><p class="muted tiny">Économie fiscale annuelle estimée</p></div></div>
+<div class="grid4" style="margin-top:15px"><div class="card"><div class="eyebrow">Famille</div><div class="metric" id="familyMetric">–</div><p class="muted tiny">Revenu maintenu dans le scénario le plus fragile</p></div><div class="card"><div class="eyebrow">Retraite</div><div class="metric" id="retMetric">–</div><p class="muted tiny">Taux de remplacement estimé</p></div><div class="card"><div class="eyebrow">Logement</div><div class="metric" id="homeMetric">–</div><p class="muted tiny">Ratio théorique à la retraite</p></div><div class="card"><div class="eyebrow">Fiscalité</div><div class="metric" id="taxMetric">–</div><p class="muted tiny">Versement annuel actuel au 3e pilier</p></div></div>
 <div class="grid2" style="margin-top:15px"><div class="card"><div class="eyebrow">Croyance à clarifier</div><h3 id="beliefTitle"></h3><p class="muted" id="beliefReality"></p></div><div class="card"><div class="eyebrow">Vos priorités</div><div id="priorities"></div></div></div></section>
 
 <section id="protection" class="screen"><div class="top"><div><div class="eyebrow">Votre famille</div><h1 id="protectionTitle">Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?</h1></div></div><div class="seg" id="riskTabs"><button class="active" data-risk="invalidity1">Invalidité personne 1</button><button data-risk="invalidity2">Invalidité personne 2</button><button data-risk="death1">Décès personne 1</button><button data-risk="death2">Décès personne 2</button></div><div class="grid4" style="margin-top:15px"><div class="card"><div class="eyebrow">Revenu actuel du ménage</div><div class="metric" id="protCurrent"></div></div><div class="card"><div class="eyebrow">Revenu annuel estimé</div><div class="metric" id="protIncome"></div></div><div class="card"><div class="eyebrow">Revenu maintenu</div><div class="metric" id="protPct"></div></div><div class="card"><div class="eyebrow">Capital versé au décès</div><div class="metric" id="protCapital"></div></div></div><div class="card" style="margin-top:15px"><div class="bar danger"><div id="protBar"></div></div><p id="protText"></p><div class="callout warn" id="protHuman"></div></div><div class="card" style="margin-top:15px"><h3>Détail estimatif</h3><div id="protDetail"></div><p class="muted tiny">Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.</p></div></section>
 
-<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted">AVS et LPP comprises</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></section>
+<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted">AVS et LPP comprises</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. La rente de retraite est estimée avec un taux de conversion global de 5,5 %. Les prestations de risque utilisent séparément 6,8 % sur le capital sans intérêts, après déduction du solde EPL déclaré. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></section>
+
+
+<section id="evolution" class="screen">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Votre évolution</div>
+      <h1>Comment votre protection évolue-t-elle dans le temps ?</h1>
+      <p class="muted">Cette lecture visualise les prestations qui restent, diminuent ou disparaissent à certaines étapes de vie.</p>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="card"><div class="eyebrow">Revenu protégé aujourd’hui</div><div class="metric" id="evoToday">–</div><div class="tiny muted">Scénario actuellement sélectionné</div></div>
+    <div class="card"><div class="eyebrow">Après fin des rentes enfants</div><div class="metric" id="evoAfterKids">–</div><div class="tiny muted">Estimation simplifiée</div></div>
+    <div class="card"><div class="eyebrow">À la retraite</div><div class="metric" id="evoRetirement">–</div><div class="tiny muted">AVS et LPP estimées</div></div>
+  </div>
+  <div class="card" style="margin-top:15px">
+    <h3>Frise de vos couvertures</h3>
+    <p class="muted tiny">Les rentes pour enfants sont représentées jusqu’à 18 ans dans cette première simulation. Une prolongation jusqu’à 25 ans en formation devra être confirmée.</p>
+    <div id="coverageTimeline"></div>
+  </div>
+  <div class="card" style="margin-top:15px">
+    <h3>Évolution du revenu annuel du ménage</h3>
+    <p class="muted tiny">Lecture comparative : aujourd’hui, après la fin des rentes pour enfants, à la retraite et avec l’impact du retrait EPL déclaré.</p>
+    <div id="incomeStepChart"></div>
+  </div>
+  <div class="callout warn" style="margin-top:15px" id="evoInsight"></div>
+</section>
 
 <section id="immobilier" class="screen"><div class="top"><div><div class="eyebrow">Votre logement</div><h1>Pourriez-vous conserver votre logement dans chaque scénario ?</h1></div></div><div id="noHome" class="callout hidden">Vous avez indiqué ne pas être propriétaire. L'analyse immobilière n'est donc pas applicable.</div><div id="homeContent"><div class="grid3"><div class="card"><div class="eyebrow">Valeur du logement</div><div class="metric" id="homeVal"></div></div><div class="card"><div class="eyebrow">Dette actuelle</div><div class="metric" id="mortVal"></div></div><div class="card"><div class="eyebrow">Dette estimée à 65 ans</div><div class="metric" id="mortRet"></div></div></div><div class="card" style="margin-top:15px"><h3>Calcul des charges théoriques actuelles</h3><div class="row"><span>Intérêts théoriques à 5 %</span><b id="interestCost"></b></div><div class="row"><span>Entretien à 1 % de la valeur</span><b id="maintenanceCost"></b></div><div class="row"><span>Deuxième rang à amortir</span><b id="secondRank"></b></div><div class="row"><span>Durée restante</span><b id="amortYears"></b></div><div class="row"><span>Amortissement annuel</span><b id="amortCost"></b></div></div><div class="card" style="margin-top:15px;overflow:auto"><table class="scenario-table"><thead><tr><th>Scénario</th><th>Revenu</th><th>Charges</th><th>Ratio</th><th>Lecture</th></tr></thead><tbody id="scenarioRows"></tbody></table></div><div class="callout warn" style="margin-top:15px" id="homeAnswer"></div></div></section>
 
-<section id="fiscalite" class="screen"><div class="top"><div><div class="eyebrow">Vos impôts</div><h1>Quel serait l'effet d'un versement au 3e pilier ?</h1><p class="muted"><b>Taux marginal d'imposition (TMI)</b> : pourcentage d'impôt potentiellement économisé sur le prochain franc déduit du revenu imposable. Il ne correspond pas au taux moyen payé sur tout le revenu.</p></div></div><div class="grid3"><div class="card"><div class="eyebrow">Taux marginal d'imposition estimé</div><div class="metric" id="tmiValue"></div><p class="muted tiny" id="tmiRange"></p></div><div class="card"><div class="eyebrow">Économie fiscale</div><div class="metric" id="taxSaving"></div></div><div class="card"><div class="eyebrow">Effort d'épargne net</div><div class="metric" id="netEffort"></div></div></div><div class="callout" style="margin-top:15px" id="taxSentence"></div><p class="muted tiny">Estimation indicative basée sur le revenu brut. Le résultat réel dépend de la commune, de la situation familiale et des déductions fiscales.</p></section>
+<section id="fiscalite" class="screen">
+<div class="top"><div><div class="eyebrow">Vos impôts</div><h1>Quel avantage fiscal votre 3e pilier vous procure-t-il ?</h1>
+<p class="muted"><b>Taux marginal d'imposition (TMI)</b> : pourcentage d'impôt potentiellement économisé sur le prochain franc déduit du revenu imposable. Il ne correspond pas au taux moyen payé sur tout le revenu.</p></div></div>
+
+<div class="grid4">
+  <div class="card"><div class="eyebrow">Versement actuel</div><div class="metric" id="taxCurrentContribution"></div><p class="muted tiny">Montant annuel saisi pour le ménage</p></div>
+  <div class="card"><div class="eyebrow">Économie fiscale actuelle</div><div class="metric" id="taxSaving"></div><p class="muted tiny">Estimation à ce jour</p></div>
+  <div class="card"><div class="eyebrow">Maximum 3a estimé</div><div class="metric" id="taxMaximum"></div><p class="muted tiny" id="taxMaximumNote"></p></div>
+  <div class="card"><div class="eyebrow">Économie fiscale maximale</div><div class="metric" id="taxMaxSaving"></div><p class="muted tiny">Si le plafond disponible est utilisé</p></div>
+</div>
+
+<div class="grid2" style="margin-top:15px">
+  <div class="card">
+    <h3>Votre situation actuelle</h3>
+    <div class="row"><span>Taux marginal d'imposition estimé</span><b id="tmiValue"></b></div>
+    <div class="row"><span>Versement 3a actuellement déductible</span><b id="taxDeductibleCurrent"></b></div>
+    <div class="row"><span>Économie fiscale actuelle</span><b id="taxCurrentSavingDetail"></b></div>
+    <div class="row"><span>Effort d'épargne net estimé</span><b id="netEffort"></b></div>
+    <p class="muted tiny" id="tmiRange"></p>
+  </div>
+  <div class="card">
+    <h3>Votre potentiel d'optimisation</h3>
+    <div class="row"><span>Plafond total estimé du ménage</span><b id="taxPotentialMax"></b></div>
+    <div class="row"><span>Versement supplémentaire possible</span><b id="taxAdditionalContribution"></b></div>
+    <div class="row"><span>Économie fiscale supplémentaire potentielle</span><b id="taxAdditionalSaving"></b></div>
+    <div class="row"><span>Effort net supplémentaire estimé</span><b id="taxAdditionalNet"></b></div>
+    <div class="tax-progress"><div id="taxProgressBar"></div></div>
+    <p class="muted tiny" id="taxProgressText"></p>
+  </div>
+</div>
+
+<div class="callout" style="margin-top:15px" id="taxSentence"></div>
+<div class="card" style="margin-top:15px"><h3>Détail par personne</h3><div id="taxPersonDetails"></div></div>
+<p class="muted tiny">Estimation indicative fondée sur le revenu brut, le statut professionnel et le canton. Pour un salarié, le plafond utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de la situation familiale, de l'affiliation au 2e pilier et des autres déductions.</p>
+</section>
 </main></div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -72,8 +168,8 @@ document.addEventListener('click',e=>{const n=e.target.closest('[data-s]');if(n)
 $$('.choice').forEach(b=>b.onclick=()=>{$$('.choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');concern=b.dataset.concern});
 function updateFamily(){
  const status=$('#fStatus').value,single=status==='Célibataire',married=status==='Mariés';
- ['#age2Wrap','#income2Wrap','#job2Wrap','#p3p2Wrap'].forEach(s=>$(s).classList.toggle('hidden',single));
- $('#marriageYearsWrap').classList.toggle('hidden',!married);
+ ['#age2Wrap','#income2Wrap','#job2Wrap','#p3p2Wrap','#contribution2Wrap'].forEach(s=>$(s).classList.toggle('hidden',single));
+ $('#marriageYearsWrap').classList.toggle('hidden',!married);updateEpl();
  $$('[data-risk="invalidity2"],[data-risk="death2"]').forEach(b=>b.classList.toggle('hidden',single));
  const bInv1=$('[data-risk="invalidity1"]'),bDeath1=$('[data-risk="death1"]');
  bInv1.textContent=single?'Invalidité':'Invalidité personne 1';
@@ -87,7 +183,28 @@ function updateFamily(){
  if(data&&typeof renderProtection==='function')renderProtection();
 }
 $('#fStatus').onchange=updateFamily;
-function updateOwner(){const no=$('#fOwner').value==='no';$$('.ownerField').forEach(x=>x.classList.toggle('hidden',no))}$('#fOwner').onchange=updateOwner;
+function updateChildren(){
+ const count=Math.max(0,+$('#fChildren').value||0);
+ const dependent=count>0&&$('#fChildrenDependent').value==='yes';
+ $('#childGapWrap').classList.toggle('hidden',count<2);
+ $('#childrenDependentWrap').classList.toggle('hidden',count===0);
+ $('#youngestAgeWrap').classList.toggle('hidden',!dependent);
+ if(count===0)$('#fChildrenDependent').value='no';
+}
+$('#fChildren').oninput=updateChildren;
+$('#fChildrenDependent').onchange=updateChildren;
+function updateOwner(){
+ const no=$('#fOwner').value==='no';
+ $$('.ownerField').forEach(x=>x.classList.toggle('hidden',no));
+ updateEpl();
+}
+function updateEpl(){
+ const show=$('#fOwner').value==='yes'&&$('#fEpl').value==='yes';
+ $$('.eplField').forEach(x=>x.classList.toggle('hidden',!show));
+ $('#epl2Wrap').classList.toggle('hidden',!show||$('#fStatus').value==='Célibataire');
+}
+$('#fOwner').onchange=updateOwner;
+$('#fEpl').onchange=updateEpl;
 function tmi(canton,income){
  const rows=TAX[canton]||TAX.VS;
  if(income<=rows[0][0])return{rate:rows[0][1],source:'plancher de la grille'};
@@ -101,13 +218,42 @@ function tmi(canton,income){
  }
  return{rate:rows.at(-1)[1],source:'grille indicative'};
 }
-function avsFromIncome(income){if(income<=0)return 0;const min=15120,max=30240;const scaled=min+(Math.min(income,90720)/90720)*(max-min);return Math.max(min,Math.min(max,scaled))}
-function lppEstimate(income,job){
- if(job!=='Salarié'||income<=26460)return{coordinated:0,baseCapital:0,projectedCapital:0,retirementPension:0,invalidityPension:0};
- const coordinated=Math.max(0,income-26460),baseCapital=coordinated*5,projectedCapital=baseCapital*1.2;
- return{coordinated,baseCapital,projectedCapital,retirementPension:projectedCapital*.068,invalidityPension:baseCapital*.068};
+function educationYears(children,gap){
+ if(children<=0)return 0;
+ return Math.min(44,16+(children>1?Math.max(0,gap):0));
 }
-function person(income,job){const noActivity=job==='Sans activité';const avs12=avsFromIncome(income),l=lppEstimate(income,job);return{income,job,noActivity,avs12,ai:noActivity?null:avs12,coordinated:l.coordinated,baseCap:l.baseCapital,cap:l.projectedCapital,lpp:l.retirementPension,lppInv:l.invalidityPension}}
+function educationCreditAverage(children,gap,share=1){
+ const years=educationYears(children,gap);
+ const annualCredit=45360;
+ return annualCredit*years/44*Math.max(0,Math.min(1,share));
+}
+function avsFromIncome(income,educationAverage=0){
+ if(income<=0)return 0;
+ const effectiveIncome=income*.70+educationAverage;
+ const min=15120,max=30240,referenceIncome=92555.56;
+ const scaled=min+(Math.min(effectiveIncome,referenceIncome)/referenceIncome)*(max-min);
+ return Math.round(Math.max(min,Math.min(max,scaled))/12)*12;
+}
+function lppEstimate(income,job,epl=0){
+ if(job!=='Salarié'||income<=26460)return{coordinated:0,baseCapital:0,projectedCapitalBeforeEpl:0,projectedCapital:0,riskCapitalBeforeEpl:0,riskCapital:0,retirementPension:0,invalidityPension:0,eplApplied:0};
+ const coordinated=Math.max(0,income-26460);
+ const baseCapital=coordinated*5;
+ const projectedCapitalBeforeEpl=baseCapital*1.2;
+ const eplApplied=Math.max(0,epl||0);
+ const projectedCapital=Math.max(0,projectedCapitalBeforeEpl-eplApplied);
+ const riskCapitalBeforeEpl=baseCapital;
+ const riskCapital=Math.max(0,riskCapitalBeforeEpl-eplApplied);
+ return{
+  coordinated,baseCapital,projectedCapitalBeforeEpl,projectedCapital,
+  riskCapitalBeforeEpl,riskCapital,eplApplied,
+  retirementPension:projectedCapital*.055,
+  invalidityPension:riskCapital*.068
+ };
+}
+function person(income,job,educationAverage=0,epl=0){
+ const noActivity=job==='Sans activité',avs12=avsFromIncome(income,educationAverage),l=lppEstimate(income,job,epl);
+ return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,lpp:l.retirementPension,lppInv:l.invalidityPension}
+}
 function scaleComponents(parts,limit){const raw=Object.values(parts).reduce((a,b)=>a+b,0),factor=raw>limit&&raw>0?limit/raw:1,out={};for(const[k,v]of Object.entries(parts))out[k]=v*factor;out.total=Math.min(raw,limit);return out}
 function retirementAvs(c,p1,p2){
  if(c.status==='Mariés'){
@@ -120,7 +266,10 @@ function retirementAvs(c,p1,p2){
  return{p1:{annual12:a1,thirteenth:thirteenth1,total:a1+thirteenth1},p2:{annual12:a2,thirteenth:thirteenth2,total:a2+thirteenth2},annual12:a1+a2,thirteenth:thirteenth1+thirteenth2,total:a1+a2+thirteenth1+thirteenth2,estimatedCoupleMaximum:false};
 }
 function benefits(c){
- const p1=person(c.income1,c.job1),p2=person(c.income2,c.job2),kids=c.children,retAvs=retirementAvs(c,p1,p2);
+ const creditShare=c.status==='Célibataire'?1:.5;
+ const eduAverage=educationCreditAverage(c.children,c.childGap,creditShare);
+ const p1=person(c.income1,c.job1,eduAverage,c.epl1),p2=person(c.income2,c.job2,c.status==='Célibataire'?0:eduAverage,c.epl2);
+ const kids=c.dependentChildren,retAvs=retirementAvs(c,p1,p2);
  p1.avsRet=retAvs.p1.total;p2.avsRet=retAvs.p2.total;p1.ret=p1.avsRet+p1.lpp;p2.ret=p2.avsRet+p2.lpp;
  function invalidity(disabled,survivor){
   const aiKnown=disabled.ai!==null;
@@ -133,14 +282,14 @@ function benefits(c){
  function death(dec,surv,isP1){
   const married=c.status==='Mariés';
   const survivorAge=isP1?c.age2:c.age1;
-  const survivorRight=married&&(kids>0||(survivorAge>=45&&c.marriageYears>=5));
+  const survivorRight=married&&(c.children>0||(survivorAge>=45&&c.marriageYears>=5));
   const avsAmountKnown=!dec.noActivity;
   const avsBase=avsAmountKnown?dec.avs12:0;
   const avsSurvivorKnown=!survivorRight||avsAmountKnown;
   const raw={
     avsSurv:survivorRight&&avsAmountKnown?avsBase*.8:0,
     avsKids:avsAmountKnown?kids*avsBase*.4:0,
-    lppSurv:survivorRight?dec.lppInv*.6:0,
+    lppSurv:married&&survivorRight?dec.lppInv*.6:0,
     lppKids:kids*dec.lppInv*.2
   };
   const limit=dec.income>0?dec.income*.9:Infinity;
@@ -161,11 +310,60 @@ function benefits(c){
 }
 function mortgage(c,b){if(!c.owner)return null;const first=c.home*.65,second=Math.max(0,c.mortgage-first),years=Math.max(1,Math.min(15,65-Math.max(c.age1,c.age2))),amort=second/years,currentCharges=c.mortgage*.05+c.home*.01+amort,retDebt=Math.min(c.mortgage,first),retCharges=retDebt*.05+c.home*.01;const ratio=(charges,inc)=>inc>0?charges/inc*100:0;const invIncome=Math.min(b.inv1,b.inv2),deathIncome=Math.min(b.d1.annual,b.d2.annual),retIncome=b.p1.ret+b.p2.ret;return{first,second,years,amort,currentCharges,retDebt,retCharges,ratios:{current:ratio(currentCharges,c.totalIncome),retirement:ratio(retCharges,retIncome),invalidity:ratio(currentCharges,invIncome),death:ratio(currentCharges,deathIncome)},incomes:{current:c.totalIncome,retirement:retIncome,invalidity:invIncome,death:deathIncome}}}
 function status(r){if(r<=33)return{cls:'green',label:'Supportable'};if(r<=40)return{cls:'orange',label:'Point d’attention'};return{cls:'red',label:'Risque important'}}
-function gather(){const single=$('#fStatus').value==='Célibataire';return{name:$('#fName').value||'Nouveau client',status:$('#fStatus').value,marriageYears:$('#fStatus').value==='Mariés'?(+$('#fMarriageYears').value||0):0,age1:+$('#fAge1').value||0,age2:single?0:(+$('#fAge2').value||0),income1:+$('#fIncome1').value||0,income2:single?0:(+$('#fIncome2').value||0),job1:$('#fJob1').value,job2:single?'Sans activité':$('#fJob2').value,children:+$('#fChildren').value||0,youngest:+$('#fYoungest').value||0,savings:+$('#fSavings').value||0,p3p1:+$('#fP3P1').value||0,p3p2:single?0:(+$('#fP3P2').value||0),owner:$('#fOwner').value==='yes',home:+$('#fHome').value||0,mortgage:+$('#fMortgage').value||0,canton:$('#fCanton').value,contribution:+$('#fContribution').value||0,concern,totalIncome:(+$('#fIncome1').value||0)+(single?0:(+$('#fIncome2').value||0))}}
-function render(){const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern],tax=tmi(c.canton,c.totalIncome),saving=c.contribution*tax.rate/100,retIncome=b.p1.ret+b.p2.ret,retPct=c.totalIncome?retIncome/c.totalIncome*100:0,worstFamily=Math.min(b.inv1,b.inv2,b.d1.annual,b.d2.annual),familyPct=c.totalIncome?worstFamily/c.totalIncome*100:0;
- $('#sideName').textContent=c.name;$('#sideSub').textContent=`${c.age1} ans · ${c.status}`;$('#hello').textContent=`Bonjour ${c.name.split('&')[0].trim()} 👋`;$('#concernTitle').textContent=co.title;$('#humanIntro').textContent=co.intro;$('#goodText').textContent=(c.savings+c.p3p1+c.p3p2)>0?`Vous avez déjà constitué ${fmt(c.savings+c.p3p1+c.p3p2)} d'épargne et de 3e pilier.`:'Votre situation est maintenant structurée et peut être analysée.';$('#watchTitle').textContent=m&&m.ratios.retirement>33?'Votre logement à la retraite':'Votre niveau de vie futur';$('#watchText').textContent=m&&m.ratios.retirement>33?`Les charges théoriques atteindraient ${m.ratios.retirement.toFixed(1)} % des revenus de retraite estimés.`:`Votre revenu de retraite est estimé à ${retPct.toFixed(0)} % du revenu actuel.`;$('#priorityTitle').textContent=co.title;$('#familyMetric').textContent=familyPct.toFixed(0)+' %';$('#retMetric').textContent=retPct.toFixed(0)+' %';$('#homeMetric').textContent=m?m.ratios.retirement.toFixed(1)+' %':'—';$('#taxMetric').textContent=fmt(saving);$('#beliefTitle').textContent=co.belief;$('#beliefReality').textContent=co.reality;
- const rec=[];if(c.contribution>0)rec.push('Alimenter le 3e pilier');rec.push('Constituer progressivement un capital');if(m&&m.ratios.retirement>33)rec.push('Adapter le projet immobilier');if(m&&m.ratios.retirement>33)rec.push('Amortir davantage l’hypothèque');if(m)rec.push('Revoir la stratégie hypothécaire');if(retPct<70)rec.push('Envisager un report de retraite en dernier recours');$('#priorities').innerHTML=rec.slice(0,4).map((x,i)=>`<div class="action"><div class="num">${i+1}</div><div><b>${x}</b></div></div>`).join('');
- renderProtection();renderRetirement();renderHome();renderTax();localStorage.setItem('previa-v910',JSON.stringify(c))}
+function gather(){
+ const single=$('#fStatus').value==='Célibataire';
+ const contribution1=+$('#fContribution1').value||0;
+ const contribution2=single?0:(+$('#fContribution2').value||0);
+ return{
+  name:$('#fName').value||'Nouveau client',
+  status:$('#fStatus').value,
+  marriageYears:$('#fStatus').value==='Mariés'?(+$('#fMarriageYears').value||0):0,
+  age1:+$('#fAge1').value||0,age2:single?0:(+$('#fAge2').value||0),
+  income1:+$('#fIncome1').value||0,income2:single?0:(+$('#fIncome2').value||0),
+  job1:$('#fJob1').value,job2:single?'Sans activité':$('#fJob2').value,
+  children:+$('#fChildren').value||0,
+  childGap:(+$('#fChildren').value||0)>1?(+$('#fChildGap').value||0):0,
+  childrenDependent:$('#fChildrenDependent').value==='yes',
+  dependentChildren:$('#fChildrenDependent').value==='yes'?(+$('#fChildren').value||0):0,
+  youngestAge:$('#fChildrenDependent').value==='yes'?(+$('#fYoungestAge').value||0):0,
+  savings:+$('#fSavings').value||0,p3p1:+$('#fP3P1').value||0,p3p2:single?0:(+$('#fP3P2').value||0),
+  owner:$('#fOwner').value==='yes',home:+$('#fHome').value||0,mortgage:+$('#fMortgage').value||0,
+  eplUsed:$('#fOwner').value==='yes'&&$('#fEpl').value==='yes',
+  epl1:($('#fOwner').value==='yes'&&$('#fEpl').value==='yes')?(+$('#fEpl1').value||0):0,
+  epl2:(!single&&$('#fOwner').value==='yes'&&$('#fEpl').value==='yes')?(+$('#fEpl2').value||0):0,
+  canton:$('#fCanton').value,contribution1,contribution2,contribution:contribution1+contribution2,
+  concern,totalIncome:(+$('#fIncome1').value||0)+(single?0:(+$('#fIncome2').value||0))
+ };
+}
+function pillar3aMax(job,income){
+ if(job==='Salarié')return 7258;
+ if(job==='Indépendant')return Math.min(36288,Math.max(0,income*.20));
+ return 0;
+}
+function taxPotential(c){
+ const max1=pillar3aMax(c.job1,c.income1);
+ const max2=c.status==='Célibataire'?0:pillar3aMax(c.job2,c.income2);
+ const current1=Math.max(0,c.contribution1||0),current2=Math.max(0,c.contribution2||0);
+ const deductible1=Math.min(current1,max1),deductible2=Math.min(current2,max2);
+ return{
+  max1,max2,totalMax:max1+max2,current1,current2,currentTotal:current1+current2,
+  deductible1,deductible2,deductibleTotal:deductible1+deductible2,
+  additional1:Math.max(0,max1-deductible1),additional2:Math.max(0,max2-deductible2),
+  additionalTotal:Math.max(0,max1-deductible1)+Math.max(0,max2-deductible2)
+ };
+}
+function render(){const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern],tax=tmi(c.canton,c.totalIncome),p3tax=taxPotential(c),saving=p3tax.deductibleTotal*tax.rate/100,retIncome=b.p1.ret+b.p2.ret,retPct=c.totalIncome?retIncome/c.totalIncome*100:0,worstFamily=Math.min(b.inv1,b.inv2,b.d1.annual,b.d2.annual),familyPct=c.totalIncome?worstFamily/c.totalIncome*100:0;
+ $('#sideName').textContent=c.name;$('#sideSub').textContent=`${c.age1} ans · ${c.status}`;$('#hello').textContent=`Bonjour ${c.name.split('&')[0].trim()} 👋`;$('#concernTitle').textContent=co.title;$('#humanIntro').textContent=co.intro;$('#goodText').textContent=(c.savings+c.p3p1+c.p3p2)>0?`Vous avez déjà constitué ${fmt(c.savings+c.p3p1+c.p3p2)} d'épargne et de 3e pilier.${c.children>0?' Votre historique familial est intégré à l’estimation AVS et AI.':''}`:`Votre situation est maintenant structurée et peut être analysée.${c.children>0?' Votre historique familial est intégré à l’estimation AVS et AI.':''}`;$('#watchTitle').textContent=m&&m.ratios.retirement>33?'Votre logement à la retraite':'Votre niveau de vie futur';$('#watchText').textContent=m&&m.ratios.retirement>33?`Les charges théoriques atteindraient ${m.ratios.retirement.toFixed(1)} % des revenus de retraite estimés.`:`Votre revenu de retraite est estimé à ${retPct.toFixed(0)} % du revenu actuel.`;$('#priorityTitle').textContent=co.title;$('#familyMetric').textContent=familyPct.toFixed(0)+' %';$('#retMetric').textContent=retPct.toFixed(0)+' %';$('#homeMetric').textContent=m?m.ratios.retirement.toFixed(1)+' %':'—';$('#taxMetric').textContent=fmt(c.contribution);$('#beliefTitle').textContent=co.belief;$('#beliefReality').textContent=co.reality;
+ const rec=[];
+ const p3rec=taxPotential(c);
+ if(p3rec.additionalTotal>0)rec.push(`Augmenter progressivement le 3e pilier jusqu’au potentiel disponible de ${fmt(p3rec.totalMax)}`);
+ if(c.status==='Concubins')rec.push('Vérifier auprès des caisses de pension la reconnaissance du partenaire comme bénéficiaire');
+ if(c.status==='Concubins'||m)rec.push('Étudier une couverture décès adaptée à la perte de revenu et au financement du logement');
+ if(Math.max(c.age1,c.age2)>=60)rec.push('Analyser la viabilité hypothécaire et le choix rente ou capital avant la retraite');
+ if(m&&m.ratios.retirement>33)rec.push('Préparer une épargne destinée à réduire l’endettement à la retraite');
+ if(c.epl1+c.epl2>0)rec.push('Vérifier l’impact réel du retrait EPL sur les prestations de retraite, d’invalidité et de décès');
+ if(retPct<70)rec.push('Renforcer progressivement l’épargne retraite');$('#priorities').innerHTML=rec.slice(0,4).map((x,i)=>`<div class="action"><div class="num">${i+1}</div><div><b>${x}</b></div></div>`).join('');
+ renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();localStorage.setItem('previa-v913',JSON.stringify(c))}
 function groupHtml(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmt(total)}</strong></div></div>`}
 function valueOrAnalysis(value,known=true){return known?fmt(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
 function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
@@ -173,7 +371,7 @@ function summaryBox(title,rows,totalLabel,total,totalKnown=true){
  return`<div style="margin-top:14px;padding:14px;background:#eef0ff;border:1px solid #dfe2ff;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">À confirmer</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`;
 }
 function riskData(){
- const c=data,b=benefits(c),kids=c.children;
+ const c=data,b=benefits(c),kids=c.dependentChildren;
  if(risk==='invalidity1'||risk==='invalidity2'){
   const isP1=risk==='invalidity1',x=isP1?b.i1:b.i2,who=isP1?'personne 1':'personne 2';
   const firstTotal=x.adj.ai+x.adj.aiKids,secondTotal=x.adj.lpp+x.adj.lppKids;
@@ -219,7 +417,7 @@ function riskData(){
    (d.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie est nécessaire pour chiffrer les prestations AVS de survivants.</div>':'');
  return{income:d.annual,capital:d.capital,detail:d.warning||label,html,uncertain:d.needsDeepAnalysis};
 }
-function renderProtection(){const c=data,x=riskData(),pct=c.totalIncome?x.income/c.totalIncome*100:0;$('#protCurrent').textContent=fmt(c.totalIncome);$('#protIncome').textContent=fmt(x.income);$('#protPct').textContent=pct.toFixed(0)+' %';$('#protCapital').textContent=fmt(x.capital);$('#protBar').style.width=Math.min(100,pct)+'%';$('#protText').textContent=`Le ménage conserverait environ ${pct.toFixed(0)} % de son revenu brut actuel.`;$('#protHuman').textContent=pct<70?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.':x.detail;$('#protDetail').innerHTML=x.html}
+function renderProtection(){const c=data,x=riskData(),pct=c.totalIncome?x.income/c.totalIncome*100:0;$('#protCurrent').textContent=fmt(c.totalIncome);$('#protIncome').textContent=fmt(x.income);$('#protPct').textContent=pct.toFixed(0)+' %';$('#protCapital').textContent=fmt(x.capital);$('#protBar').style.width=Math.min(100,pct)+'%';$('#protText').textContent=`Le ménage conserverait environ ${pct.toFixed(0)} % de son revenu brut actuel.`;$('#protHuman').textContent=pct<70?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.':x.detail;$('#protDetail').innerHTML=x.html+(c.epl1+c.epl2>0?`<div class="callout warn" style="margin-top:12px"><b>Retrait EPL pris en compte</b><br><span class="tiny muted">Les prestations LPP ont été réduites du solde EPL déclaré. L’impact exact dépend du règlement de la caisse et doit être confirmé.</span></div>`:'')}
 $$('[data-risk]').forEach(b=>b.onclick=()=>{$$('[data-risk]').forEach(x=>x.classList.remove('active'));b.classList.add('active');risk=b.dataset.risk;renderProtection()});
 function renderRetirement(){
  const c=data,b=benefits(c),lppTotal=b.p1.lpp+b.p2.lpp,ret=b.retAvs.total+lppTotal,pct=c.totalIncome?ret/c.totalIncome*100:0;
@@ -234,7 +432,8 @@ function renderRetirement(){
  const avsRows=[['Rente AVS personne 1 sur 12 mois',b.retAvs.p1.annual12]];
  if(c.status!=='Célibataire')avsRows.push(['Rente AVS personne 2 sur 12 mois',b.retAvs.p2.annual12]);
  avsRows.push(['13e rente AVS',b.retAvs.thirteenth]);
- const avsHtml=groupHtml('1er pilier – AVS',avsRows,'Total du 1er pilier',b.retAvs.total)+(b.retAvs.estimatedCoupleMaximum?'<div class="callout" style="margin-top:10px">Estimation simplifiée pour un couple marié : rente maximale de couple, splitting et 13e rente AVS compris. À confirmer avec les extraits de compte AVS.</div>':'');
+ const familyHistoryNote=c.children>0?`<div class="callout" style="margin-top:10px"><b>Historique familial pris en compte</b><br><span class="tiny muted">PrevIA intègre en arrière-plan environ ${educationYears(c.children,c.childGap)} années de bonifications pour tâches éducatives. Pour un couple, l'estimation est répartie à parts égales. Les rentes restent plafonnées aux maximums AVS applicables et devront être confirmées avec les extraits de compte AVS.</span></div>`:'';
+ const avsHtml=groupHtml('1er pilier – AVS',avsRows,'Total du 1er pilier',b.retAvs.total)+(b.retAvs.estimatedCoupleMaximum?'<div class="callout" style="margin-top:10px">Estimation simplifiée pour un couple marié : rente maximale de couple, splitting et 13e rente AVS compris. À confirmer avec les extraits de compte AVS.</div>':'')+familyHistoryNote;
  const lppRows=[['Rente LPP personne 1',b.p1.lpp]];
  if(c.status!=='Célibataire')lppRows.push(['Rente LPP personne 2',b.p2.lpp]);
  const lppHtml=groupHtml('2e pilier – LPP',lppRows,'Total du 2e pilier',lppTotal);
@@ -245,18 +444,115 @@ function renderRetirement(){
  $('#retDetail1').parentElement.querySelector('h3').textContent='Prestations de retraite';
  $('#retDetail1').innerHTML=avsHtml+lppHtml+totalHtml;
  $('#retDetail2').parentElement.classList.toggle('hidden',true);
- const capitalHtml=`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">Capitaux LPP indicatifs</div><div class="row"><span>Capital LPP personne 1, intérêts estimatifs compris</span><b>${fmt(b.p1.cap)}</b></div>${c.status!=='Célibataire'?`<div class="row"><span>Capital LPP personne 2, intérêts estimatifs compris</span><b>${fmt(b.p2.cap)}</b></div>`:''}<div class="tiny muted" style="margin-top:8px">Montants indicatifs à confirmer avec les certificats LPP.</div></div>`;
+ const capitalHtml=`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">Capitaux LPP indicatifs</div>
+ <div class="row"><span>Capital personne 1 avant retrait EPL</span><b>${fmt(b.p1.capBeforeEpl)}</b></div>
+ ${b.p1.epl>0?`<div class="row"><span>Solde EPL personne 1</span><b>− ${fmt(b.p1.epl)}</b></div>`:''}
+ <div class="row"><span>Capital personne 1 après retrait EPL</span><b>${fmt(b.p1.cap)}</b></div>
+ ${c.status!=='Célibataire'?`<div class="row"><span>Capital personne 2 avant retrait EPL</span><b>${fmt(b.p2.capBeforeEpl)}</b></div>${b.p2.epl>0?`<div class="row"><span>Solde EPL personne 2</span><b>− ${fmt(b.p2.epl)}</b></div>`:''}<div class="row"><span>Capital personne 2 après retrait EPL</span><b>${fmt(b.p2.cap)}</b></div>`:''}
+ <div class="tiny muted" style="margin-top:8px">Retraite estimée au taux de conversion de 5,5 %. Le retrait EPL est soustrait du capital projeté. Montants à confirmer avec les certificats LPP.</div></div>`;
  $('#retDetail1').insertAdjacentHTML('beforeend',capitalHtml);
 }
+
+function renderEvolution(){
+ const c=data,b=benefits(c),x=riskData();
+ const current=x.income;
+ const kids=c.dependentChildren;
+ const childBenefits=x.html&&kids>0?(
+   risk.startsWith('invalidity')?
+   ((risk==='invalidity1'?b.i1:b.i2).adj.aiKids+(risk==='invalidity1'?b.i1:b.i2).adj.lppKids):
+   ((risk==='death1'?b.d1:b.d2).adj.avsKids+(risk==='death1'?b.d1:b.d2).adj.lppKids)
+ ):0;
+ const afterKids=Math.max(0,current-childBenefits);
+ const retirement=b.p1.ret+b.p2.ret;
+ const retirementBeforeEpl=(b.p1.avsRet+b.p2.avsRet)+(b.p1.capBeforeEpl*.055)+(b.p2.capBeforeEpl*.055);
+ $('#evoToday').textContent=fmt(current);
+ $('#evoAfterKids').textContent=fmt(afterKids);
+ $('#evoRetirement').textContent=fmt(retirement);
+
+ const nowAge=Math.max(c.age1,c.age2);
+ const yearsToRet=Math.max(1,65-nowAge);
+ const oldestAge=c.youngestAge+(c.children>1?c.childGap:0);
+ const yearsToOldestEnd=c.childrenDependent?Math.max(0,18-oldestAge):0;
+ const yearsToYoungestEnd=c.childrenDependent?Math.max(0,18-c.youngestAge):0;
+ const horizon=Math.max(yearsToRet,yearsToYoungestEnd,1);
+ const pct=y=>Math.max(0,Math.min(100,y/horizon*100));
+ const tickSet=[0];
+ if(yearsToOldestEnd>0)tickSet.push(yearsToOldestEnd);
+ if(yearsToYoungestEnd>0)tickSet.push(yearsToYoungestEnd);
+ tickSet.push(yearsToRet);
+ const ticks=[...new Set(tickSet)].sort((a,b)=>a-b);
+ const axisTicks=ticks.map(y=>`<span class="timeline-tick" style="left:${pct(y)}%"></span><span class="timeline-label" style="left:${pct(y)}%">${y===0?'Aujourd’hui':y===yearsToRet?'Retraite':`Dans ${y} an${y>1?'s':''}`}</span>`).join('');
+ const rows=[];
+ rows.push(`<div class="coverage-row"><b>Revenu du conjoint</b><div class="coverage-track"><span class="coverage-segment" style="width:${pct(yearsToRet)}%"></span></div><span class="coverage-value">${fmt(x.otherIncome||0)}</span></div>`);
+ rows.push(`<div class="coverage-row"><b>Prestations adultes</b><div class="coverage-track"><span class="coverage-segment secondary" style="width:${pct(yearsToRet)}%"></span></div><span class="coverage-value">${fmt(Math.max(0,current-(x.otherIncome||0)-childBenefits))}</span></div>`);
+ if(kids>0){
+   rows.push(`<div class="coverage-row"><b>Rentes enfants</b><div class="coverage-track"><span class="coverage-segment warning" style="width:${pct(yearsToYoungestEnd)}%"></span>${yearsToOldestEnd>0?`<span class="coverage-event" style="left:${pct(yearsToOldestEnd)}%"></span>`:''}</div><span class="coverage-value">${fmt(childBenefits)}</span></div>`);
+ }
+ rows.push(`<div class="coverage-row"><b>Retraite AVS + LPP</b><div class="coverage-track"><span class="coverage-segment secondary" style="left:${pct(yearsToRet)}%;width:${Math.max(0,100-pct(yearsToRet))}%"></span></div><span class="coverage-value">${fmt(retirement)}</span></div>`);
+ $('#coverageTimeline').innerHTML=`<div class="timeline-chart"><div class="timeline-axis">${axisTicks}</div>${rows.join('')}<div class="chart-legend"><span><i class="legend-dot"></i>Revenu maintenu</span><span><i class="legend-dot secondary"></i>Prestations sociales</span><span><i class="legend-dot warning"></i>Prestations temporaires pour enfants</span></div></div>`;
+
+ const values=[
+  {label:'Aujourd’hui',value:current,cls:''},
+  {label:'Après rentes enfants',value:afterKids,cls:'warning'},
+  {label:'Retraite avant EPL',value:retirementBeforeEpl,cls:'secondary'},
+  {label:'Retraite après EPL',value:retirement,cls:''}
+ ];
+ const max=Math.max(...values.map(v=>v.value),1);
+ $('#incomeStepChart').innerHTML=`<div class="step-chart">${values.map(v=>`<div class="step-column"><div class="step-value">${fmt(v.value)}</div><div class="step-bar ${v.cls}" style="height:${Math.max(4,v.value/max*170)}px"></div><div class="step-label">${v.label}</div></div>`).join('')}</div>`;
+ const kidLoss=childBenefits;
+ const eplLoss=Math.max(0,retirementBeforeEpl-retirement);
+ let insight=[];
+ if(kidLoss>0)insight.push(`la fin des rentes pour enfants réduirait le revenu annuel d’environ ${fmt(kidLoss)}`);
+ if(eplLoss>0)insight.push(`le retrait EPL déclaré réduit la rente de retraite estimée d’environ ${fmt(eplLoss)} par année`);
+ $('#evoInsight').innerHTML=insight.length?`<b>Éléments à anticiper</b><br>${insight.map(s=>'• '+s).join('<br>')}`:'<b>Lecture stable</b><br>Aucune baisse temporaire liée aux enfants ou au retrait EPL n’est identifiée dans cette simulation.';
+}
+
 function renderHome(){const c=data,b=benefits(c),m=mortgage(c,b);$('#noHome').classList.toggle('hidden',!!m);$('#homeContent').classList.toggle('hidden',!m);if(!m)return;$('#homeVal').textContent=fmt(c.home);$('#mortVal').textContent=fmt(c.mortgage);$('#mortRet').textContent=fmt(m.retDebt);$('#interestCost').textContent=fmt(c.mortgage*.05);$('#maintenanceCost').textContent=fmt(c.home*.01);$('#secondRank').textContent=fmt(m.second);$('#amortYears').textContent=m.second?`${m.years} an${m.years>1?'s':''}`:'Aucun';$('#amortCost').textContent=fmt(m.amort);const rows=[['Aujourd’hui',m.incomes.current,m.currentCharges,m.ratios.current],['À la retraite',m.incomes.retirement,m.retCharges,m.ratios.retirement],['En invalidité',m.incomes.invalidity,m.currentCharges,m.ratios.invalidity],['Après un décès',m.incomes.death,m.currentCharges,m.ratios.death]];$('#scenarioRows').innerHTML=rows.map(r=>{const s=status(r[3]);return`<tr><td><b>${r[0]}</b></td><td>${fmt(r[1])}</td><td>${fmt(r[2])}</td><td><b>${r[3].toFixed(2)} %</b></td><td><span class="tag ${s.cls}">${s.label}</span></td></tr>`}).join('');$('#homeAnswer').textContent=m.ratios.retirement>33?`Votre logement paraît supportable aujourd’hui, mais les charges théoriques représenteraient ${m.ratios.retirement.toFixed(2)} % des revenus estimés à la retraite. Le seuil de 33 % serait dépassé.`:'Dans cette simulation, la tenue des charges reste sous 33 % à la retraite.'}
 function renderTax(){
- const c=data,x=tmi(c.canton,c.totalIncome),save=c.contribution*x.rate/100,net=c.contribution-save;
+ const c=data,x=tmi(c.canton,c.totalIncome),p=taxPotential(c);
+ const currentSaving=p.deductibleTotal*x.rate/100;
+ const maxSaving=p.totalMax*x.rate/100;
+ const additionalSaving=p.additionalTotal*x.rate/100;
+ const currentNet=p.deductibleTotal-currentSaving;
+ const additionalNet=p.additionalTotal-additionalSaving;
+ const utilization=p.totalMax>0?Math.min(100,p.deductibleTotal/p.totalMax*100):0;
+
+ $('#taxCurrentContribution').textContent=fmt(p.currentTotal);
+ $('#taxSaving').textContent=fmt(currentSaving);
+ $('#taxMaximum').textContent=fmt(p.totalMax);
+ $('#taxMaxSaving').textContent=fmt(maxSaving);
+ $('#taxMaximumNote').textContent=c.status==='Célibataire'?'Plafond individuel estimé':'Somme des plafonds individuels estimés';
+
  $('#tmiValue').textContent=x.rate.toFixed(1)+' %';
  $('#tmiRange').textContent=`Grille indicative du canton ${c.canton} · ${x.source}`;
- $('#taxSaving').textContent=fmt(save);
- $('#netEffort').textContent=fmt(net);
- $('#taxSentence').innerHTML=`<b>Votre économie fiscale potentielle</b><br><br>Versement au 3e pilier : <b>${fmt(c.contribution)}</b><br>Taux marginal d’imposition (TMI) estimé : <b>${x.rate.toFixed(1)} %</b><br>Économie fiscale annuelle estimée : <b>${fmt(save)}</b><br>Effort d’épargne net estimé : <b>${fmt(net)}</b>`;
+ $('#taxDeductibleCurrent').textContent=fmt(p.deductibleTotal);
+ $('#taxCurrentSavingDetail').textContent=fmt(currentSaving);
+ $('#netEffort').textContent=fmt(currentNet);
+
+ $('#taxPotentialMax').textContent=fmt(p.totalMax);
+ $('#taxAdditionalContribution').textContent=fmt(p.additionalTotal);
+ $('#taxAdditionalSaving').textContent=fmt(additionalSaving);
+ $('#taxAdditionalNet').textContent=fmt(additionalNet);
+ $('#taxProgressBar').style.width=utilization+'%';
+ $('#taxProgressText').textContent=p.totalMax>0?`Vous utilisez actuellement ${utilization.toFixed(0)} % de votre potentiel 3a estimé.`:'Aucun plafond 3a n’est calculé pour une personne sans activité lucrative.';
+
+ const costPer100=100*(1-x.rate/100);
+ if(p.additionalTotal>0){
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI estimé de ${x.rate.toFixed(1)} %, chaque CHF 100 déductibles vous coûtent réellement environ <b>CHF ${costPer100.toFixed(0)}</b> après économie fiscale.`;
+ }else if(p.totalMax>0){
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal est pleinement utilisé dans cette estimation.</b><br><br>Votre versement déductible actuel de <b>${fmt(p.deductibleTotal)}</b> génère une économie fiscale estimée de <b>${fmt(currentSaving)}</b> par année.`;
+ }else{
+  $('#taxSentence').innerHTML=`<b>Aucun potentiel 3a n’est estimé dans cette simulation.</b><br><br>Le droit au pilier 3a dépend de l’exercice d’une activité lucrative soumise à l’AVS.`;
+ }
+
+ function personDetail(label,job,income,current,max,deductible,additional){
+  const rule=job==='Salarié'?"plafond salarié de CHF 7'258":job==='Indépendant'?`20 % du revenu, limité à CHF 36'288`:'aucun plafond estimé sans activité lucrative';
+  return`<div class="tax-kpi" style="margin-top:10px"><div class="eyebrow">${label}</div><div class="row"><span>Statut professionnel</span><b>${job}</b></div><div class="row"><span>Versement actuel</span><b>${fmt(current)}</b></div><div class="row"><span>Plafond estimé</span><b>${fmt(max)}</b></div><div class="row"><span>Montant actuellement déductible</span><b>${fmt(deductible)}</b></div><div class="row"><span>Potentiel restant</span><b>${fmt(additional)}</b></div><div class="tiny muted" style="margin-top:8px">Règle appliquée : ${rule}.</div></div>`;
+ }
+ $('#taxPersonDetails').innerHTML=
+   personDetail('Personne 1',c.job1,c.income1,p.current1,p.max1,p.deductible1,p.additional1)+
+   (c.status!=='Célibataire'?personDetail('Personne 2',c.job2,c.income2,p.current2,p.max2,p.deductible2,p.additional2):'');
 }
 $('#calculate').onclick=()=>{data=gather();render();show('dashboard')};
-updateFamily();updateOwner();data=gather();render();
+updateFamily();updateChildren();updateOwner();updateEpl();data=gather();render();
 </script></body></html>
