@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.14.4 — Prototype interactif</title>
+<title>PrevIA V9.14.5 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -42,7 +42,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:700px){.epl-grid{grid-template-columns:1fr}.cascade-chart{min-width:620px}}
 .coverage-value{grid-column:2}.step-chart{gap:4px}.step-value{font-size:10px}.step-label{font-size:10px}}
 
-/* V9.14.4 — graphiques narratifs, sans modifier l'identité V9.14 */
+/* V9.14.5 — graphiques narratifs, sans modifier l'identité V9.14 */
 .evo-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
 .evo-tabs button{border:1px solid var(--line);background:white;color:var(--muted);border-radius:999px;padding:9px 13px;font-weight:800}
 .evo-tabs button.active{background:linear-gradient(90deg,var(--p),var(--p2));color:white;border-color:transparent}
@@ -65,7 +65,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:700px){.evo-detail-grid{grid-template-columns:1fr}.story-chart{min-width:700px}}
 
 
-/* V9.14.4 — colonnes empilées par périodes de vie */
+/* V9.14.5 — colonnes empilées par périodes de vie */
 .life-chart-wrap{margin-top:18px;overflow-x:auto;padding:8px 4px 2px}
 .life-chart{height:520px;min-width:900px;display:flex;align-items:flex-end;gap:28px;position:relative;padding:42px 18px 125px 70px;border-bottom:3px solid #1d2433}
 .life-gridline{position:absolute;left:70px;right:18px;border-top:1px solid #cfd5e1}
@@ -94,12 +94,12 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:700px){.life-chart{min-width:820px}.life-chart-wrap{padding-bottom:8px}}
 
 
-/* V9.14.4 — revenus actuels séparés */
+/* V9.14.5 — revenus actuels séparés */
 .life-income-p1{background:#1f7a6e}
 .life-income-p2{background:#7c55c7}
 
 
-/* V9.14.4 — étiquettes externes pour les petits segments */
+/* V9.14.5 — étiquettes externes pour les petits segments */
 .life-period{overflow:visible}
 .life-column{position:relative;overflow:visible}
 .life-segment{position:relative;overflow:visible}
@@ -134,12 +134,31 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-segment.life-child.small-label::before{color:#d39a13}
 .life-segment.life-gap.small-label::before{color:#f97316}
 
+
+/* V9.14.5 — montants harmonisés à l'intérieur des segments */
+.life-segment,.life-segment.small-label{color:#fff!important;overflow:hidden!important;font-size:9px;line-height:1;padding:1px 2px}
+.life-segment.life-lpp,.life-segment.life-child{color:#243126!important}
+.life-segment.small-label::before,.life-segment.small-label::after{display:none!important;content:none!important}
+.life-segment.small-label{color:inherit!important}
+.life-segment.life-lpp.small-label,.life-segment.life-child.small-label{color:#243126!important}
+.life-column{overflow:hidden!important}
+
+
+/* V9.14.5 — disclaimer et passage à l'analyse complète */
+.lpp-disclaimer{margin-top:18px;border:1px solid #f3c46f;background:#fff9ed;border-radius:14px;padding:16px 18px;color:#263143}
+.lpp-disclaimer-head{display:flex;gap:12px;align-items:flex-start}.lpp-disclaimer-icon{width:34px;height:34px;flex:0 0 34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#ffedd5;color:#c2410c;font-weight:900}
+.lpp-disclaimer h4{margin:0 0 5px;font-size:15px}.lpp-disclaimer p{margin:4px 0;font-size:12px;line-height:1.5}.lpp-disclaimer .source-note{color:#6b7280;font-size:10px}
+.analysis-upgrade{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.analysis-tier{border:1px solid #e2e7ef;background:#fff;border-radius:12px;padding:13px}.analysis-tier.premium{border-color:#8b5cf6;box-shadow:0 0 0 2px #8b5cf61a}
+.analysis-tier .tier-badge{display:inline-block;margin-bottom:7px;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:900;background:#fff3e8;color:#c2410c}.analysis-tier.premium .tier-badge{background:#ede9fe;color:#6d28d9}.analysis-tier b{display:block;margin-bottom:5px}.analysis-tier ul{margin:7px 0 0 17px;padding:0;font-size:11px;color:#5b6575;line-height:1.55}
+.analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
+@media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
+
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.4</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.5</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
-<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.14.4</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Évolutions V9.14.4</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div><div class="row"><span>Bonifications éducatives AVS/AI intégrées en arrière-plan</span><b>✓</b></div><div class="row"><span>Montant EPL retiré et potentiel de remboursement</span><b>✓</b></div><div class="row"><span>Graphique en cascade des prestations par pilier</span><b>✓</b></div><div class="row"><span>Graphiques par périodes de vie avec besoin à 100 %</span><b>✓</b></div><div class="row"><span>Revenus P1/P2 séparés et lacunes en orange</span><b>✓</b></div><div class="row"><span>Palette finale et montants toujours visibles</span><b>✓</b></div></div></div></div></section>
+<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.14.5</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Évolutions V9.14.5</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div><div class="row"><span>Bonifications éducatives AVS/AI intégrées en arrière-plan</span><b>✓</b></div><div class="row"><span>Montant EPL retiré et potentiel de remboursement</span><b>✓</b></div><div class="row"><span>Graphique en cascade des prestations par pilier</span><b>✓</b></div><div class="row"><span>Graphiques par périodes de vie avec besoin à 100 %</span><b>✓</b></div><div class="row"><span>Revenus P1/P2 séparés et lacunes en orange</span><b>✓</b></div><div class="row"><span>Palette finale et montants toujours visibles</span><b>✓</b></div><div class="row"><span>Disclaimer LPP et passage vers l’analyse complète</span><b>✓</b></div></div></div></div></section>
 
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
 <div class="card"><div class="choicegrid" id="choices">
@@ -195,8 +214,8 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
     <button data-evo="death2">Décès personne 2</button>
     <button data-evo="invalidity1">Invalidité personne 1</button>
     <button data-evo="invalidity2">Invalidité personne 2</button>
-    <button data-evo="retirement1">Retraite personne 1</button>
-    <button data-evo="retirement2">Retraite personne 2</button>
+    
+    
     <button data-evo="retirementCouple">Retraite du couple</button>
   </div>
 
@@ -256,6 +275,23 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div class="card" style="margin-top:15px"><h3>Détail par personne</h3><div id="taxPersonDetails"></div></div>
 <p class="muted tiny">Estimation indicative fondée sur le revenu brut, le statut professionnel et le canton. Pour un salarié, le plafond utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de la situation familiale, de l'affiliation au 2e pilier et des autres déductions.</p>
 </section>
+
+<div class="lpp-disclaimer" id="lppDisclaimer">
+  <div class="lpp-disclaimer-head">
+    <div class="lpp-disclaimer-icon">!</div>
+    <div>
+      <h4>Information importante sur cette estimation</h4>
+      <p>En l’absence de votre certificat de prévoyance, l’analyse gratuite repose sur les <b>prestations minimales légales LPP</b>. Cette méthode est volontairement prudente.</p>
+      <p>Environ <b>8 % des assurés actifs</b> seraient affiliés à un plan strictement minimal. Votre caisse de pension peut donc prévoir des prestations supérieures — ou différentes — de celles utilisées dans cette estimation.</p>
+      <span class="reliability-chip">Estimation prudente · données LPP non vérifiées</span>
+      <p class="source-note">Chiffre indicatif fondé sur les statistiques suisses des caisses de pension. Les résultats affichés ne constituent ni une garantie de prestation, ni un conseil juridique, fiscal ou financier personnalisé.</p>
+    </div>
+  </div>
+  <div class="analysis-upgrade">
+    <div class="analysis-tier"><span class="tier-badge">Analyse gratuite</span><b>Estimation basée sur le minimum LPP</b><ul><li>Aucun document nécessaire</li><li>Résultat rapide et volontairement prudent</li><li>Prestations réelles non vérifiées</li></ul></div>
+    <div class="analysis-tier premium"><span class="tier-badge">Analyse complète</span><b>Calcul précis à partir de vos documents</b><ul><li>Lecture du certificat de prévoyance</li><li>Prise en compte des prestations réelles</li><li>Analyse des polices d’assurance</li><li>Rapport personnalisé et recommandations</li></ul><button class="analysis-upgrade-btn" type="button" id="upgradeAnalysisBtn">Débloquer l’analyse complète</button></div>
+  </div>
+</div>
 </main></div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -693,8 +729,8 @@ function renderEvolution(){
    const gapv=Math.max(0,x.need-s.total);
    const seg=(cls,val,label)=>{
      if(!(val>0))return '';
-     const h=px(val),small=h<=34;
-     return `<div class="life-segment ${cls}${small?' small-label':''}" data-label="${fmt(val)}" style="height:${h}px" title="${label}: ${fmt(val)}">${small?'':fmt(val)}</div>`;
+     const h=px(val);
+     return `<div class="life-segment ${cls}" style="height:${h}px" title="${label}: ${fmt(val)}">${fmt(val)}</div>`;
    };
    return `<div class="life-period">
       <div class="life-column" style="height:${plot}px">
@@ -795,4 +831,8 @@ function renderTax(){
 }
 $('#calculate').onclick=()=>{data=gather();render();show('protection')};
 updateFamily();updateChildren();updateOwner();updateEpl();data=gather();render();
+
+const upgradeBtn=document.getElementById('upgradeAnalysisBtn');
+if(upgradeBtn){upgradeBtn.addEventListener('click',()=>{const old=upgradeBtn.textContent;upgradeBtn.textContent='Module d’importation bientôt disponible';upgradeBtn.disabled=true;setTimeout(()=>{upgradeBtn.textContent=old;upgradeBtn.disabled=false;},2600);});}
+
 </script></body></html>
