@@ -265,6 +265,15 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
     </div>
   </div>
 
+  <div class="card" style="margin-bottom:15px">
+    <div class="eyebrow">Origine de l’événement</div>
+    <div class="seg" id="evolutionOriginTabs" style="margin-top:10px">
+      <button class="active" data-evo-origin="illness">Maladie</button>
+      <button data-evo-origin="accident">Accident</button>
+    </div>
+    <p class="muted tiny" id="evolutionOriginNote" style="margin:10px 0 0">Maladie : évolution calculée avec l’AI, l’AVS et les prestations minimales LPP.</p>
+  </div>
+
   <div class="evo-tabs" id="evoTabs">
     <button class="active" data-evo="death1">Décès personne 1</button>
     <button data-evo="death2">Décès personne 2</button>
@@ -386,7 +395,7 @@ GE:[[50000,28],[60000,31],[70000,34],[80000,37],[90000,39.5],[100000,42],[120000
 JU:[[50000,22],[60000,24.67],[70000,27.33],[80000,30],[90000,32.5],[100000,35],[120000,37.4],[140000,39.8],[150000,41],[180000,42.8],[200000,44],[250000,45.5],[300000,47],[500000,49]]
 };
 const CONCERNS={family:{title:'Ma famille sera-t-elle protégée si quelque chose m’arrive ?',intro:'Vous cherchez avant tout à éviter qu’un décès ou une invalidité fragilise le quotidien de votre famille.',emotion:['Protection','Responsabilité familiale'],belief:'« Si je décède, ma famille sera automatiquement protégée. »',reality:'Les prestations peuvent laisser une baisse de revenu importante, surtout en concubinage. PrevIA vérifie les deux décès séparément.'},home:{title:'Pourrons-nous conserver notre logement quoi qu’il arrive ?',intro:'Vous souhaitez savoir si votre logement restera supportable aujourd’hui, à la retraite et dans les coups durs.',emotion:['Sécurité','Attachement au logement'],belief:'« Tant que nous payons l’hypothèque, tout va bien. »',reality:'La banque regarde les charges théoriques par rapport aux revenus, avec une limite de 33 %.'},retirement:{title:'Pourrons-nous vivre sereinement à la retraite ?',intro:'Vous souhaitez mesurer la baisse de revenu future et agir suffisamment tôt.',emotion:['Anticipation','Besoin de visibilité'],belief:'« Mon 2e pilier suffira probablement. »',reality:'PrevIA estime la LPP sans demander au client de connaître son avoir, puis confirme avec le certificat.'},tax:{title:'Comment réduire intelligemment mes impôts ?',intro:'Vous souhaitez connaître l’effet concret d’un versement déductible.',emotion:['Efficacité','Optimisation'],belief:'« Le 3e pilier sert uniquement à payer moins d’impôts. »',reality:'L’avantage fiscal doit aussi renforcer votre retraite et votre capital.'},wealth:{title:'Comment développer durablement mon patrimoine ?',intro:'Vous souhaitez mieux utiliser votre capacité d’épargne.',emotion:['Progression','Maîtrise'],belief:'« Il faut choisir entre sécurité et rendement. »',reality:'Une stratégie peut combiner réserve disponible, horizon de placement et objectifs.'}};
-let concern='family',risk='invalidity1',evoMode='death1',protectionOrigin='illness',data={};
+let concern='family',risk='invalidity1',evoMode='death1',protectionOrigin='illness',evolutionOrigin='illness',data={};
 
 function shouldShowDeathScenario(){
   const isSingle = $('#fStatus').value === 'Célibataire';
@@ -707,16 +716,32 @@ function accidentBenefits(c){
    const rawLaaTotal=rawSpouse+rawChildren;
    const laaLimit=insured*.70;
    const factor=rawLaaTotal>laaLimit&&rawLaaTotal>0?laaLimit/rawLaaTotal:1;
-   const laaSpouse=rawSpouse*factor;
-   const laaChildren=rawChildren*factor;
-   const laaTotal=laaSpouse+laaChildren;
-   const annual=otherIncome+avsTotal+laaTotal;
+   let laaSpouse=rawSpouse*factor;
+   let laaChildren=rawChildren*factor;
+   let laaTotal=laaSpouse+laaChildren;
+
+   // Plafond global demandé pour PrevIA :
+   // prestations AVS + LAA liées au décès limitées à 90 % du gain assuré.
+   const totalBenefitsLimit=insured*.90;
+   const rawCombinedBenefits=avsTotal+laaTotal;
+   if(rawCombinedBenefits>totalBenefitsLimit&&laaTotal>0){
+     const availableForLaa=Math.max(0,totalBenefitsLimit-avsTotal);
+     const laaReductionFactor=availableForLaa/laaTotal;
+     laaSpouse*=laaReductionFactor;
+     laaChildren*=laaReductionFactor;
+     laaTotal=laaSpouse+laaChildren;
+   }
+
+   const combinedBenefits=Math.min(totalBenefitsLimit,avsTotal+laaTotal);
+   const annual=otherIncome+combinedBenefits;
 
    let warning='';
    if(job!=='Salarié'){
      warning='La couverture LAA obligatoire concerne les salariés. Pour une personne indépendante ou sans activité, l’existence d’une assurance-accidents équivalente doit être confirmée.';
    }else if(salary>LAA_MAX){
      warning=`Le salaire dépasse le plafond LAA de ${fmt(LAA_MAX)}. Les rentes LAA sont calculées uniquement sur ce plafond.`;
+   }else if(avsTotal+rawLaaTotal>insured*.90){
+     warning='Les prestations AVS et LAA ont été ajustées afin que leur total ne dépasse pas 90 % du gain assuré.';
    }else if(rawLaaTotal>laaLimit){
      warning='Les rentes LAA ont été réduites proportionnellement afin de respecter le plafond familial de 70 % du gain assuré.';
    }else if(!diseaseDeath.survivorRight&&kids===0){
@@ -728,6 +753,7 @@ function accidentBenefits(c){
    return{
      annual,otherIncome,salary,insured,avsSpouse,avsChildren,avsTotal,
      laaSpouse,laaChildren,laaTotal,rawLaaTotal,laaLimit,factor,
+     combinedBenefits,totalBenefitsLimit,
      survivorRight:diseaseDeath.survivorRight,
      avsKnown:diseaseDeath.avsKnown,
      needsDeepAnalysis:diseaseDeath.needsDeepAnalysis,
@@ -1114,6 +1140,7 @@ function riskData(){
      groupHtmlFlexible('1er pilier – AVS',avsRows,'Total AVS survivants',d.avsTotal,d.avsKnown)+
      groupHtmlFlexible('Assurance-accidents – LAA',[
        ['Gain annuel assuré LAA',d.insured,true],
+       ['Plafond global AVS + LAA (90 %)',d.totalBenefitsLimit,true],
        ...laaRows
      ],'Total LAA survivants',d.laaTotal,true)+
      summaryBox(`Revenu total du ménage après le décès de ${who}`,[
@@ -1294,32 +1321,66 @@ function makeLifeStages(baseStages, ages, childTotal){
  return result;
 }
 function evolutionScenario(){
- const c=data,b=benefits(c),ages=dependentChildAges(c),needRate=1;
+ const c=data;
+ const illness=benefits(c);
+ const accident=accidentBenefits(c);
+ const ages=dependentChildAges(c),needRate=1;
  let reference=c.totalIncome,need=reference*needRate,title='',subtitle='',stages=[],breakdown={};
 
  if(evoMode.startsWith('death')||evoMode.startsWith('invalidity')){
   const inv=evoMode.startsWith('invalidity'),isP1=evoMode.endsWith('1');
-  const obj=inv?(isP1?b.i1:b.i2):(isP1?b.d1:b.d2);
-  const avs=inv?(obj.adj.ai||0):(obj.adj.avsSurv||0);
-  const lpp=inv?(obj.adj.lpp||0):(obj.adj.lppSurv||0);
-  const childTotal=(inv?(obj.adj.aiKids||0):(obj.adj.avsKids||0))+(obj.adj.lppKids||0);
-  const other=obj.otherIncome||0;
-  title=`${inv?'Invalidité':'Décès'} de ${isP1?c.firstName1:c.firstName2}`;
-  subtitle='Chaque colonne représente une période de vie. Le besoin de référence correspond à 100 % du revenu actuel du ménage.';
+  const useAccident=evolutionOrigin==='accident';
+
+  let avs=0,lpp=0,childTotal=0,other=0,totalAfter=0;
+  let eventPrefix=inv?'Invalidité':'Décès';
+
+  if(useAccident){
+    const obj=inv
+      ?(isP1?accident.invalidity1:accident.invalidity2)
+      :(isP1?accident.death1:accident.death2);
+
+    other=obj.otherIncome||0;
+
+    if(inv){
+      avs=obj.aiAdult||0;
+      childTotal=obj.aiChildren||0;
+      lpp=obj.laa||0; // même couleur que le 2e pilier pour garder une lecture stable
+      totalAfter=other+avs+childTotal+lpp;
+    }else{
+      avs=obj.avsSpouse||0;
+      childTotal=(obj.avsChildren||0)+(obj.laaChildren||0);
+      lpp=obj.laaSpouse||0; // même couleur verte que les prestations complémentaires
+      totalAfter=other+avs+childTotal+lpp;
+    }
+
+    title=`${eventPrefix} par accident de ${isP1?c.firstName1:c.firstName2}`;
+    subtitle='Chaque colonne représente une période de vie. Les couleurs restent identiques au scénario maladie : revenu, 1er pilier, prestations complémentaires, enfants et lacune.';
+  }else{
+    const obj=inv?(isP1?illness.i1:illness.i2):(isP1?illness.d1:illness.d2);
+    avs=inv?(obj.adj.ai||0):(obj.adj.avsSurv||0);
+    lpp=inv?(obj.adj.lpp||0):(obj.adj.lppSurv||0);
+    childTotal=(inv?(obj.adj.aiKids||0):(obj.adj.avsKids||0))+(obj.adj.lppKids||0);
+    other=obj.otherIncome||0;
+    totalAfter=other+avs+lpp+childTotal;
+    title=`${eventPrefix} par maladie de ${isP1?c.firstName1:c.firstName2}`;
+    subtitle='Chaque colonne représente une période de vie. Le besoin de référence correspond à 100 % du revenu actuel du ménage.';
+  }
+
   stages=[
     {label:'Aujourd’hui',sub:`${ages.length} enfant${ages.length>1?'s':''} à charge`,event:'Situation actuelle',income1:c.income1||0,income2:c.income2||0,total:reference},
-    {label:'Après l’événement',sub:`${ages.length} enfant${ages.length>1?'s':''} à charge`,event:title,income1:isP1?0:other,income2:isP1?other:0,avs,lpp,child:childTotal,total:other+avs+lpp+childTotal}
+    {label:'Après l’événement',sub:`${ages.length} enfant${ages.length>1?'s':''} à charge`,event:title,income1:isP1?0:other,income2:isP1?other:0,avs,lpp,child:childTotal,total:totalAfter}
   ];
+
   const childStages=makeLifeStages([],ages,childTotal);
   childStages.forEach(s=>{
     s.income1=isP1?0:other;
     s.income2=isP1?other:0;
-    s.avs=avs;s.lpp=lpp;
+    s.avs=avs;
+    s.lpp=lpp;
     s.total=other+avs+lpp+s.child;
     stages.push(s);
   });
 
-  // La retraite reste exclusivement dans l'onglet « Votre retraite ».
   breakdown={income:other,avs,lpp,child:childTotal,final:stages.at(-1).total};
  }else{
   const couple=evoMode==='retirementCouple',isP1=evoMode==='retirement1';
@@ -1329,12 +1390,12 @@ function evolutionScenario(){
    subtitle='Le besoin reste fixé à 100 % du revenu actuel afin de visualiser directement la perte de niveau de vie.';
    stages=[
     {label:'Aujourd’hui',sub:`${ages.length} enfant${ages.length>1?'s':''} à charge`,event:'Situation actuelle',income1:c.income1||0,income2:c.income2||0,total:c.totalIncome},
-    {label:`Dans ${first} ans`,sub:`Retraite de ${p1First?c.firstName1:c.firstName2}`,event:'Première retraite',income1:p1First?0:c.income1,income2:p1First?c.income2:0,avs:p1First?b.retAvs.p1.total:b.retAvs.p2.total,lpp:p1First?b.p1.lpp:b.p2.lpp,child:0,total:(p1First?c.income2:c.income1)+(p1First?b.retAvs.p1.total:b.retAvs.p2.total)+(p1First?b.p1.lpp:b.p2.lpp)},
-    {label:`Dans ${second} ans`,sub:'Retraite des deux personnes',event:'Retraite complète',income:0,avs:b.retAvs.total,lpp:b.p1.lpp+b.p2.lpp,child:0,total:b.retAvs.total+b.p1.lpp+b.p2.lpp}
+    {label:`Dans ${first} ans`,sub:`Retraite de ${p1First?c.firstName1:c.firstName2}`,event:'Première retraite',income1:p1First?0:c.income1,income2:p1First?c.income2:0,avs:p1First?illness.retAvs.p1.total:illness.retAvs.p2.total,lpp:p1First?illness.p1.lpp:illness.p2.lpp,child:0,total:(p1First?c.income2:c.income1)+(p1First?illness.retAvs.p1.total:illness.retAvs.p2.total)+(p1First?illness.p1.lpp:illness.p2.lpp)},
+    {label:`Dans ${second} ans`,sub:'Retraite des deux personnes',event:'Retraite complète',income:0,avs:illness.retAvs.total,lpp:illness.p1.lpp+illness.p2.lpp,child:0,total:illness.retAvs.total+illness.p1.lpp+illness.p2.lpp}
    ];
-   breakdown={income:0,avs:b.retAvs.total,lpp:b.p1.lpp+b.p2.lpp,child:0,final:stages.at(-1).total};
+   breakdown={income:0,avs:illness.retAvs.total,lpp:illness.p1.lpp+illness.p2.lpp,child:0,final:stages.at(-1).total};
   }else{
-   const p=isP1?b.p1:b.p2,inc=isP1?c.income1:c.income2,age=isP1?c.age1:c.age2;
+   const p=isP1?illness.p1:illness.p2,inc=isP1?c.income1:c.income2,age=isP1?c.age1:c.age2;
    reference=inc;need=reference;
    title=`Retraite de ${isP1?c.firstName1:c.firstName2}`;
    subtitle='Comparaison avec 100 % de son revenu professionnel actuel.';
@@ -1365,6 +1426,9 @@ function renderEvolution(){
  $('#evoGap').textContent=fmt(gap);
  $('#evoChartTitle').textContent=x.title;
  $('#evoChartSubtitle').textContent=x.subtitle;
+ $('#evolutionOriginNote').textContent=evolutionOrigin==='accident'
+   ?'Accident : évolution calculée avec l’AI ou l’AVS et la LAA, sans prestations LPP.'
+   :'Maladie : évolution calculée avec l’AI, l’AVS et les prestations minimales LPP.';
 
  const max=x.need||1, plot=330, px=v=>Math.max(0,Math.min(plot,v/max*plot));
  const lines=[0,20,40,60,80,100].map(p=>`<div class="life-gridline" style="bottom:${125+plot*p/100}px"><span>${p}%</span></div>`).join('');
@@ -1412,7 +1476,7 @@ function renderEvolution(){
    <span><i class="life-income-p1"></i>Revenu actuel de ${x.c.firstName1}</span>
    <span><i class="life-income-p2"></i>Revenu actuel de ${x.c.firstName2}</span>
    <span><i class="life-avs"></i>Rente AVS / AI</span>
-   <span><i class="life-lpp"></i>Rente de la caisse de retraite (LPP)</span>
+   <span><i class="life-lpp"></i>${evolutionOrigin==='accident'?'Prestations LAA':'Rente de la caisse de retraite (LPP)'}</span>
    <span><i class="life-child"></i>Rentes pour enfants</span>
    <span><i class="life-gap"></i>Lacune de prévoyance</span>
    <span><i style="background:#202738;height:3px"></i>Besoin de prévoyance (100 %)</span>
@@ -1421,7 +1485,7 @@ function renderEvolution(){
  $('#evoBreakdown').innerHTML=[
   ['Revenu professionnel après événement',x.breakdown.income],
   ['AVS / AI',x.breakdown.avs],
-  ['LPP',x.breakdown.lpp],
+  [evolutionOrigin==='accident'?'LAA':'LPP',x.breakdown.lpp],
   ['Rentes enfants au départ',x.breakdown.child],
   ['Revenu final',x.breakdown.final]
  ].map(v=>`<div class="evo-detail"><span class="tiny muted">${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('');
@@ -1431,6 +1495,13 @@ function renderEvolution(){
  if(events.length)message+=` Les changements liés aux enfants interviennent séparément ${events.map(y=>`dans ${y} an${y>1?'s':''}`).join(' puis ')}.`;
  $('#evoInsight').innerHTML=`<b>Comprendre ce graphique</b><br>${message}`;
 }
+
+$$('[data-evo-origin]').forEach(b=>b.onclick=()=>{
+  $$('[data-evo-origin]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  evolutionOrigin=b.dataset.evoOrigin;
+  renderEvolution();
+});
 
 $$('[data-evo]').forEach(b=>b.onclick=()=>{
   const requested=b.dataset.evo;
@@ -1650,7 +1721,9 @@ $('#calculate').onclick=()=>{
 
   data=gather();
   protectionOrigin='illness';
+  evolutionOrigin='illness';
   $$('[data-origin]').forEach(x=>x.classList.toggle('active',x.dataset.origin==='illness'));
+  $$('[data-evo-origin]').forEach(x=>x.classList.toggle('active',x.dataset.evoOrigin==='illness'));
   render();
   show('protection');
 };
