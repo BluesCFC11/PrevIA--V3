@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.14.6 — Prototype interactif</title>
+<title>PrevIA V9.14.7 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -153,13 +153,45 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
+/* V9.14.7 — accueil rassurant et saisie suisse */
+.home-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:28px;align-items:stretch;padding:0;overflow:hidden;background:#fff}
+.home-hero-copy{padding:42px 38px;display:flex;flex-direction:column;justify-content:center;min-height:470px;background:linear-gradient(135deg,#f0efff 0%,#ffffff 62%,#edf7ff 100%)}
+.home-hero-copy h1{font-size:44px;line-height:1.08;max-width:760px;margin:10px 0 18px}
+.home-hero-copy .quote{max-width:680px;color:#4d5870;font-size:20px}
+.home-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.home-trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:25px;color:#586177;font-size:12px;font-weight:750}
+.home-trust span{display:inline-flex;align-items:center;gap:7px;background:#ffffffb8;border:1px solid #e1e5ef;border-radius:999px;padding:7px 10px}
+.home-hero-photo{position:relative;min-height:470px;background-image:linear-gradient(180deg,rgba(9,19,45,.04),rgba(9,19,45,.42)),url("https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.home-hero-photo::after{content:"Votre avenir mérite d’être compris";position:absolute;left:24px;right:24px;bottom:24px;padding:16px 18px;border-radius:14px;background:#0b1735c9;color:white;font-size:17px;font-weight:850;backdrop-filter:blur(8px)}
+.form-order-note{margin:0 0 16px;padding:12px 14px;border-radius:12px;background:#f6f7fb;color:#667085;font-size:12px}
+.money-input{font-variant-numeric:tabular-nums}
+.money-input::placeholder{color:#a3aabb}
+@media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-hero-photo{min-height:320px}.home-hero-copy{min-height:auto;padding:32px 26px}.home-hero-copy h1{font-size:35px}}
+
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.6</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.7</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
-<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.14.6</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Évolutions V9.14.6</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Protection maladie et accident distinguées</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div><div class="row"><span>Bonifications éducatives AVS/AI intégrées en arrière-plan</span><b>✓</b></div><div class="row"><span>Montant EPL retiré et potentiel de remboursement</span><b>✓</b></div><div class="row"><span>Graphique en cascade des prestations par pilier</span><b>✓</b></div><div class="row"><span>Graphiques par périodes de vie avec besoin à 100 %</span><b>✓</b></div><div class="row"><span>Revenus P1/P2 séparés et lacunes en orange</span><b>✓</b></div><div class="row"><span>Palette finale et montants toujours visibles</span><b>✓</b></div><div class="row"><span>Disclaimer LPP et passage vers l’analyse complète</span><b>✓</b></div></div></div></div></section>
-
+<section id="home" class="screen active">
+  <div class="hero home-hero">
+    <div class="home-hero-copy">
+      <div class="eyebrow">PrevIA V9.14.7</div>
+      <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
+      <p class="quote">Découvrez en quelques minutes si votre famille, votre retraite, votre logement et votre fiscalité sont suffisamment protégés.</p>
+      <div class="home-hero-actions">
+        <button class="btn primary" id="newAnalysis">Commencer mon analyse →</button>
+        <span class="muted tiny">Première estimation gratuite · Sans document</span>
+      </div>
+      <div class="home-trust">
+        <span>✓ Données simples</span>
+        <span>✓ Résultats immédiatement lisibles</span>
+        <span>✓ Analyse suisse indicative</span>
+      </div>
+    </div>
+    <div class="home-hero-photo" role="img" aria-label="Couple et famille dans un environnement lumineux et rassurant"></div>
+  </div>
+</section>
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
 <div class="card"><div class="choicegrid" id="choices">
 <button class="choice active" data-concern="family"><span style="font-size:27px">❤️</span><b>Protéger ma famille</b><small class="muted">Décès, invalidité, revenus du ménage</small></button>
@@ -170,25 +202,28 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 </div></div>
 <div class="card" style="margin-top:15px">
 <h2>Votre situation</h2>
+<p class="form-order-note">Commencez par la première personne, puis indiquez la situation familiale. Les renseignements concernant la deuxième personne apparaîtront automatiquement si nécessaire.</p>
 <p class="muted tiny" style="margin-top:-2px;margin-bottom:16px"><span style="font-weight:900">*</span> Champ facultatif. Tous les autres champs sont obligatoires.</p>
 <div class="formgrid">
-<div><label>Prénom de la personne 1</label><input id="fFirstName1" required value="" placeholder="Exemple : Jean"></div><div id="firstName2Wrap"><label>Prénom de la personne 2</label><input id="fFirstName2" required value="" placeholder="Exemple : Sophie"></div><div><label>Situation familiale</label><select id="fStatus"><option>Mariés</option><option>Concubins</option><option>Célibataire</option></select></div>
-<div id="marriageYearsWrap"><label>Durée du mariage (années)</label><input id="fMarriageYears" required type="number" min="0" value="" placeholder="Exemple : 10"></div>
+<div><label>Prénom de la personne 1</label><input id="fFirstName1" required value="" placeholder="Exemple : Jean" autocomplete="given-name"></div>
+<div><label>Situation familiale</label><select id="fStatus"><option value="">Sélectionner</option><option>Mariés</option><option>Concubins</option><option>Célibataire</option></select></div>
+<div id="firstName2Wrap" class="hidden"><label>Prénom de la personne 2</label><input id="fFirstName2" required value="" placeholder="Exemple : Sophie" autocomplete="given-name"></div>
+<div id="marriageYearsWrap" class="hidden"><label>Date du mariage</label><input id="fMarriageDate" required type="date" value=""><div class="tiny muted" id="marriageDurationHint" style="margin-top:5px">La durée du mariage sera calculée automatiquement.</div></div>
 <div><label id="labelAge1">Âge de la personne 1</label><input id="fAge1" required type="number" value="" placeholder="Exemple : 40"></div><div id="age2Wrap"><label id="labelAge2">Âge de la personne 2</label><input id="fAge2" required type="number" value="" placeholder="Exemple : 38"></div>
-<div><label id="labelIncome1">Revenu brut annuel de la personne 1 (CHF)</label><input id="fIncome1" required type="number" value="" placeholder="Exemple : 120000"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de la personne 2 (CHF)</label><input id="fIncome2" required type="number" value="" placeholder="Exemple : 90000"></div>
+<div><label id="labelIncome1">Revenu brut annuel de la personne 1 (CHF)</label><input id="fIncome1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 120’000.-" autocomplete="off"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de la personne 2 (CHF)</label><input id="fIncome2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 90’000.-" autocomplete="off"></div>
 <div><label id="labelJob1">Statut professionnel de la personne 1</label><select id="fJob1"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div><div id="job2Wrap"><label id="labelJob2">Statut professionnel de la personne 2</label><select id="fJob2"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div>
 <div><label>Nombre total d'enfants</label><input id="fChildren" required type="number" min="0" value="" placeholder="Exemple : 2"></div>
 <div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" required type="number" min="0" max="28" value="" placeholder="Exemple : 4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
 <div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
 <div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" required type="number" min="0" max="25" value="" placeholder="Exemple : 8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
-<div><label>Épargne disponible (CHF)</label><input id="fSavings" required type="number" value="" placeholder="Exemple : 50000"></div><div><label id="labelP3P1">Capital décès / 3e pilier – personne 1 (CHF) *</label><input id="fP3P1" type="number" value="" placeholder="Exemple : 55000"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – personne 2 (CHF) *</label><input id="fP3P2" type="number" value="" placeholder="Exemple : 30000"></div>
+<div><label>Épargne disponible (CHF)</label><input id="fSavings" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 100’000.-" autocomplete="off"></div><div><label id="labelP3P1">Capital décès / 3e pilier – personne 1 (CHF) *</label><input id="fP3P1" type="text" inputmode="numeric" class="money-input" value="" placeholder="Exemple : 55’000.-" autocomplete="off"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – personne 2 (CHF) *</label><input id="fP3P2" type="text" inputmode="numeric" class="money-input" value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
 <div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="ZH">Zurich</option><option value="BE">Berne</option><option value="LU">Lucerne</option><option value="UR">Uri</option><option value="SZ">Schwytz</option><option value="OW">Obwald</option><option value="NW">Nidwald</option><option value="GL">Glaris</option><option value="ZG">Zoug</option><option value="FR">Fribourg</option><option value="SO">Soleure</option><option value="BS">Bâle-Ville</option><option value="BL">Bâle-Campagne</option><option value="SH">Schaffhouse</option><option value="AR">Appenzell Rhodes-Extérieures</option><option value="AI">Appenzell Rhodes-Intérieures</option><option value="SG">Saint-Gall</option><option value="GR">Grisons</option><option value="AG">Argovie</option><option value="TG">Thurgovie</option><option value="TI">Tessin</option><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="NE">Neuchâtel</option><option value="GE">Genève</option><option value="JU">Jura</option></select></div>
-<div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" required type="number" value="" placeholder="Exemple : 950000"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" required type="number" value="" placeholder="Exemple : 650000"></div>
+<div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 1’000’000.-" autocomplete="off"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 800’000.-" autocomplete="off"></div>
 <div class="ownerField"><label>Avez-vous retiré du 2e pilier pour financer ce logement ?</label><select id="fEpl"><option value="no">Non</option><option value="yes">Oui</option></select></div>
-<div class="ownerField eplField hidden"><label id="labelEpl1">Montant retiré du 2e pilier – personne 1 (CHF)</label><input id="fEpl1" required type="number" min="0" value="" placeholder="Exemple : 80000"></div>
-<div class="ownerField eplField hidden" id="epl2Wrap"><label id="labelEpl2">Montant retiré du 2e pilier – personne 2 (CHF)</label><input id="fEpl2" required type="number" min="0" value="" placeholder="Exemple : 50000"></div>
-<div><label id="labelContribution1">Versement annuel actuel au 3e pilier – personne 1 (CHF)</label><input id="fContribution1" required type="number" min="0" value="" placeholder="Exemple : 7258"></div>
-<div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – personne 2 (CHF)</label><input id="fContribution2" required type="number" min="0" value="" placeholder="Exemple : 7258"></div>
+<div class="ownerField eplField hidden"><label id="labelEpl1">Montant retiré du 2e pilier – personne 1 (CHF)</label><input id="fEpl1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 80’000.-" autocomplete="off"></div>
+<div class="ownerField eplField hidden" id="epl2Wrap"><label id="labelEpl2">Montant retiré du 2e pilier – personne 2 (CHF)</label><input id="fEpl2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
+<div><label id="labelContribution1">Versement annuel actuel au 3e pilier – personne 1 (CHF)</label><input id="fContribution1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 3’000.-" autocomplete="off"></div>
+<div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – personne 2 (CHF)</label><input id="fContribution2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
 </div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. Les résultats devront ensuite être confirmés avec les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
 
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
@@ -366,6 +401,47 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const fmt=n=>Math.round(Number(n)||0).toLocaleString('fr-CH').replace(/\u202f/g,"'")+' CHF';
 const fmtMonth=n=>Math.round((Number(n)||0)/12).toLocaleString('fr-CH').replace(/\u202f/g,"'")+' CHF/mois';
+const MONEY_INPUT_IDS=['fIncome1','fIncome2','fSavings','fP3P1','fP3P2','fHome','fMortgage','fEpl1','fEpl2','fContribution1','fContribution2'];
+function parseSwissValue(value){
+ const digits=String(value??'').replace(/[^0-9]/g,'');
+ return digits?Number(digits):0;
+}
+function parseSwissInput(target){
+ const el=typeof target==='string'?document.querySelector(target):target;
+ return el?parseSwissValue(el.value):0;
+}
+function formatSwissAmountInput(el){
+ const value=parseSwissValue(el.value);
+ el.value=value?value.toLocaleString('fr-CH').replace(/\u202f/g,"'")+'.-':'';
+}
+function bindSwissMoneyInputs(){
+ MONEY_INPUT_IDS.forEach(id=>{
+   const el=document.getElementById(id);
+   if(!el)return;
+   el.addEventListener('focus',()=>{const value=parseSwissValue(el.value);el.value=value?String(value):'';});
+   el.addEventListener('blur',()=>formatSwissAmountInput(el));
+   el.addEventListener('input',()=>{el.value=el.value.replace(/[^0-9’' .-]/g,'');});
+ });
+}
+function completedYearsSince(dateValue){
+ if(!dateValue)return 0;
+ const start=new Date(dateValue+'T00:00:00');
+ if(Number.isNaN(start.getTime()))return 0;
+ const now=new Date();
+ let years=now.getFullYear()-start.getFullYear();
+ const anniversaryPassed=(now.getMonth()>start.getMonth())||(now.getMonth()===start.getMonth()&&now.getDate()>=start.getDate());
+ if(!anniversaryPassed)years--;
+ return Math.max(0,years);
+}
+function updateMarriageDurationHint(){
+ const hint=document.getElementById('marriageDurationHint');
+ const input=document.getElementById('fMarriageDate');
+ if(!hint||!input)return;
+ if(!input.value){hint.textContent='La durée du mariage sera calculée automatiquement.';return;}
+ const years=completedYearsSince(input.value);
+ hint.textContent=`Durée calculée à ce jour : ${years} an${years>1?'s':''}.`;
+}
+
 const TAX={
 ZH:[[50000,20],[60000,21.67],[70000,23.33],[80000,25],[90000,27.5],[100000,30],[120000,32.4],[140000,34.8],[150000,36],[180000,38.4],[200000,40],[250000,42],[300000,44],[500000,47]],
 BE:[[50000,22],[60000,24],[70000,26],[80000,28],[90000,31.5],[100000,35],[120000,37.8],[140000,40.6],[150000,42],[180000,43.8],[200000,45],[250000,46.5],[300000,48],[500000,50]],
@@ -463,10 +539,11 @@ function updateFamily(){
   const status=$('#fStatus').value;
   const single=status==='Célibataire';
   const married=status==='Mariés';
+  const hasPartner=married||status==='Concubins';
   const showDeath=shouldShowDeathScenario();
 
   ['#firstName2Wrap','#age2Wrap','#income2Wrap','#job2Wrap','#p3p2Wrap','#contribution2Wrap']
-    .forEach(s=>$(s).classList.toggle('hidden',single));
+    .forEach(s=>$(s).classList.toggle('hidden',!hasPartner));
 
   $('#marriageYearsWrap').classList.toggle('hidden',!married);
   updateEpl();
@@ -517,7 +594,8 @@ function updateFamily(){
 
   if(data&&typeof renderProtection==='function')renderProtection();
 }
-$('#fStatus').onchange=updateFamily;
+$('#fStatus').onchange=()=>{updateFamily();updateMarriageDurationHint();};
+$('#fMarriageDate').onchange=updateMarriageDurationHint;
 $('#fFirstName1').oninput=()=>{
   refreshPersonNames();
   if(data&&data.firstName1&&typeof render==='function'){
@@ -878,29 +956,35 @@ function mortgage(c,b){
 }
 function status(r){if(r<=33)return{cls:'green',label:'Supportable'};if(r<=40)return{cls:'orange',label:'Point d’attention'};return{cls:'red',label:'Risque important'}}
 function gather(){
- const single=$('#fStatus').value==='Célibataire';
- const contribution1=+$('#fContribution1').value||0;
- const contribution2=single?0:(+$('#fContribution2').value||0);
+ const status=$('#fStatus').value;
+ const single=status==='Célibataire';
+ const hasPartner=status==='Mariés'||status==='Concubins';
+ const contribution1=parseSwissInput('#fContribution1');
+ const contribution2=hasPartner?parseSwissInput('#fContribution2'):0;
+ const income1=parseSwissInput('#fIncome1');
+ const income2=hasPartner?parseSwissInput('#fIncome2'):0;
+ const children=+$('#fChildren').value||0;
  return{
-  firstName1:personName1(),firstName2:single?'':personName2(),
-  name:single?personName1():`${personName1()} & ${personName2()}`,
-  status:$('#fStatus').value,
-  marriageYears:$('#fStatus').value==='Mariés'?(+$('#fMarriageYears').value||0):0,
-  age1:+$('#fAge1').value||0,age2:single?0:(+$('#fAge2').value||0),
-  income1:+$('#fIncome1').value||0,income2:single?0:(+$('#fIncome2').value||0),
-  job1:$('#fJob1').value,job2:single?'Sans activité':$('#fJob2').value,
-  children:+$('#fChildren').value||0,
-  childGap:(+$('#fChildren').value||0)>1?(+$('#fChildGap').value||0):0,
+  firstName1:personName1(),firstName2:hasPartner?personName2():'',
+  name:hasPartner?`${personName1()} & ${personName2()}`:personName1(),
+  status,
+  marriageDate:status==='Mariés'?$('#fMarriageDate').value:'',
+  marriageYears:status==='Mariés'?completedYearsSince($('#fMarriageDate').value):0,
+  age1:+$('#fAge1').value||0,age2:hasPartner?(+$('#fAge2').value||0):0,
+  income1,income2,
+  job1:$('#fJob1').value,job2:hasPartner?$('#fJob2').value:'Sans activité',
+  children,
+  childGap:children>1?(+$('#fChildGap').value||0):0,
   childrenDependent:$('#fChildrenDependent').value==='yes',
-  dependentChildren:$('#fChildrenDependent').value==='yes'?(+$('#fChildren').value||0):0,
+  dependentChildren:$('#fChildrenDependent').value==='yes'?children:0,
   youngestAge:$('#fChildrenDependent').value==='yes'?(+$('#fYoungestAge').value||0):0,
-  savings:+$('#fSavings').value||0,p3p1:+$('#fP3P1').value||0,p3p2:single?0:(+$('#fP3P2').value||0),
-  owner:$('#fOwner').value==='yes',home:+$('#fHome').value||0,mortgage:+$('#fMortgage').value||0,
+  savings:parseSwissInput('#fSavings'),p3p1:parseSwissInput('#fP3P1'),p3p2:hasPartner?parseSwissInput('#fP3P2'):0,
+  owner:$('#fOwner').value==='yes',home:parseSwissInput('#fHome'),mortgage:parseSwissInput('#fMortgage'),
   eplUsed:$('#fOwner').value==='yes'&&$('#fEpl').value==='yes',
-  epl1:($('#fOwner').value==='yes'&&$('#fEpl').value==='yes')?(+$('#fEpl1').value||0):0,
-  epl2:(!single&&$('#fOwner').value==='yes'&&$('#fEpl').value==='yes')?(+$('#fEpl2').value||0):0,
+  epl1:($('#fOwner').value==='yes'&&$('#fEpl').value==='yes')?parseSwissInput('#fEpl1'):0,
+  epl2:(hasPartner&&$('#fOwner').value==='yes'&&$('#fEpl').value==='yes')?parseSwissInput('#fEpl2'):0,
   canton:$('#fCanton').value,contribution1,contribution2,contribution:contribution1+contribution2,
-  concern,totalIncome:(+$('#fIncome1').value||0)+(single?0:(+$('#fIncome2').value||0))
+  concern,totalIncome:income1+income2
  };
 }
 function pillar3aMax(job,income){
@@ -1136,7 +1220,7 @@ function render(){
  if(m&&m.ratios.retirement>33)rec.push('Préparer une épargne destinée à réduire l’endettement à la retraite');
  if(c.epl1+c.epl2>0){const gain=b.p1.repaymentPension+b.p2.repaymentPension;rec.unshift(`Rembourser le retrait EPL pourrait augmenter la rente estimée d’environ ${fmt(gain/12)} par mois et permettre de demander la restitution de l’impôt payé`);}
  if(retPct<70)rec.push('Renforcer progressivement l’épargne retraite');$('#priorities').innerHTML=rec.slice(0,4).map((x,i)=>`<div class="action"><div class="num">${i+1}</div><div><b>${x}</b></div></div>`).join('');
- renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();localStorage.setItem('previa-v914',JSON.stringify(c))}
+ renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();localStorage.setItem('previa-v9147',JSON.stringify(c))}
 function groupHtml(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmt(total)}</strong></div></div>`}
 function valueOrAnalysis(value,known=true){return known?fmt(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
 function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
@@ -1820,8 +1904,10 @@ $('#calculate').onclick=()=>{
   render();
   show('protection');
 };
+bindSwissMoneyInputs();
 refreshPersonNames();
 updateFamily();
+updateMarriageDurationHint();
 updateChildren();
 updateOwner();
 updateEpl();
