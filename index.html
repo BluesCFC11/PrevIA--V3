@@ -238,7 +238,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 </section>
 
 
-<section id="immobilier" class="screen"><div class="top"><div><div class="eyebrow">Votre logement</div><h1>Pourriez-vous conserver votre logement dans chaque scénario ?</h1></div></div><div id="noHome" class="callout hidden">Vous avez indiqué ne pas être propriétaire. L'analyse immobilière n'est donc pas applicable.</div><div id="homeContent"><div class="grid3"><div class="card"><div class="eyebrow">Valeur du logement</div><div class="metric" id="homeVal"></div></div><div class="card"><div class="eyebrow">Dette actuelle</div><div class="metric" id="mortVal"></div></div><div class="card"><div class="eyebrow">Dette estimée à 65 ans</div><div class="metric" id="mortRet"></div></div></div><div class="card" style="margin-top:15px"><h3>Calcul des charges théoriques actuelles</h3><div class="row"><span>Intérêts théoriques à 5 %</span><b id="interestCost"></b></div><div class="row"><span>Entretien à 1 % de la valeur</span><b id="maintenanceCost"></b></div><div class="row"><span>Deuxième rang à amortir</span><b id="secondRank"></b></div><div class="row"><span>Durée restante</span><b id="amortYears"></b></div><div class="row"><span>Amortissement annuel</span><b id="amortCost"></b></div></div><div class="card" style="margin-top:15px;overflow:auto"><table class="scenario-table"><thead><tr><th>Scénario</th><th>Revenu</th><th>Charges</th><th>Ratio</th><th>Lecture</th></tr></thead><tbody id="scenarioRows"></tbody></table></div><div class="callout warn" style="margin-top:15px" id="homeAnswer"></div></div></section>
+<section id="immobilier" class="screen"><div class="top"><div><div class="eyebrow">Votre logement</div><h1>Pourriez-vous conserver votre logement dans chaque scénario ?</h1></div></div><div id="noHome" class="callout hidden">Vous avez indiqué ne pas être propriétaire. L'analyse immobilière n'est donc pas applicable.</div><div id="homeContent"><div class="grid4"><div class="card"><div class="eyebrow">Valeur du logement</div><div class="metric" id="homeVal"></div></div><div class="card"><div class="eyebrow">Dette actuelle</div><div class="metric" id="mortVal"></div></div><div class="card"><div class="eyebrow">Dette estimée à 65 ans</div><div class="metric" id="mortRet"></div></div><div class="card"><div class="eyebrow">Financement max. actuel</div><div class="metric" id="maxDebtCurrent"></div><div class="tiny muted">Revenu brut × 4,5</div></div></div><div class="card" style="margin-top:15px"><h3>Calcul des charges théoriques actuelles</h3><div class="row"><span>Intérêts théoriques à 5 %</span><b id="interestCost"></b></div><div class="row"><span>Entretien à 1 % de la valeur</span><b id="maintenanceCost"></b></div><div class="row"><span>Deuxième rang à amortir</span><b id="secondRank"></b></div><div class="row"><span>Durée restante</span><b id="amortYears"></b></div><div class="row"><span>Amortissement annuel</span><b id="amortCost"></b></div></div><div class="card" style="margin-top:15px;overflow:auto"><table class="scenario-table"><thead><tr><th>Scénario</th><th>Revenu brut</th><th>Financement max.</th><th>Capital à réduire</th><th>Charges</th><th>Ratio</th><th>Lecture</th></tr></thead><tbody id="scenarioRows"></tbody></table><p class="muted tiny" style="margin-top:12px">Le financement maximal est estimé simplement à 4,5 fois le revenu brut annuel disponible dans chaque scénario. Le capital à réduire correspond à la différence positive entre l’hypothèque actuelle et ce financement maximal.</p></div><div class="callout warn" style="margin-top:15px" id="homeAnswer"></div></div></section>
 
 <section id="fiscalite" class="screen">
 <div class="top"><div><div class="eyebrow">Vos impôts</div><h1>Quel avantage fiscal votre 3e pilier vous procure-t-il ?</h1>
@@ -499,7 +499,57 @@ function benefits(c){
  const i1=invalidity(p1,p2),i2=invalidity(p2,p1),d1=death(p1,p2,true),d2=death(p2,p1,false);
  return{p1,p2,retAvs,inv1:i1.annual,inv2:i2.annual,i1,i2,d1,d2};
 }
-function mortgage(c,b){if(!c.owner)return null;const first=c.home*.65,second=Math.max(0,c.mortgage-first),years=Math.max(1,Math.min(15,65-Math.max(c.age1,c.age2))),amort=second/years,currentCharges=c.mortgage*.05+c.home*.01+amort,retDebt=Math.min(c.mortgage,first),retCharges=retDebt*.05+c.home*.01;const ratio=(charges,inc)=>inc>0?charges/inc*100:0;const invIncome=Math.min(b.inv1,b.inv2),deathIncome=Math.min(b.d1.annual,b.d2.annual),retIncome=b.p1.ret+b.p2.ret;return{first,second,years,amort,currentCharges,retDebt,retCharges,ratios:{current:ratio(currentCharges,c.totalIncome),retirement:ratio(retCharges,retIncome),invalidity:ratio(currentCharges,invIncome),death:ratio(currentCharges,deathIncome)},incomes:{current:c.totalIncome,retirement:retIncome,invalidity:invIncome,death:deathIncome}}}
+function mortgage(c,b){
+ if(!c.owner)return null;
+
+ const first=c.home*.65;
+ const second=Math.max(0,c.mortgage-first);
+ const years=Math.max(1,Math.min(15,65-Math.max(c.age1,c.age2)));
+ const amort=second/years;
+ const currentCharges=c.mortgage*.05+c.home*.01+amort;
+ const retDebt=Math.min(c.mortgage,first);
+ const retCharges=retDebt*.05+c.home*.01;
+ const ratio=(charges,inc)=>inc>0?charges/inc*100:0;
+
+ const invIncome=Math.min(b.inv1,b.inv2);
+ const deathIncome=Math.min(b.d1.annual,b.d2.annual);
+ const retIncome=b.p1.ret+b.p2.ret;
+
+ const maxDebtFromIncome=income=>Math.max(0,income*4.5);
+ const requiredReduction=maxDebt=>Math.max(0,c.mortgage-maxDebt);
+
+ const maxDebt={
+   current:maxDebtFromIncome(c.totalIncome),
+   retirement:maxDebtFromIncome(retIncome),
+   invalidity:maxDebtFromIncome(invIncome),
+   death:maxDebtFromIncome(deathIncome)
+ };
+
+ const reductions={
+   current:requiredReduction(maxDebt.current),
+   retirement:requiredReduction(maxDebt.retirement),
+   invalidity:requiredReduction(maxDebt.invalidity),
+   death:requiredReduction(maxDebt.death)
+ };
+
+ return{
+   first,second,years,amort,currentCharges,retDebt,retCharges,
+   ratios:{
+     current:ratio(currentCharges,c.totalIncome),
+     retirement:ratio(retCharges,retIncome),
+     invalidity:ratio(currentCharges,invIncome),
+     death:ratio(currentCharges,deathIncome)
+   },
+   incomes:{
+     current:c.totalIncome,
+     retirement:retIncome,
+     invalidity:invIncome,
+     death:deathIncome
+   },
+   maxDebt,
+   reductions
+ };
+}
 function status(r){if(r<=33)return{cls:'green',label:'Supportable'};if(r<=40)return{cls:'orange',label:'Point d’attention'};return{cls:'red',label:'Risque important'}}
 function gather(){
  const single=$('#fStatus').value==='Célibataire';
@@ -837,7 +887,69 @@ function renderEvolution(){
 $$('[data-evo]').forEach(b=>b.onclick=()=>{$$('[data-evo]').forEach(x=>x.classList.remove('active'));b.classList.add('active');evoMode=b.dataset.evo;renderEvolution()});
 
 
-function renderHome(){const c=data,b=benefits(c),m=mortgage(c,b);$('#noHome').classList.toggle('hidden',!!m);$('#homeContent').classList.toggle('hidden',!m);if(!m)return;$('#homeVal').textContent=fmt(c.home);$('#mortVal').textContent=fmt(c.mortgage);$('#mortRet').textContent=fmt(m.retDebt);$('#interestCost').textContent=fmt(c.mortgage*.05);$('#maintenanceCost').textContent=fmt(c.home*.01);$('#secondRank').textContent=fmt(m.second);$('#amortYears').textContent=m.second?`${m.years} an${m.years>1?'s':''}`:'Aucun';$('#amortCost').textContent=fmt(m.amort);const rows=[['Aujourd’hui',m.incomes.current,m.currentCharges,m.ratios.current],['À la retraite',m.incomes.retirement,m.retCharges,m.ratios.retirement],['En invalidité',m.incomes.invalidity,m.currentCharges,m.ratios.invalidity],['Après un décès',m.incomes.death,m.currentCharges,m.ratios.death]];$('#scenarioRows').innerHTML=rows.map(r=>{const s=status(r[3]);return`<tr><td><b>${r[0]}</b></td><td>${fmt(r[1])}</td><td>${fmt(r[2])}</td><td><b>${r[3].toFixed(2)} %</b></td><td><span class="tag ${s.cls}">${s.label}</span></td></tr>`}).join('');$('#homeAnswer').textContent=m.ratios.retirement>33?`Votre logement paraît supportable aujourd’hui, mais les charges théoriques représenteraient ${m.ratios.retirement.toFixed(2)} % des revenus estimés à la retraite. Le seuil de 33 % serait dépassé.`:'Dans cette simulation, la tenue des charges reste sous 33 % à la retraite.'}
+function renderHome(){
+ const c=data,b=benefits(c),m=mortgage(c,b);
+
+ $('#noHome').classList.toggle('hidden',!!m);
+ $('#homeContent').classList.toggle('hidden',!m);
+ if(!m)return;
+
+ $('#homeVal').textContent=fmt(c.home);
+ $('#mortVal').textContent=fmt(c.mortgage);
+ $('#mortRet').textContent=fmt(m.retDebt);
+ $('#maxDebtCurrent').textContent=fmt(m.maxDebt.current);
+
+ $('#interestCost').textContent=fmt(c.mortgage*.05);
+ $('#maintenanceCost').textContent=fmt(c.home*.01);
+ $('#secondRank').textContent=fmt(m.second);
+ $('#amortYears').textContent=m.second?`${m.years} an${m.years>1?'s':''}`:'Aucun';
+ $('#amortCost').textContent=fmt(m.amort);
+
+ const rows=[
+   ['Aujourd’hui',m.incomes.current,m.maxDebt.current,m.reductions.current,m.currentCharges,m.ratios.current],
+   ['À la retraite',m.incomes.retirement,m.maxDebt.retirement,m.reductions.retirement,m.retCharges,m.ratios.retirement],
+   ['En invalidité',m.incomes.invalidity,m.maxDebt.invalidity,m.reductions.invalidity,m.currentCharges,m.ratios.invalidity],
+   ['Après un décès',m.incomes.death,m.maxDebt.death,m.reductions.death,m.currentCharges,m.ratios.death]
+ ];
+
+ $('#scenarioRows').innerHTML=rows.map(r=>{
+   const s=status(r[5]);
+   const reductionText=r[3]>0
+     ?`<b style="color:var(--red)">${fmt(r[3])}</b>`
+     :'<span class="tag green">Aucune réduction</span>';
+
+   return`<tr>
+     <td><b>${r[0]}</b></td>
+     <td>${fmt(r[1])}</td>
+     <td><b>${fmt(r[2])}</b></td>
+     <td>${reductionText}</td>
+     <td>${fmt(r[4])}</td>
+     <td><b>${r[5].toFixed(2)} %</b></td>
+     <td><span class="tag ${s.cls}">${s.label}</span></td>
+   </tr>`;
+ }).join('');
+
+ const retirementReduction=m.reductions.retirement;
+ const invalidityReduction=m.reductions.invalidity;
+ const deathReduction=m.reductions.death;
+ const worstReduction=Math.max(retirementReduction,invalidityReduction,deathReduction);
+
+ if(worstReduction>0){
+   const scenarios=[];
+   if(retirementReduction>0)scenarios.push(`retraite : ${fmt(retirementReduction)}`);
+   if(invalidityReduction>0)scenarios.push(`invalidité : ${fmt(invalidityReduction)}`);
+   if(deathReduction>0)scenarios.push(`décès : ${fmt(deathReduction)}`);
+
+   $('#homeAnswer').innerHTML=
+     `<b>Réduction potentielle de l’hypothèque</b><br><br>`+
+     `Selon la règle simplifiée du revenu brut multiplié par 4,5, une réduction de l’endettement serait nécessaire dans les scénarios suivants : ${scenarios.join(' · ')}.<br><br>`+
+     `Le besoin maximal de capital à investir dans la réduction de l’hypothèque serait d’environ <b>${fmt(worstReduction)}</b>.`;
+ }else{
+   $('#homeAnswer').innerHTML=
+     `<b>Financement théorique suffisant</b><br><br>`+
+     `Selon la règle simplifiée du revenu brut multiplié par 4,5, l’hypothèque actuelle reste inférieure au financement maximal estimé dans les scénarios retraite, invalidité et décès.`;
+ }
+}
 function renderTax(){
  const c=data,x=tmi(c.canton,c.totalIncome),p=taxPotential(c);
  const currentSaving=p.deductibleTotal*x.rate/100;
