@@ -281,6 +281,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
     <div class="row"><span>Revenu brut du ménage</span><b id="taxGrossIncome"></b></div>
     <div class="row"><span>Déductions estimées</span><b id="taxEstimatedDeductions"></b></div>
     <div class="row"><span>Revenu imposable estimé</span><b id="taxEstimatedIncome"></b></div>
+    <div id="taxSeparateDetails" class="hidden"></div>
     <div class="row"><span>Taux marginal d'imposition estimé</span><b id="tmiValue"></b></div>
     <div class="row"><span>Versement 3a actuellement déductible</span><b id="taxDeductibleCurrent"></b></div>
     <div class="row"><span>Économie fiscale actuelle</span><b id="taxCurrentSavingDetail"></b></div>
@@ -300,7 +301,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 <div class="callout" style="margin-top:15px" id="taxSentence"></div>
 <div class="card" style="margin-top:15px"><h3>Détail par personne</h3><div id="taxPersonDetails"></div></div>
-<p class="muted tiny">Estimation indicative fondée sur le revenu brut, la situation familiale, le nombre d’enfants, le statut professionnel et le canton. PrevIA estime le revenu imposable en déduisant CHF 25'000 pour le ménage, CHF 25'000 par enfant pour les deux premiers enfants, puis CHF 15'000 par enfant supplémentaire dès le troisième. Les TMI correspondent à une moyenne indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond 3a utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de l’état civil, des frais professionnels, des primes d’assurance, de la fortune, des autres déductions et de la législation fiscale applicable.</p>
+<p class="muted tiny">Estimation indicative fondée sur le revenu brut, la situation familiale, le nombre d’enfants, le statut professionnel et le canton. Pour une personne célibataire, PrevIA applique une déduction de base de CHF 15'000, à laquelle s’ajoutent les déductions pour enfants. Pour un couple marié, PrevIA applique CHF 25'000 de déduction de base au ménage, CHF 25'000 par enfant pour les deux premiers enfants, puis CHF 15'000 par enfant supplémentaire dès le troisième. Pour des concubins, les deux personnes sont imposées séparément : la déduction de base du couple et les déductions liées aux enfants communs sont réparties à parts égales entre elles. Les TMI correspondent à une moyenne indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond 3a utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de l’attribution fiscale des enfants, de l’état civil, des frais professionnels, des primes d’assurance, de la fortune, des autres déductions et de la législation fiscale applicable.</p>
 </section>
 
 <div class="lpp-disclaimer" id="lppDisclaimer">
@@ -709,25 +710,99 @@ function pillar3aMax(job,income){
 }
 
 function estimatedTaxableIncome(c){
- const grossIncome=Math.max(0,c.totalIncome||0);
  const children=Math.max(0,c.children||0);
-
- // Déduction simplifiée PrevIA :
- // - CHF 25'000 de déduction de base pour le ménage ;
- // - CHF 25'000 par enfant pour les deux premiers enfants ;
- // - CHF 15'000 par enfant à partir du troisième.
- const baseDeduction=25000;
  const firstTwoChildren=Math.min(children,2);
  const additionalChildren=Math.max(0,children-2);
- const childrenDeduction=firstTwoChildren*25000+additionalChildren*15000;
+ const fullChildrenDeduction=firstTwoChildren*25000+additionalChildren*15000;
+
+ // Personne seule :
+ // - CHF 15'000 de déduction de base ;
+ // - déductions enfants complètes si elle a des enfants.
+ if(c.status==='Célibataire'){
+   const grossIncome=Math.max(0,c.income1||0);
+   const baseDeduction=15000;
+   const childrenDeduction=fullChildrenDeduction;
+   const totalDeduction=baseDeduction+childrenDeduction;
+
+   return{
+     mode:'single',
+     grossIncome,
+     baseDeduction,
+     childrenDeduction,
+     totalDeduction,
+     taxableIncome:Math.max(0,grossIncome-totalDeduction),
+     person1:{
+       grossIncome,
+       baseDeduction,
+       childrenDeduction,
+       totalDeduction,
+       taxableIncome:Math.max(0,grossIncome-totalDeduction)
+     },
+     person2:null
+   };
+ }
+
+ // Concubins :
+ // - taxation séparée ;
+ // - la déduction de base du couple (CHF 25'000) est divisée par deux ;
+ // - les déductions pour enfants communs sont divisées par deux.
+ if(c.status==='Concubins'){
+   const baseDeductionEach=12500;
+   const childrenDeductionEach=fullChildrenDeduction/2;
+
+   const person1Gross=Math.max(0,c.income1||0);
+   const person2Gross=Math.max(0,c.income2||0);
+
+   const person1TotalDeduction=baseDeductionEach+childrenDeductionEach;
+   const person2TotalDeduction=baseDeductionEach+childrenDeductionEach;
+
+   const person1={
+     grossIncome:person1Gross,
+     baseDeduction:baseDeductionEach,
+     childrenDeduction:childrenDeductionEach,
+     totalDeduction:person1TotalDeduction,
+     taxableIncome:Math.max(0,person1Gross-person1TotalDeduction)
+   };
+
+   const person2={
+     grossIncome:person2Gross,
+     baseDeduction:baseDeductionEach,
+     childrenDeduction:childrenDeductionEach,
+     totalDeduction:person2TotalDeduction,
+     taxableIncome:Math.max(0,person2Gross-person2TotalDeduction)
+   };
+
+   return{
+     mode:'separate',
+     grossIncome:person1Gross+person2Gross,
+     baseDeduction:baseDeductionEach*2,
+     childrenDeduction:childrenDeductionEach*2,
+     totalDeduction:person1TotalDeduction+person2TotalDeduction,
+     taxableIncome:person1.taxableIncome+person2.taxableIncome,
+     person1,
+     person2
+   };
+ }
+
+ // Couple marié :
+ // - taxation commune simplifiée ;
+ // - CHF 25'000 de déduction de base pour le ménage ;
+ // - CHF 25'000 par enfant pour les deux premiers ;
+ // - CHF 15'000 par enfant supplémentaire dès le troisième.
+ const grossIncome=Math.max(0,c.totalIncome||0);
+ const baseDeduction=25000;
+ const childrenDeduction=fullChildrenDeduction;
  const totalDeduction=baseDeduction+childrenDeduction;
 
  return{
+   mode:'joint',
    grossIncome,
    baseDeduction,
    childrenDeduction,
    totalDeduction,
-   taxableIncome:Math.max(0,grossIncome-totalDeduction)
+   taxableIncome:Math.max(0,grossIncome-totalDeduction),
+   person1:null,
+   person2:null
  };
 }
 function taxPotential(c){
@@ -742,12 +817,60 @@ function taxPotential(c){
   additionalTotal:Math.max(0,max1-deductible1)+Math.max(0,max2-deductible2)
  };
 }
+
+function taxCalculation(c){
+ const taxable=estimatedTaxableIncome(c);
+ const potential=taxPotential(c);
+
+ if(taxable.mode==='separate'){
+   const tmi1=tmi(c.canton,taxable.person1.taxableIncome);
+   const tmi2=tmi(c.canton,taxable.person2.taxableIncome);
+
+   const currentSaving1=potential.deductible1*tmi1.rate/100;
+   const currentSaving2=potential.deductible2*tmi2.rate/100;
+   const additionalSaving1=potential.additional1*tmi1.rate/100;
+   const additionalSaving2=potential.additional2*tmi2.rate/100;
+
+   return{
+     taxable,
+     potential,
+     separate:true,
+     tmi1,
+     tmi2,
+     averageRate:taxable.grossIncome>0
+       ?(taxable.person1.grossIncome*tmi1.rate+taxable.person2.grossIncome*tmi2.rate)/taxable.grossIncome
+       :0,
+     currentSaving1,
+     currentSaving2,
+     currentSaving:currentSaving1+currentSaving2,
+     additionalSaving1,
+     additionalSaving2,
+     additionalSaving:additionalSaving1+additionalSaving2,
+     maxSaving:currentSaving1+currentSaving2+additionalSaving1+additionalSaving2
+   };
+ }
+
+ const householdTmi=tmi(c.canton,taxable.taxableIncome);
+ const currentSaving=potential.deductibleTotal*householdTmi.rate/100;
+ const additionalSaving=potential.additionalTotal*householdTmi.rate/100;
+
+ return{
+   taxable,
+   potential,
+   separate:false,
+   householdTmi,
+   averageRate:householdTmi.rate,
+   currentSaving,
+   additionalSaving,
+   maxSaving:currentSaving+additionalSaving
+ };
+}
 function render(){
  const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern];
- const taxIncome=estimatedTaxableIncome(c);
- const tax=tmi(c.canton,taxIncome.taxableIncome);
- const p3tax=taxPotential(c);
- const saving=p3tax.deductibleTotal*tax.rate/100;
+ const taxCalc=taxCalculation(c);
+ const taxIncome=taxCalc.taxable;
+ const p3tax=taxCalc.potential;
+ const saving=taxCalc.currentSaving;
  const retIncome=b.p1.ret+b.p2.ret;
  const retPct=c.totalIncome?retIncome/c.totalIncome*100:0;
 
@@ -794,7 +917,7 @@ function render(){
    ?'Capital à amortir pour maintenir le financement viable à la retraite'
    :'Vous avez indiqué ne pas être propriétaire';
 
- const additionalTaxSaving=p3tax.additionalTotal*tax.rate/100;
+ const additionalTaxSaving=taxCalc.additionalSaving;
  $('#taxMetric').textContent=fmt(additionalTaxSaving);
  $('#taxMetricNote').textContent=p3tax.additionalTotal>0
    ?'Économie d’impôt annuelle supplémentaire estimée en utilisant pleinement votre potentiel de 3e pilier'
@@ -1186,10 +1309,14 @@ function renderHome(){
  }
 }
 function renderTax(){
- const c=data,taxIncome=estimatedTaxableIncome(c),x=tmi(c.canton,taxIncome.taxableIncome),p=taxPotential(c);
- const currentSaving=p.deductibleTotal*x.rate/100;
- const maxSaving=p.totalMax*x.rate/100;
- const additionalSaving=p.additionalTotal*x.rate/100;
+ const c=data;
+ const calc=taxCalculation(c);
+ const taxIncome=calc.taxable;
+ const p=calc.potential;
+
+ const currentSaving=calc.currentSaving;
+ const maxSaving=calc.maxSaving;
+ const additionalSaving=calc.additionalSaving;
  const currentNet=p.deductibleTotal-currentSaving;
  const additionalNet=p.additionalTotal-additionalSaving;
  const utilization=p.totalMax>0?Math.min(100,p.deductibleTotal/p.totalMax*100):0;
@@ -1205,8 +1332,27 @@ function renderTax(){
  $('#taxGrossIncome').textContent=fmt(taxIncome.grossIncome);
  $('#taxEstimatedDeductions').textContent=fmt(taxIncome.totalDeduction);
  $('#taxEstimatedIncome').textContent=fmt(taxIncome.taxableIncome);
- $('#tmiValue').textContent=x.rate.toFixed(1)+' %';
- $('#tmiRange').textContent=`Grille indicative du canton ${c.canton} appliquée à un revenu imposable estimé de ${fmt(taxIncome.taxableIncome)} · ${x.source}`;
+
+ const separateDetails=$('#taxSeparateDetails');
+ if(calc.separate){
+   separateDetails.classList.remove('hidden');
+   separateDetails.innerHTML=`
+     <div style="margin-top:10px;padding:12px;background:#f6f7fb;border-radius:12px">
+       <div class="eyebrow">Imposition séparée des concubins</div>
+       <div class="row"><span>Revenu imposable estimé de ${c.firstName1}</span><b>${fmt(taxIncome.person1.taxableIncome)}</b></div>
+       <div class="row"><span>TMI estimé de ${c.firstName1}</span><b>${calc.tmi1.rate.toFixed(1)} %</b></div>
+       <div class="row"><span>Revenu imposable estimé de ${c.firstName2}</span><b>${fmt(taxIncome.person2.taxableIncome)}</b></div>
+       <div class="row" style="border-bottom:0"><span>TMI estimé de ${c.firstName2}</span><b>${calc.tmi2.rate.toFixed(1)} %</b></div>
+     </div>`;
+   $('#tmiValue').textContent=calc.averageRate.toFixed(1)+' %';
+   $('#tmiRange').textContent=`TMI moyen pondéré du ménage. ${c.firstName1} et ${c.firstName2} sont calculés séparément dans le canton ${c.canton}.`;
+ }else{
+   separateDetails.classList.add('hidden');
+   separateDetails.innerHTML='';
+   $('#tmiValue').textContent=calc.householdTmi.rate.toFixed(1)+' %';
+   $('#tmiRange').textContent=`Grille indicative du canton ${c.canton} appliquée à un revenu imposable estimé de ${fmt(taxIncome.taxableIncome)} · ${calc.householdTmi.source}`;
+ }
+
  $('#taxDeductibleCurrent').textContent=fmt(p.deductibleTotal);
  $('#taxCurrentSavingDetail').textContent=fmt(currentSaving);
  $('#netEffort').textContent=fmt(currentNet);
@@ -1216,24 +1362,62 @@ function renderTax(){
  $('#taxAdditionalSaving').textContent=fmt(additionalSaving);
  $('#taxAdditionalNet').textContent=fmt(additionalNet);
  $('#taxProgressBar').style.width=utilization+'%';
- $('#taxProgressText').textContent=p.totalMax>0?`Vous utilisez actuellement ${utilization.toFixed(0)} % de votre potentiel 3a estimé.`:'Aucun plafond 3a n’est calculé pour une personne sans activité lucrative.';
+ $('#taxProgressText').textContent=p.totalMax>0
+   ?`Vous utilisez actuellement ${utilization.toFixed(0)} % de votre potentiel 3a estimé.`
+   :'Aucun plafond 3a n’est calculé pour une personne sans activité lucrative.';
 
- const costPer100=100*(1-x.rate/100);
+ const displayedRate=calc.averageRate;
+ const costPer100=100*(1-displayedRate/100);
+
  if(p.additionalTotal>0){
-  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>Sur la base d’un revenu brut de <b>${fmt(taxIncome.grossIncome)}</b> et de déductions familiales simplifiées de <b>${fmt(taxIncome.totalDeduction)}</b>, PrevIA retient un revenu imposable estimé de <b>${fmt(taxIncome.taxableIncome)}</b>.<br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI estimé de ${x.rate.toFixed(1)} %, chaque CHF 100 déductibles vous coûtent réellement environ <b>CHF ${costPer100.toFixed(0)}</b> après économie fiscale.`;
+  const taxBasisText=calc.separate
+    ?`En concubinage, PrevIA estime séparément le revenu imposable de ${c.firstName1} à <b>${fmt(taxIncome.person1.taxableIncome)}</b> et celui de ${c.firstName2} à <b>${fmt(taxIncome.person2.taxableIncome)}</b>. Les déductions liées au ménage et aux enfants communs sont réparties à parts égales.`
+    :`Sur la base d’un revenu brut de <b>${fmt(taxIncome.grossIncome)}</b> et de déductions familiales simplifiées de <b>${fmt(taxIncome.totalDeduction)}</b>, PrevIA retient un revenu imposable estimé de <b>${fmt(taxIncome.taxableIncome)}</b>.`;
+
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>${taxBasisText}<br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI moyen estimé de ${displayedRate.toFixed(1)} %, chaque CHF 100 déductibles vous coûtent réellement environ <b>CHF ${costPer100.toFixed(0)}</b> après économie fiscale.`;
  }else if(p.totalMax>0){
-  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal est pleinement utilisé dans cette estimation.</b><br><br>PrevIA retient un revenu imposable estimé de <b>${fmt(taxIncome.taxableIncome)}</b> après des déductions familiales simplifiées de <b>${fmt(taxIncome.totalDeduction)}</b>.<br><br>Votre versement déductible actuel de <b>${fmt(p.deductibleTotal)}</b> génère une économie fiscale estimée de <b>${fmt(currentSaving)}</b> par année.`;
+  const basis=calc.separate
+    ?`Les revenus imposables estimés sont de ${fmt(taxIncome.person1.taxableIncome)} pour ${c.firstName1} et de ${fmt(taxIncome.person2.taxableIncome)} pour ${c.firstName2}.`
+    :`PrevIA retient un revenu imposable estimé de ${fmt(taxIncome.taxableIncome)} après des déductions familiales simplifiées de ${fmt(taxIncome.totalDeduction)}.`;
+
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal est pleinement utilisé dans cette estimation.</b><br><br>${basis}<br><br>Votre versement déductible actuel de <b>${fmt(p.deductibleTotal)}</b> génère une économie fiscale estimée de <b>${fmt(currentSaving)}</b> par année.`;
  }else{
   $('#taxSentence').innerHTML=`<b>Aucun potentiel 3a n’est estimé dans cette simulation.</b><br><br>Le droit au pilier 3a dépend de l’exercice d’une activité lucrative soumise à l’AVS.`;
  }
 
- function personDetail(label,job,income,current,max,deductible,additional){
-  const rule=job==='Salarié'?"plafond salarié de CHF 7'258":job==='Indépendant'?`20 % du revenu, limité à CHF 36'288`:'aucun plafond estimé sans activité lucrative';
-  return`<div class="tax-kpi" style="margin-top:10px"><div class="eyebrow">${label}</div><div class="row"><span>Statut professionnel</span><b>${job}</b></div><div class="row"><span>Versement actuel</span><b>${fmt(current)}</b></div><div class="row"><span>Plafond estimé</span><b>${fmt(max)}</b></div><div class="row"><span>Montant actuellement déductible</span><b>${fmt(deductible)}</b></div><div class="row"><span>Potentiel restant</span><b>${fmt(additional)}</b></div><div class="tiny muted" style="margin-top:8px">Règle appliquée : ${rule}.</div></div>`;
+ function personDetail(label,job,income,current,max,deductible,additional,rate,taxableIncome){
+  const rule=job==='Salarié'
+    ?"plafond salarié de CHF 7'258"
+    :job==='Indépendant'
+      ?`20 % du revenu, limité à CHF 36'288`
+      :'aucun plafond estimé sans activité lucrative';
+
+  return`<div class="tax-kpi" style="margin-top:10px">
+    <div class="eyebrow">${label}</div>
+    <div class="row"><span>Statut professionnel</span><b>${job}</b></div>
+    <div class="row"><span>Revenu imposable estimé</span><b>${fmt(taxableIncome)}</b></div>
+    <div class="row"><span>TMI estimé</span><b>${rate.toFixed(1)} %</b></div>
+    <div class="row"><span>Versement actuel</span><b>${fmt(current)}</b></div>
+    <div class="row"><span>Plafond estimé</span><b>${fmt(max)}</b></div>
+    <div class="row"><span>Montant actuellement déductible</span><b>${fmt(deductible)}</b></div>
+    <div class="row"><span>Potentiel restant</span><b>${fmt(additional)}</b></div>
+    <div class="tiny muted" style="margin-top:8px">Règle appliquée : ${rule}.</div>
+  </div>`;
  }
- $('#taxPersonDetails').innerHTML=
-   personDetail(c.firstName1,c.job1,c.income1,p.current1,p.max1,p.deductible1,p.additional1)+
-   (c.status!=='Célibataire'?personDetail(c.firstName2,c.job2,c.income2,p.current2,p.max2,p.deductible2,p.additional2):'');
+
+ if(calc.separate){
+   $('#taxPersonDetails').innerHTML=
+     personDetail(c.firstName1,c.job1,c.income1,p.current1,p.max1,p.deductible1,p.additional1,calc.tmi1.rate,taxIncome.person1.taxableIncome)+
+     personDetail(c.firstName2,c.job2,c.income2,p.current2,p.max2,p.deductible2,p.additional2,calc.tmi2.rate,taxIncome.person2.taxableIncome);
+ }else{
+   const householdRate=calc.householdTmi.rate;
+   const taxable1=c.status==='Célibataire'?taxIncome.taxableIncome:taxIncome.taxableIncome;
+   $('#taxPersonDetails').innerHTML=
+     personDetail(c.firstName1,c.job1,c.income1,p.current1,p.max1,p.deductible1,p.additional1,householdRate,taxable1)+
+     (c.status!=='Célibataire'
+       ?personDetail(c.firstName2,c.job2,c.income2,p.current2,p.max2,p.deductible2,p.additional2,householdRate,taxIncome.taxableIncome)
+       :'');
+ }
 }
 $('#calculate').onclick=()=>{
   const visibleRequired=$$('#form [required]').filter(field=>{
