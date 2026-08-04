@@ -247,8 +247,8 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div class="grid4">
   <div class="card"><div class="eyebrow">Versement actuel</div><div class="metric" id="taxCurrentContribution"></div><p class="muted tiny">Montant annuel saisi pour le ménage</p></div>
   <div class="card"><div class="eyebrow">Économie fiscale actuelle</div><div class="metric" id="taxSaving"></div><p class="muted tiny">Estimation à ce jour</p></div>
-  <div class="card"><div class="eyebrow">Maximum 3a estimé</div><div class="metric" id="taxMaximum"></div><p class="muted tiny" id="taxMaximumNote"></p></div>
-  <div class="card"><div class="eyebrow">Économie fiscale maximale</div><div class="metric" id="taxMaxSaving"></div><p class="muted tiny">Si le plafond disponible est utilisé</p></div>
+  <div class="card"><div class="eyebrow">Potentiel d’épargne supplémentaire</div><div class="metric" id="taxMaximum"></div><p class="muted tiny" id="taxMaximumNote"></p></div>
+  <div class="card"><div class="eyebrow">Potentiel d’optimisation fiscale complémentaire</div><div class="metric" id="taxMaxSaving"></div><p class="muted tiny">Économie fiscale supplémentaire estimée</p></div>
 </div>
 
 <div class="grid2" style="margin-top:15px">
@@ -389,6 +389,10 @@ function updateFamily(){
   $$('[data-evo="death2"],[data-evo="invalidity2"],[data-evo="retirement2"],[data-evo="retirementCouple"]')
     .forEach(b=>b.classList.toggle('hidden',single));
 
+  // Dans « Votre évolution », masquer aussi le décès de la personne 1
+  // uniquement pour une personne célibataire sans enfant.
+  $('[data-evo="death1"]').classList.toggle('hidden',!showDeath);
+
   const bInv1=$('[data-risk="invalidity1"]');
   const bDeath1=$('[data-risk="death1"]');
 
@@ -398,6 +402,13 @@ function updateFamily(){
     risk='invalidity1';
     $$('[data-risk]').forEach(x=>x.classList.remove('active'));
     bInv1.classList.add('active');
+  }
+
+  if(!showDeath&&(evoMode==='death1'||evoMode==='death2')){
+    evoMode='invalidity1';
+    $$('[data-evo]').forEach(x=>x.classList.remove('active'));
+    const evoInvalidity1=$('[data-evo="invalidity1"]');
+    if(evoInvalidity1)evoInvalidity1.classList.add('active');
   }
 
   if(single&&(risk==='invalidity2'||risk==='death2')){
@@ -863,6 +874,13 @@ function evolutionScenario(){
  return{c,reference,need,title,subtitle,stages,breakdown};
 }
 function renderEvolution(){
+ if(!shouldShowDeathScenario()&&(evoMode==='death1'||evoMode==='death2')){
+   evoMode='invalidity1';
+   $$('[data-evo]').forEach(x=>x.classList.remove('active'));
+   const evoInvalidity1=$('[data-evo="invalidity1"]');
+   if(evoInvalidity1)evoInvalidity1.classList.add('active');
+ }
+
  const x=evolutionScenario(),first=x.stages[0].total,last=x.stages.at(-1).total;
  const coverage=x.need>0?((x.stages[1]||x.stages[0]).total/x.need*100):0,gap=Math.max(0,x.need-last);
  $('#evoReference').textContent=fmt(x.reference);
@@ -940,7 +958,21 @@ function renderEvolution(){
  $('#evoInsight').innerHTML=`<b>Comprendre ce graphique</b><br>${message}`;
 }
 
-$$('[data-evo]').forEach(b=>b.onclick=()=>{$$('[data-evo]').forEach(x=>x.classList.remove('active'));b.classList.add('active');evoMode=b.dataset.evo;renderEvolution()});
+$$('[data-evo]').forEach(b=>b.onclick=()=>{
+  const requested=b.dataset.evo;
+
+  if(!shouldShowDeathScenario()&&(requested==='death1'||requested==='death2')){
+    evoMode='invalidity1';
+  }else{
+    evoMode=requested;
+  }
+
+  $$('[data-evo]').forEach(x=>x.classList.remove('active'));
+  const activeButton=$(`[data-evo="${evoMode}"]`);
+  if(activeButton)activeButton.classList.add('active');
+
+  renderEvolution();
+});
 
 
 function renderHome(){
@@ -1024,9 +1056,11 @@ function renderTax(){
 
  $('#taxCurrentContribution').textContent=fmt(p.currentTotal);
  $('#taxSaving').textContent=fmt(currentSaving);
- $('#taxMaximum').textContent=fmt(p.totalMax);
- $('#taxMaxSaving').textContent=fmt(maxSaving);
- $('#taxMaximumNote').textContent=c.status==='Célibataire'?'Plafond individuel estimé':'Somme des plafonds individuels estimés';
+ $('#taxMaximum').textContent=fmt(p.additionalTotal);
+ $('#taxMaxSaving').textContent=fmt(additionalSaving);
+ $('#taxMaximumNote').textContent=p.additionalTotal>0
+   ?'Montant encore disponible avant d’atteindre le plafond estimé'
+   :'Plafond estimé déjà entièrement utilisé';
 
  $('#tmiValue').textContent=x.rate.toFixed(1)+' %';
  $('#tmiRange').textContent=`Grille indicative du canton ${c.canton} · ${x.source}`;
