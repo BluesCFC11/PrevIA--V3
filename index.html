@@ -168,24 +168,27 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <button class="choice" data-concern="tax"><span style="font-size:27px">💰</span><b>Réduire mes impôts</b><small class="muted">3e pilier et économie fiscale</small></button>
 <button class="choice" data-concern="wealth"><span style="font-size:27px">📈</span><b>Développer mon patrimoine</b><small class="muted">Épargne et investissement</small></button>
 </div></div>
-<div class="card" style="margin-top:15px"><h2>Votre situation</h2><div class="formgrid">
-<div><label>Prénom de la personne 1</label><input id="fFirstName1" value="Thomas"></div><div id="firstName2Wrap"><label>Prénom de la personne 2</label><input id="fFirstName2" value="Sophie"></div><div><label>Situation familiale</label><select id="fStatus"><option>Mariés</option><option>Concubins</option><option>Célibataire</option></select></div>
-<div id="marriageYearsWrap"><label>Durée du mariage (années)</label><input id="fMarriageYears" type="number" min="0" value="10"></div>
-<div><label id="labelAge1">Âge de Thomas</label><input id="fAge1" type="number" value="55"></div><div id="age2Wrap"><label id="labelAge2">Âge de Sophie</label><input id="fAge2" type="number" value="53"></div>
-<div><label id="labelIncome1">Revenu brut annuel de Thomas</label><input id="fIncome1" type="number" value="120000"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de Sophie</label><input id="fIncome2" type="number" value="100000"></div>
+<div class="card" style="margin-top:15px">
+<h2>Votre situation</h2>
+<p class="muted tiny" style="margin-top:-2px;margin-bottom:16px"><span style="font-weight:900">*</span> Champ facultatif. Tous les autres champs sont obligatoires.</p>
+<div class="formgrid">
+<div><label>Prénom de la personne 1</label><input id="fFirstName1" required value="Thomas"></div><div id="firstName2Wrap"><label>Prénom de la personne 2</label><input id="fFirstName2" required value="Sophie"></div><div><label>Situation familiale</label><select id="fStatus"><option>Mariés</option><option>Concubins</option><option>Célibataire</option></select></div>
+<div id="marriageYearsWrap"><label>Durée du mariage (années)</label><input id="fMarriageYears" required type="number" min="0" value="10"></div>
+<div><label id="labelAge1">Âge de Thomas</label><input id="fAge1" required type="number" value="55"></div><div id="age2Wrap"><label id="labelAge2">Âge de Sophie</label><input id="fAge2" required type="number" value="53"></div>
+<div><label id="labelIncome1">Revenu brut annuel de Thomas</label><input id="fIncome1" required type="number" value="120000"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de Sophie</label><input id="fIncome2" required type="number" value="100000"></div>
 <div><label id="labelJob1">Statut professionnel de Thomas</label><select id="fJob1"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div><div id="job2Wrap"><label id="labelJob2">Statut professionnel de Sophie</label><select id="fJob2"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div>
-<div><label>Nombre total d'enfants</label><input id="fChildren" type="number" min="0" value="2"></div>
-<div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" type="number" min="0" max="28" value="4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
+<div><label>Nombre total d'enfants</label><input id="fChildren" required type="number" min="0" value="2"></div>
+<div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" required type="number" min="0" max="28" value="4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
 <div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
-<div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" type="number" min="0" max="25" value="8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
-<div><label>Épargne disponible (CHF)</label><input id="fSavings" type="number" value="100000"></div><div><label id="labelP3P1">Capital décès / 3e pilier – Thomas</label><input id="fP3P1" type="number" value="55000"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – Sophie</label><input id="fP3P2" type="number" value="0"></div>
+<div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" required type="number" min="0" max="25" value="8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
+<div><label>Épargne disponible (CHF)</label><input id="fSavings" required type="number" value="100000"></div><div><label id="labelP3P1">Capital décès / 3e pilier – Thomas (CHF) *</label><input id="fP3P1" type="number" value="55000"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – Sophie (CHF) *</label><input id="fP3P2" type="number" value="0"></div>
 <div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="GE">Genève</option><option value="FR">Fribourg</option><option value="NE">Neuchâtel</option><option value="JU">Jura</option></select></div>
-<div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" type="number" value="1000000"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" type="number" value="800000"></div>
+<div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" required type="number" value="1000000"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" required type="number" value="800000"></div>
 <div class="ownerField"><label>Avez-vous retiré du 2e pilier pour financer ce logement ?</label><select id="fEpl"><option value="no">Non</option><option value="yes">Oui</option></select></div>
-<div class="ownerField eplField hidden"><label id="labelEpl1">Montant retiré du 2e pilier – Thomas</label><input id="fEpl1" type="number" min="0" value="80000"></div>
-<div class="ownerField eplField hidden" id="epl2Wrap"><label id="labelEpl2">Montant retiré du 2e pilier – Sophie</label><input id="fEpl2" type="number" min="0" value="0"></div>
-<div><label id="labelContribution1">Versement annuel actuel au 3e pilier – Thomas</label><input id="fContribution1" type="number" min="0" value="3000"></div>
-<div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – Sophie</label><input id="fContribution2" type="number" min="0" value="0"></div>
+<div class="ownerField eplField hidden"><label id="labelEpl1">Montant retiré du 2e pilier – Thomas</label><input id="fEpl1" required type="number" min="0" value="80000"></div>
+<div class="ownerField eplField hidden" id="epl2Wrap"><label id="labelEpl2">Montant retiré du 2e pilier – Sophie</label><input id="fEpl2" required type="number" min="0" value="0"></div>
+<div><label id="labelContribution1">Versement annuel actuel au 3e pilier – Thomas</label><input id="fContribution1" required type="number" min="0" value="3000"></div>
+<div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – Sophie</label><input id="fContribution2" required type="number" min="0" value="0"></div>
 </div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. Les résultats devront ensuite être confirmés avec les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
 
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
@@ -349,16 +352,16 @@ function refreshPersonNames(){
   const labels={
     labelAge1:`Âge de ${n1}`,
     labelAge2:`Âge de ${n2}`,
-    labelIncome1:`Revenu brut annuel de ${n1} (CHF)`,
-    labelIncome2:`Revenu brut annuel de ${n2} (CHF)`,
+    labelIncome1:`Revenu brut annuel de ${n1} (CHF) (CHF)`,
+    labelIncome2:`Revenu brut annuel de ${n2} (CHF) (CHF)`,
     labelJob1:`Statut professionnel de ${n1}`,
     labelJob2:`Statut professionnel de ${n2}`,
-    labelP3P1:`Capital décès / 3e pilier – ${n1} (CHF)`,
-    labelP3P2:`Capital décès / 3e pilier – ${n2} (CHF)`,
-    labelEpl1:`Montant retiré du 2e pilier – ${n1} (CHF)`,
-    labelEpl2:`Montant retiré du 2e pilier – ${n2} (CHF)`,
-    labelContribution1:`Versement annuel actuel au 3e pilier – ${n1} (CHF)`,
-    labelContribution2:`Versement annuel actuel au 3e pilier – ${n2} (CHF)`
+    labelP3P1:`Capital décès / 3e pilier – ${n1} (CHF) *`,
+    labelP3P2:`Capital décès / 3e pilier – ${n2} (CHF) *`,
+    labelEpl1:`Montant retiré du 2e pilier – ${n1} (CHF) (CHF)`,
+    labelEpl2:`Montant retiré du 2e pilier – ${n2} (CHF) (CHF)`,
+    labelContribution1:`Versement annuel actuel au 3e pilier – ${n1} (CHF) (CHF)`,
+    labelContribution2:`Versement annuel actuel au 3e pilier – ${n2} (CHF) (CHF)`
   };
 
   Object.entries(labels).forEach(([id,value])=>{
@@ -730,8 +733,11 @@ function render(){
    ?'Capital à amortir pour maintenir le financement viable à la retraite'
    :'Vous avez indiqué ne pas être propriétaire';
 
- $('#taxMetric').textContent=fmt(c.contribution);
- $('#taxMetricNote').textContent='Montant annuel à utiliser pour optimiser votre fiscalité';
+ const additionalTaxSaving=p3tax.additionalTotal*tax.rate/100;
+ $('#taxMetric').textContent=fmt(additionalTaxSaving);
+ $('#taxMetricNote').textContent=p3tax.additionalTotal>0
+   ?'Économie d’impôt annuelle supplémentaire estimée en utilisant pleinement votre potentiel de 3e pilier'
+   :'Votre potentiel fiscal estimé est déjà pleinement utilisé';
 
  $('#beliefTitle').textContent=co.belief;
  $('#beliefReality').textContent=co.reality;
@@ -1165,7 +1171,28 @@ function renderTax(){
    personDetail(c.firstName1,c.job1,c.income1,p.current1,p.max1,p.deductible1,p.additional1)+
    (c.status!=='Célibataire'?personDetail(c.firstName2,c.job2,c.income2,p.current2,p.max2,p.deductible2,p.additional2):'');
 }
-$('#calculate').onclick=()=>{data=gather();render();show('protection')};
+$('#calculate').onclick=()=>{
+  const visibleRequired=$$('#form [required]').filter(field=>{
+    const wrapper=field.closest('.hidden');
+    return !wrapper&&!field.disabled;
+  });
+
+  const invalidField=visibleRequired.find(field=>{
+    if(field.type==='number')return field.value===''||Number.isNaN(Number(field.value));
+    return String(field.value||'').trim()==='';
+  });
+
+  if(invalidField){
+    invalidField.focus();
+    invalidField.scrollIntoView({behavior:'smooth',block:'center'});
+    alert('Merci de compléter tous les champs obligatoires avant de lancer l’analyse.');
+    return;
+  }
+
+  data=gather();
+  render();
+  show('protection');
+};
 refreshPersonNames();updateFamily();updateChildren();updateOwner();updateEpl();data=gather();render();
 
 const upgradeBtn=document.getElementById('upgradeAnalysisBtn');
