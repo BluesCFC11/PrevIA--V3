@@ -182,7 +182,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
 <div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" required type="number" min="0" max="25" value="" placeholder="Exemple : 8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
 <div><label>Épargne disponible (CHF)</label><input id="fSavings" required type="number" value="" placeholder="Exemple : 50000"></div><div><label id="labelP3P1">Capital décès / 3e pilier – personne 1 (CHF) *</label><input id="fP3P1" type="number" value="" placeholder="Exemple : 55000"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – personne 2 (CHF) *</label><input id="fP3P2" type="number" value="" placeholder="Exemple : 30000"></div>
-<div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="GE">Genève</option><option value="FR">Fribourg</option><option value="NE">Neuchâtel</option><option value="JU">Jura</option></select></div>
+<div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="ZH">Zurich</option><option value="BE">Berne</option><option value="LU">Lucerne</option><option value="UR">Uri</option><option value="SZ">Schwytz</option><option value="OW">Obwald</option><option value="NW">Nidwald</option><option value="GL">Glaris</option><option value="ZG">Zoug</option><option value="FR">Fribourg</option><option value="SO">Soleure</option><option value="BS">Bâle-Ville</option><option value="BL">Bâle-Campagne</option><option value="SH">Schaffhouse</option><option value="AR">Appenzell Rhodes-Extérieures</option><option value="AI">Appenzell Rhodes-Intérieures</option><option value="SG">Saint-Gall</option><option value="GR">Grisons</option><option value="AG">Argovie</option><option value="TG">Thurgovie</option><option value="TI">Tessin</option><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="NE">Neuchâtel</option><option value="GE">Genève</option><option value="JU">Jura</option></select></div>
 <div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" required type="number" value="" placeholder="Exemple : 950000"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" required type="number" value="" placeholder="Exemple : 650000"></div>
 <div class="ownerField"><label>Avez-vous retiré du 2e pilier pour financer ce logement ?</label><select id="fEpl"><option value="no">Non</option><option value="yes">Oui</option></select></div>
 <div class="ownerField eplField hidden"><label id="labelEpl1">Montant retiré du 2e pilier – personne 1 (CHF)</label><input id="fEpl1" required type="number" min="0" value="" placeholder="Exemple : 80000"></div>
@@ -266,7 +266,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 <section id="fiscalite" class="screen">
 <div class="top"><div><div class="eyebrow">Vos impôts</div><h1>Quel avantage fiscal votre 3e pilier vous procure-t-il ?</h1>
-<p class="muted"><b>Taux marginal d'imposition (TMI)</b> : pourcentage d'impôt potentiellement économisé sur le prochain franc déduit du revenu imposable. Il ne correspond pas au taux moyen payé sur tout le revenu.</p></div><button class="btn primary" data-s="dashboard">Voir la synthèse finale →</button></div>
+<p class="muted"><b>Taux marginal d'imposition (TMI)</b> : pourcentage d'impôt potentiellement économisé sur le prochain franc déduit du revenu imposable. Il ne correspond pas au taux moyen payé sur tout le revenu. PrevIA utilise une estimation moyenne indicative pour les 26 cantons suisses.</p></div><button class="btn primary" data-s="dashboard">Voir la synthèse finale →</button></div>
 
 <div class="grid4">
   <div class="card"><div class="eyebrow">Versement actuel</div><div class="metric" id="taxCurrentContribution"></div><p class="muted tiny">Montant annuel saisi pour le ménage</p></div>
@@ -297,7 +297,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 <div class="callout" style="margin-top:15px" id="taxSentence"></div>
 <div class="card" style="margin-top:15px"><h3>Détail par personne</h3><div id="taxPersonDetails"></div></div>
-<p class="muted tiny">Estimation indicative fondée sur le revenu brut, le statut professionnel et le canton. Pour un salarié, le plafond utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de la situation familiale, de l'affiliation au 2e pilier et des autres déductions.</p>
+<p class="muted tiny">Estimation indicative fondée sur le revenu brut, le statut professionnel et le canton. Les TMI utilisés correspondent à une moyenne nationale indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de la situation familiale, de l'affiliation au 2e pilier et des autres déductions.</p>
 </section>
 
 <div class="lpp-disclaimer" id="lppDisclaimer">
@@ -322,12 +322,32 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const fmt=n=>Math.round(Number(n)||0).toLocaleString('fr-CH').replace(/\u202f/g,"'")+' CHF';
 const fmtMonth=n=>Math.round((Number(n)||0)/12).toLocaleString('fr-CH').replace(/\u202f/g,"'")+' CHF/mois';
 const TAX={
-VS:[[50000,12],[60000,14],[70000,16],[80000,18],[90000,20],[100000,22],[120000,24],[140000,26],[160000,28],[180000,30],[200000,32],[250000,35],[300000,38]],
-VD:[[50000,15],[60000,18],[70000,20],[80000,22],[90000,24],[100000,26],[120000,29],[140000,31],[160000,33],[180000,35],[200000,37],[250000,40],[300000,43]],
-FR:[[50000,13],[60000,15],[70000,17],[80000,19],[90000,21],[100000,23],[120000,25],[140000,27],[160000,29],[180000,31],[200000,33],[250000,36],[300000,39]],
-NE:[[50000,15],[60000,18],[70000,20],[80000,22],[90000,24],[100000,26],[120000,29],[140000,32],[160000,34],[180000,36],[200000,38],[250000,41],[300000,43]],
-GE:[[50000,18],[60000,21],[70000,24],[80000,26],[90000,28],[100000,30],[120000,33],[140000,36],[160000,38],[180000,40],[200000,42],[250000,45],[300000,48]],
-JU:[[50000,14],[60000,16],[70000,18],[80000,20],[90000,22],[100000,24],[120000,27],[140000,29],[160000,31],[180000,33],[200000,35],[250000,38],[300000,41]]
+ZH:[[50000,20],[60000,21.67],[70000,23.33],[80000,25],[90000,27.5],[100000,30],[120000,32.4],[140000,34.8],[150000,36],[180000,38.4],[200000,40],[250000,42],[300000,44],[500000,47]],
+BE:[[50000,22],[60000,24],[70000,26],[80000,28],[90000,31.5],[100000,35],[120000,37.8],[140000,40.6],[150000,42],[180000,43.8],[200000,45],[250000,46.5],[300000,48],[500000,50]],
+LU:[[50000,18],[60000,19.67],[70000,21.33],[80000,23],[90000,25.5],[100000,28],[120000,30.4],[140000,32.8],[150000,34],[180000,36.4],[200000,38],[250000,40],[300000,42],[500000,45]],
+UR:[[50000,16],[60000,17.67],[70000,19.33],[80000,21],[90000,23.5],[100000,26],[120000,28.4],[140000,30.8],[150000,32],[180000,34.4],[200000,36],[250000,37.5],[300000,39],[500000,42]],
+SZ:[[50000,12],[60000,14],[70000,16],[80000,18],[90000,20],[100000,22],[120000,24],[140000,26],[150000,27],[180000,28.8],[200000,30],[250000,31.5],[300000,33],[500000,35]],
+OW:[[50000,14],[60000,16],[70000,18],[80000,20],[90000,22],[100000,24],[120000,26.4],[140000,28.8],[150000,30],[180000,31.8],[200000,33],[250000,34.5],[300000,36],[500000,38]],
+NW:[[50000,15],[60000,16.67],[70000,18.33],[80000,20],[90000,22.5],[100000,25],[120000,27.4],[140000,29.8],[150000,31],[180000,32.8],[200000,34],[250000,35.5],[300000,37],[500000,39]],
+GL:[[50000,18],[60000,20],[70000,22],[80000,24],[90000,26],[100000,28],[120000,30.4],[140000,32.8],[150000,34],[180000,35.8],[200000,37],[250000,38.5],[300000,40],[500000,43]],
+ZG:[[50000,11],[60000,13],[70000,15],[80000,17],[90000,19],[100000,21],[120000,22.6],[140000,24.2],[150000,25],[180000,26.2],[200000,27],[250000,28],[300000,29],[500000,30]],
+FR:[[50000,20],[60000,22.67],[70000,25.33],[80000,28],[90000,31],[100000,34],[120000,36.4],[140000,38.8],[150000,40],[180000,41.8],[200000,43],[250000,44.5],[300000,46],[500000,48]],
+SO:[[50000,18],[60000,20],[70000,22],[80000,24],[90000,26.5],[100000,29],[120000,31.4],[140000,33.8],[150000,35],[180000,36.8],[200000,38],[250000,39.5],[300000,41],[500000,43]],
+BS:[[50000,25],[60000,27.33],[70000,29.67],[80000,32],[90000,34.5],[100000,37],[120000,39],[140000,41],[150000,42],[180000,43.8],[200000,45],[250000,46.5],[300000,48],[500000,50]],
+BL:[[50000,22],[60000,24],[70000,26],[80000,28],[90000,30.5],[100000,33],[120000,35.4],[140000,37.8],[150000,39],[180000,40.8],[200000,42],[250000,43.5],[300000,45],[500000,47]],
+SH:[[50000,20],[60000,21.67],[70000,23.33],[80000,25],[90000,27],[100000,29],[120000,31.4],[140000,33.8],[150000,35],[180000,36.8],[200000,38],[250000,39.5],[300000,41],[500000,43]],
+AR:[[50000,18],[60000,20],[70000,22],[80000,24],[90000,26],[100000,28],[120000,30.4],[140000,32.8],[150000,34],[180000,35.8],[200000,37],[250000,38.5],[300000,40],[500000,42]],
+AI:[[50000,17],[60000,18.67],[70000,20.33],[80000,22],[90000,24],[100000,26],[120000,28.4],[140000,30.8],[150000,32],[180000,33.8],[200000,35],[250000,36.5],[300000,38],[500000,40]],
+SG:[[50000,20],[60000,22],[70000,24],[80000,26],[90000,28.5],[100000,31],[120000,33.4],[140000,35.8],[150000,37],[180000,38.8],[200000,40],[250000,41.5],[300000,43],[500000,45]],
+GR:[[50000,18],[60000,20],[70000,22],[80000,24],[90000,26.5],[100000,29],[120000,31.4],[140000,33.8],[150000,35],[180000,36.8],[200000,38],[250000,39.5],[300000,41],[500000,43]],
+AG:[[50000,22],[60000,24],[70000,26],[80000,28],[90000,30.5],[100000,33],[120000,35.4],[140000,37.8],[150000,39],[180000,40.8],[200000,42],[250000,43.5],[300000,45],[500000,47]],
+TG:[[50000,20],[60000,21.67],[70000,23.33],[80000,25],[90000,27.5],[100000,30],[120000,32.4],[140000,34.8],[150000,36],[180000,37.8],[200000,39],[250000,40.5],[300000,42],[500000,44]],
+TI:[[50000,24],[60000,26.33],[70000,28.67],[80000,31],[90000,33.5],[100000,36],[120000,38.4],[140000,40.8],[150000,42],[180000,43.8],[200000,45],[250000,46.5],[300000,48],[500000,50]],
+VD:[[50000,25],[60000,27.33],[70000,29.67],[80000,32],[90000,33.5],[100000,35],[120000,37.8],[140000,40.6],[150000,42],[180000,43.8],[200000,45],[250000,46.5],[300000,48],[500000,50]],
+VS:[[50000,18],[60000,20.33],[70000,22.67],[80000,25],[90000,27.5],[100000,30],[120000,32.8],[140000,35.6],[150000,37],[180000,38.8],[200000,40],[250000,41.5],[300000,43],[500000,45]],
+NE:[[50000,22],[60000,24.67],[70000,27.33],[80000,30],[90000,33],[100000,36],[120000,38.8],[140000,41.6],[150000,43],[180000,45.4],[200000,47],[250000,48.5],[300000,50],[500000,52]],
+GE:[[50000,28],[60000,31],[70000,34],[80000,37],[90000,39.5],[100000,42],[120000,44.8],[140000,47.6],[150000,49],[180000,50.8],[200000,52],[250000,53.5],[300000,55],[500000,56]],
+JU:[[50000,22],[60000,24.67],[70000,27.33],[80000,30],[90000,32.5],[100000,35],[120000,37.4],[140000,39.8],[150000,41],[180000,42.8],[200000,44],[250000,45.5],[300000,47],[500000,49]]
 };
 const CONCERNS={family:{title:'Ma famille sera-t-elle protégée si quelque chose m’arrive ?',intro:'Vous cherchez avant tout à éviter qu’un décès ou une invalidité fragilise le quotidien de votre famille.',emotion:['Protection','Responsabilité familiale'],belief:'« Si je décède, ma famille sera automatiquement protégée. »',reality:'Les prestations peuvent laisser une baisse de revenu importante, surtout en concubinage. PrevIA vérifie les deux décès séparément.'},home:{title:'Pourrons-nous conserver notre logement quoi qu’il arrive ?',intro:'Vous souhaitez savoir si votre logement restera supportable aujourd’hui, à la retraite et dans les coups durs.',emotion:['Sécurité','Attachement au logement'],belief:'« Tant que nous payons l’hypothèque, tout va bien. »',reality:'La banque regarde les charges théoriques par rapport aux revenus, avec une limite de 33 %.'},retirement:{title:'Pourrons-nous vivre sereinement à la retraite ?',intro:'Vous souhaitez mesurer la baisse de revenu future et agir suffisamment tôt.',emotion:['Anticipation','Besoin de visibilité'],belief:'« Mon 2e pilier suffira probablement. »',reality:'PrevIA estime la LPP sans demander au client de connaître son avoir, puis confirme avec le certificat.'},tax:{title:'Comment réduire intelligemment mes impôts ?',intro:'Vous souhaitez connaître l’effet concret d’un versement déductible.',emotion:['Efficacité','Optimisation'],belief:'« Le 3e pilier sert uniquement à payer moins d’impôts. »',reality:'L’avantage fiscal doit aussi renforcer votre retraite et votre capital.'},wealth:{title:'Comment développer durablement mon patrimoine ?',intro:'Vous souhaitez mieux utiliser votre capacité d’épargne.',emotion:['Progression','Maîtrise'],belief:'« Il faut choisir entre sécurité et rendement. »',reality:'Une stratégie peut combiner réserve disponible, horizon de placement et objectifs.'}};
 let concern='family',risk='invalidity1',evoMode='death1',data={};
@@ -495,16 +515,16 @@ $('#fOwner').onchange=updateOwner;
 $('#fEpl').onchange=updateEpl;
 function tmi(canton,income){
  const rows=TAX[canton]||TAX.VS;
- if(income<=rows[0][0])return{rate:rows[0][1],source:'plancher de la grille'};
- if(income>=rows.at(-1)[0])return{rate:rows.at(-1)[1],source:'plafond de la grille'};
+ if(income<=rows[0][0])return{rate:rows[0][1],source:'estimation indicative au premier palier'};
+ if(income>=rows.at(-1)[0])return{rate:rows.at(-1)[1],source:'estimation indicative à partir de CHF 500’000'};
  for(let i=0;i<rows.length-1;i++){
    const [x1,y1]=rows[i],[x2,y2]=rows[i+1];
    if(income>=x1&&income<=x2){
      const rate=y1+(income-x1)*(y2-y1)/(x2-x1);
-     return{rate,source:'interpolation entre deux niveaux de revenu'};
+     return{rate,source:'interpolation entre deux paliers indicatifs'};
    }
  }
- return{rate:rows.at(-1)[1],source:'grille indicative'};
+ return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 function educationYears(children,gap){
  if(children<=0)return 0;
