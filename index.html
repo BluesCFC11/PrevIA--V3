@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.14.5 — Prototype interactif</title>
+<title>PrevIA V9.14.6 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -155,10 +155,10 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.5</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.6</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
-<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.14.5</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Évolutions V9.14.5</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div><div class="row"><span>Bonifications éducatives AVS/AI intégrées en arrière-plan</span><b>✓</b></div><div class="row"><span>Montant EPL retiré et potentiel de remboursement</span><b>✓</b></div><div class="row"><span>Graphique en cascade des prestations par pilier</span><b>✓</b></div><div class="row"><span>Graphiques par périodes de vie avec besoin à 100 %</span><b>✓</b></div><div class="row"><span>Revenus P1/P2 séparés et lacunes en orange</span><b>✓</b></div><div class="row"><span>Palette finale et montants toujours visibles</span><b>✓</b></div><div class="row"><span>Disclaimer LPP et passage vers l’analyse complète</span><b>✓</b></div></div></div></div></section>
+<section id="home" class="screen active"><div class="top"><div><div class="eyebrow">PrevIA V9.14.6</div><h1>Est-ce que tout va bien pour vous et votre famille ?</h1><p class="muted">Une analyse rapide à partir de quelques informations simples. PrevIA estime automatiquement les scénarios futurs.</p></div></div><div class="hero"><div class="grid2"><div><h2 style="font-size:34px">Bonjour 👋</h2><p class="quote">Commençons par la question que vous souhaitez réellement résoudre.</p><button class="btn primary" id="newAnalysis">Commencer l'analyse →</button></div><div class="card"><div class="eyebrow">Évolutions V9.14.6</div><div class="row"><span>Aucun revenu futur demandé au client</span><b>✓</b></div><div class="row"><span>Revenus séparés des deux partenaires</span><b>✓</b></div><div class="row"><span>Décès et invalidité calculés automatiquement</span><b>✓</b></div><div class="row"><span>Protection maladie et accident distinguées</span><b>✓</b></div><div class="row"><span>Projection hypothécaire jusqu'à 65 ans</span><b>✓</b></div><div class="row"><span>Fiscalité estimée sur revenu brut</span><b>✓</b></div><div class="row"><span>Rentes pour enfants affichées séparément</span><b>✓</b></div><div class="row"><span>Bonifications éducatives AVS/AI intégrées en arrière-plan</span><b>✓</b></div><div class="row"><span>Montant EPL retiré et potentiel de remboursement</span><b>✓</b></div><div class="row"><span>Graphique en cascade des prestations par pilier</span><b>✓</b></div><div class="row"><span>Graphiques par périodes de vie avec besoin à 100 %</span><b>✓</b></div><div class="row"><span>Revenus P1/P2 séparés et lacunes en orange</span><b>✓</b></div><div class="row"><span>Palette finale et montants toujours visibles</span><b>✓</b></div><div class="row"><span>Disclaimer LPP et passage vers l’analyse complète</span><b>✓</b></div></div></div></div></section>
 
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
 <div class="card"><div class="choicegrid" id="choices">
@@ -218,7 +218,39 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 </div>
 <div class="grid2" style="margin-top:15px"><div class="card"><div class="eyebrow">Croyance à clarifier</div><h3 id="beliefTitle"></h3><p class="muted" id="beliefReality"></p></div><div class="card"><div class="eyebrow">Vos priorités</div><div id="priorities"></div></div></div></section>
 
-<section id="protection" class="screen"><div class="top"><div><div class="eyebrow">Votre famille</div><h1 id="protectionTitle">Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?</h1></div></div><div class="seg" id="riskTabs"><button class="active" data-risk="invalidity1">Invalidité personne 1</button><button data-risk="invalidity2">Invalidité personne 2</button><button data-risk="death1">Décès personne 1</button><button data-risk="death2">Décès personne 2</button></div><div class="grid4" style="margin-top:15px"><div class="card"><div class="eyebrow">Revenu actuel du ménage</div><div class="metric" id="protCurrent"></div></div><div class="card"><div class="eyebrow">Revenu annuel estimé</div><div class="metric" id="protIncome"></div></div><div class="card"><div class="eyebrow">Revenu maintenu</div><div class="metric" id="protPct"></div></div><div class="card"><div class="eyebrow">Capital versé au décès</div><div class="metric" id="protCapital"></div></div></div><div class="card" style="margin-top:15px"><div class="bar danger"><div id="protBar"></div></div><p id="protText"></p><div class="callout warn" id="protHuman"></div></div><div class="card" style="margin-top:15px"><h3>Détail estimatif</h3><div id="protDetail"></div><p class="muted tiny">Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.</p></div></section>
+<section id="protection" class="screen">
+<div class="top"><div><div class="eyebrow">Votre famille</div><h1 id="protectionTitle">Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?</h1></div></div>
+<div class="card">
+  <div class="eyebrow">Origine de l’événement</div>
+  <div class="seg" id="protectionOriginTabs" style="margin-top:10px">
+    <button class="active" data-origin="illness">Maladie</button>
+    <button data-origin="accident">Accident</button>
+  </div>
+  <p class="muted tiny" id="protectionOriginNote" style="margin:10px 0 0">Maladie : estimation fondée sur l’AI, l’AVS et les prestations minimales LPP.</p>
+</div>
+<div class="seg" id="riskTabs" style="margin-top:15px">
+  <button class="active" data-risk="invalidity1">Invalidité personne 1</button>
+  <button data-risk="invalidity2">Invalidité personne 2</button>
+  <button data-risk="death1">Décès personne 1</button>
+  <button data-risk="death2">Décès personne 2</button>
+</div>
+<div class="grid4" style="margin-top:15px">
+  <div class="card"><div class="eyebrow">Revenu actuel du ménage</div><div class="metric" id="protCurrent"></div></div>
+  <div class="card"><div class="eyebrow">Revenu annuel estimé</div><div class="metric" id="protIncome"></div></div>
+  <div class="card"><div class="eyebrow">Revenu maintenu</div><div class="metric" id="protPct"></div></div>
+  <div class="card"><div class="eyebrow" id="protCapitalLabel">Capital versé au décès</div><div class="metric" id="protCapital"></div></div>
+</div>
+<div class="card" style="margin-top:15px">
+  <div class="bar danger"><div id="protBar"></div></div>
+  <p id="protText"></p>
+  <div class="callout warn" id="protHuman"></div>
+</div>
+<div class="card" style="margin-top:15px">
+  <h3>Détail estimatif</h3>
+  <div id="protDetail"></div>
+  <p class="muted tiny" id="protDisclaimer">Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.</p>
+</div>
+</section>
 
 <section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted">AVS et LPP comprises</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. La rente de retraite est estimée avec un taux de conversion global de 5,5 %. Les prestations de risque utilisent séparément 6,8 % sur le capital sans intérêts. Le montant EPL déclaré est utilisé uniquement pour montrer le potentiel d’un remboursement. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></section>
 
@@ -354,7 +386,7 @@ GE:[[50000,28],[60000,31],[70000,34],[80000,37],[90000,39.5],[100000,42],[120000
 JU:[[50000,22],[60000,24.67],[70000,27.33],[80000,30],[90000,32.5],[100000,35],[120000,37.4],[140000,39.8],[150000,41],[180000,42.8],[200000,44],[250000,45.5],[300000,47],[500000,49]]
 };
 const CONCERNS={family:{title:'Ma famille sera-t-elle protégée si quelque chose m’arrive ?',intro:'Vous cherchez avant tout à éviter qu’un décès ou une invalidité fragilise le quotidien de votre famille.',emotion:['Protection','Responsabilité familiale'],belief:'« Si je décède, ma famille sera automatiquement protégée. »',reality:'Les prestations peuvent laisser une baisse de revenu importante, surtout en concubinage. PrevIA vérifie les deux décès séparément.'},home:{title:'Pourrons-nous conserver notre logement quoi qu’il arrive ?',intro:'Vous souhaitez savoir si votre logement restera supportable aujourd’hui, à la retraite et dans les coups durs.',emotion:['Sécurité','Attachement au logement'],belief:'« Tant que nous payons l’hypothèque, tout va bien. »',reality:'La banque regarde les charges théoriques par rapport aux revenus, avec une limite de 33 %.'},retirement:{title:'Pourrons-nous vivre sereinement à la retraite ?',intro:'Vous souhaitez mesurer la baisse de revenu future et agir suffisamment tôt.',emotion:['Anticipation','Besoin de visibilité'],belief:'« Mon 2e pilier suffira probablement. »',reality:'PrevIA estime la LPP sans demander au client de connaître son avoir, puis confirme avec le certificat.'},tax:{title:'Comment réduire intelligemment mes impôts ?',intro:'Vous souhaitez connaître l’effet concret d’un versement déductible.',emotion:['Efficacité','Optimisation'],belief:'« Le 3e pilier sert uniquement à payer moins d’impôts. »',reality:'L’avantage fiscal doit aussi renforcer votre retraite et votre capital.'},wealth:{title:'Comment développer durablement mon patrimoine ?',intro:'Vous souhaitez mieux utiliser votre capacité d’épargne.',emotion:['Progression','Maîtrise'],belief:'« Il faut choisir entre sécurité et rendement. »',reality:'Une stratégie peut combiner réserve disponible, horizon de placement et objectifs.'}};
-let concern='family',risk='invalidity1',evoMode='death1',data={};
+let concern='family',risk='invalidity1',evoMode='death1',protectionOrigin='illness',data={};
 
 function shouldShowDeathScenario(){
   const isSingle = $('#fStatus').value === 'Célibataire';
@@ -624,6 +656,92 @@ function benefits(c){
  }
  const i1=invalidity(p1,p2),i2=invalidity(p2,p1),d1=death(p1,p2,true),d2=death(p2,p1,false);
  return{p1,p2,retAvs,inv1:i1.annual,inv2:i2.annual,i1,i2,d1,d2};
+}
+
+function accidentBenefits(c){
+ const illness=benefits(c);
+ const kids=Math.max(0,c.dependentChildren||0);
+ const LAA_MAX=148200;
+
+ const insuredSalary=income=>Math.max(0,Math.min(Number(income)||0,LAA_MAX));
+
+ function invalidity(isP1){
+   const illnessInvalidity=isP1?illness.i1:illness.i2;
+   const otherIncome=isP1?c.income2:c.income1;
+   const salary=isP1?c.income1:c.income2;
+   const job=isP1?c.job1:c.job2;
+   const insured=insuredSalary(salary);
+   const aiAdult=illnessInvalidity.adj.ai||0;
+   const aiChildren=illnessInvalidity.adj.aiKids||0;
+   const aiTotal=aiAdult+aiChildren;
+   const target=insured*.90;
+   const laa=Math.max(0,target-aiTotal);
+   const insuredPersonTotal=aiTotal+laa;
+   const annual=otherIncome+insuredPersonTotal;
+
+   let warning='';
+   if(job!=='Salarié'){
+     warning='La couverture LAA obligatoire concerne les salariés. Pour une personne indépendante ou sans activité, l’existence d’une assurance-accidents équivalente doit être confirmée.';
+   }else if(salary>LAA_MAX){
+     warning=`Le salaire dépasse le plafond LAA de ${fmt(LAA_MAX)}. La part supérieure n’est pas couverte par cette estimation obligatoire.`;
+   }else{
+     warning='La rente complémentaire LAA est estimée de manière à porter les prestations AI + LAA au maximum à 90 % du gain assuré.';
+   }
+
+   return{annual,otherIncome,salary,insured,aiAdult,aiChildren,aiTotal,laa,target,insuredPersonTotal,warning,job};
+ }
+
+ function death(isP1){
+   const diseaseDeath=isP1?illness.d1:illness.d2;
+   const otherIncome=isP1?c.income2:c.income1;
+   const salary=isP1?c.income1:c.income2;
+   const job=isP1?c.job1:c.job2;
+   const insured=insuredSalary(salary);
+
+   const avsSpouse=diseaseDeath.adj.avsSurv||0;
+   const avsChildren=diseaseDeath.adj.avsKids||0;
+   const avsTotal=avsSpouse+avsChildren;
+
+   const rawSpouse=diseaseDeath.survivorRight?insured*.40:0;
+   const rawChildren=kids*insured*.15;
+   const rawLaaTotal=rawSpouse+rawChildren;
+   const laaLimit=insured*.70;
+   const factor=rawLaaTotal>laaLimit&&rawLaaTotal>0?laaLimit/rawLaaTotal:1;
+   const laaSpouse=rawSpouse*factor;
+   const laaChildren=rawChildren*factor;
+   const laaTotal=laaSpouse+laaChildren;
+   const annual=otherIncome+avsTotal+laaTotal;
+
+   let warning='';
+   if(job!=='Salarié'){
+     warning='La couverture LAA obligatoire concerne les salariés. Pour une personne indépendante ou sans activité, l’existence d’une assurance-accidents équivalente doit être confirmée.';
+   }else if(salary>LAA_MAX){
+     warning=`Le salaire dépasse le plafond LAA de ${fmt(LAA_MAX)}. Les rentes LAA sont calculées uniquement sur ce plafond.`;
+   }else if(rawLaaTotal>laaLimit){
+     warning='Les rentes LAA ont été réduites proportionnellement afin de respecter le plafond familial de 70 % du gain assuré.';
+   }else if(!diseaseDeath.survivorRight&&kids===0){
+     warning='Aucune rente de conjoint AVS ou LAA n’est estimée selon les conditions familiales actuellement utilisées par PrevIA.';
+   }else{
+     warning='Les prestations AVS reprennent les conditions du scénario maladie. Les prestations LAA remplacent les prestations LPP dans ce scénario accident.';
+   }
+
+   return{
+     annual,otherIncome,salary,insured,avsSpouse,avsChildren,avsTotal,
+     laaSpouse,laaChildren,laaTotal,rawLaaTotal,laaLimit,factor,
+     survivorRight:diseaseDeath.survivorRight,
+     avsKnown:diseaseDeath.avsKnown,
+     needsDeepAnalysis:diseaseDeath.needsDeepAnalysis,
+     warning,job
+   };
+ }
+
+ return{
+   invalidity1:invalidity(true),
+   invalidity2:invalidity(false),
+   death1:death(true),
+   death2:death(false),
+   maxInsuredSalary:LAA_MAX
+ };
 }
 function mortgage(c,b){
  if(!c.owner)return null;
@@ -944,7 +1062,80 @@ function summaryBox(title,rows,totalLabel,total,totalKnown=true){
  return`<div style="margin-top:14px;padding:14px;background:#eef0ff;border:1px solid #dfe2ff;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">À confirmer</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`;
 }
 function riskData(){
- const c=data,b=benefits(c),kids=c.dependentChildren;
+ const c=data;
+
+ if(protectionOrigin==='accident'){
+   const a=accidentBenefits(c);
+   const kids=c.dependentChildren;
+
+   if(risk==='invalidity1'||risk==='invalidity2'){
+     const isP1=risk==='invalidity1';
+     const x=isP1?a.invalidity1:a.invalidity2;
+     const who=isP1?c.firstName1:c.firstName2;
+
+     const aiRows=[['Rente AI estimée',x.aiAdult,true]];
+     if(kids>0)aiRows.push([`Rentes AI enfants (${kids})`,x.aiChildren,true]);
+
+     const html=
+       groupHtmlFlexible('1er pilier – AI',aiRows,'Total AI',x.aiTotal,true)+
+       groupHtmlFlexible('Assurance-accidents – LAA',[
+         ['Gain annuel assuré LAA',x.insured,true],
+         ['Objectif maximal AI + LAA (90 %)',x.target,true],
+         ['Rente complémentaire LAA estimée',x.laa,true]
+       ],'Total annuel de la personne assurée',x.insuredPersonTotal,true)+
+       summaryBox('Revenu total du ménage après l’accident',[
+         [`Prestations AI + LAA de ${who}`,x.insuredPersonTotal,true],
+         ['Revenu professionnel maintenu de l’autre personne',x.otherIncome,true]
+       ],'Revenu annuel total du ménage',x.annual,true)+
+       `<div class="callout ${x.job==='Salarié'?'':'warn'}" style="margin-top:12px">${x.warning}</div>`;
+
+     return{
+       income:x.annual,
+       capital:x.laa,
+       capitalLabel:'Rente LAA annuelle',
+       detail:`Invalidité accident de ${who}.`,
+       html,
+       uncertain:x.job!=='Salarié',
+       origin:'accident'
+     };
+   }
+
+   const isP1=risk==='death1';
+   const d=isP1?a.death1:a.death2;
+   const who=isP1?c.firstName1:c.firstName2;
+
+   const avsRows=[['Rente AVS du conjoint survivant',d.avsSpouse,d.avsKnown]];
+   if(kids>0)avsRows.push([`Rentes AVS d’orphelins (${kids})`,d.avsChildren,d.avsKnown]);
+
+   const laaRows=[['Rente LAA de veuve / veuf (40 %)',d.laaSpouse,true]];
+   if(kids>0)laaRows.push([`Rentes LAA d’orphelins (${kids} × 15 %)`,d.laaChildren,true]);
+
+   const html=
+     groupHtmlFlexible('1er pilier – AVS',avsRows,'Total AVS survivants',d.avsTotal,d.avsKnown)+
+     groupHtmlFlexible('Assurance-accidents – LAA',[
+       ['Gain annuel assuré LAA',d.insured,true],
+       ...laaRows
+     ],'Total LAA survivants',d.laaTotal,true)+
+     summaryBox(`Revenu total du ménage après le décès de ${who}`,[
+       ['Prestations AVS de survivants',d.avsTotal,d.avsKnown],
+       ['Prestations LAA de survivants',d.laaTotal,true],
+       ['Revenu professionnel maintenu du conjoint survivant',d.otherIncome,true]
+     ],'Revenu annuel total du ménage',d.annual,d.avsKnown)+
+     `<div class="callout ${d.job==='Salarié'?'':'warn'}" style="margin-top:12px">${d.warning}</div>`+
+     '<div class="callout" style="margin-top:12px"><b>Modèle accident PrevIA</b><br><span class="tiny muted">Les prestations LPP ne sont pas intégrées. Le calcul retient uniquement les prestations AVS et LAA.</span></div>';
+
+   return{
+     income:d.annual,
+     capital:d.laaTotal,
+     capitalLabel:'Rentes LAA annuelles',
+     detail:`Décès accident de ${who}.`,
+     html,
+     uncertain:d.needsDeepAnalysis||d.job!=='Salarié',
+     origin:'accident'
+   };
+ }
+
+ const b=benefits(c),kids=c.dependentChildren;
  if(risk==='invalidity1'||risk==='invalidity2'){
   const isP1=risk==='invalidity1',x=isP1?b.i1:b.i2,who=isP1?c.firstName1:c.firstName2;
   const firstTotal=x.adj.ai+x.adj.aiKids,secondTotal=x.adj.lpp+x.adj.lppKids;
@@ -966,8 +1157,9 @@ function riskData(){
       ['Revenu professionnel maintenu de l’autre personne',x.otherIncome,true]
     ],'Revenu annuel total du ménage',x.annual,personKnown)+
     (x.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie des cotisations AVS est nécessaire pour déterminer la rente AI du 1er pilier de cette personne.</div>':'');
-  return{income:x.annual,capital:0,detail:`Invalidité à 100 % de la ${who}.`,html,uncertain:x.needsDeepAnalysis};
+  return{income:x.annual,capital:0,capitalLabel:'Capital versé au décès',detail:`Invalidité à 100 % de ${who}.`,html,uncertain:x.needsDeepAnalysis,origin:'illness'};
  }
+
  const isP1=risk==='death1',d=isP1?b.d1:b.d2,label=`Décès de ${isP1?c.firstName1:c.firstName2}.`;
  const firstTotal=d.adj.avsSurv+d.adj.avsKids,secondTotal=d.adj.lppSurv+d.adj.lppKids;
  const firstRows=[['Rente AVS du conjoint survivant (80 %)',d.adj.avsSurv,d.avsKnown]];
@@ -988,7 +1180,7 @@ function riskData(){
      ['Revenu professionnel maintenu du conjoint survivant',d.otherIncome,true]
    ],'Revenu annuel total du ménage',d.annual,benefitsKnown)+
    (d.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie est nécessaire pour chiffrer les prestations AVS de survivants.</div>':'');
- return{income:d.annual,capital:d.capital,detail:d.warning||label,html,uncertain:d.needsDeepAnalysis};
+ return{income:d.annual,capital:d.capital,capitalLabel:'Capital versé au décès',detail:d.warning||label,html,uncertain:d.needsDeepAnalysis,origin:'illness'};
 }
 function renderProtection(){
   if(!shouldShowDeathScenario()&&(risk==='death1'||risk==='death2')){
@@ -1003,12 +1195,29 @@ function renderProtection(){
   $('#protIncome').textContent=fmt(x.income);
   $('#protPct').textContent=pct.toFixed(0)+' %';
   $('#protCapital').textContent=fmt(x.capital);
+  $('#protCapitalLabel').textContent=x.capitalLabel||'Capital versé au décès';
   $('#protBar').style.width=Math.min(100,pct)+'%';
   $('#protText').textContent=`Le ménage conserverait environ ${pct.toFixed(0)} % de son revenu brut actuel.`;
-  $('#protHuman').textContent=pct<70?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.':x.detail;
+  $('#protHuman').textContent=pct<70
+    ?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.'
+    :x.detail;
   $('#protDetail').innerHTML=x.html;
+
+  const accident=protectionOrigin==='accident';
+  $('#protectionOriginNote').textContent=accident
+    ?'Accident : estimation fondée uniquement sur l’AI ou l’AVS et la LAA. La LPP est exclue de ce scénario.'
+    :'Maladie : estimation fondée sur l’AI, l’AVS et les prestations minimales LPP.';
+  $('#protDisclaimer').textContent=accident
+    ?'Estimation LAA indicative : gain annuel assuré plafonné à 148’200 CHF. Les conditions exactes et les éventuelles assurances complémentaires doivent être confirmées.'
+    :'Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.';
 }
 $$('[data-risk]').forEach(b=>b.onclick=()=>{$$('[data-risk]').forEach(x=>x.classList.remove('active'));b.classList.add('active');risk=b.dataset.risk;renderProtection()});
+$$('[data-origin]').forEach(b=>b.onclick=()=>{
+  $$('[data-origin]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  protectionOrigin=b.dataset.origin;
+  renderProtection();
+});
 function renderRetirement(){
  const c=data,b=benefits(c),lppTotal=b.p1.lpp+b.p2.lpp,ret=b.retAvs.total+lppTotal,pct=c.totalIncome?ret/c.totalIncome*100:0;
  const monthly=ret/12,currentMonthly=c.totalIncome/12,gap=Math.max(0,currentMonthly-monthly);
@@ -1440,6 +1649,8 @@ $('#calculate').onclick=()=>{
   }
 
   data=gather();
+  protectionOrigin='illness';
+  $$('[data-origin]').forEach(x=>x.classList.toggle('active',x.dataset.origin==='illness'));
   render();
   show('protection');
 };
