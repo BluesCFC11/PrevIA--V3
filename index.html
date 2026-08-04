@@ -178,9 +178,9 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" type="number" min="0" max="28" value="4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
 <div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
 <div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" type="number" min="0" max="25" value="8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
-<div><label>Épargne disponible</label><input id="fSavings" type="number" value="100000"></div><div><label id="labelP3P1">Capital décès / 3e pilier – Thomas</label><input id="fP3P1" type="number" value="55000"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – Sophie</label><input id="fP3P2" type="number" value="0"></div>
+<div><label>Épargne disponible (CHF)</label><input id="fSavings" type="number" value="100000"></div><div><label id="labelP3P1">Capital décès / 3e pilier – Thomas</label><input id="fP3P1" type="number" value="55000"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – Sophie</label><input id="fP3P2" type="number" value="0"></div>
 <div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="GE">Genève</option><option value="FR">Fribourg</option><option value="NE">Neuchâtel</option><option value="JU">Jura</option></select></div>
-<div class="ownerField"><label>Valeur approximative du logement</label><input id="fHome" type="number" value="1000000"></div><div class="ownerField"><label>Dette hypothécaire restante</label><input id="fMortgage" type="number" value="800000"></div>
+<div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" type="number" value="1000000"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" type="number" value="800000"></div>
 <div class="ownerField"><label>Avez-vous retiré du 2e pilier pour financer ce logement ?</label><select id="fEpl"><option value="no">Non</option><option value="yes">Oui</option></select></div>
 <div class="ownerField eplField hidden"><label id="labelEpl1">Montant retiré du 2e pilier – Thomas</label><input id="fEpl1" type="number" min="0" value="80000"></div>
 <div class="ownerField eplField hidden" id="epl2Wrap"><label id="labelEpl2">Montant retiré du 2e pilier – Sophie</label><input id="fEpl2" type="number" min="0" value="0"></div>
@@ -191,7 +191,28 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
 <div class="hero"><div class="eyebrow">La question que vous souhaitez résoudre</div><h2 id="concernTitle"></h2></div>
 <div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card"><span class="status red">Priorité</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">PrevIA a classé les actions selon leur impact potentiel sur votre situation.</p></div></div>
-<div class="grid4" style="margin-top:15px"><div class="card"><div class="eyebrow">Famille</div><div class="metric" id="familyMetric">–</div><p class="muted tiny">Revenu maintenu dans le scénario le plus fragile</p></div><div class="card"><div class="eyebrow">Retraite</div><div class="metric" id="retMetric">–</div><p class="muted tiny">Taux de remplacement estimé</p></div><div class="card"><div class="eyebrow">Logement</div><div class="metric" id="homeMetric">–</div><p class="muted tiny">Ratio théorique à la retraite</p></div><div class="card"><div class="eyebrow">Fiscalité</div><div class="metric" id="taxMetric">–</div><p class="muted tiny">Versement annuel actuel au 3e pilier</p></div></div>
+<div class="grid4" style="margin-top:15px">
+  <div class="card">
+    <div class="eyebrow">Famille</div>
+    <div class="metric" id="familyMetric">–</div>
+    <p class="muted tiny" id="familyMetricNote">Revenu mensuel dans le scénario le plus fragile</p>
+  </div>
+  <div class="card">
+    <div class="eyebrow">Retraite</div>
+    <div class="metric" id="retMetric">–</div>
+    <p class="muted tiny" id="retMetricNote">Revenu mensuel prévu à la retraite</p>
+  </div>
+  <div class="card">
+    <div class="eyebrow">Logement</div>
+    <div class="metric" id="homeMetric">–</div>
+    <p class="muted tiny" id="homeMetricNote">Capital à amortir pour maintenir le financement viable à la retraite</p>
+  </div>
+  <div class="card">
+    <div class="eyebrow">Fiscalité</div>
+    <div class="metric" id="taxMetric">–</div>
+    <p class="muted tiny" id="taxMetricNote">Optimisation fiscale annuelle actuelle</p>
+  </div>
+</div>
 <div class="grid2" style="margin-top:15px"><div class="card"><div class="eyebrow">Croyance à clarifier</div><h3 id="beliefTitle"></h3><p class="muted" id="beliefReality"></p></div><div class="card"><div class="eyebrow">Vos priorités</div><div id="priorities"></div></div></div></section>
 
 <section id="protection" class="screen"><div class="top"><div><div class="eyebrow">Votre famille</div><h1 id="protectionTitle">Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?</h1></div></div><div class="seg" id="riskTabs"><button class="active" data-risk="invalidity1">Invalidité personne 1</button><button data-risk="invalidity2">Invalidité personne 2</button><button data-risk="death1">Décès personne 1</button><button data-risk="death2">Décès personne 2</button></div><div class="grid4" style="margin-top:15px"><div class="card"><div class="eyebrow">Revenu actuel du ménage</div><div class="metric" id="protCurrent"></div></div><div class="card"><div class="eyebrow">Revenu annuel estimé</div><div class="metric" id="protIncome"></div></div><div class="card"><div class="eyebrow">Revenu maintenu</div><div class="metric" id="protPct"></div></div><div class="card"><div class="eyebrow">Capital versé au décès</div><div class="metric" id="protCapital"></div></div></div><div class="card" style="margin-top:15px"><div class="bar danger"><div id="protBar"></div></div><p id="protText"></p><div class="callout warn" id="protHuman"></div></div><div class="card" style="margin-top:15px"><h3>Détail estimatif</h3><div id="protDetail"></div><p class="muted tiny">Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.</p></div></section>
@@ -328,16 +349,16 @@ function refreshPersonNames(){
   const labels={
     labelAge1:`Âge de ${n1}`,
     labelAge2:`Âge de ${n2}`,
-    labelIncome1:`Revenu brut annuel de ${n1}`,
-    labelIncome2:`Revenu brut annuel de ${n2}`,
+    labelIncome1:`Revenu brut annuel de ${n1} (CHF)`,
+    labelIncome2:`Revenu brut annuel de ${n2} (CHF)`,
     labelJob1:`Statut professionnel de ${n1}`,
     labelJob2:`Statut professionnel de ${n2}`,
-    labelP3P1:`Capital décès / 3e pilier – ${n1}`,
-    labelP3P2:`Capital décès / 3e pilier – ${n2}`,
-    labelEpl1:`Montant retiré du 2e pilier – ${n1}`,
-    labelEpl2:`Montant retiré du 2e pilier – ${n2}`,
-    labelContribution1:`Versement annuel actuel au 3e pilier – ${n1}`,
-    labelContribution2:`Versement annuel actuel au 3e pilier – ${n2}`
+    labelP3P1:`Capital décès / 3e pilier – ${n1} (CHF)`,
+    labelP3P2:`Capital décès / 3e pilier – ${n2} (CHF)`,
+    labelEpl1:`Montant retiré du 2e pilier – ${n1} (CHF)`,
+    labelEpl2:`Montant retiré du 2e pilier – ${n2} (CHF)`,
+    labelContribution1:`Versement annuel actuel au 3e pilier – ${n1} (CHF)`,
+    labelContribution2:`Versement annuel actuel au 3e pilier – ${n2} (CHF)`
   };
 
   Object.entries(labels).forEach(([id,value])=>{
@@ -660,8 +681,60 @@ function taxPotential(c){
   additionalTotal:Math.max(0,max1-deductible1)+Math.max(0,max2-deductible2)
  };
 }
-function render(){const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern],tax=tmi(c.canton,c.totalIncome),p3tax=taxPotential(c),saving=p3tax.deductibleTotal*tax.rate/100,retIncome=b.p1.ret+b.p2.ret,retPct=c.totalIncome?retIncome/c.totalIncome*100:0,worstFamily=Math.min(b.inv1,b.inv2,b.d1.annual,b.d2.annual),familyPct=c.totalIncome?worstFamily/c.totalIncome*100:0;
- $('#sideName').textContent=c.name;$('#sideSub').textContent=`${c.age1} ans · ${c.status}`;$('#hello').textContent=`Bonjour ${c.firstName1} 👋`;refreshPersonNames();$('#concernTitle').textContent=co.title;$('#humanIntro').textContent=co.intro;$('#goodText').textContent=(c.savings+c.p3p1+c.p3p2)>0?`Vous avez déjà constitué ${fmt(c.savings+c.p3p1+c.p3p2)} d'épargne et de 3e pilier.${c.children>0?' Votre historique familial est intégré à l’estimation AVS et AI.':''}`:`Votre situation est maintenant structurée et peut être analysée.${c.children>0?' Votre historique familial est intégré à l’estimation AVS et AI.':''}`;$('#watchTitle').textContent=m&&m.ratios.retirement>33?'Votre logement à la retraite':'Votre niveau de vie futur';$('#watchText').textContent=m&&m.ratios.retirement>33?`Les charges théoriques atteindraient ${m.ratios.retirement.toFixed(1)} % des revenus de retraite estimés.`:`Votre revenu de retraite est estimé à ${retPct.toFixed(0)} % du revenu actuel.`;$('#priorityTitle').textContent=co.title;$('#familyMetric').textContent=familyPct.toFixed(0)+' %';$('#retMetric').textContent=retPct.toFixed(0)+' %';$('#homeMetric').textContent=m?m.ratios.retirement.toFixed(1)+' %':'—';$('#taxMetric').textContent=fmt(c.contribution);$('#beliefTitle').textContent=co.belief;$('#beliefReality').textContent=co.reality;
+function render(){
+ const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern],tax=tmi(c.canton,c.totalIncome),p3tax=taxPotential(c);
+ const saving=p3tax.deductibleTotal*tax.rate/100;
+ const retIncome=b.p1.ret+b.p2.ret;
+ const retPct=c.totalIncome?retIncome/c.totalIncome*100:0;
+
+ const familyScenarios=[
+   {key:'invalidity1',label:`Invalidité de ${c.firstName1}`,annual:b.inv1},
+   ...(c.status!=='Célibataire'?[{key:'invalidity2',label:`Invalidité de ${c.firstName2}`,annual:b.inv2}]:[]),
+   ...(shouldShowDeathScenario()?[{key:'death1',label:`Décès de ${c.firstName1}`,annual:b.d1.annual}]:[]),
+   ...(c.status!=='Célibataire'?[{key:'death2',label:`Décès de ${c.firstName2}`,annual:b.d2.annual}]:[])
+ ];
+ const worstFamilyScenario=familyScenarios.reduce(
+   (worst,current)=>!worst||current.annual<worst.annual?current:worst,
+   null
+ );
+ const worstFamilyAnnual=worstFamilyScenario?worstFamilyScenario.annual:0;
+ const worstFamilyMonthly=worstFamilyAnnual/12;
+ const retirementMonthly=retIncome/12;
+ const retirementReduction=m?m.reductions.retirement:0;
+
+ $('#sideName').textContent=c.name;
+ $('#sideSub').textContent=`${c.age1} ans · ${c.status}`;
+ $('#hello').textContent=`Bonjour ${c.firstName1} 👋`;
+ refreshPersonNames();
+ $('#concernTitle').textContent=co.title;
+ $('#humanIntro').textContent=co.intro;
+ $('#goodText').textContent=(c.savings+c.p3p1+c.p3p2)>0
+   ?`Vous avez déjà constitué ${fmt(c.savings+c.p3p1+c.p3p2)} d'épargne et de 3e pilier.${c.children>0?' Votre historique familial est intégré à l’estimation AVS et AI.':''}`
+   :`Votre situation est maintenant structurée et peut être analysée.${c.children>0?' Votre historique familial est intégré à l’estimation AVS et AI.':''}`;
+ $('#watchTitle').textContent=m&&m.ratios.retirement>33?'Votre logement à la retraite':'Votre niveau de vie futur';
+ $('#watchText').textContent=m&&m.ratios.retirement>33
+   ?`Les charges théoriques atteindraient ${m.ratios.retirement.toFixed(1)} % des revenus de retraite estimés.`
+   :`Votre revenu de retraite est estimé à ${retPct.toFixed(0)} % du revenu actuel.`;
+ $('#priorityTitle').textContent=co.title;
+
+ $('#familyMetric').textContent=fmtMonth(worstFamilyAnnual);
+ $('#familyMetricNote').textContent=worstFamilyScenario
+   ?`Revenu mensuel estimé dans le scénario le plus fragile : ${worstFamilyScenario.label}`
+   :'Revenu mensuel estimé dans le scénario le plus fragile';
+
+ $('#retMetric').textContent=fmtMonth(retIncome);
+ $('#retMetricNote').textContent=`Revenu mensuel prévu, soit ${retPct.toFixed(0)} % du revenu brut actuel`;
+
+ $('#homeMetric').textContent=m?fmt(retirementReduction):'Non applicable';
+ $('#homeMetricNote').textContent=m
+   ?'Capital à amortir pour maintenir le financement viable à la retraite'
+   :'Vous avez indiqué ne pas être propriétaire';
+
+ $('#taxMetric').textContent=fmt(c.contribution);
+ $('#taxMetricNote').textContent='Montant annuel à utiliser pour optimiser votre fiscalité';
+
+ $('#beliefTitle').textContent=co.belief;
+ $('#beliefReality').textContent=co.reality;
  const rec=[];
  const p3rec=taxPotential(c);
  if(p3rec.additionalTotal>0)rec.push(`Augmenter progressivement le 3e pilier jusqu’au potentiel disponible de ${fmt(p3rec.totalMax)}`);
