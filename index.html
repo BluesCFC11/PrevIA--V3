@@ -301,7 +301,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 <div class="callout" style="margin-top:15px" id="taxSentence"></div>
 <div class="card" style="margin-top:15px"><h3>Détail par personne</h3><div id="taxPersonDetails"></div></div>
-<p class="muted tiny">Estimation indicative fondée sur le revenu brut, la situation familiale, le nombre d’enfants, le statut professionnel et le canton. Pour une personne célibataire, PrevIA applique une déduction de base de CHF 15'000, à laquelle s’ajoutent les déductions pour enfants. Pour un couple marié, PrevIA applique CHF 25'000 de déduction de base au ménage, CHF 25'000 par enfant pour les deux premiers enfants, puis CHF 15'000 par enfant supplémentaire dès le troisième. Pour des concubins, les deux personnes sont imposées séparément : la déduction de base du couple et les déductions liées aux enfants communs sont réparties à parts égales entre elles. Les TMI correspondent à une moyenne indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond 3a utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de l’attribution fiscale des enfants, de l’état civil, des frais professionnels, des primes d’assurance, de la fortune, des autres déductions et de la législation fiscale applicable.</p>
+<p class="muted tiny">Estimation indicative fondée sur le revenu brut, la situation familiale, le nombre d’enfants, le statut professionnel et le canton. Pour une personne célibataire, PrevIA applique CHF 15'000 de déduction de base, CHF 25'000 par enfant pour les deux premiers enfants, puis CHF 15'000 par enfant supplémentaire dès le troisième. Pour des concubins, chaque personne est imposée séparément : PrevIA applique CHF 15'000 de déduction de base par personne, CHF 12'500 par enfant et par personne pour les deux premiers enfants, puis CHF 7'500 par enfant supplémentaire et par personne dès le troisième. Pour un couple marié, PrevIA applique CHF 25'000 de déduction de base au couple, puis CHF 12'500 par enfant. Les TMI correspondent à une moyenne indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond 3a utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de l’attribution fiscale des enfants, de l’état civil, des frais professionnels, des primes d’assurance, de la fortune, des autres déductions et de la législation fiscale applicable.</p>
 </section>
 
 <div class="lpp-disclaimer" id="lppDisclaimer">
@@ -713,16 +713,17 @@ function estimatedTaxableIncome(c){
  const children=Math.max(0,c.children||0);
  const firstTwoChildren=Math.min(children,2);
  const additionalChildren=Math.max(0,children-2);
- const fullChildrenDeduction=firstTwoChildren*25000+additionalChildren*15000;
 
- // Personne seule :
+ // Célibataire :
  // - CHF 15'000 de déduction de base ;
- // - déductions enfants complètes si elle a des enfants.
+ // - CHF 25'000 par enfant pour les deux premiers ;
+ // - CHF 15'000 par enfant supplémentaire dès le troisième.
  if(c.status==='Célibataire'){
    const grossIncome=Math.max(0,c.income1||0);
    const baseDeduction=15000;
-   const childrenDeduction=fullChildrenDeduction;
+   const childrenDeduction=firstTwoChildren*25000+additionalChildren*15000;
    const totalDeduction=baseDeduction+childrenDeduction;
+   const taxableIncome=Math.max(0,grossIncome-totalDeduction);
 
    return{
      mode:'single',
@@ -730,13 +731,13 @@ function estimatedTaxableIncome(c){
      baseDeduction,
      childrenDeduction,
      totalDeduction,
-     taxableIncome:Math.max(0,grossIncome-totalDeduction),
+     taxableIncome,
      person1:{
        grossIncome,
        baseDeduction,
        childrenDeduction,
        totalDeduction,
-       taxableIncome:Math.max(0,grossIncome-totalDeduction)
+       taxableIncome
      },
      person2:null
    };
@@ -744,11 +745,12 @@ function estimatedTaxableIncome(c){
 
  // Concubins :
  // - taxation séparée ;
- // - la déduction de base du couple (CHF 25'000) est divisée par deux ;
- // - les déductions pour enfants communs sont divisées par deux.
+ // - CHF 15'000 de déduction de base par personne ;
+ // - CHF 12'500 par enfant et par personne pour les deux premiers ;
+ // - CHF 7'500 par enfant supplémentaire et par personne dès le troisième.
  if(c.status==='Concubins'){
-   const baseDeductionEach=12500;
-   const childrenDeductionEach=fullChildrenDeduction/2;
+   const baseDeductionEach=15000;
+   const childrenDeductionEach=firstTwoChildren*12500+additionalChildren*7500;
 
    const person1Gross=Math.max(0,c.income1||0);
    const person2Gross=Math.max(0,c.income2||0);
@@ -786,13 +788,13 @@ function estimatedTaxableIncome(c){
 
  // Couple marié :
  // - taxation commune simplifiée ;
- // - CHF 25'000 de déduction de base pour le ménage ;
- // - CHF 25'000 par enfant pour les deux premiers ;
- // - CHF 15'000 par enfant supplémentaire dès le troisième.
+ // - CHF 25'000 de déduction de base pour le couple ;
+ // - CHF 12'500 par enfant.
  const grossIncome=Math.max(0,c.totalIncome||0);
  const baseDeduction=25000;
- const childrenDeduction=fullChildrenDeduction;
+ const childrenDeduction=children*12500;
  const totalDeduction=baseDeduction+childrenDeduction;
+ const taxableIncome=Math.max(0,grossIncome-totalDeduction);
 
  return{
    mode:'joint',
@@ -800,7 +802,7 @@ function estimatedTaxableIncome(c){
    baseDeduction,
    childrenDeduction,
    totalDeduction,
-   taxableIncome:Math.max(0,grossIncome-totalDeduction),
+   taxableIncome,
    person1:null,
    person2:null
  };
