@@ -307,34 +307,75 @@ JU:[[50000,14],[60000,16],[70000,18],[80000,20],[90000,22],[100000,24],[120000,2
 };
 const CONCERNS={family:{title:'Ma famille sera-t-elle protégée si quelque chose m’arrive ?',intro:'Vous cherchez avant tout à éviter qu’un décès ou une invalidité fragilise le quotidien de votre famille.',emotion:['Protection','Responsabilité familiale'],belief:'« Si je décède, ma famille sera automatiquement protégée. »',reality:'Les prestations peuvent laisser une baisse de revenu importante, surtout en concubinage. PrevIA vérifie les deux décès séparément.'},home:{title:'Pourrons-nous conserver notre logement quoi qu’il arrive ?',intro:'Vous souhaitez savoir si votre logement restera supportable aujourd’hui, à la retraite et dans les coups durs.',emotion:['Sécurité','Attachement au logement'],belief:'« Tant que nous payons l’hypothèque, tout va bien. »',reality:'La banque regarde les charges théoriques par rapport aux revenus, avec une limite de 33 %.'},retirement:{title:'Pourrons-nous vivre sereinement à la retraite ?',intro:'Vous souhaitez mesurer la baisse de revenu future et agir suffisamment tôt.',emotion:['Anticipation','Besoin de visibilité'],belief:'« Mon 2e pilier suffira probablement. »',reality:'PrevIA estime la LPP sans demander au client de connaître son avoir, puis confirme avec le certificat.'},tax:{title:'Comment réduire intelligemment mes impôts ?',intro:'Vous souhaitez connaître l’effet concret d’un versement déductible.',emotion:['Efficacité','Optimisation'],belief:'« Le 3e pilier sert uniquement à payer moins d’impôts. »',reality:'L’avantage fiscal doit aussi renforcer votre retraite et votre capital.'},wealth:{title:'Comment développer durablement mon patrimoine ?',intro:'Vous souhaitez mieux utiliser votre capacité d’épargne.',emotion:['Progression','Maîtrise'],belief:'« Il faut choisir entre sécurité et rendement. »',reality:'Une stratégie peut combiner réserve disponible, horizon de placement et objectifs.'}};
 let concern='family',risk='invalidity1',evoMode='death1',data={};
+
+function shouldShowDeathScenario(){
+  const isSingle = $('#fStatus').value === 'Célibataire';
+  const childrenCount = Math.max(0, Number($('#fChildren').value) || 0);
+  return !(isSingle && childrenCount === 0);
+}
 function show(id){$$('.screen').forEach(x=>x.classList.toggle('active',x.id===id));$$('.nav').forEach(x=>x.classList.toggle('active',x.dataset.s===id));scrollTo(0,0)}
 document.addEventListener('click',e=>{const n=e.target.closest('[data-s]');if(n)show(n.dataset.s)});$('#newAnalysis').onclick=()=>show('form');
 $$('.choice').forEach(b=>b.onclick=()=>{$$('.choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');concern=b.dataset.concern});
 function updateFamily(){
- const status=$('#fStatus').value,single=status==='Célibataire',married=status==='Mariés';
- ['#age2Wrap','#income2Wrap','#job2Wrap','#p3p2Wrap','#contribution2Wrap'].forEach(s=>$(s).classList.toggle('hidden',single));
- $('#marriageYearsWrap').classList.toggle('hidden',!married);updateEpl();
- $$('[data-risk="invalidity2"],[data-risk="death2"]').forEach(b=>b.classList.toggle('hidden',single));
- $$('[data-evo="death2"],[data-evo="invalidity2"],[data-evo="retirement2"],[data-evo="retirementCouple"]').forEach(b=>b.classList.toggle('hidden',single));
- const bInv1=$('[data-risk="invalidity1"]'),bDeath1=$('[data-risk="death1"]');
- bInv1.textContent=single?'Invalidité':'Invalidité personne 1';
- bDeath1.textContent=single?'Décès':'Décès personne 1';
- if($('#protectionTitle'))$('#protectionTitle').textContent=single?'Que se passerait-il si vous ne pouviez plus travailler ou décédiez ?':"Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?";
- if(single&&(risk==='invalidity2'||risk==='death2')){
-   risk=risk==='invalidity2'?'invalidity1':'death1';
-   $$('[data-risk]').forEach(x=>x.classList.remove('active'));
-   $(`[data-risk="${risk}"]`).classList.add('active');
- }
- if(data&&typeof renderProtection==='function')renderProtection();
+  const status=$('#fStatus').value;
+  const single=status==='Célibataire';
+  const married=status==='Mariés';
+  const showDeath=shouldShowDeathScenario();
+
+  ['#age2Wrap','#income2Wrap','#job2Wrap','#p3p2Wrap','#contribution2Wrap']
+    .forEach(s=>$(s).classList.toggle('hidden',single));
+
+  $('#marriageYearsWrap').classList.toggle('hidden',!married);
+  updateEpl();
+
+  $('[data-risk="invalidity2"]').classList.toggle('hidden',single);
+  $('[data-risk="death2"]').classList.toggle('hidden',single);
+  $('[data-risk="death1"]').classList.toggle('hidden',!showDeath);
+
+  $$('[data-evo="death2"],[data-evo="invalidity2"],[data-evo="retirement2"],[data-evo="retirementCouple"]')
+    .forEach(b=>b.classList.toggle('hidden',single));
+
+  const bInv1=$('[data-risk="invalidity1"]');
+  const bDeath1=$('[data-risk="death1"]');
+
+  bInv1.textContent=single?'Invalidité':'Invalidité personne 1';
+  bDeath1.textContent=single?'Décès':'Décès personne 1';
+
+  if(!showDeath&&(risk==='death1'||risk==='death2')){
+    risk='invalidity1';
+    $$('[data-risk]').forEach(x=>x.classList.remove('active'));
+    bInv1.classList.add('active');
+  }
+
+  if(single&&(risk==='invalidity2'||risk==='death2')){
+    risk='invalidity1';
+    $$('[data-risk]').forEach(x=>x.classList.remove('active'));
+    bInv1.classList.add('active');
+  }
+
+  if($('#protectionTitle')){
+    $('#protectionTitle').textContent=
+      single&&!showDeath
+        ?'Que se passerait-il si vous ne pouviez plus travailler ?'
+        :single
+          ?'Que se passerait-il si vous ne pouviez plus travailler ou décédiez ?'
+          :"Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?";
+  }
+
+  if(data&&typeof renderProtection==='function')renderProtection();
 }
 $('#fStatus').onchange=updateFamily;
 function updateChildren(){
- const count=Math.max(0,+$('#fChildren').value||0);
- const dependent=count>0&&$('#fChildrenDependent').value==='yes';
- $('#childGapWrap').classList.toggle('hidden',count<2);
- $('#childrenDependentWrap').classList.toggle('hidden',count===0);
- $('#youngestAgeWrap').classList.toggle('hidden',!dependent);
- if(count===0)$('#fChildrenDependent').value='no';
+  const count=Math.max(0,+$('#fChildren').value||0);
+  const dependent=count>0&&$('#fChildrenDependent').value==='yes';
+
+  $('#childGapWrap').classList.toggle('hidden',count<2);
+  $('#childrenDependentWrap').classList.toggle('hidden',count===0);
+  $('#youngestAgeWrap').classList.toggle('hidden',!dependent);
+
+  if(count===0)$('#fChildrenDependent').value='no';
+
+  updateFamily();
 }
 $('#fChildren').oninput=updateChildren;
 $('#fChildrenDependent').onchange=updateChildren;
@@ -567,7 +608,24 @@ function riskData(){
    (d.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie est nécessaire pour chiffrer les prestations AVS de survivants.</div>':'');
  return{income:d.annual,capital:d.capital,detail:d.warning||label,html,uncertain:d.needsDeepAnalysis};
 }
-function renderProtection(){const c=data,x=riskData(),pct=c.totalIncome?x.income/c.totalIncome*100:0;$('#protCurrent').textContent=fmt(c.totalIncome);$('#protIncome').textContent=fmt(x.income);$('#protPct').textContent=pct.toFixed(0)+' %';$('#protCapital').textContent=fmt(x.capital);$('#protBar').style.width=Math.min(100,pct)+'%';$('#protText').textContent=`Le ménage conserverait environ ${pct.toFixed(0)} % de son revenu brut actuel.`;$('#protHuman').textContent=pct<70?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.':x.detail;$('#protDetail').innerHTML=x.html}
+function renderProtection(){
+  if(!shouldShowDeathScenario()&&(risk==='death1'||risk==='death2')){
+    risk='invalidity1';
+    $$('[data-risk]').forEach(x=>x.classList.remove('active'));
+    const bInv1=$('[data-risk="invalidity1"]');
+    if(bInv1)bInv1.classList.add('active');
+  }
+
+  const c=data,x=riskData(),pct=c.totalIncome?x.income/c.totalIncome*100:0;
+  $('#protCurrent').textContent=fmt(c.totalIncome);
+  $('#protIncome').textContent=fmt(x.income);
+  $('#protPct').textContent=pct.toFixed(0)+' %';
+  $('#protCapital').textContent=fmt(x.capital);
+  $('#protBar').style.width=Math.min(100,pct)+'%';
+  $('#protText').textContent=`Le ménage conserverait environ ${pct.toFixed(0)} % de son revenu brut actuel.`;
+  $('#protHuman').textContent=pct<70?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.':x.detail;
+  $('#protDetail').innerHTML=x.html;
+}
 $$('[data-risk]').forEach(b=>b.onclick=()=>{$$('[data-risk]').forEach(x=>x.classList.remove('active'));b.classList.add('active');risk=b.dataset.risk;renderProtection()});
 function renderRetirement(){
  const c=data,b=benefits(c),lppTotal=b.p1.lpp+b.p2.lpp,ret=b.retAvs.total+lppTotal,pct=c.totalIncome?ret/c.totalIncome*100:0;
@@ -670,11 +728,7 @@ function evolutionScenario(){
     stages.push(s);
   });
 
-  const survivorAge=isP1?c.age2:c.age1;
-  const yearsToRet=Math.max(0,65-survivorAge);
-  const retAvs=isP1?b.retAvs.p2.total:b.retAvs.p1.total;
-  const retLpp=isP1?b.p2.lpp:b.p1.lpp;
-  stages.push({label:`À ${65} ans`,sub:'Retraite de la personne survivante',event:`Dans ${yearsToRet} ans`,income:0,avs:retAvs,lpp:retLpp,child:0,total:retAvs+retLpp});
+  // La retraite reste exclusivement dans l'onglet « Votre retraite ».
   breakdown={income:other,avs,lpp,child:childTotal,final:stages.at(-1).total};
  }else{
   const couple=evoMode==='retirementCouple',isP1=evoMode==='retirement1';
