@@ -238,7 +238,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 </section>
 
 
-<section id="immobilier" class="screen"><div class="top"><div><div class="eyebrow">Votre logement</div><h1>Pourriez-vous conserver votre logement dans chaque scénario ?</h1></div></div><div id="noHome" class="callout hidden">Vous avez indiqué ne pas être propriétaire. L'analyse immobilière n'est donc pas applicable.</div><div id="homeContent"><div class="grid4"><div class="card"><div class="eyebrow">Valeur du logement</div><div class="metric" id="homeVal"></div></div><div class="card"><div class="eyebrow">Dette actuelle</div><div class="metric" id="mortVal"></div></div><div class="card"><div class="eyebrow">Dette estimée à 65 ans</div><div class="metric" id="mortRet"></div></div><div class="card"><div class="eyebrow">Financement max. actuel</div><div class="metric" id="maxDebtCurrent"></div><div class="tiny muted">Revenu brut × 4,5</div></div></div><div class="card" style="margin-top:15px"><h3>Calcul des charges théoriques actuelles</h3><div class="row"><span>Intérêts théoriques à 5 %</span><b id="interestCost"></b></div><div class="row"><span>Entretien à 1 % de la valeur</span><b id="maintenanceCost"></b></div><div class="row"><span>Deuxième rang à amortir</span><b id="secondRank"></b></div><div class="row"><span>Durée restante</span><b id="amortYears"></b></div><div class="row"><span>Amortissement annuel</span><b id="amortCost"></b></div></div><div class="card" style="margin-top:15px;overflow:auto"><table class="scenario-table"><thead><tr><th>Scénario</th><th>Revenu brut</th><th>Financement max.</th><th>Capital à réduire</th><th>Charges</th><th>Ratio</th><th>Lecture</th></tr></thead><tbody id="scenarioRows"></tbody></table><p class="muted tiny" style="margin-top:12px">Le financement maximal est estimé simplement à 4,5 fois le revenu brut annuel disponible dans chaque scénario. Le capital à réduire correspond à la différence positive entre l’hypothèque actuelle et ce financement maximal.</p></div><div class="callout warn" style="margin-top:15px" id="homeAnswer"></div></div></section>
+<section id="immobilier" class="screen"><div class="top"><div><div class="eyebrow">Votre logement</div><h1>Pourriez-vous conserver votre logement dans chaque scénario ?</h1></div></div><div id="noHome" class="callout hidden">Vous avez indiqué ne pas être propriétaire. L'analyse immobilière n'est donc pas applicable.</div><div id="homeContent"><div class="grid4"><div class="card"><div class="eyebrow">Valeur du logement</div><div class="metric" id="homeVal"></div></div><div class="card"><div class="eyebrow">Dette actuelle</div><div class="metric" id="mortVal"></div></div><div class="card"><div class="eyebrow">Dette estimée à 65 ans</div><div class="metric" id="mortRet"></div></div><div class="card"><div class="eyebrow">Financement max. actuel</div><div class="metric" id="maxDebtCurrent"></div><div class="tiny muted">Capacité d’endettement estimée</div></div></div><div class="card" style="margin-top:15px"><h3>Calcul des charges théoriques actuelles</h3><div class="row"><span>Intérêts théoriques à 5 %</span><b id="interestCost"></b></div><div class="row"><span>Entretien à 1 % de la valeur</span><b id="maintenanceCost"></b></div><div class="row"><span>Deuxième rang à amortir</span><b id="secondRank"></b></div><div class="row"><span>Durée restante</span><b id="amortYears"></b></div><div class="row"><span>Amortissement annuel</span><b id="amortCost"></b></div></div><div class="card" style="margin-top:15px;overflow:auto"><table class="scenario-table"><thead><tr><th>Scénario</th><th>Revenu brut disponible</th><th>Charges théoriques</th><th>Taux de solvabilité</th><th>Acceptation financement</th><th>Financement max.</th><th>Capital à déduire</th></tr></thead><tbody id="scenarioRows"></tbody></table><p class="muted tiny" style="margin-top:12px">Le financement maximal correspond au montant maximum que vous pouvez emprunter selon votre revenu disponible et les règles usuelles des établissements financiers. Le capital à déduire représente le montant à investir en réduction de votre hypothèque actuelle pour rester dans les limites de financement acceptées.</p></div><div class="callout warn" style="margin-top:15px" id="homeAnswer"></div></div></section>
 
 <section id="fiscalite" class="screen">
 <div class="top"><div><div class="eyebrow">Vos impôts</div><h1>Quel avantage fiscal votre 3e pilier vous procure-t-il ?</h1>
@@ -916,16 +916,23 @@ function renderHome(){
    const s=status(r[5]);
    const reductionText=r[3]>0
      ?`<b style="color:var(--red)">${fmt(r[3])}</b>`
-     :'<span class="tag green">Aucune réduction</span>';
+     :'<b style="color:var(--green)">0 CHF</b>';
+
+   const acceptanceLabel=
+     s.cls==='green'
+       ?'Acceptable'
+       :s.cls==='orange'
+         ?'À surveiller'
+         :'Non acceptable';
 
    return`<tr>
      <td><b>${r[0]}</b></td>
      <td>${fmt(r[1])}</td>
-     <td><b>${fmt(r[2])}</b></td>
-     <td>${reductionText}</td>
      <td>${fmt(r[4])}</td>
      <td><b>${r[5].toFixed(2)} %</b></td>
-     <td><span class="tag ${s.cls}">${s.label}</span></td>
+     <td><span class="tag ${s.cls}">${acceptanceLabel}</span></td>
+     <td><b>${fmt(r[2])}</b></td>
+     <td>${reductionText}</td>
    </tr>`;
  }).join('');
 
