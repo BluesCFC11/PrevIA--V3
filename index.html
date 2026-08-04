@@ -278,6 +278,9 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div class="grid2" style="margin-top:15px">
   <div class="card">
     <h3>Votre situation actuelle</h3>
+    <div class="row"><span>Revenu brut du ménage</span><b id="taxGrossIncome"></b></div>
+    <div class="row"><span>Déductions estimées</span><b id="taxEstimatedDeductions"></b></div>
+    <div class="row"><span>Revenu imposable estimé</span><b id="taxEstimatedIncome"></b></div>
     <div class="row"><span>Taux marginal d'imposition estimé</span><b id="tmiValue"></b></div>
     <div class="row"><span>Versement 3a actuellement déductible</span><b id="taxDeductibleCurrent"></b></div>
     <div class="row"><span>Économie fiscale actuelle</span><b id="taxCurrentSavingDetail"></b></div>
@@ -297,7 +300,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 <div class="callout" style="margin-top:15px" id="taxSentence"></div>
 <div class="card" style="margin-top:15px"><h3>Détail par personne</h3><div id="taxPersonDetails"></div></div>
-<p class="muted tiny">Estimation indicative fondée sur le revenu brut, le statut professionnel et le canton. Les TMI utilisés correspondent à une moyenne nationale indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de la situation familiale, de l'affiliation au 2e pilier et des autres déductions.</p>
+<p class="muted tiny">Estimation indicative fondée sur le revenu brut, la situation familiale, le nombre d’enfants, le statut professionnel et le canton. PrevIA estime le revenu imposable en déduisant CHF 25'000 pour le ménage, CHF 25'000 par enfant pour les deux premiers enfants, puis CHF 15'000 par enfant supplémentaire dès le troisième. Les TMI correspondent à une moyenne indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond 3a utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de l’état civil, des frais professionnels, des primes d’assurance, de la fortune, des autres déductions et de la législation fiscale applicable.</p>
 </section>
 
 <div class="lpp-disclaimer" id="lppDisclaimer">
@@ -704,6 +707,29 @@ function pillar3aMax(job,income){
  if(job==='Indépendant')return Math.min(36288,Math.max(0,income*.20));
  return 0;
 }
+
+function estimatedTaxableIncome(c){
+ const grossIncome=Math.max(0,c.totalIncome||0);
+ const children=Math.max(0,c.children||0);
+
+ // Déduction simplifiée PrevIA :
+ // - CHF 25'000 de déduction de base pour le ménage ;
+ // - CHF 25'000 par enfant pour les deux premiers enfants ;
+ // - CHF 15'000 par enfant à partir du troisième.
+ const baseDeduction=25000;
+ const firstTwoChildren=Math.min(children,2);
+ const additionalChildren=Math.max(0,children-2);
+ const childrenDeduction=firstTwoChildren*25000+additionalChildren*15000;
+ const totalDeduction=baseDeduction+childrenDeduction;
+
+ return{
+   grossIncome,
+   baseDeduction,
+   childrenDeduction,
+   totalDeduction,
+   taxableIncome:Math.max(0,grossIncome-totalDeduction)
+ };
+}
 function taxPotential(c){
  const max1=pillar3aMax(c.job1,c.income1);
  const max2=c.status==='Célibataire'?0:pillar3aMax(c.job2,c.income2);
@@ -717,7 +743,10 @@ function taxPotential(c){
  };
 }
 function render(){
- const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern],tax=tmi(c.canton,c.totalIncome),p3tax=taxPotential(c);
+ const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern];
+ const taxIncome=estimatedTaxableIncome(c);
+ const tax=tmi(c.canton,taxIncome.taxableIncome);
+ const p3tax=taxPotential(c);
  const saving=p3tax.deductibleTotal*tax.rate/100;
  const retIncome=b.p1.ret+b.p2.ret;
  const retPct=c.totalIncome?retIncome/c.totalIncome*100:0;
@@ -1157,7 +1186,7 @@ function renderHome(){
  }
 }
 function renderTax(){
- const c=data,x=tmi(c.canton,c.totalIncome),p=taxPotential(c);
+ const c=data,taxIncome=estimatedTaxableIncome(c),x=tmi(c.canton,taxIncome.taxableIncome),p=taxPotential(c);
  const currentSaving=p.deductibleTotal*x.rate/100;
  const maxSaving=p.totalMax*x.rate/100;
  const additionalSaving=p.additionalTotal*x.rate/100;
@@ -1173,8 +1202,11 @@ function renderTax(){
    ?'Montant encore disponible avant d’atteindre le plafond estimé'
    :'Plafond estimé déjà entièrement utilisé';
 
+ $('#taxGrossIncome').textContent=fmt(taxIncome.grossIncome);
+ $('#taxEstimatedDeductions').textContent=fmt(taxIncome.totalDeduction);
+ $('#taxEstimatedIncome').textContent=fmt(taxIncome.taxableIncome);
  $('#tmiValue').textContent=x.rate.toFixed(1)+' %';
- $('#tmiRange').textContent=`Grille indicative du canton ${c.canton} · ${x.source}`;
+ $('#tmiRange').textContent=`Grille indicative du canton ${c.canton} appliquée à un revenu imposable estimé de ${fmt(taxIncome.taxableIncome)} · ${x.source}`;
  $('#taxDeductibleCurrent').textContent=fmt(p.deductibleTotal);
  $('#taxCurrentSavingDetail').textContent=fmt(currentSaving);
  $('#netEffort').textContent=fmt(currentNet);
@@ -1188,9 +1220,9 @@ function renderTax(){
 
  const costPer100=100*(1-x.rate/100);
  if(p.additionalTotal>0){
-  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI estimé de ${x.rate.toFixed(1)} %, chaque CHF 100 déductibles vous coûtent réellement environ <b>CHF ${costPer100.toFixed(0)}</b> après économie fiscale.`;
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>Sur la base d’un revenu brut de <b>${fmt(taxIncome.grossIncome)}</b> et de déductions familiales simplifiées de <b>${fmt(taxIncome.totalDeduction)}</b>, PrevIA retient un revenu imposable estimé de <b>${fmt(taxIncome.taxableIncome)}</b>.<br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI estimé de ${x.rate.toFixed(1)} %, chaque CHF 100 déductibles vous coûtent réellement environ <b>CHF ${costPer100.toFixed(0)}</b> après économie fiscale.`;
  }else if(p.totalMax>0){
-  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal est pleinement utilisé dans cette estimation.</b><br><br>Votre versement déductible actuel de <b>${fmt(p.deductibleTotal)}</b> génère une économie fiscale estimée de <b>${fmt(currentSaving)}</b> par année.`;
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal est pleinement utilisé dans cette estimation.</b><br><br>PrevIA retient un revenu imposable estimé de <b>${fmt(taxIncome.taxableIncome)}</b> après des déductions familiales simplifiées de <b>${fmt(taxIncome.totalDeduction)}</b>.<br><br>Votre versement déductible actuel de <b>${fmt(p.deductibleTotal)}</b> génère une économie fiscale estimée de <b>${fmt(currentSaving)}</b> par année.`;
  }else{
   $('#taxSentence').innerHTML=`<b>Aucun potentiel 3a n’est estimé dans cette simulation.</b><br><br>Le droit au pilier 3a dépend de l’exercice d’une activité lucrative soumise à l’AVS.`;
  }
