@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.14.7 — Prototype interactif</title>
+<title>PrevIA V9.15.0 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -153,7 +153,33 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.14.7 — accueil rassurant et saisie suisse */
+/* V9.15.0 — lecture visuelle des priorités */
+.summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
+.summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
+.summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
+.summary-signal.signal-red{border-color:#df6b64!important;box-shadow:0 10px 28px rgba(201,78,73,.14)}
+.summary-signal.signal-blue{border-color:#6da6da!important;box-shadow:0 10px 28px rgba(40,121,184,.11)}
+.life-gap{
+  background:repeating-linear-gradient(
+    135deg,
+    #ffffff 0,
+    #ffffff 10px,
+    #f97316 10px,
+    #f97316 15px
+  )!important;
+  color:#9a3412!important;
+  border:2px solid #f97316;
+  font-weight:950!important;
+}
+.life-gap::after{content:"Lacune";background:#fff8ed;border-radius:5px;padding:2px 5px}
+.investment-plan{margin-top:16px;padding:18px;border:1px solid #dfe2ff;border-radius:15px;background:linear-gradient(135deg,#f5f4ff,#fff)}
+.investment-plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.investment-plan-stat{padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.investment-plan-stat b{display:block;font-size:18px;margin-top:4px}
+@media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
+
+/* V9.15.0 — accueil rassurant et saisie suisse */
 .home-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:28px;align-items:stretch;padding:0;overflow:hidden;background:#fff}
 .home-hero-copy{padding:42px 38px;display:flex;flex-direction:column;justify-content:center;min-height:470px;background:linear-gradient(135deg,#f0efff 0%,#ffffff 62%,#edf7ff 100%)}
 .home-hero-copy h1{font-size:44px;line-height:1.08;max-width:760px;margin:10px 0 18px}
@@ -161,7 +187,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .home-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
 .home-trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:25px;color:#586177;font-size:12px;font-weight:750}
 .home-trust span{display:inline-flex;align-items:center;gap:7px;background:#ffffffb8;border:1px solid #e1e5ef;border-radius:999px;padding:7px 10px}
-.home-hero-photo{position:relative;min-height:470px;background-image:linear-gradient(180deg,rgba(9,19,45,.04),rgba(9,19,45,.42)),url("https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1400&q=85");background-size:cover;background-position:center}
+.home-hero-photo{position:relative;min-height:470px;background-image:linear-gradient(180deg,rgba(9,19,45,.04),rgba(9,19,45,.42)),url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=88");background-size:cover;background-position:center}
 .home-hero-photo::after{content:"Votre avenir mérite d’être compris";position:absolute;left:24px;right:24px;bottom:24px;padding:16px 18px;border-radius:14px;background:#0b1735c9;color:white;font-size:17px;font-weight:850;backdrop-filter:blur(8px)}
 .form-order-note{margin:0 0 16px;padding:12px 14px;border-radius:12px;background:#f6f7fb;color:#667085;font-size:12px}
 .money-input{font-variant-numeric:tabular-nums}
@@ -170,13 +196,13 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.14.7</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.0</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
 <section id="home" class="screen active">
   <div class="hero home-hero">
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.14.7</div>
+      <div class="eyebrow">PrevIA V9.15.0</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez en quelques minutes si votre famille, votre retraite, votre logement et votre fiscalité sont suffisamment protégés.</p>
       <div class="home-hero-actions">
@@ -189,7 +215,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
         <span>✓ Analyse suisse indicative</span>
       </div>
     </div>
-    <div class="home-hero-photo" role="img" aria-label="Couple et famille dans un environnement lumineux et rassurant"></div>
+    <div class="home-hero-photo" role="img" aria-label="Couple entier dans un environnement naturel, lumineux et rassurant"></div>
   </div>
 </section>
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
@@ -228,24 +254,24 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
 <div class="hero"><div class="eyebrow">La question que vous souhaitez résoudre</div><h2 id="concernTitle"></h2></div>
-<div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card"><span class="status red">Priorité</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">PrevIA a classé les actions selon leur impact potentiel sur votre situation.</p></div></div>
+<div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card summary-signal signal-red"><span class="status red">Priorité</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">PrevIA a classé les actions selon leur impact potentiel sur votre situation.</p></div></div>
 <div class="grid4" style="margin-top:15px">
-  <div class="card">
+  <div class="card summary-signal" id="summaryFamilyCard">
     <div class="eyebrow">Famille</div>
     <div class="metric" id="familyMetric">–</div>
     <p class="muted tiny" id="familyMetricNote">Revenu mensuel dans le scénario le plus fragile</p>
   </div>
-  <div class="card">
+  <div class="card summary-signal" id="summaryRetirementCard">
     <div class="eyebrow">Retraite</div>
     <div class="metric" id="retMetric">–</div>
     <p class="muted tiny" id="retMetricNote">Revenu mensuel prévu à la retraite</p>
   </div>
-  <div class="card">
+  <div class="card summary-signal" id="summaryHomeCard">
     <div class="eyebrow">Logement</div>
     <div class="metric" id="homeMetric">–</div>
     <p class="muted tiny" id="homeMetricNote">Capital à amortir pour maintenir le financement viable à la retraite</p>
   </div>
-  <div class="card">
+  <div class="card summary-signal" id="summaryTaxCard">
     <div class="eyebrow">Fiscalité</div>
     <div class="metric" id="taxMetric">–</div>
     <p class="muted tiny" id="taxMetricNote">Optimisation fiscale annuelle actuelle</p>
@@ -273,7 +299,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   <div class="card"><div class="eyebrow">Revenu actuel du ménage</div><div class="metric" id="protCurrent"></div></div>
   <div class="card"><div class="eyebrow">Revenu annuel estimé</div><div class="metric" id="protIncome"></div></div>
   <div class="card"><div class="eyebrow">Revenu maintenu</div><div class="metric" id="protPct"></div></div>
-  <div class="card"><div class="eyebrow" id="protCapitalLabel">Capital versé au décès</div><div class="metric" id="protCapital"></div></div>
+  <div class="card" id="protCapitalCard"><div class="eyebrow" id="protCapitalLabel">Capital versé au décès</div><div class="metric" id="protCapital"></div></div>
 </div>
 <div class="card" style="margin-top:15px">
   <div class="bar danger"><div id="protBar"></div></div>
@@ -287,7 +313,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 </div>
 </section>
 
-<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted">AVS et LPP comprises</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. La rente de retraite est estimée avec un taux de conversion global de 5,5 %. Les prestations de risque utilisent séparément 6,8 % sur le capital sans intérêts. Le montant EPL déclaré est utilisé uniquement pour montrer le potentiel d’un remboursement. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></section>
+<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted" id="retMonthlyNote">AVS et LPP comprises, hors 13e rente AVS versée séparément</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. La rente de retraite est estimée avec un taux de conversion global de 5,5 %. Les prestations de risque utilisent séparément 6,8 % sur le capital sans intérêts. Le montant EPL déclaré est utilisé uniquement pour montrer le potentiel d’un remboursement. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></section>
 
 
 
@@ -329,7 +355,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   <div class="card" style="margin-top:15px">
     <div class="top" style="margin-bottom:0">
       <div><h3 id="evoChartTitle">Évolution des revenus</h3><p class="muted tiny" id="evoChartSubtitle"></p></div>
-      <div style="text-align:right"><div class="eyebrow">Manque final</div><b id="evoGap">–</b></div>
+      <div id="evoGapTop" class="hidden"><div class="eyebrow">Manque final</div><b id="evoGap">–</b></div>
     </div>
     <div id="coverageCascade"></div>
     <div class="evo-detail-grid" id="evoBreakdown"></div>
@@ -754,6 +780,7 @@ function accidentBenefits(c){
 
  function accidentDeathLaaAtChildCount({
    insured,
+   actualSalary,
    avsSpouse,
    avsChildren,
    survivorRight,
@@ -771,7 +798,7 @@ function accidentBenefits(c){
    const laaFamilyLimit=insured*.70;
 
    // Deuxième plafond PrevIA : AVS + LAA limité à 90 % du gain assuré.
-   const totalBenefitsLimit=insured*.90;
+   const totalBenefitsLimit=Math.max(0,actualSalary||insured)*.90;
    const availableForLaa=Math.max(0,totalBenefitsLimit-avsSpouse-avsChildren);
 
    // Le plafond réellement disponible pour la LAA est le plus faible des deux.
@@ -809,9 +836,11 @@ function accidentBenefits(c){
    const aiAdult=illnessInvalidity.adj.ai||0;
    const aiChildren=illnessInvalidity.adj.aiKids||0;
    const aiTotal=aiAdult+aiChildren;
-   const target=insured*.90;
-   const laa=Math.max(0,target-aiTotal);
+   const laaBase=insured*.80;
+   const totalLimit=Math.max(0,salary)*.90;
+   const laa=Math.max(0,Math.min(laaBase,totalLimit-aiTotal));
    const insuredPersonTotal=aiTotal+laa;
+   const target=totalLimit;
    const annual=otherIncome+insuredPersonTotal;
 
    let warning='';
@@ -820,10 +849,10 @@ function accidentBenefits(c){
    }else if(salary>LAA_MAX){
      warning=`Le salaire dépasse le plafond LAA de ${fmt(LAA_MAX)}. La part supérieure n’est pas couverte par cette estimation obligatoire.`;
    }else{
-     warning='La rente complémentaire LAA est estimée de manière à porter les prestations AI + LAA au maximum à 90 % du gain assuré.';
+     warning='La LAA couvre jusqu’à 80 % du gain assuré, plafonné à 148’200 CHF. Les prestations AI s’ajoutent, sans que le total ne dépasse 90 % du revenu annuel réel.';
    }
 
-   return{annual,otherIncome,salary,insured,aiAdult,aiChildren,aiTotal,laa,target,insuredPersonTotal,warning,job};
+   return{annual,otherIncome,salary,insured,aiAdult,aiChildren,aiTotal,laa,laaBase,target,insuredPersonTotal,warning,job};
  }
 
  function activeChildrenAvsAmount(diseaseDeath, initialChildCount, activeChildCount){
@@ -845,6 +874,7 @@ function accidentBenefits(c){
 
    const initialLaa=accidentDeathLaaAtChildCount({
      insured,
+     actualSalary:salary,
      avsSpouse,
      avsChildren,
      survivorRight:diseaseDeath.survivorRight,
@@ -883,6 +913,7 @@ function accidentBenefits(c){
      combinedBenefits,totalBenefitsLimit,
      laaAtChildCount:childCount=>accidentDeathLaaAtChildCount({
        insured,
+       actualSalary:salary,
        avsSpouse,
        avsChildren:activeChildrenAvsAmount(diseaseDeath, kids, childCount),
        survivorRight:diseaseDeath.survivorRight,
@@ -1172,12 +1203,12 @@ function render(){
  );
  const worstFamilyAnnual=worstFamilyScenario?worstFamilyScenario.annual:0;
  const worstFamilyMonthly=worstFamilyAnnual/12;
- const retirementMonthly=retIncome/12;
+ const retirementMonthly=Math.max(0,retIncome-b.retAvs.thirteenth)/12;
  const retirementReduction=m?m.reductions.retirement:0;
 
  $('#sideName').textContent=c.name;
  $('#sideSub').textContent=`${c.age1} ans · ${c.status}`;
- $('#hello').textContent=`Bonjour ${c.firstName1} 👋`;
+ $('#hello').textContent=c.status==='Célibataire'?`Bonjour ${c.firstName1} 👋`:`Bonjour ${c.firstName1} et ${c.firstName2} 👋`;
  refreshPersonNames();
  $('#concernTitle').textContent=co.title;
  $('#humanIntro').textContent=co.intro;
@@ -1195,8 +1226,8 @@ function render(){
    ?`Revenu mensuel estimé dans le scénario le plus fragile : ${worstFamilyScenario.label}`
    :'Revenu mensuel estimé dans le scénario le plus fragile';
 
- $('#retMetric').textContent=fmtMonth(retIncome);
- $('#retMetricNote').textContent=`Revenu mensuel prévu, soit ${retPct.toFixed(0)} % du revenu brut actuel`;
+ $('#retMetric').textContent=fmt(retirementMonthly)+'/mois';
+ $('#retMetricNote').textContent=`Revenu mensuel prévu hors 13e rente AVS, soit ${retPct.toFixed(0)} % du revenu brut actuel`;
 
  $('#homeMetric').textContent=m?fmt(retirementReduction):'Non applicable';
  $('#homeMetricNote').textContent=m
@@ -1208,6 +1239,18 @@ function render(){
  $('#taxMetricNote').textContent=p3tax.additionalTotal>0
    ?'Économie d’impôt annuelle supplémentaire estimée en utilisant pleinement votre potentiel de 3e pilier'
    :'Votre potentiel fiscal estimé est déjà pleinement utilisé';
+
+ function setSignal(id,level){
+   const el=$(id);
+   if(!el)return;
+   el.classList.remove('signal-green','signal-orange','signal-red','signal-blue');
+   el.classList.add(`signal-${level}`);
+ }
+ const familyPct=c.totalIncome?worstFamilyAnnual/c.totalIncome*100:0;
+ setSignal('#summaryFamilyCard',familyPct>=90?'green':familyPct>=75?'orange':'red');
+ setSignal('#summaryRetirementCard',retPct>=75?'green':retPct>=60?'orange':'red');
+ setSignal('#summaryHomeCard',!m?'blue':retirementReduction<=0?'green':retirementReduction<=100000?'orange':'red');
+ setSignal('#summaryTaxCard',additionalTaxSaving>0?'green':'blue');
 
  $('#beliefTitle').textContent=co.belief;
  $('#beliefReality').textContent=co.reality;
@@ -1223,9 +1266,9 @@ function render(){
  renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();localStorage.setItem('previa-v9147',JSON.stringify(c))}
 function groupHtml(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmt(total)}</strong></div></div>`}
 function valueOrAnalysis(value,known=true){return known?fmt(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
-function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
+function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
 function summaryBox(title,rows,totalLabel,total,totalKnown=true){
- return`<div style="margin-top:14px;padding:14px;background:#eef0ff;border:1px solid #dfe2ff;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">À confirmer</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`;
+ return`<div style="margin-top:14px;padding:14px;background:#eef0ff;border:1px solid #dfe2ff;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">À confirmer</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`;
 }
 function riskData(){
  const c=data;
@@ -1246,12 +1289,12 @@ function riskData(){
        groupHtmlFlexible('1er pilier – AI',aiRows,'Total AI',x.aiTotal,true)+
        groupHtmlFlexible('Assurance-accidents – LAA',[
          ['Gain annuel assuré LAA',x.insured,true],
-         ['Objectif maximal AI + LAA (90 %)',x.target,true],
+         ['Plafond global des prestations',x.target,true],
          ['Rente complémentaire LAA estimée',x.laa,true]
        ],'Total annuel de la personne assurée',x.insuredPersonTotal,true)+
        summaryBox('Revenu total du ménage après l’accident',[
          [`Prestations AI + LAA de ${who}`,x.insuredPersonTotal,true],
-         ['Revenu professionnel maintenu de l’autre personne',x.otherIncome,true]
+         c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,x.otherIncome,true]
        ],'Revenu annuel total du ménage',x.annual,true)+
        `<div class="callout ${x.job==='Salarié'?'':'warn'}" style="margin-top:12px">${x.warning}</div>`;
 
@@ -1273,20 +1316,20 @@ function riskData(){
    const avsRows=[['Rente AVS du conjoint survivant',d.avsSpouse,d.avsKnown]];
    if(kids>0)avsRows.push([`Rentes AVS d’orphelins (${kids})`,d.avsChildren,d.avsKnown]);
 
-   const laaRows=[['Rente LAA de veuve / veuf (40 %)',d.laaSpouse,true]];
-   if(kids>0)laaRows.push([`Rentes LAA d’orphelins (${kids} × 15 %)`,d.laaChildren,true]);
+   const laaRows=[['Rente LAA de veuve / veuf',d.laaSpouse,true]];
+   if(kids>0)laaRows.push([`Rentes LAA d’orphelins (${kids})`,d.laaChildren,true]);
 
    const html=
      groupHtmlFlexible('1er pilier – AVS',avsRows,'Total AVS survivants',d.avsTotal,d.avsKnown)+
      groupHtmlFlexible('Assurance-accidents – LAA',[
        ['Gain annuel assuré LAA',d.insured,true],
-       ['Plafond global AVS + LAA (90 %)',d.totalBenefitsLimit,true],
+       ['Plafond global des prestations',d.totalBenefitsLimit,true],
        ...laaRows
      ],'Total LAA survivants',d.laaTotal,true)+
      summaryBox(`Revenu total du ménage après le décès de ${who}`,[
        ['Prestations AVS de survivants',d.avsTotal,d.avsKnown],
        ['Prestations LAA de survivants',d.laaTotal,true],
-       ['Revenu professionnel maintenu du conjoint survivant',d.otherIncome,true]
+       c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,d.otherIncome,true]
      ],'Revenu annuel total du ménage',d.annual,d.avsKnown)+
      `<div class="callout ${d.job==='Salarié'?'':'warn'}" style="margin-top:12px">${d.warning}</div>`+
      '<div class="callout" style="margin-top:12px"><b>Modèle accident PrevIA</b><br><span class="tiny muted">Les prestations LPP ne sont pas intégrées. Le calcul retient uniquement les prestations AVS et LAA.</span></div>';
@@ -1307,9 +1350,9 @@ function riskData(){
   const isP1=risk==='invalidity1',x=isP1?b.i1:b.i2,who=isP1?c.firstName1:c.firstName2;
   const firstTotal=x.adj.ai+x.adj.aiKids,secondTotal=x.adj.lpp+x.adj.lppKids;
   const firstRows=[['Rente AI estimée',x.adj.ai,x.aiKnown]];
-  if(kids>0){firstRows.push(['Rente AI par enfant (40 %)',x.aiKnown?x.adj.aiKids/kids:0,x.aiKnown]);firstRows.push([`Total rentes AI enfants (${kids})`,x.adj.aiKids,x.aiKnown])}
+  if(kids>0){firstRows.push(['Rente AI par enfant',x.aiKnown?x.adj.aiKids/kids:0,x.aiKnown]);firstRows.push([`Total rentes AI enfants (${kids})`,x.adj.aiKids,x.aiKnown])}
   const secondRows=[['Rente LPP d’invalidité',x.adj.lpp,true]];
-  if(kids>0){secondRows.push(['Rente LPP par enfant (20 %)',x.adj.lppKids/kids,true]);secondRows.push([`Total rentes LPP enfants (${kids})`,x.adj.lppKids,true])}
+  if(kids>0){secondRows.push(['Rente LPP par enfant',x.adj.lppKids/kids,true]);secondRows.push([`Total rentes LPP enfants (${kids})`,x.adj.lppKids,true])}
   const personKnown=x.aiKnown;
   const personTotal=firstTotal+secondTotal;
   const html=
@@ -1321,7 +1364,7 @@ function riskData(){
     ],`Total annuel de ${who}`,personTotal,personKnown)+
     summaryBox('Revenu total du ménage',[
       [`Prestations annuelles de ${who}`,personTotal,personKnown],
-      ['Revenu professionnel maintenu de l’autre personne',x.otherIncome,true]
+      c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,x.otherIncome,true]
     ],'Revenu annuel total du ménage',x.annual,personKnown)+
     (x.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie des cotisations AVS est nécessaire pour déterminer la rente AI du 1er pilier de cette personne.</div>':'');
   return{income:x.annual,capital:0,capitalLabel:'Capital versé au décès',detail:`Invalidité à 100 % de ${who}.`,html,uncertain:x.needsDeepAnalysis,origin:'illness'};
@@ -1329,10 +1372,10 @@ function riskData(){
 
  const isP1=risk==='death1',d=isP1?b.d1:b.d2,label=`Décès de ${isP1?c.firstName1:c.firstName2}.`;
  const firstTotal=d.adj.avsSurv+d.adj.avsKids,secondTotal=d.adj.lppSurv+d.adj.lppKids;
- const firstRows=[['Rente AVS du conjoint survivant (80 %)',d.adj.avsSurv,d.avsKnown]];
- if(kids>0){firstRows.push(['Rente AVS par enfant (40 %)',d.avsKnown?d.adj.avsKids/kids:0,d.avsKnown]);firstRows.push([`Total rentes AVS enfants (${kids})`,d.adj.avsKids,d.avsKnown])}
+ const firstRows=[['Rente AVS du conjoint survivant',d.adj.avsSurv,d.avsKnown]];
+ if(kids>0){firstRows.push(['Rente AVS par enfant',d.avsKnown?d.adj.avsKids/kids:0,d.avsKnown]);firstRows.push([`Total rentes AVS enfants (${kids})`,d.adj.avsKids,d.avsKnown])}
  const secondRows=[['Rente LPP du conjoint survivant',d.adj.lppSurv,true]];
- if(kids>0){secondRows.push(['Rente LPP par enfant (20 %)',d.adj.lppKids/kids,true]);secondRows.push([`Total rentes LPP enfants (${kids})`,d.adj.lppKids,true])}
+ if(kids>0){secondRows.push(['Rente LPP par enfant',d.adj.lppKids/kids,true]);secondRows.push([`Total rentes LPP enfants (${kids})`,d.adj.lppKids,true])}
  const benefitsKnown=d.avsKnown;
  const survivorBenefits=firstTotal+secondTotal;
  const html=
@@ -1344,11 +1387,31 @@ function riskData(){
    ],'Total annuel des prestations',survivorBenefits,benefitsKnown)+
    summaryBox('Revenu total du ménage après le décès',[
      ['Prestations annuelles de survivants',survivorBenefits,benefitsKnown],
-     ['Revenu professionnel maintenu du conjoint survivant',d.otherIncome,true]
+     c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,d.otherIncome,true]
    ],'Revenu annuel total du ménage',d.annual,benefitsKnown)+
    (d.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie est nécessaire pour chiffrer les prestations AVS de survivants.</div>':'');
  return{income:d.annual,capital:d.capital,capitalLabel:'Capital versé au décès',detail:d.warning||label,html,uncertain:d.needsDeepAnalysis,origin:'illness'};
 }
+function protectionHumanSentence(c,x,pct){
+  const eventLabel=risk.startsWith('death')?'décès':'invalidité';
+  const isP1=risk.endsWith('1');
+  const person=isP1?c.firstName1:c.firstName2;
+  const origin=protectionOrigin==='accident'?' par accident':' par maladie';
+
+  let consequence='';
+  if(pct>=90){
+    consequence='vous n’auriez presque aucune modification importante de votre situation financière.';
+  }else if(pct>=75){
+    consequence='quelques adaptations de votre budget pourraient être nécessaires pour conserver votre niveau de vie.';
+  }else if(pct>=60){
+    consequence='une adaptation importante de votre budget serait probablement nécessaire, notamment pour votre logement et vos projets.';
+  }else{
+    consequence='la diminution serait importante et pourrait fragiliser durablement votre budget et la conservation de votre logement.';
+  }
+
+  return `En cas de ${eventLabel}${origin} de ${person}, le revenu du ménage serait assuré à hauteur de ${pct.toFixed(0)} % de votre situation actuelle et ${consequence}`;
+}
+
 function renderProtection(){
   if(!shouldShowDeathScenario()&&(risk==='death1'||risk==='death2')){
     risk='invalidity1';
@@ -1363,11 +1426,11 @@ function renderProtection(){
   $('#protPct').textContent=pct.toFixed(0)+' %';
   $('#protCapital').textContent=fmt(x.capital);
   $('#protCapitalLabel').textContent=x.capitalLabel||'Capital versé au décès';
+  const showCapitalCard=protectionOrigin==='illness'&&risk.startsWith('death');
+  $('#protCapitalCard').classList.toggle('hidden',!showCapitalCard);
   $('#protBar').style.width=Math.min(100,pct)+'%';
-  $('#protText').textContent=`Le ménage conserverait environ ${pct.toFixed(0)} % de son revenu brut actuel.`;
-  $('#protHuman').textContent=pct<70
-    ?'La baisse de revenu pourrait fragiliser le budget familial et la conservation du logement.'
-    :x.detail;
+  $('#protText').textContent=protectionHumanSentence(c,x,pct);
+  $('#protHuman').classList.add('hidden');
   $('#protDetail').innerHTML=x.html;
 
   const accident=protectionOrigin==='accident';
@@ -1387,14 +1450,15 @@ $$('[data-origin]').forEach(b=>b.onclick=()=>{
 });
 function renderRetirement(){
  const c=data,b=benefits(c),lppTotal=b.p1.lpp+b.p2.lpp,ret=b.retAvs.total+lppTotal,pct=c.totalIncome?ret/c.totalIncome*100:0;
- const monthly=ret/12,currentMonthly=c.totalIncome/12,gap=Math.max(0,currentMonthly-monthly);
+ const regularAnnual=Math.max(0,ret-b.retAvs.thirteenth);
+ const monthly=regularAnnual/12,currentMonthly=c.totalIncome/12,gap=Math.max(0,currentMonthly-monthly);
  $('#retCurrent').textContent=fmt(c.totalIncome);
- $('#retLppMonthly').textContent=fmtMonth(ret);
+ $('#retLppMonthly').textContent=fmt(monthly)+'/mois';
  $('#retFuture').textContent=fmt(ret);
  $('#retPct').textContent=pct.toFixed(0)+' %';
  $('#retBar').style.width=Math.min(100,pct)+'%';
  $('#retPhrase').textContent=pct<80?`À la retraite, le revenu brut estimé diminuerait d'environ ${(100-pct).toFixed(0)} %. Cette baisse doit être rapprochée des dépenses et du logement.`:'Le revenu estimé atteint l’objectif pédagogique de 80 % du revenu actuel.';
- $('#retMonthlyGap').textContent=gap>0?`Cela représente une baisse estimée d’environ ${fmtMonth(gap*12)} par rapport au revenu mensuel brut actuel.`:'Le revenu mensuel estimé ne présente pas de baisse dans cette simulation.';
+ $('#retMonthlyGap').textContent=gap>0?`Cela représente une baisse estimée d’environ ${fmt(gap)}/mois par rapport au revenu mensuel brut actuel.`:'Le revenu mensuel estimé ne présente pas de baisse dans cette simulation.';
  const avsRows=[[`Rente AVS de ${c.firstName1} sur 12 mois`,b.retAvs.p1.annual12]];
  if(c.status!=='Célibataire')avsRows.push([`Rente AVS de ${c.firstName2} sur 12 mois`,b.retAvs.p2.annual12]);
  avsRows.push(['13e rente AVS',b.retAvs.thirteenth]);
@@ -1665,7 +1729,7 @@ function renderEvolution(){
  ].map(v=>`<div class="evo-detail"><span class="tiny muted">${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('');
 
  const ages=dependentChildAges(x.c),events=ages.map(a=>Math.max(0,18-a)).sort((a,b)=>a-b);
- let message=`Chaque colonne compare le revenu disponible à un besoin fixé à <b>100 % du revenu actuel</b>. La partie turquoise représente directement la lacune à couvrir.`;
+ let message=`Chaque colonne compare le revenu disponible à un besoin fixé à <b>100 % du revenu actuel</b>. Les zones blanches hachurées en orange représentent directement la lacune à couvrir.`;
  if(events.length)message+=` Les changements liés aux enfants interviennent séparément ${events.map(y=>`dans ${y} an${y>1?'s':''}`).join(' puis ')}.`;
  if(evolutionOrigin==='accident'&&evoMode.startsWith('death')){
    message+=` À chaque fin de rente d’orphelin LAA, la rente de veuve ou de veuf est recalculée et peut augmenter jusqu’à <b>40 % du gain assuré</b>, sans que le total AVS + LAA dépasse <b>90 % du gain assuré</b>.`;
@@ -1696,6 +1760,14 @@ $$('[data-evo]').forEach(b=>b.onclick=()=>{
   renderEvolution();
 });
 
+
+function monthlyInvestmentForTarget(target,years,annualReturn=.05){
+  const months=Math.max(1,Math.round(Math.max(0,years)*12));
+  const monthlyRate=annualReturn/12;
+  if(target<=0)return 0;
+  if(monthlyRate<=0)return target/months;
+  return target*monthlyRate/(Math.pow(1+monthlyRate,months)-1);
+}
 
 function renderHome(){
  const c=data,b=benefits(c),m=mortgage(c,b);
@@ -1752,19 +1824,31 @@ function renderHome(){
  const worstReduction=Math.max(retirementReduction,invalidityReduction,deathReduction);
 
  if(worstReduction>0){
-   const scenarios=[];
-   if(retirementReduction>0)scenarios.push(`retraite : ${fmt(retirementReduction)}`);
-   if(invalidityReduction>0)scenarios.push(`invalidité : ${fmt(invalidityReduction)}`);
-   if(deathReduction>0)scenarios.push(`décès : ${fmt(deathReduction)}`);
+   const yearsToRetirement=Math.max(0,65-Math.max(c.age1,c.age2));
+   const monthlySaving=monthlyInvestmentForTarget(retirementReduction,yearsToRetirement,.05);
+   const strategy=yearsToRetirement>12
+     ?'Stratégie dynamique indicative : environ 85 % en actions, avec réduction progressive du risque à l’approche de la retraite.'
+     :yearsToRetirement>5
+       ?'Stratégie équilibrée recommandée : le délai est inférieur ou égal à 12 ans, une exposition de 85 % en actions serait trop agressive.'
+       :'Horizon court : privilégier une stratégie prudente et envisager aussi un amortissement direct de l’hypothèque.';
 
    $('#homeAnswer').innerHTML=
-     `<b>Réduction potentielle de l’hypothèque</b><br><br>`+
-     `Selon la règle simplifiée du revenu brut multiplié par 4,5, une réduction de l’endettement serait nécessaire dans les scénarios suivants : ${scenarios.join(' · ')}.<br><br>`+
-     `Le besoin maximal de capital à investir dans la réduction de l’hypothèque serait d’environ <b>${fmt(worstReduction)}</b>.`;
+     `<b>Comment constituer le capital nécessaire à la retraite ?</b>`+
+     `<div class="investment-plan">`+
+       `<p>Pour ramener l’hypothèque à un niveau théoriquement viable à la retraite, le capital cible est estimé à <b>${fmt(retirementReduction)}</b>.</p>`+
+       `<div class="investment-plan-grid">`+
+         `<div class="investment-plan-stat"><span class="tiny muted">Temps avant la retraite</span><b>${yearsToRetirement} ans</b></div>`+
+         `<div class="investment-plan-stat"><span class="tiny muted">Rendement moyen retenu</span><b>5 %/an</b></div>`+
+         `<div class="investment-plan-stat"><span class="tiny muted">Épargne mensuelle estimée</span><b>${fmt(monthlySaving)}/mois</b></div>`+
+         `<div class="investment-plan-stat"><span class="tiny muted">Capital cible</span><b>${fmt(retirementReduction)}</b></div>`+
+       `</div>`+
+       `<div class="callout" style="margin-top:12px"><b>Orientation de placement</b><br><span class="tiny muted">${strategy}</span></div>`+
+       `<p class="muted tiny" style="margin-bottom:0">Projection indicative avec versements mensuels en fin de mois et rendement moyen constant de 5 %. Les rendements ne sont pas garantis et les frais, impôts et fluctuations de marché ne sont pas intégrés.</p>`+
+     `</div>`;
  }else{
    $('#homeAnswer').innerHTML=
      `<b>Financement théorique suffisant</b><br><br>`+
-     `Selon la règle simplifiée du revenu brut multiplié par 4,5, l’hypothèque actuelle reste inférieure au financement maximal estimé dans les scénarios retraite, invalidité et décès.`;
+     `Aucun capital supplémentaire n’est estimé nécessaire pour ramener l’hypothèque dans la capacité de financement calculée à la retraite.`;
  }
 }
 function renderTax(){
@@ -1833,7 +1917,7 @@ function renderTax(){
     ?`En concubinage, PrevIA estime séparément le revenu imposable de ${c.firstName1} à <b>${fmt(taxIncome.person1.taxableIncome)}</b> et celui de ${c.firstName2} à <b>${fmt(taxIncome.person2.taxableIncome)}</b>. Les déductions liées au ménage et aux enfants communs sont réparties à parts égales.`
     :`Sur la base d’un revenu brut de <b>${fmt(taxIncome.grossIncome)}</b> et de déductions familiales simplifiées de <b>${fmt(taxIncome.totalDeduction)}</b>, PrevIA retient un revenu imposable estimé de <b>${fmt(taxIncome.taxableIncome)}</b>.`;
 
-  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>${taxBasisText}<br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI moyen estimé de ${displayedRate.toFixed(1)} %, chaque CHF 100 déductibles vous coûtent réellement environ <b>CHF ${costPer100.toFixed(0)}</b> après économie fiscale.`;
+  $('#taxSentence').innerHTML=`<b>Votre potentiel fiscal</b><br><br>${taxBasisText}<br><br>Vous versez actuellement <b>${fmt(p.currentTotal)}</b> par année au 3e pilier, ce qui représente une économie fiscale estimée de <b>${fmt(currentSaving)}</b>.<br><br>En utilisant le plafond estimé de <b>${fmt(p.totalMax)}</b>, vous pourriez économiser jusqu’à <b>${fmt(maxSaving)}</b> par année, soit environ <b>${fmt(additionalSaving)}</b> d’impôts supplémentaires par rapport à aujourd’hui.<br><br>Avec un TMI estimé de ${displayedRate.toFixed(1)} %, un versement de <b>1’000 CHF</b> dans la prévoyance pourrait générer environ <b>${fmt(displayedRate*10)}</b> d’économie fiscale.`;
  }else if(p.totalMax>0){
   const basis=calc.separate
     ?`Les revenus imposables estimés sont de ${fmt(taxIncome.person1.taxableIncome)} pour ${c.firstName1} et de ${fmt(taxIncome.person2.taxableIncome)} pour ${c.firstName2}.`
