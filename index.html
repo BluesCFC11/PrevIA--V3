@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.15.1 — Prototype interactif</title>
+<title>PrevIA V9.15.2 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -153,7 +153,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.15.1 — lecture visuelle des priorités */
+/* V9.15.2 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -179,7 +179,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.15.1 — graphiques plus lisibles */
+/* V9.15.2 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -192,7 +192,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .recommendation-empty{margin-top:10px;padding:10px 12px;border-radius:10px;background:#f7f8fb;color:var(--muted);font-size:12px}
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.15.1 — accueil rassurant et saisie suisse */
+/* V9.15.2 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:38px;bottom:38px;z-index:3;width:min(620px,calc(100% - 76px));padding:28px 30px;border-radius:20px;background:rgba(255,255,255,.92);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:40px;line-height:1.08;max-width:580px;margin:10px 0 16px}
@@ -200,7 +200,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .home-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
 .home-trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;color:#586177;font-size:11px;font-weight:750}
 .home-trust span{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #e1e5ef;border-radius:999px;padding:7px 10px}
-.home-hero-photo{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(9,19,45,.18),rgba(9,19,45,.02) 55%,rgba(9,19,45,.12)),url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1800&q=88");background-size:cover;background-position:center 42%}
+.home-hero-photo{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(9,19,45,.18),rgba(9,19,45,.02) 55%,rgba(9,19,45,.12)),url("https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1800&q=88");background-size:cover;background-position:center 48%}
 .home-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(9,19,45,.18))}
 .form-order-note{margin:0 0 16px;padding:12px 14px;border-radius:12px;background:#f6f7fb;color:#667085;font-size:12px}
 .money-input{font-variant-numeric:tabular-nums}
@@ -209,14 +209,14 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.1</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.2</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
 <section id="home" class="screen active">
   <div class="hero home-hero">
-    <div class="home-hero-photo" role="img" aria-label="Couple entier dans un environnement naturel, lumineux et rassurant"></div>
+    <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.15.1</div>
+      <div class="eyebrow">PrevIA V9.15.2</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez en quelques minutes si votre famille, votre retraite, votre logement et votre fiscalité sont suffisamment protégés.</p>
       <div class="home-hero-actions">
@@ -275,22 +275,22 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
     <button class="btn" data-s="form">Modifier les informations</button>
   </div>
   <div class="callout">
-    <b>Structure prête pour les règles de recommandation</b>
-    <p class="muted tiny">Chaque recommandation pourra recevoir un niveau de priorité, un montant, une échéance et une action concrète.</p>
+    <b>Recommandations issues de votre analyse</b>
+    <p class="muted tiny">Les montants ci-dessous sont des premières estimations. Ils doivent être confirmés avec les certificats LPP, contrats, règlements et données fiscales personnelles.</p>
   </div>
   <div class="recommendation-grid">
-    <div class="card recommendation-card"><div class="recommendation-icon">🛡️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à vérifier ou à compléter selon les lacunes constatées.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">🌅</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et niveau de revenu souhaité.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">🏠</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">💰</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">📈</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement indicatif et niveau de risque adapté.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">📋</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🛡️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à compléter selon les lacunes constatées.</p><div class="recommendation-list" id="recProtection"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🌅</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et réserve de sécurité.</p><div class="recommendation-list" id="recRetirement"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🏠</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-list" id="recHome"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">💰</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-list" id="recTax"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">📈</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement et niveau de risque cohérents avec l’onglet Logement.</p><div class="recommendation-list" id="recInvestment"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">📋</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-list" id="recAdmin"></div></div>
   </div>
 </section>
 
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
 <div class="hero"><div class="eyebrow">La question que vous souhaitez résoudre</div><h2 id="concernTitle"></h2></div>
-<div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card summary-signal signal-red"><span class="status red">Priorité</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">PrevIA a classé les actions selon leur impact potentiel sur votre situation.</p></div></div>
+<div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card summary-signal signal-red"><span class="status orange">Piste d’optimisation importante</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">Cette piste provient automatiquement de l’onglet Nos recommandations.</p></div></div>
 <div class="grid4" style="margin-top:15px">
   <div class="card summary-signal" id="summaryFamilyCard">
     <div class="eyebrow">Famille</div>
@@ -1255,7 +1255,7 @@ function render(){
  $('#watchText').textContent=m&&m.ratios.retirement>33
    ?`Les charges théoriques atteindraient ${m.ratios.retirement.toFixed(1)} % des revenus de retraite estimés.`
    :`Votre revenu de retraite est estimé à ${retPct.toFixed(0)} % du revenu actuel.`;
- $('#priorityTitle').textContent=co.title;
+ $('#priorityTitle').textContent='Analyse des pistes en cours';
 
  $('#familyMetric').textContent=fmtMonth(worstFamilyAnnual);
  $('#familyMetricNote').textContent=worstFamilyScenario
@@ -1299,7 +1299,7 @@ function render(){
  if(m&&m.ratios.retirement>33)rec.push('Préparer une épargne destinée à réduire l’endettement à la retraite');
  if(c.epl1+c.epl2>0){const gain=b.p1.repaymentPension+b.p2.repaymentPension;rec.unshift(`Rembourser le retrait EPL pourrait augmenter la rente estimée d’environ ${fmt(gain/12)} par mois et permettre de demander la restitution de l’impôt payé`);}
  if(retPct<70)rec.push('Renforcer progressivement l’épargne retraite');$('#priorities').innerHTML=rec.slice(0,4).map((x,i)=>`<div class="action"><div class="num">${i+1}</div><div><b>${x}</b></div></div>`).join('');
- renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();localStorage.setItem('previa-v9147',JSON.stringify(c))}
+ renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();renderRecommendations();localStorage.setItem('previa-v9147',JSON.stringify(c))}
 function groupHtml(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmt(total)}</strong></div></div>`}
 function valueOrAnalysis(value,known=true){return known?fmt(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
 function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
@@ -1797,12 +1797,73 @@ $$('[data-evo]').forEach(b=>b.onclick=()=>{
 });
 
 
-function monthlyInvestmentForTarget(target,years,annualReturn=.05){
+function investmentStrategyForYears(years){
+  const y=Math.max(0,Number(years)||0);
+  if(y>12)return{name:'Stratégie actions',rate:.07,label:'7 %/an'};
+  if(y>=10)return{name:'Stratégie croissance',rate:.0425,label:'4,25 %/an'};
+  if(y>=7)return{name:'Stratégie équilibrée',rate:.0225,label:'2,25 %/an'};
+  return{name:'Stratégie de revenu',rate:.0075,label:'0,75 %/an'};
+}
+function monthlyInvestmentForTarget(target,years,annualReturn){
   const months=Math.max(1,Math.round(Math.max(0,years)*12));
-  const monthlyRate=annualReturn/12;
+  const monthlyRate=Math.max(0,annualReturn||0)/12;
   if(target<=0)return 0;
   if(monthlyRate<=0)return target/months;
   return target*monthlyRate/(Math.pow(1+monthlyRate,months)-1);
+}
+
+function recItem(level,title,body){
+  const map={essential:['rec-essential','Action essentielle'],important:['rec-important','Piste d’optimisation importante'],optimize:['rec-optimize','Optimisation complémentaire'],admin:['rec-admin','Contrôle administratif']};
+  const [cls,label]=map[level]||map.important;
+  return `<div class="recommendation-item ${cls}"><div class="rec-meta">${label}</div><strong>${title}</strong><div class="muted tiny">${body}</div></div>`;
+}
+function renderRecommendations(){
+  const c=data,b=benefits(c),a=accidentBenefits(c),m=mortgage(c,b),tax=taxCalculation(c),p=tax.potential;
+  const years=Math.max(0,65-Math.max(c.age1,c.age2));
+  const strategy=investmentStrategyForYears(years);
+  const reserve=c.totalIncome/12*3;
+  const investable=Math.max(0,c.savings-reserve);
+  const protection=[];
+  const persons=[
+    {name:c.firstName1,income:c.income1,illInv:b.i1.annual,accInv:a.invalidity1.annual,illDeath:b.d1.annual,accDeath:a.death1.annual,p3:c.p3p1},
+    ...(c.status==='Célibataire'?[]:[{name:c.firstName2,income:c.income2,illInv:b.i2.annual,accInv:a.invalidity2.annual,illDeath:b.d2.annual,accDeath:a.death2.annual,p3:c.p3p2}])
+  ];
+  persons.forEach(x=>{
+    const invTarget=c.totalIncome-x.income+x.income*.90;
+    const invAnnual=Math.max(0,invTarget-Math.min(x.illInv,x.accInv));
+    if(invAnnual>0)protection.push(recItem(invAnnual>x.income*.2?'essential':'important',`Compléter la rente d’incapacité de gain de ${x.name}`,`Une rente complémentaire d’environ ${fmt(invAnnual)}/an (${fmt(invAnnual/12)}/mois) permettrait de rapprocher la protection de 90 % du revenu de ${x.name}.`));
+    const baseCapital=x.income*3;
+    const deathHome=m?m.reductions.death:0;
+    protection.push(recItem('important',`Prévoir un capital décès pour ${x.name}`,`Base indicative : trois salaires annuels, soit ${fmt(baseCapital)}. ${deathHome>0?`Ajouter environ ${fmt(deathHome)} pour amortir l’hypothèque en cas de décès.`:'Aucun capital immobilier complémentaire n’est estimé nécessaire dans le scénario décès.'}`));
+  });
+  $('#recProtection').innerHTML=protection.join('')||recItem('optimize','Protection globalement suffisante','Aucune lacune majeure n’a été identifiée dans cette première estimation.');
+
+  const retirement=[];
+  if(p.additionalTotal>0)retirement.push(recItem('important','Atteindre le plafond du pilier 3a',`Augmenter les versements de ${fmt(p.additionalTotal)}/an afin de renforcer le capital retraite et d’obtenir environ ${fmt(tax.additionalSaving)} d’économie fiscale complémentaire.`));
+  if(c.epl1+c.epl2>0)retirement.push(recItem('important','Étudier le remboursement EPL',`Le montant déclaré de ${fmt(c.epl1+c.epl2)} pourrait être remboursé afin d’améliorer les prestations de retraite et les risques LPP.`));
+  retirement.push(recItem('optimize','Contrôler le potentiel de rachat LPP','Demander à la caisse de pension le montant de rachat disponible afin d’évaluer le gain de retraite et l’avantage fiscal.'));
+  retirement.push(recItem(c.savings<reserve?'important':'optimize','Conserver une réserve de sécurité',`Réserve cible : trois mois de revenus, soit ${fmt(reserve)}. Épargne disponible déclarée : ${fmt(c.savings)}.`));
+  $('#recRetirement').innerHTML=retirement.join('');
+
+  if(m&&m.reductions.retirement>0){
+    const monthly=monthlyInvestmentForTarget(m.reductions.retirement,years,strategy.rate);
+    $('#recHome').innerHTML=recItem(m.reductions.retirement>150000?'essential':'important','Constituer le capital d’amortissement à la retraite',`Objectif ${fmt(m.reductions.retirement)} en ${years} ans. ${strategy.name}, rendement projeté ${strategy.label}, effort estimé ${fmt(monthly)}/mois.`);
+  }else $('#recHome').innerHTML=recItem('optimize','Financement actuellement viable','Aucun capital supplémentaire n’est estimé nécessaire à la retraite selon le calcul actuel.');
+
+  $('#recTax').innerHTML=p.additionalTotal>0?recItem('optimize','Optimiser la prévoyance 3a',`Complément déductible estimé : ${fmt(p.additionalTotal)}. Économie fiscale complémentaire : ${fmt(tax.additionalSaving)}. Solution possible : 3a bancaire ou assurance selon le besoin de flexibilité et de couverture.`):recItem('optimize','Plafond 3a déjà utilisé','Le potentiel déductible estimé est entièrement utilisé dans cette simulation.');
+
+  $('#recInvestment').innerHTML=investable>0?recItem('optimize','Investir l’épargne excédentaire',`Après conservation de ${fmt(reserve)} de réserve, environ ${fmt(investable)} pourrait être investi selon la même hypothèse que le logement : ${strategy.name}, ${strategy.label}, horizon ${years} ans.`):recItem('important','Constituer d’abord la réserve de sécurité',`La réserve cible de ${fmt(reserve)} n’est pas encore entièrement couverte. Éviter d’investir la partie nécessaire aux dépenses imprévues.`);
+
+  const admin=[];
+  admin.push(recItem('admin','Établir un mandat pour cause d’inaptitude','Recommandation applicable à tous les profils afin de désigner les personnes autorisées à agir en cas d’incapacité.'));
+  if(c.status==='Concubins')admin.push(recItem('admin','Annoncer le partenaire à la caisse de pension','Vérifier les critères du règlement LPP et demander la reconnaissance du partenaire pour les prestations de décès.'));
+  if(c.status==='Mariés'&&c.children>0)admin.push(recItem('admin','Contrôler la planification successorale',`${c.owner?'En raison du logement et des enfants, étudier un testament ou un pacte successoral.':'Avec des enfants, vérifier si un testament ou pacte successoral est utile.'}`));
+  if(c.p3p1+c.p3p2+c.contribution>0)admin.push(recItem('admin','Contrôler les clauses bénéficiaires 3a','Vérifier que les bénéficiaires des polices et comptes 3a correspondent à la situation familiale et aux intentions du client.'));
+  $('#recAdmin').innerHTML=admin.join('');
+
+  const all=[...protection,...retirement];
+  const topTitle=m&&m.reductions.retirement>0?'Préparer la viabilité du logement à la retraite':p.additionalTotal>0?'Optimiser le pilier 3a':'Renforcer la protection financière';
+  $('#priorityTitle').textContent=topTitle;
 }
 
 function renderHome(){
@@ -1861,12 +1922,9 @@ function renderHome(){
 
  if(worstReduction>0){
    const yearsToRetirement=Math.max(0,65-Math.max(c.age1,c.age2));
-   const monthlySaving=monthlyInvestmentForTarget(retirementReduction,yearsToRetirement,.05);
-   const strategy=yearsToRetirement>12
-     ?'Stratégie dynamique indicative : environ 85 % en actions, avec réduction progressive du risque à l’approche de la retraite.'
-     :yearsToRetirement>5
-       ?'Stratégie équilibrée recommandée : le délai est inférieur ou égal à 12 ans, une exposition de 85 % en actions serait trop agressive.'
-       :'Horizon court : privilégier une stratégie prudente et envisager aussi un amortissement direct de l’hypothèque.';
+   const strategyData=investmentStrategyForYears(yearsToRetirement);
+   const monthlySaving=monthlyInvestmentForTarget(retirementReduction,yearsToRetirement,strategyData.rate);
+   const strategy=`${strategyData.name} · rendement moyen projeté ${strategyData.label}. Cette hypothèse est identique à celle utilisée dans Nos recommandations.`;
 
    $('#homeAnswer').innerHTML=
      `<b>Comment constituer le capital nécessaire à la retraite ?</b>`+
@@ -1874,12 +1932,12 @@ function renderHome(){
        `<p>Pour ramener l’hypothèque à un niveau théoriquement viable à la retraite, le capital cible est estimé à <b>${fmt(retirementReduction)}</b>.</p>`+
        `<div class="investment-plan-grid">`+
          `<div class="investment-plan-stat"><span class="tiny muted">Temps avant la retraite</span><b>${yearsToRetirement} ans</b></div>`+
-         `<div class="investment-plan-stat"><span class="tiny muted">Rendement moyen retenu</span><b>5 %/an</b></div>`+
+         `<div class="investment-plan-stat"><span class="tiny muted">Rendement moyen retenu</span><b>${strategyData.label}</b></div>`+
          `<div class="investment-plan-stat"><span class="tiny muted">Épargne mensuelle estimée</span><b>${fmt(monthlySaving)}/mois</b></div>`+
          `<div class="investment-plan-stat"><span class="tiny muted">Capital cible</span><b>${fmt(retirementReduction)}</b></div>`+
        `</div>`+
        `<div class="callout" style="margin-top:12px"><b>Orientation de placement</b><br><span class="tiny muted">${strategy}</span></div>`+
-       `<p class="muted tiny" style="margin-bottom:0">Projection indicative avec versements mensuels en fin de mois et rendement moyen constant de 5 %. Les rendements ne sont pas garantis et les frais, impôts et fluctuations de marché ne sont pas intégrés.</p>`+
+       `<p class="muted tiny" style="margin-bottom:0">Projection indicative avec versements mensuels en fin de mois et le taux correspondant à la stratégie liée à l’horizon restant. Les rendements ne sont pas garantis et les frais, impôts et fluctuations de marché ne sont pas intégrés.</p>`+
      `</div>`;
  }else{
    $('#homeAnswer').innerHTML=
