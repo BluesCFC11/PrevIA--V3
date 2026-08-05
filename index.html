@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.15.0 — Prototype interactif</title>
+<title>PrevIA V9.15.1 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -153,7 +153,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.15.0 — lecture visuelle des priorités */
+/* V9.15.1 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -179,30 +179,44 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.15.0 — accueil rassurant et saisie suisse */
-.home-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:28px;align-items:stretch;padding:0;overflow:hidden;background:#fff}
-.home-hero-copy{padding:42px 38px;display:flex;flex-direction:column;justify-content:center;min-height:470px;background:linear-gradient(135deg,#f0efff 0%,#ffffff 62%,#edf7ff 100%)}
-.home-hero-copy h1{font-size:44px;line-height:1.08;max-width:760px;margin:10px 0 18px}
-.home-hero-copy .quote{max-width:680px;color:#4d5870;font-size:20px}
+/* V9.15.1 — graphiques plus lisibles */
+.life-chart{gap:44px!important;min-width:1040px!important}
+.life-period{min-width:155px!important}
+.life-column{width:68%!important;max-width:150px;margin-inline:auto}
+.life-segment.life-gap{color:#111827!important;text-shadow:none!important}
+.life-segment.life-gap::after{color:#111827!important;background:rgba(255,255,255,.92)!important;border:1px solid #fed7aa}
+.life-gap-legend{width:22px!important;height:14px!important;border:2px solid #f97316!important;border-radius:3px!important;background:repeating-linear-gradient(135deg,#fff 0,#fff 5px,#f97316 5px,#f97316 8px)!important;flex:none}
+.recommendation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:15px}
+.recommendation-card{position:relative;padding-left:68px;min-height:155px}
+.recommendation-icon{position:absolute;left:18px;top:20px;width:36px;height:36px;border-radius:11px;background:#eef0ff;color:#5058c6;display:grid;place-items:center;font-size:19px}
+.recommendation-empty{margin-top:10px;padding:10px 12px;border-radius:10px;background:#f7f8fb;color:var(--muted);font-size:12px}
+@media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
+
+/* V9.15.1 — accueil rassurant et saisie suisse */
+.home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
+.home-hero-copy{position:absolute;left:38px;bottom:38px;z-index:3;width:min(620px,calc(100% - 76px));padding:28px 30px;border-radius:20px;background:rgba(255,255,255,.92);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
+.home-hero-copy h1{font-size:40px;line-height:1.08;max-width:580px;margin:10px 0 16px}
+.home-hero-copy .quote{max-width:560px;color:#4d5870;font-size:19px}
 .home-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
-.home-trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:25px;color:#586177;font-size:12px;font-weight:750}
-.home-trust span{display:inline-flex;align-items:center;gap:7px;background:#ffffffb8;border:1px solid #e1e5ef;border-radius:999px;padding:7px 10px}
-.home-hero-photo{position:relative;min-height:470px;background-image:linear-gradient(180deg,rgba(9,19,45,.04),rgba(9,19,45,.42)),url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=88");background-size:cover;background-position:center}
-.home-hero-photo::after{content:"Votre avenir mérite d’être compris";position:absolute;left:24px;right:24px;bottom:24px;padding:16px 18px;border-radius:14px;background:#0b1735c9;color:white;font-size:17px;font-weight:850;backdrop-filter:blur(8px)}
+.home-trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;color:#586177;font-size:11px;font-weight:750}
+.home-trust span{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #e1e5ef;border-radius:999px;padding:7px 10px}
+.home-hero-photo{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(9,19,45,.18),rgba(9,19,45,.02) 55%,rgba(9,19,45,.12)),url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1800&q=88");background-size:cover;background-position:center 42%}
+.home-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(9,19,45,.18))}
 .form-order-note{margin:0 0 16px;padding:12px 14px;border-radius:12px;background:#f6f7fb;color:#667085;font-size:12px}
 .money-input{font-variant-numeric:tabular-nums}
 .money-input::placeholder{color:#a3aabb}
-@media(max-width:900px){.home-hero{grid-template-columns:1fr}.home-hero-photo{min-height:320px}.home-hero-copy{min-height:auto;padding:32px 26px}.home-hero-copy h1{font-size:35px}}
+@media(max-width:900px){.home-hero{min-height:640px}.home-hero-copy{left:18px;right:18px;bottom:18px;width:auto;padding:24px}.home-hero-copy h1{font-size:34px}.home-hero-photo{background-position:center}}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.0</small></div><nav>
-<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.1</small></div><nav>
+<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
 <section id="home" class="screen active">
   <div class="hero home-hero">
+    <div class="home-hero-photo" role="img" aria-label="Couple entier dans un environnement naturel, lumineux et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.15.0</div>
+      <div class="eyebrow">PrevIA V9.15.1</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez en quelques minutes si votre famille, votre retraite, votre logement et votre fiscalité sont suffisamment protégés.</p>
       <div class="home-hero-actions">
@@ -215,7 +229,6 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
         <span>✓ Analyse suisse indicative</span>
       </div>
     </div>
-    <div class="home-hero-photo" role="img" aria-label="Couple entier dans un environnement naturel, lumineux et rassurant"></div>
   </div>
 </section>
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
@@ -251,6 +264,29 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <div><label id="labelContribution1">Versement annuel actuel au 3e pilier – personne 1 (CHF)</label><input id="fContribution1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 3’000.-" autocomplete="off"></div>
 <div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – personne 2 (CHF)</label><input id="fContribution2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
 </div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. Les résultats devront ensuite être confirmés avec les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
+
+<section id="recommendations" class="screen">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Nos recommandations</div>
+      <h1>Quelles actions pourraient améliorer votre situation ?</h1>
+      <p class="muted">Cette page regroupera les recommandations calculées à partir de votre analyse. Les règles métier seront intégrées progressivement.</p>
+    </div>
+    <button class="btn" data-s="form">Modifier les informations</button>
+  </div>
+  <div class="callout">
+    <b>Structure prête pour les règles de recommandation</b>
+    <p class="muted tiny">Chaque recommandation pourra recevoir un niveau de priorité, un montant, une échéance et une action concrète.</p>
+  </div>
+  <div class="recommendation-grid">
+    <div class="card recommendation-card"><div class="recommendation-icon">🛡️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à vérifier ou à compléter selon les lacunes constatées.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🌅</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et niveau de revenu souhaité.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🏠</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">💰</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">📈</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement indicatif et niveau de risque adapté.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">📋</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-empty">En attente des règles métier.</div></div>
+  </div>
+</section>
 
 <section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
 <div class="hero"><div class="eyebrow">La question que vous souhaitez résoudre</div><h2 id="concernTitle"></h2></div>
@@ -1716,7 +1752,7 @@ function renderEvolution(){
    <span><i class="life-avs"></i>Rente AVS / AI</span>
    <span><i class="life-lpp"></i>${evolutionOrigin==='accident'?'Prestations LAA':'Rente de la caisse de retraite (LPP)'}</span>
    <span><i class="life-child"></i>Rentes pour enfants</span>
-   <span><i class="life-gap"></i>Lacune de prévoyance</span>
+   <span><i class="life-gap-legend"></i>Lacune de prévoyance</span>
    <span><i style="background:#202738;height:3px"></i>Besoin de prévoyance (100 %)</span>
  </div>`;
 
