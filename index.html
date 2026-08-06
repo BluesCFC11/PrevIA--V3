@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.15.8 — Prototype interactif</title>
+<title>PrevIA V9.15.9 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.15.8 — évolution long terme : personne touchée puis vue ménage */
+/* V9.15.9 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.15.8 — lecture visuelle des priorités */
+/* V9.15.9 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.15.8 — graphiques plus lisibles */
+/* V9.15.9 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.15.8 — accueil rassurant et saisie suisse */
+/* V9.15.9 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -260,14 +260,14 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.8</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.15.9</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
 <section id="home" class="screen active">
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.15.8</div>
+      <div class="eyebrow">PrevIA V9.15.9</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -960,10 +960,12 @@ function accidentBenefits(c){
      ?Math.max(0,Math.min(laaBase,coordinationCap-aiTotal))
      :0;
 
-   const lppSubsidy=lppSubsidyEstimate(salary,job,epl);
+   const lppEstimate=lppSubsidyEstimate(salary,job,epl);
    const aiLaaTotal=aiTotal+laa;
-   const insuredPersonTotal=aiLaaTotal+lppSubsidy.subsidyPension;
    const target=Math.max(0,salary)*.90;
+   const gapBeforeLpp=Math.max(0,target-aiLaaTotal);
+   const payableLppSubsidy=Math.min(lppEstimate.subsidyPension,gapBeforeLpp);
+   const insuredPersonTotal=aiLaaTotal+payableLppSubsidy;
    const annual=otherIncome+insuredPersonTotal;
 
    let warning='';
@@ -978,9 +980,8 @@ function accidentBenefits(c){
    return{
      annual,otherIncome,salary,insured,aiAdult,aiChildren,aiTotal,
      laa,laaBase,coordinationCap,aiLaaTotal,
-     lppSubsidy:lppSubsidy.subsidyPension,
-     lppCoordinatedSalary:lppSubsidy.coordinatedSalary,
-     lppTheoreticalCapital:lppSubsidy.theoreticalCapital,
+     lppSubsidy:payableLppSubsidy,
+     lppSubsidyTheoretical:lppEstimate.subsidyPension,
      target,insuredPersonTotal,warning,job
    };
  }
@@ -1033,7 +1034,16 @@ function accidentBenefits(c){
    const laaChildren=initialLaa.laaChildren;
    const laaTotal=initialLaa.laaTotal;
    const totalBenefitsLimit=initialLaa.totalBenefitsLimit;
-   const combinedBenefits=initialLaa.combinedBenefits;
+   const combinedBenefitsBeforeLpp=initialLaa.combinedBenefits;
+   const epl=isP1?c.epl1:c.epl2;
+   const lppEstimate=lppSubsidyEstimate(salary,job,epl);
+   const theoreticalLppSurvivors=
+     (diseaseDeath.survivorRight?lppEstimate.subsidyPension*.60:0)+
+     kids*lppEstimate.subsidyPension*.20;
+   const target=Math.max(0,salary)*.90;
+   const gapBeforeLpp=Math.max(0,target-combinedBenefitsBeforeLpp);
+   const payableLppSubsidy=Math.min(theoreticalLppSurvivors,gapBeforeLpp);
+   const combinedBenefits=combinedBenefitsBeforeLpp+payableLppSubsidy;
    const annual=otherIncome+combinedBenefits;
 
    let warning='';
@@ -1055,22 +1065,38 @@ function accidentBenefits(c){
      annual,otherIncome,salary,insured,avsSpouse,avsChildren,avsTotal,
      laaSpouse,laaChildren,laaTotal,rawLaaTotal,laaLimit,
      combinedBenefits,totalBenefitsLimit,
-     laaAtChildCount:childCount=>job==='Salarié'
-       ?accidentDeathLaaAtChildCount({
-         insured,
-         actualSalary:salary,
-         avsSpouse,
-         avsChildren:activeChildrenAvsAmount(diseaseDeath, kids, childCount),
-         survivorRight:diseaseDeath.survivorRight,
-         childCount
-       })
-       :{
-         childCount,
-         laaSpouse:0,
-         laaChildren:0,
-         laaTotal:0,
-         combinedBenefits:avsSpouse+activeChildrenAvsAmount(diseaseDeath,kids,childCount)
-       },
+     lppSubsidy:payableLppSubsidy,
+     lppSubsidyTheoretical:theoreticalLppSurvivors,
+     target,
+     laaAtChildCount:childCount=>{
+       const avsChildrenAtStage=activeChildrenAvsAmount(diseaseDeath,kids,childCount);
+       const laaStage=job==='Salarié'
+         ?accidentDeathLaaAtChildCount({
+           insured,
+           actualSalary:salary,
+           avsSpouse,
+           avsChildren:avsChildrenAtStage,
+           survivorRight:diseaseDeath.survivorRight,
+           childCount
+         })
+         :{
+           childCount,
+           laaSpouse:0,
+           laaChildren:0,
+           laaTotal:0,
+           combinedBenefits:avsSpouse+avsChildrenAtStage
+         };
+       const theoreticalAtStage=
+         (diseaseDeath.survivorRight?lppEstimate.subsidyPension*.60:0)+
+         Math.max(0,childCount||0)*lppEstimate.subsidyPension*.20;
+       const gapAtStage=Math.max(0,target-laaStage.combinedBenefits);
+       const lppSubsidyAtStage=Math.min(theoreticalAtStage,gapAtStage);
+       return{
+         ...laaStage,
+         lppSubsidy:lppSubsidyAtStage,
+         combinedBenefitsWithLpp:laaStage.combinedBenefits+lppSubsidyAtStage
+       };
+     },
      survivorRight:diseaseDeath.survivorRight,
      avsKnown:diseaseDeath.avsKnown,
      needsDeepAnalysis:diseaseDeath.needsDeepAnalysis,
@@ -1464,16 +1490,11 @@ function riskData(){
 
      const html=
        groupHtmlFlexible('1er pilier – AI',aiRows,'Total AI',x.aiTotal,true)+
-       groupHtmlFlexible('Assurance-accidents – LAA',[
-         ['Gain annuel assuré LAA',x.insured,true],
-         ['Plafond AI + LAA à 90 % du gain assuré',x.coordinationCap,true],
-         ['Rente complémentaire LAA estimée',x.laa,true]
-       ],'Total AI + LAA',x.aiLaaTotal,true)+
-       groupHtmlFlexible('2e pilier – rente subsidiaire estimée',[
-         ['Salaire coordonné',x.lppCoordinatedSalary,true],
-         ['Capital théorique après EPL',x.lppTheoreticalCapital,true],
-         ['Rente LPP subsidiaire',x.lppSubsidy,true]
-       ],'Total prestations de la personne',x.insuredPersonTotal,true)+
+       groupHtmlFlexible('Prestations après invalidité',[
+         ['Rente AI',x.aiTotal,true],
+         ['Rente LAA',x.laa,true],
+         x.lppSubsidy>0?['Rente LPP subsidiaire',x.lppSubsidy,true]:null
+       ],'Total des prestations',x.insuredPersonTotal,true)+
        summaryBox('Revenu total du ménage après l’accident',[
          [`Prestations AI + LAA + LPP de ${who}`,x.insuredPersonTotal,true],
          c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,x.otherIncome,true]
@@ -1502,24 +1523,21 @@ function riskData(){
    if(kids>0)laaRows.push([`Rentes LAA d’orphelins (${kids})`,d.laaChildren,true]);
 
    const html=
-     groupHtmlFlexible('1er pilier – AVS',avsRows,'Total AVS survivants',d.avsTotal,d.avsKnown)+
-     groupHtmlFlexible('Assurance-accidents – LAA',[
-       ['Gain annuel assuré LAA',d.insured,true],
-       ['Plafond global des prestations',d.totalBenefitsLimit,true],
-       ...laaRows
-     ],'Total LAA survivants',d.laaTotal,true)+
+     groupHtmlFlexible('Prestations après décès',[
+       ['Rentes AVS de survivants',d.avsTotal,d.avsKnown],
+       ['Rentes LAA de survivants',d.laaTotal,true],
+       d.lppSubsidy>0?['Rente LPP subsidiaire',d.lppSubsidy,true]:null
+     ],'Total des prestations',d.combinedBenefits,d.avsKnown)+
      summaryBox(`Revenu total du ménage après le décès de ${who}`,[
-       ['Prestations AVS de survivants',d.avsTotal,d.avsKnown],
-       ['Prestations LAA de survivants',d.laaTotal,true],
+       ['Prestations de survivants',d.combinedBenefits,d.avsKnown],
        c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,d.otherIncome,true]
      ],'Revenu annuel total du ménage',d.annual,d.avsKnown)+
-     `<div class="callout ${d.job==='Salarié'?'':'warn'}" style="margin-top:12px">${d.warning}</div>`+
-     '<div class="callout" style="margin-top:12px"><b>Modèle accident PrevIA</b><br><span class="tiny muted">Aucune rente LPP de survivants n’est ajoutée dans ce scénario décès accident. Les prestations AVS et LAA sont présentées séparément.</span></div>';
+     `<div class="callout ${d.job==='Salarié'?'':'warn'}" style="margin-top:12px">${d.warning}</div>`;
 
    return{
      income:d.annual,
-     capital:d.laaTotal,
-     capitalLabel:'Rentes LAA annuelles',
+     capital:d.combinedBenefits,
+     capitalLabel:'Prestations annuelles estimées',
      detail:`Décès accident de ${who}.`,
      html,
      uncertain:d.needsDeepAnalysis||d.job!=='Salarié',
@@ -1620,7 +1638,7 @@ function renderProtection(){
     ?'Accident : estimation fondée sur l’AI ou l’AVS, la LAA et, en invalidité salariée, une rente LPP subsidiaire estimée.'
     :'Maladie : estimation fondée sur l’AI, l’AVS et les prestations minimales LPP.';
   $('#protDisclaimer').textContent=accident
-    ?'Estimation indicative : gain annuel assuré LAA plafonné à 148’200 CHF. AI + LAA sont coordonnés à 90 % de ce gain assuré. Une rente LPP subsidiaire est estimée séparément pour les salariés.'
+    ?'Estimation indicative à confirmer avec les documents personnels.'
     :'Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.';
 }
 $$('[data-risk]').forEach(b=>b.onclick=()=>{$$('[data-risk]').forEach(x=>x.classList.remove('active'));b.classList.add('active');risk=b.dataset.risk;renderProtection()});
@@ -1742,13 +1760,15 @@ function evolutionScenario(){
     const insured=Math.min(affectedIncome,148200);
     const laaMaximum=obj.job==='Salarié'?insured*.80:0;
     const coordinationCap=obj.job==='Salarié'?insured*.90:0;
-    const lppSubsidy=obj.lppSubsidy||0;
+    const theoreticalLpp=obj.lppSubsidyTheoretical||0;
 
     const addInvalidityAccidentStage=(activeChildren,label,sub,event)=>{
       const aiChildren=aiChildEach*activeChildren;
       const laa=obj.job==='Salarié'
         ?Math.min(laaMaximum,Math.max(0,coordinationCap-aiAdult-aiChildren))
         :0;
+      const gapBeforeLpp=Math.max(0,target-aiAdult-aiChildren-laa);
+      const lppSubsidy=Math.min(theoreticalLpp,gapBeforeLpp);
       // AVS/AI = avs ; LAA = lpp ; LPP subsidiaire = other ; rentes enfants = child.
       pushStage(label,sub,event,aiAdult,laa,aiChildren,lppSubsidy);
     };
@@ -1770,7 +1790,8 @@ function evolutionScenario(){
       const avs=(obj.avsSpouse||0);
       const laaSpouse=projected.laaSpouse||0;
       const children=avsChildren+(projected.laaChildren||0);
-      pushStage(label,sub,event,avs,laaSpouse,children);
+      const lppSubsidy=projected.lppSubsidy||0;
+      pushStage(label,sub,event,avs,laaSpouse,children,lppSubsidy);
     };
     addDeathAccidentStage(initialKids,'Après l’événement',`${initialKids} enfant${initialKids>1?'s':''} à charge`,'Prestations de survivants à long terme');
     let active=initialKids;
@@ -1831,7 +1852,7 @@ function renderEvolution(){
  const x=evolutionScenario();
  $('#evoChartTitle').textContent=x.title;
  $('#evolutionOriginNote').textContent=evolutionOrigin==='accident'
-   ?'Accident : analyse à long terme fondée sur l’AI ou l’AVS, la LAA et une rente LPP subsidiaire estimée pour les salariés.'
+   ?'Accident : les prestations AI ou AVS, LAA et la rente LPP subsidiaire éventuelle sont calculées automatiquement.'
    :'Maladie : analyse à long terme fondée sur l’AI, l’AVS et les prestations minimales LPP.';
 
  if(x.eventMode){
@@ -1889,7 +1910,7 @@ function renderEvolution(){
      <div class="life-legend">
        <span><i class="life-avs"></i>1er pilier AVS / AI</span>
        <span><i class="life-lpp"></i>${x.useAccident?'Prestations LAA':'Prestations LPP'}</span>
-       ${x.useAccident&&x.inv?'<span><i class="life-other"></i>Rente LPP subsidiaire</span>':''}
+       ${x.useAccident&&x.stages.some(stage=>(stage.other||0)>0)?'<span><i class="life-other"></i>Rente LPP subsidiaire</span>':''}
        <span><i class="life-child"></i>Rentes pour enfants</span>
        <span><i class="life-gap-legend"></i>Lacune jusqu’à 90 %</span>
      </div>
