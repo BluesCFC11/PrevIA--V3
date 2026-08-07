@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.16.2 — Prototype interactif</title>
+<title>PrevIA V9.16.3 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.16.2 — évolution long terme : personne touchée puis vue ménage */
+/* V9.16.3 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.16.2 — lecture visuelle des priorités */
+/* V9.16.3 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.16.2 — graphiques plus lisibles */
+/* V9.16.3 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.16.2 — accueil rassurant et saisie suisse */
+/* V9.16.3 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.16.2 — couleurs dynamiques des taux de couverture */
+/* V9.16.3 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,17 +264,47 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
+/* V9.16.3 — rôles et accès */
+.access-panel{margin-top:14px;padding:12px;border:1px solid #ffffff1f;border-radius:13px;background:#ffffff0d}
+.access-panel label{color:#fff;font-size:10px;opacity:.8;margin-bottom:5px}
+.access-panel select{padding:8px 9px;background:#fff;color:#17223d;border:0}
+.access-panel small{display:block;margin-top:7px;color:#d8def3;line-height:1.35}
+.nav.premium-locked::after{content:"🔒";float:right;font-size:11px}
+.nav.partner-only.hidden-role{display:none!important}
+.role-badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.role-free{background:#fff3e8;color:#9a3412}.role-client{background:#eaf8ef;color:#278b57}.role-admin{background:#eef0ff;color:#5058c6}.role-partner{background:#eaf4fb;color:#2879b8}
+.paywall{max-width:760px;margin:40px auto;padding:30px;border-radius:20px;background:white;border:1px solid var(--line);box-shadow:0 18px 50px #18274415;text-align:center}
+.paywall-icon{font-size:42px;margin-bottom:8px}
+.paywall h2{font-size:26px}
+.paywall-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.partner-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.partner-case{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff;margin:9px 0}
+.partner-case small{display:block;color:var(--muted);margin-top:4px}
+.report-btn{display:none}
+body.role-client .report-btn,body.role-admin .report-btn,body.role-partner .report-btn{display:inline-flex}
+@media print{aside,.btn,.access-panel,.analysis-upgrade{display:none!important}.app{display:block}main{padding:0;max-width:none}.screen{display:block!important;page-break-after:always}.screen#home,.screen#form,.screen#partner,.screen#locked{display:none!important}}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.2</small></div><nav>
-<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.3</small></div><nav>
+<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
+<div class="access-panel">
+  <label>Mode d’accès — prototype</label>
+  <select id="accessRole">
+    <option value="FREE">Free</option>
+    <option value="CLIENT">Client</option>
+    <option value="ADMIN" selected>Admin</option>
+    <option value="PARTNER">Partner</option>
+  </select>
+  <small id="roleHelp">Accès complet de test.</small>
+</div>
+<div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small><div style="margin-top:8px"><span class="role-badge role-admin" id="roleBadge">Admin</span></div></div></aside>
 <main>
 <section id="home" class="screen active">
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.16.2</div>
+      <div class="eyebrow">PrevIA V9.16.3</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -346,7 +376,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   </div>
 </section>
 
-<section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><button class="btn" data-s="form">Modifier les informations</button></div>
+<section id="dashboard" class="screen"><div class="top"><div><div class="eyebrow">Synthèse finale</div><h1 id="hello">Bonjour</h1><p class="muted" id="humanIntro"></p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn report-btn" id="reportPdfBtn">Rapport PDF</button><button class="btn" data-s="form">Modifier les informations</button></div></div>
 <div class="hero"><div class="eyebrow">La question que vous souhaitez résoudre</div><h2 id="concernTitle"></h2></div>
 <div class="grid3" style="margin-top:15px"><div class="card"><span class="status green">Ce qui va bien</span><h3 style="margin-top:12px">Une base financière existe</h3><p class="muted" id="goodText"></p></div><div class="card"><span class="status orange">À surveiller</span><h3 style="margin-top:12px" id="watchTitle"></h3><p class="muted" id="watchText"></p></div><div class="card summary-signal signal-red"><span class="status orange">Piste d’optimisation importante</span><h3 style="margin-top:12px" id="priorityTitle"></h3><p class="muted">Cette piste provient automatiquement de l’onglet Nos recommandations.</p></div></div>
 <div class="grid4" style="margin-top:15px">
@@ -500,6 +530,35 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 <p class="muted tiny">Estimation indicative fondée sur le revenu brut, la situation familiale, le nombre d’enfants, le statut professionnel et le canton. Pour une personne célibataire, PrevIA applique CHF 15'000 de déduction de base, CHF 25'000 par enfant pour les deux premiers enfants, puis CHF 15'000 par enfant supplémentaire dès le troisième. Pour des concubins, chaque personne est imposée séparément : PrevIA applique CHF 15'000 de déduction de base par personne, CHF 12'500 par enfant et par personne pour les deux premiers enfants, puis CHF 7'500 par enfant supplémentaire et par personne dès le troisième. Pour un couple marié, PrevIA applique CHF 25'000 de déduction de base au couple, puis CHF 12'500 par enfant. Les TMI correspondent à une moyenne indicative par canton et sont interpolés entre plusieurs niveaux de revenus. Pour un salarié, le plafond 3a utilisé est de CHF 7'258. Pour un indépendant, il correspond au plus faible montant entre 20 % du revenu et CHF 36'288. Le résultat fiscal réel dépend notamment de la commune, de l’attribution fiscale des enfants, de l’état civil, des frais professionnels, des primes d’assurance, de la fortune, des autres déductions et de la législation fiscale applicable.</p>
 </section>
 
+
+<section id="locked" class="screen">
+  <div class="paywall">
+    <div class="paywall-icon">🔒</div>
+    <div class="eyebrow">Analyse complète</div>
+    <h2>Cette partie est réservée à l’analyse complète</h2>
+    <p class="muted" id="lockedText">Débloquez les résultats détaillés, les projections et les recommandations personnalisées.</p>
+    <div class="paywall-actions">
+      <button class="btn primary" id="unlockPrototypeBtn">Débloquer l’analyse complète</button>
+      <button class="btn" data-s="dashboard">Retour à la synthèse</button>
+    </div>
+    <p class="tiny muted" style="margin-top:14px">Prototype : le paiement sera relié ultérieurement au passage du rôle FREE vers CLIENT.</p>
+  </div>
+</section>
+
+<section id="partner" class="screen">
+  <div class="top">
+    <div><div class="eyebrow">Espace partenaire</div><h1>Analyses clients</h1><p class="muted">Retrouvez les analyses enregistrées et ouvrez un dossier existant.</p></div>
+    <button class="btn primary" id="savePartnerCaseBtn">Enregistrer l’analyse actuelle</button>
+  </div>
+  <div class="card">
+    <div class="partner-toolbar">
+      <button class="btn" id="newPartnerCaseBtn">Nouvelle analyse</button>
+      <button class="btn" id="refreshPartnerCasesBtn">Actualiser</button>
+    </div>
+    <div id="partnerCases"></div>
+  </div>
+</section>
+
 <div class="lpp-disclaimer" id="lppDisclaimer">
   <div class="lpp-disclaimer-head">
     <div class="lpp-disclaimer-icon">!</div>
@@ -599,6 +658,147 @@ NE:[[50000,22],[60000,24.67],[70000,27.33],[80000,30],[90000,33],[100000,36],[12
 GE:[[50000,28],[60000,31],[70000,34],[80000,37],[90000,39.5],[100000,42],[120000,44.8],[140000,47.6],[150000,49],[180000,50.8],[200000,52],[250000,53.5],[300000,55],[500000,56]],
 JU:[[50000,22],[60000,24.67],[70000,27.33],[80000,30],[90000,32.5],[100000,35],[120000,37.4],[140000,39.8],[150000,41],[180000,42.8],[200000,44],[250000,45.5],[300000,47],[500000,49]]
 };
+const ACCESS={
+  FREE:{
+    label:'Free',
+    help:'Aperçu gratuit. Les modules détaillés restent verrouillés.',
+    premium:['retraite','evolution','immobilier','fiscalite','recommendations']
+  },
+  CLIENT:{
+    label:'Client',
+    help:'Analyse personnelle complète + rapport PDF.',
+    premium:[]
+  },
+  ADMIN:{
+    label:'Admin',
+    help:'Accès complet de test et de contrôle.',
+    premium:[]
+  },
+  PARTNER:{
+    label:'Partner',
+    help:'Accès complet + historique des analyses clients.',
+    premium:[]
+  }
+};
+let accessRole=localStorage.getItem('previa-access-role')||'ADMIN';
+let requestedPremiumScreen='dashboard';
+
+function accessAllows(screenId){
+  const conf=ACCESS[accessRole]||ACCESS.FREE;
+  return !conf.premium.includes(screenId);
+}
+function roleClass(role){return 'role-'+String(role||'free').toLowerCase()}
+function applyAccessRole(role,save=true){
+  accessRole=ACCESS[role]?role:'FREE';
+  if(save)localStorage.setItem('previa-access-role',accessRole);
+  document.body.classList.remove('role-free','role-client','role-admin','role-partner');
+  document.body.classList.add(roleClass(accessRole));
+  const sel=$('#accessRole');if(sel)sel.value=accessRole;
+  const badge=$('#roleBadge');
+  if(badge){
+    badge.className='role-badge '+roleClass(accessRole);
+    badge.textContent=ACCESS[accessRole].label;
+  }
+  const help=$('#roleHelp');if(help)help.textContent=ACCESS[accessRole].help;
+  $$('[data-s]').forEach(btn=>{
+    const s=btn.dataset.s;
+    btn.classList.toggle('premium-locked',accessRole==='FREE'&&ACCESS.FREE.premium.includes(s));
+  });
+  $$('.partner-only').forEach(el=>el.classList.toggle('hidden-role',!(accessRole==='PARTNER'||accessRole==='ADMIN')));
+}
+function unlockPrototype(){
+  applyAccessRole('CLIENT');
+  show(requestedPremiumScreen||'dashboard');
+}
+
+function partnerCases(){
+  try{return JSON.parse(localStorage.getItem('previa-partner-cases')||'[]')}catch(e){return[]}
+}
+function savePartnerCase(){
+  if(!(accessRole==='PARTNER'||accessRole==='ADMIN'))return;
+  const c=data&&data.name?data:gather();
+  const cases=partnerCases();
+  const item={
+    id:'case-'+Date.now(),
+    createdAt:new Date().toISOString(),
+    name:c.name||'Dossier sans nom',
+    concern:c.concern||concern,
+    data:c
+  };
+  cases.unshift(item);
+  localStorage.setItem('previa-partner-cases',JSON.stringify(cases.slice(0,100)));
+  renderPartnerCases();
+}
+function applyCaseToForm(c){
+  if(!c)return;
+  const set=(id,v)=>{const el=$(id);if(el&&v!==undefined&&v!==null)el.value=v};
+  set('#fFirstName1',c.firstName1||'');
+  set('#fStatus',c.status||'Célibataire');
+  updateFamily();
+  if(c.status!=='Célibataire')set('#fFirstName2',c.firstName2||'');
+  set('#fAge1',c.age1);set('#fAge2',c.age2);
+  set('#fIncome1',c.income1);set('#fIncome2',c.income2);
+  set('#fJob1',c.job1);set('#fJob2',c.job2);
+  set('#fChildren',c.children);set('#fChildGap',c.childGap);
+  set('#fChildrenDependent',c.childrenDependent?'yes':'no');
+  set('#fYoungestAge',c.youngestAge);
+  set('#fSavings',c.savings);set('#fP3P1',c.p3p1);set('#fP3P2',c.p3p2);
+  set('#fOwner',c.owner?'yes':'no');updateOwner();
+  set('#fHome',c.home);set('#fMortgage',c.mortgage);
+  set('#fEpl',c.eplUsed?'yes':'no');updateEpl();
+  set('#fEpl1',c.epl1);set('#fEpl2',c.epl2);
+  set('#fCanton',c.canton);
+  set('#fContribution1',c.contribution1);set('#fContribution2',c.contribution2);
+  MONEY_INPUT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)formatSwissAmountInput(el)});
+  refreshPersonNames();updateChildren();
+}
+function openPartnerCase(id){
+  const item=partnerCases().find(x=>x.id===id);
+  if(!item)return;
+  data=item.data;
+  concern=item.concern||data.concern||'family';
+  applyCaseToForm(data);
+  render();
+  show('dashboard');
+}
+function deletePartnerCase(id){
+  const cases=partnerCases().filter(x=>x.id!==id);
+  localStorage.setItem('previa-partner-cases',JSON.stringify(cases));
+  renderPartnerCases();
+}
+function renderPartnerCases(){
+  const root=$('#partnerCases');if(!root)return;
+  const cases=partnerCases();
+  if(!cases.length){
+    root.innerHTML='<div class="callout">Aucune analyse enregistrée pour le moment.</div>';
+    return;
+  }
+  root.innerHTML=cases.map(item=>{
+    const d=new Date(item.createdAt);
+    return `<div class="partner-case">
+      <div><b>${item.name}</b><small>${d.toLocaleString('fr-CH')} · ${CONCERNS[item.concern]?.title||'Analyse PrevIA'}</small></div>
+      <div style="display:flex;gap:7px"><button class="btn" onclick="openPartnerCase('${item.id}')">Ouvrir</button><button class="btn" onclick="deletePartnerCase('${item.id}')">Supprimer</button></div>
+    </div>`;
+  }).join('');
+}
+function generatePdfReport(){
+  if(accessRole==='FREE'){requestedPremiumScreen='dashboard';show('locked');return}
+  const ids=['dashboard','protection','retraite','evolution','immobilier','fiscalite','recommendations'];
+  const content=ids.map(id=>{
+    const el=document.getElementById(id);
+    return el?`<section style="page-break-after:always">${el.innerHTML}</section>`:'';
+  }).join('');
+  const w=window.open('','_blank');
+  if(!w)return alert('Votre navigateur a bloqué l’ouverture du rapport.');
+  w.document.write(`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport PrevIA</title><style>
+  body{font-family:Arial,sans-serif;color:#17223d;padding:28px}button{display:none!important}.screen{display:block!important}
+  .card,.hero,.callout{border:1px solid #ddd;border-radius:12px;padding:14px;margin:10px 0}.grid2,.grid3,.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .metric{font-size:24px;font-weight:800}.muted{color:#666}.eyebrow{font-size:10px;text-transform:uppercase;font-weight:800;color:#5860c9}.hidden{display:none!important}
+  @media print{body{padding:0}} </style></head><body><h1>Rapport PrevIA — ${data.name||''}</h1>${content}</body></html>`);
+  w.document.close();
+  setTimeout(()=>{w.focus();w.print()},500);
+}
+
 const CONCERNS={family:{title:'Ma famille sera-t-elle protégée si quelque chose m’arrive ?',intro:'Vous cherchez avant tout à éviter qu’un décès ou une invalidité fragilise le quotidien de votre famille.',emotion:['Protection','Responsabilité familiale'],belief:'« Si je décède, ma famille sera automatiquement protégée. »',reality:'Les prestations peuvent laisser une baisse de revenu importante, surtout en concubinage. PrevIA vérifie les deux décès séparément.'},home:{title:'Pourrons-nous conserver notre logement quoi qu’il arrive ?',intro:'Vous souhaitez savoir si votre logement restera supportable aujourd’hui, à la retraite et dans les coups durs.',emotion:['Sécurité','Attachement au logement'],belief:'« Tant que nous payons l’hypothèque, tout va bien. »',reality:'La banque regarde les charges théoriques par rapport aux revenus, avec une limite de 33 %.'},retirement:{title:'Pourrons-nous vivre sereinement à la retraite ?',intro:'Vous souhaitez mesurer la baisse de revenu future et agir suffisamment tôt.',emotion:['Anticipation','Besoin de visibilité'],belief:'« Mon 2e pilier suffira probablement. »',reality:'PrevIA estime la LPP sans demander au client de connaître son avoir, puis confirme avec le certificat.'},tax:{title:'Comment réduire intelligemment mes impôts ?',intro:'Vous souhaitez connaître l’effet concret d’un versement déductible.',emotion:['Efficacité','Optimisation'],belief:'« Le 3e pilier sert uniquement à payer moins d’impôts. »',reality:'L’avantage fiscal doit aussi renforcer votre retraite et votre capital.'},wealth:{title:'Comment développer durablement mon patrimoine ?',intro:'Vous souhaitez mieux utiliser votre capacité d’épargne.',emotion:['Progression','Maîtrise'],belief:'« Il faut choisir entre sécurité et rendement. »',reality:'Une stratégie peut combiner réserve disponible, horizon de placement et objectifs.'}};
 let concern='family',risk='invalidity1',evoMode='death1',protectionOrigin='illness',evolutionOrigin='illness',data={};
 
@@ -661,7 +861,18 @@ function refreshPersonNames(){
     if(el)el.textContent=value;
   });
 }
-function show(id){$$('.screen').forEach(x=>x.classList.toggle('active',x.id===id));$$('.nav').forEach(x=>x.classList.toggle('active',x.dataset.s===id));scrollTo(0,0)}
+function show(id){
+ if(!accessAllows(id)){
+   requestedPremiumScreen=id;
+   const lockedText=$('#lockedText');
+   if(lockedText)lockedText.textContent=`Le module « ${id} » fait partie de l’analyse complète.`;
+   id='locked';
+ }
+ $$('.screen').forEach(x=>x.classList.toggle('active',x.id===id));
+ $$('.nav').forEach(x=>x.classList.toggle('active',x.dataset.s===id));
+ if(id==='partner')renderPartnerCases();
+ scrollTo(0,0)
+}
 document.addEventListener('click',e=>{const n=e.target.closest('[data-s]');if(n)show(n.dataset.s)});$('#newAnalysis').onclick=()=>show('form');
 $$('.choice').forEach(b=>b.onclick=()=>{$$('.choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');concern=b.dataset.concern});
 function updateFamily(){
@@ -889,8 +1100,9 @@ function benefits(c){
 /*
  Règle métier PrevIA – LPP subsidiaire :
  - invalidité : capital projeté LPP sans intérêt × 6,8 %
- - décès : 60 % de la rente d'invalidité pour le conjoint survivant
- - décès : 20 % de la rente d'invalidité par orphelin
+ - invalidité accident : 20 % de la rente d'invalidité par enfant
+ - décès accident : 60 % de la rente d'invalidité pour le conjoint survivant
+ - décès accident : 20 % de la rente d'invalidité par orphelin
  - la prestation subsidiaire n'est retenue que dans la limite de la lacune restante.
 */
 function lppSubsidyEstimate(income,job,epl=0){
@@ -918,6 +1130,25 @@ function lppSurvivorSubsidyEstimate(disabilityPension,survivorRight,childCount){
    spouse,
    children,
    total:spouse+children
+ };
+}
+
+function lppInvaliditySubsidyEstimate(disabilityPension,childCount,availableGap){
+ const base=Math.max(0,Number(disabilityPension)||0);
+ const kids=Math.max(0,Number(childCount)||0);
+ const adultTheoretical=base;
+ const childrenTheoretical=kids*base*.20;
+ const totalTheoretical=adultTheoretical+childrenTheoretical;
+ const gap=Math.max(0,Number(availableGap)||0);
+ const payableTotal=Math.min(totalTheoretical,gap);
+ const factor=totalTheoretical>0?payableTotal/totalTheoretical:0;
+ return{
+   adultTheoretical,
+   childrenTheoretical,
+   totalTheoretical,
+   adult:adultTheoretical*factor,
+   children:childrenTheoretical*factor,
+   total:payableTotal
  };
 }
 
@@ -998,7 +1229,12 @@ function accidentBenefits(c){
    const aiLaaTotal=aiTotal+laa;
    const target=Math.max(0,salary)*.90;
    const gapBeforeLpp=Math.max(0,target-aiLaaTotal);
-   const payableLppSubsidy=Math.min(lppEstimate.subsidyPension,gapBeforeLpp);
+   const lppInvalidity=lppInvaliditySubsidyEstimate(
+     lppEstimate.subsidyPension,
+     kids,
+     gapBeforeLpp
+   );
+   const payableLppSubsidy=lppInvalidity.total;
    const insuredPersonTotal=aiLaaTotal+payableLppSubsidy;
    const annual=otherIncome+insuredPersonTotal;
 
@@ -1015,6 +1251,8 @@ function accidentBenefits(c){
      annual,otherIncome,salary,insured,aiAdult,aiChildren,aiTotal,
      laa,laaBase,coordinationCap,aiLaaTotal,
      lppSubsidy:payableLppSubsidy,
+     lppSubsidyAdult:lppInvalidity.adult,
+     lppSubsidyChildren:lppInvalidity.children,
      lppSubsidyTheoretical:lppEstimate.subsidyPension,
      target,insuredPersonTotal,warning,job
    };
@@ -1532,7 +1770,8 @@ function riskData(){
        groupHtmlFlexible('Prestations après invalidité',[
          ['Rente AI',x.aiTotal,true],
          ['Rente LAA',x.laa,true],
-         x.lppSubsidy>0?['Rente LPP subsidiaire',x.lppSubsidy,true]:null
+         x.lppSubsidyAdult>0?['Rente LPP subsidiaire d’invalidité',x.lppSubsidyAdult,true]:null,
+         x.lppSubsidyChildren>0?['Rentes LPP subsidiaires d’enfants',x.lppSubsidyChildren,true]:null
        ],'Total des prestations',x.insuredPersonTotal,true)+
        summaryBox('Revenu total du ménage après l’accident',[
          [`Prestations AI + LAA + LPP de ${who}`,x.insuredPersonTotal,true],
@@ -1818,9 +2057,14 @@ function evolutionScenario(){
         ?Math.min(laaMaximum,Math.max(0,coordinationCap-aiAdult-aiChildren))
         :0;
       const gapBeforeLpp=Math.max(0,coordinationTarget-aiAdult-aiChildren-laa);
-      const lppSubsidy=Math.min(theoreticalLpp,gapBeforeLpp);
-      // AVS/AI = avs ; LAA = lpp ; LPP subsidiaire = other ; rentes enfants = child.
-      pushStage(label,sub,event,aiAdult,laa,aiChildren,lppSubsidy);
+      const lppInvalidity=lppInvaliditySubsidyEstimate(
+        theoreticalLpp,
+        activeChildren,
+        gapBeforeLpp
+      );
+      // AVS/AI = avs ; LAA = lpp ; rentes enfants = child ;
+      // LPP subsidiaire adulte + enfants = other.
+      pushStage(label,sub,event,aiAdult,laa,aiChildren,lppInvalidity.total);
     };
 
     addInvalidityAccidentStage(initialKids,'Après l’événement',`${initialKids} enfant${initialKids>1?'s':''} à charge`,'Invalidité à long terme');
@@ -2536,6 +2780,21 @@ updateChildren();
 updateOwner();
 updateEpl();
 data={};
+
+
+const roleSelect=document.getElementById('accessRole');
+if(roleSelect)roleSelect.addEventListener('change',e=>applyAccessRole(e.target.value));
+const unlockBtn=document.getElementById('unlockPrototypeBtn');
+if(unlockBtn)unlockBtn.addEventListener('click',unlockPrototype);
+const reportBtn=document.getElementById('reportPdfBtn');
+if(reportBtn)reportBtn.addEventListener('click',generatePdfReport);
+const savePartnerBtn=document.getElementById('savePartnerCaseBtn');
+if(savePartnerBtn)savePartnerBtn.addEventListener('click',savePartnerCase);
+const refreshPartnerBtn=document.getElementById('refreshPartnerCasesBtn');
+if(refreshPartnerBtn)refreshPartnerBtn.addEventListener('click',renderPartnerCases);
+const newPartnerBtn=document.getElementById('newPartnerCaseBtn');
+if(newPartnerBtn)newPartnerBtn.addEventListener('click',()=>show('form'));
+applyAccessRole(accessRole,false);
 
 const upgradeBtn=document.getElementById('upgradeAnalysisBtn');
 if(upgradeBtn){upgradeBtn.addEventListener('click',()=>{const old=upgradeBtn.textContent;upgradeBtn.textContent='Module d’importation bientôt disponible';upgradeBtn.disabled=true;setTimeout(()=>{upgradeBtn.textContent=old;upgradeBtn.disabled=false;},2600);});}
