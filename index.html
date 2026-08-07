@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.16.1 — Prototype interactif</title>
+<title>PrevIA V9.16.2 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.16.1 — évolution long terme : personne touchée puis vue ménage */
+/* V9.16.2 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.16.1 — lecture visuelle des priorités */
+/* V9.16.2 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.16.1 — graphiques plus lisibles */
+/* V9.16.2 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.16.1 — accueil rassurant et saisie suisse */
+/* V9.16.2 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.16.1 — couleurs dynamiques des taux de couverture */
+/* V9.16.2 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -267,14 +267,14 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.1</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.2</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button></nav><div class="side"><strong id="sideName">Nouveau dossier</strong><small id="sideSub">Analyse à compléter</small></div></aside>
 <main>
 <section id="home" class="screen active">
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.16.1</div>
+      <div class="eyebrow">PrevIA V9.16.2</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -886,6 +886,13 @@ function benefits(c){
  return{p1,p2,retAvs,inv1:i1.annual,inv2:i2.annual,i1,i2,d1,d2};
 }
 
+/*
+ Règle métier PrevIA – LPP subsidiaire :
+ - invalidité : capital projeté LPP sans intérêt × 6,8 %
+ - décès : 60 % de la rente d'invalidité pour le conjoint survivant
+ - décès : 20 % de la rente d'invalidité par orphelin
+ - la prestation subsidiaire n'est retenue que dans la limite de la lacune restante.
+*/
 function lppSubsidyEstimate(income,job,epl=0){
  const DEDUCTION_COORDINATION=26460;
  const COORDINATED_MAX=64260;
@@ -900,6 +907,17 @@ function lppSubsidyEstimate(income,job,epl=0){
    theoreticalCapital,
    subsidyPension,
    eplApplied:Math.max(0,epl||0)
+ };
+}
+
+function lppSurvivorSubsidyEstimate(disabilityPension,survivorRight,childCount){
+ const base=Math.max(0,Number(disabilityPension)||0);
+ const spouse=survivorRight?base*.60:0;
+ const children=Math.max(0,Number(childCount)||0)*base*.20;
+ return{
+   spouse,
+   children,
+   total:spouse+children
  };
 }
 
@@ -1053,9 +1071,12 @@ function accidentBenefits(c){
    const combinedBenefitsBeforeLpp=initialLaa.combinedBenefits;
    const epl=isP1?c.epl1:c.epl2;
    const lppEstimate=lppSubsidyEstimate(salary,job,epl);
-   const theoreticalLppSurvivors=
-     (diseaseDeath.survivorRight?lppEstimate.subsidyPension*.60:0)+
-     kids*lppEstimate.subsidyPension*.20;
+   const lppSurvivors=lppSurvivorSubsidyEstimate(
+     lppEstimate.subsidyPension,
+     diseaseDeath.survivorRight,
+     kids
+   );
+   const theoreticalLppSurvivors=lppSurvivors.total;
    const target=Math.max(0,salary)*.90;
    const gapBeforeLpp=Math.max(0,target-combinedBenefitsBeforeLpp);
    const payableLppSubsidy=Math.min(theoreticalLppSurvivors,gapBeforeLpp);
@@ -1102,9 +1123,11 @@ function accidentBenefits(c){
            laaTotal:0,
            combinedBenefits:avsSpouse+avsChildrenAtStage
          };
-       const theoreticalAtStage=
-         (diseaseDeath.survivorRight?lppEstimate.subsidyPension*.60:0)+
-         Math.max(0,childCount||0)*lppEstimate.subsidyPension*.20;
+       const theoreticalAtStage=lppSurvivorSubsidyEstimate(
+         lppEstimate.subsidyPension,
+         diseaseDeath.survivorRight,
+         childCount
+       ).total;
        const gapAtStage=Math.max(0,target-laaStage.combinedBenefits);
        const lppSubsidyAtStage=Math.min(theoreticalAtStage,gapAtStage);
        return{
@@ -2029,7 +2052,7 @@ function futureValueOfCapital(initialCapital,years,annualReturn){
 }
 
 function deathHousingNeed(c,benefitsResult,deceasedPerson){
-  if(!c.owner){
+  if(!c.owner||c.status==='Célibataire'){
     return{
       totalIncomeAfterDeath:0,
       maximumFinancing:0,
@@ -2101,18 +2124,20 @@ function renderRecommendations(){
       ));
     }
 
-    const deathNeed=deathHousingNeed(c,b,person.index);
-    protection.push(recItem(
-      deathNeed.complementaryCapital>150000?'essential':deathNeed.complementaryCapital>0?'important':'optimize',
-      `Décès · ${person.name}`,
-      deathNeed.complementaryCapital>0?'Sécuriser le logement':'Logement théoriquement maintenu',
-      [
-        {label:'Capital complémentaire à assurer',value:fmt(deathNeed.complementaryCapital)}
-      ],
-      deathNeed.complementaryCapital>0
-        ?`Ce capital permettrait de réduire l’hypothèque au niveau nécessaire pour maintenir théoriquement le financement après le décès de ${person.name}.`
-        :'Selon le revenu du survivant et les prestations de décès estimées, aucun capital complémentaire n’est nécessaire pour le logement.'
-    ));
+    if(c.status!=='Célibataire'){
+      const deathNeed=deathHousingNeed(c,b,person.index);
+      protection.push(recItem(
+        deathNeed.complementaryCapital>150000?'essential':deathNeed.complementaryCapital>0?'important':'optimize',
+        `Décès · ${person.name}`,
+        deathNeed.complementaryCapital>0?'Sécuriser le logement':'Logement théoriquement maintenu',
+        [
+          {label:'Capital complémentaire à assurer',value:fmt(deathNeed.complementaryCapital)}
+        ],
+        deathNeed.complementaryCapital>0
+          ?`Ce capital permettrait de réduire l’hypothèque au niveau nécessaire pour maintenir théoriquement le financement après le décès de ${person.name}.`
+          :'Selon le revenu du survivant et les prestations de décès estimées, aucun capital complémentaire n’est nécessaire pour le logement.'
+      ));
+    }
   });
 
   $('#recProtection').innerHTML=protection.join('')||
@@ -2301,7 +2326,9 @@ function renderHome(){
    ['Aujourd’hui',m.incomes.current,m.maxDebt.current,m.reductions.current,m.currentCharges,m.ratios.current],
    ['À la retraite',m.incomes.retirement,m.maxDebt.retirement,m.reductions.retirement,m.retCharges,m.ratios.retirement],
    ['En invalidité',m.incomes.invalidity,m.maxDebt.invalidity,m.reductions.invalidity,m.currentCharges,m.ratios.invalidity],
-   ['Après un décès',m.incomes.death,m.maxDebt.death,m.reductions.death,m.currentCharges,m.ratios.death]
+   ...(c.status==='Célibataire'
+     ?[]
+     :[['Après un décès',m.incomes.death,m.maxDebt.death,m.reductions.death,m.currentCharges,m.ratios.death]])
  ];
 
  $('#scenarioRows').innerHTML=rows.map(r=>{
@@ -2330,7 +2357,7 @@ function renderHome(){
 
  const retirementReduction=m.reductions.retirement;
  const invalidityReduction=m.reductions.invalidity;
- const deathReduction=m.reductions.death;
+ const deathReduction=c.status==='Célibataire'?0:m.reductions.death;
  const worstReduction=Math.max(retirementReduction,invalidityReduction,deathReduction);
 
  if(worstReduction>0){
