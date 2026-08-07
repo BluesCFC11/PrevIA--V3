@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.16.3 — Prototype interactif</title>
+<title>PrevIA V9.16.4 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.16.3 — évolution long terme : personne touchée puis vue ménage */
+/* V9.16.4 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.16.3 — lecture visuelle des priorités */
+/* V9.16.4 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.16.3 — graphiques plus lisibles */
+/* V9.16.4 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.16.3 — accueil rassurant et saisie suisse */
+/* V9.16.4 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.16.3 — couleurs dynamiques des taux de couverture */
+/* V9.16.4 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,7 +264,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.16.3 — rôles et accès */
+/* V9.16.4 — rôles et accès */
 .access-panel{margin-top:14px;padding:12px;border:1px solid #ffffff1f;border-radius:13px;background:#ffffff0d}
 .access-panel label{color:#fff;font-size:10px;opacity:.8;margin-bottom:5px}
 .access-panel select{padding:8px 9px;background:#fff;color:#17223d;border:0}
@@ -286,8 +286,8 @@ body.role-client .report-btn,body.role-admin .report-btn,body.role-partner .repo
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.3</small></div><nav>
-<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.4</small></div><nav>
+<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
   <select id="accessRole">
@@ -304,7 +304,7 @@ body.role-client .report-btn,body.role-admin .report-btn,body.role-partner .repo
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.16.3</div>
+      <div class="eyebrow">PrevIA V9.16.4</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -352,6 +352,58 @@ body.role-client .report-btn,body.role-admin .report-btn,body.role-partner .repo
 <div><label id="labelContribution1">Versement annuel actuel au 3e pilier – personne 1 (CHF)</label><input id="fContribution1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 3’000.-" autocomplete="off"></div>
 <div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – personne 2 (CHF)</label><input id="fContribution2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
 </div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. Les résultats devront ensuite être confirmés avec les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
+
+
+<section id="overview" class="screen">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Votre aperçu</div>
+      <h1 id="overviewTitle">Votre situation en quelques mots</h1>
+      <p class="muted">Commencez ici pour comprendre l’essentiel. Les chiffres et graphiques détaillés restent disponibles dans les autres onglets.</p>
+    </div>
+    <button class="btn" data-s="form">Modifier les informations</button>
+  </div>
+
+  <div class="overview-hero">
+    <span class="overview-status watch" id="overviewStatus">Situation à analyser</span>
+    <div class="overview-intro" id="overviewIntro"></div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="overview-card">
+      <h3>🛡️ Votre famille</h3>
+      <p id="overviewFamily"></p>
+      <div class="overview-link"><button class="btn" data-s="protection">Voir le détail famille →</button></div>
+    </div>
+
+    <div class="overview-card">
+      <h3>🌅 Votre retraite</h3>
+      <p id="overviewRetirement"></p>
+      <div class="overview-link"><button class="btn" data-s="retraite">Voir le détail retraite →</button></div>
+    </div>
+
+    <div class="overview-card">
+      <h3>🏠 Votre logement</h3>
+      <p id="overviewHome"></p>
+      <div class="overview-link"><button class="btn" data-s="immobilier">Voir le détail logement →</button></div>
+    </div>
+
+    <div class="overview-card">
+      <h3>💰 Votre prévoyance et vos impôts</h3>
+      <p id="overviewTax"></p>
+      <div class="overview-link"><button class="btn" data-s="fiscalite">Voir le détail fiscalité →</button></div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:15px">
+    <b>Ce qu’il faut retenir</b>
+    <p id="overviewConclusion" style="margin:8px 0 0;line-height:1.6"></p>
+    <div class="overview-actions">
+      <button class="btn primary" data-s="recommendations">Voir les pistes d’optimisation →</button>
+      <button class="btn" data-s="dashboard">Voir les indicateurs →</button>
+    </div>
+  </div>
+</section>
 
 <section id="recommendations" class="screen">
   <div class="top">
@@ -783,7 +835,7 @@ function renderPartnerCases(){
 }
 function generatePdfReport(){
   if(accessRole==='FREE'){requestedPremiumScreen='dashboard';show('locked');return}
-  const ids=['dashboard','protection','retraite','evolution','immobilier','fiscalite','recommendations'];
+  const ids=['overview','dashboard','protection','retraite','evolution','immobilier','fiscalite','recommendations'];
   const content=ids.map(id=>{
     const el=document.getElementById(id);
     return el?`<section style="page-break-after:always">${el.innerHTML}</section>`:'';
@@ -1637,6 +1689,177 @@ function taxCalculation(c){
    maxSaving:currentSaving+additionalSaving
  };
 }
+
+function overviewMoney(value,sensitive=false){
+  if(accessRole==='FREE'&&sensitive){
+    return '<span class="overview-locked">🔒 montant dans l’analyse complète</span>';
+  }
+  return `<span class="overview-highlight">${fmt(value)}</span>`;
+}
+function overviewMonthly(value,sensitive=false){
+  if(accessRole==='FREE'&&sensitive){
+    return '<span class="overview-locked">🔒 détail dans l’analyse complète</span>';
+  }
+  return `<span class="overview-highlight">${fmt(Math.max(0,value))} par mois</span>`;
+}
+function renderOverview(){
+  const c=data;
+  if(!c||!c.name)return;
+
+  const b=benefits(c);
+  const a=accidentBenefits(c);
+  const m=mortgage(c,b);
+  const tax=taxCalculation(c);
+  const retIncome=b.p1.ret+b.p2.ret;
+  const retPct=c.totalIncome>0?retIncome/c.totalIncome*100:0;
+
+  const invalidityScenarios=[
+    {label:`invalidité maladie de ${c.firstName1}`,annual:b.i1.annual},
+    {label:`invalidité accident de ${c.firstName1}`,annual:a.invalidity1.annual},
+    ...(c.status==='Célibataire'?[]:[
+      {label:`invalidité maladie de ${c.firstName2}`,annual:b.i2.annual},
+      {label:`invalidité accident de ${c.firstName2}`,annual:a.invalidity2.annual}
+    ])
+  ];
+  const worstInvalidity=invalidityScenarios.reduce((w,x)=>!w||x.annual<w.annual?x:w,null);
+  const invalidityDrop=Math.max(0,c.totalIncome-(worstInvalidity?.annual||0));
+  const invalidityDropMonthly=invalidityDrop/12;
+  const invalidityPct=c.totalIncome>0?(worstInvalidity?.annual||0)/c.totalIncome*100:100;
+
+  const deathScenarios=[];
+  if(shouldShowDeathScenario()){
+    deathScenarios.push(
+      {index:1,label:`décès maladie de ${c.firstName1}`,annual:b.d1.annual},
+      {index:1,label:`décès accident de ${c.firstName1}`,annual:a.death1.annual}
+    );
+  }
+  if(c.status!=='Célibataire'){
+    deathScenarios.push(
+      {index:2,label:`décès maladie de ${c.firstName2}`,annual:b.d2.annual},
+      {index:2,label:`décès accident de ${c.firstName2}`,annual:a.death2.annual}
+    );
+  }
+  const worstDeath=deathScenarios.reduce((w,x)=>!w||x.annual<w.annual?x:w,null);
+  const deathDrop=Math.max(0,c.totalIncome-(worstDeath?.annual||c.totalIncome));
+  const deathDropMonthly=deathDrop/12;
+  const deathPct=c.totalIncome>0?(worstDeath?.annual||c.totalIncome)/c.totalIncome*100:100;
+
+  let maxDeathHousingNeed=0;
+  let maxDeathHousingPerson='';
+  if(c.owner&&c.status!=='Célibataire'){
+    [1,2].forEach(index=>{
+      const d=deathHousingNeed(c,b,index);
+      if(d.complementaryCapital>maxDeathHousingNeed){
+        maxDeathHousingNeed=d.complementaryCapital;
+        maxDeathHousingPerson=index===1?c.firstName1:c.firstName2;
+      }
+    });
+  }
+
+  const retirementMonthlyNow=c.totalIncome/12;
+  const retirementMonthly=Math.max(0,retIncome-b.retAvs.thirteenth)/12;
+  const retirementDropMonthly=Math.max(0,retirementMonthlyNow-retirementMonthly);
+  const yearsToRetirement=Math.max(0,65-Math.max(c.age1,c.age2));
+  const strategy=investmentStrategyForYears(yearsToRetirement);
+  const retirementReduction=m?m.reductions.retirement:0;
+  const retirementHomeSaving=retirementReduction>0
+    ?monthlyInvestmentForTarget(retirementReduction,yearsToRetirement,strategy.rate)
+    :0;
+
+  const taxPotential=tax.potential;
+  const additionalTaxSaving=Math.max(0,tax.additionalSaving||0);
+
+  const riskSignals=[
+    invalidityPct<65?2:invalidityPct<80?1:0,
+    deathScenarios.length?(deathPct<65?2:deathPct<80?1:0):0,
+    retPct<60?2:retPct<75?1:0,
+    m&&retirementReduction>150000?2:m&&retirementReduction>0?1:0
+  ];
+  const riskScore=Math.max(...riskSignals);
+
+  const status=$('#overviewStatus');
+  status.className='overview-status '+(riskScore===0?'good':riskScore===1?'watch':'risk');
+  status.textContent=riskScore===0
+    ?'Situation globalement saine'
+    :riskScore===1
+      ?'Situation saine avec des points à anticiper'
+      :'Plusieurs points méritent d’être anticipés';
+
+  const names=c.status==='Célibataire'?c.firstName1:`${c.firstName1} et ${c.firstName2}`;
+  $('#overviewTitle').textContent=`${names}, voici l’essentiel de votre situation`;
+
+  $('#overviewIntro').innerHTML=riskScore===0
+    ?`Votre situation apparaît <b>globalement équilibrée</b> dans cette première estimation. Vous disposez d’une base solide, même si quelques optimisations peuvent encore renforcer votre sécurité à long terme.`
+    :riskScore===1
+      ?`Votre situation apparaît <b>globalement saine</b>, mais certains événements pourraient nécessiter un ajustement de votre budget ou une préparation supplémentaire. Rien n’indique une urgence immédiate, mais plusieurs décisions peuvent être anticipées.`
+      :`Votre situation présente une <b>base financière existante</b>, mais certains événements pourraient entraîner une baisse sensible de revenus ou demander un effort financier important. Une préparation progressive permettrait de réduire ces risques.`;
+
+  let familyText='';
+  if(invalidityDropMonthly<=100){
+    familyText=`En cas d’invalidité, votre revenu familial resterait proche de la situation actuelle dans le scénario le plus défavorable.`;
+  }else{
+    familyText=`En cas d’invalidité, le scénario le plus défavorable ferait diminuer le revenu du ménage d’environ ${overviewMonthly(invalidityDropMonthly)}. Cela pourrait nécessiter un ajustement du budget et de certaines dépenses.`;
+  }
+
+  if(deathScenarios.length){
+    if(deathDropMonthly<=100){
+      familyText+=` En cas de décès, le revenu courant du ménage resterait également relativement proche de la situation actuelle.`;
+    }else{
+      familyText+=` En cas de décès, la baisse pourrait atteindre environ ${overviewMonthly(deathDropMonthly)} dans le scénario le plus fragile.`;
+    }
+    if(maxDeathHousingNeed>0){
+      familyText+=` Pour conserver le logement dans de bonnes conditions, un capital décès complémentaire d’environ ${overviewMoney(maxDeathHousingNeed,true)} serait à envisager${maxDeathHousingPerson?` dans le scénario concernant ${maxDeathHousingPerson}`:''}.`;
+    }else if(c.owner&&c.status!=='Célibataire'){
+      familyText+=` Selon cette estimation, aucun capital immobilier complémentaire important n’est nécessaire pour maintenir le logement après un décès.`;
+    }
+  }else if(c.status==='Célibataire'){
+    familyText+=` Le scénario de décès n’est pas utilisé pour évaluer le maintien de votre logement, qui entrerait alors dans la succession.`;
+  }
+  $('#overviewFamily').innerHTML=familyText;
+
+  let retirementText=`À la retraite, votre revenu brut estimé représenterait environ <span class="overview-highlight">${retPct.toFixed(0)} %</span> de votre revenu actuel.`;
+  if(retirementDropMonthly>100){
+    retirementText+=` La différence correspond à environ ${overviewMonthly(retirementDropMonthly)} par mois par rapport à aujourd’hui.`;
+  }
+  if(retPct>=75){
+    retirementText+=` La transition paraît relativement maîtrisable, sous réserve de vos dépenses futures.`;
+  }else if(retPct>=60){
+    retirementText+=` Une préparation progressive de l’épargne retraite serait judicieuse pour préserver votre niveau de vie.`;
+  }else{
+    retirementText+=` La baisse est significative et mérite d’être préparée suffisamment tôt afin d’éviter un ajustement trop important du niveau de vie.`;
+  }
+  $('#overviewRetirement').innerHTML=retirementText;
+
+  if(!c.owner){
+    $('#overviewHome').innerHTML=`Vous avez indiqué ne pas être propriétaire. Aucun besoin d’amortissement hypothécaire n’est donc analysé dans cette première estimation.`;
+  }else if(retirementReduction<=0){
+    $('#overviewHome').innerHTML=`Votre financement apparaît théoriquement compatible avec les revenus estimés à la retraite. Aucun amortissement supplémentaire spécifique n’est identifié dans cette simulation.`;
+  }else{
+    let homeText=`À la retraite, une réduction de l’hypothèque d’environ ${overviewMoney(retirementReduction,true)} serait nécessaire pour maintenir la viabilité théorique du financement.`;
+    if(yearsToRetirement>0){
+      homeText+=` En partant de zéro, cela correspond à un effort d’épargne d’environ ${overviewMonthly(retirementHomeSaving,true)} pendant ${yearsToRetirement} ans avec une ${strategy.name.toLowerCase()} et l’hypothèse de rendement retenue par PrevIA.`;
+    }
+    $('#overviewHome').innerHTML=homeText;
+  }
+
+  if(taxPotential.additionalTotal>0){
+    $('#overviewTax').innerHTML=`Vous n’utilisez pas encore entièrement votre potentiel estimé de 3e pilier. Un versement complémentaire pourrait renforcer votre capital de prévoyance et générer une économie fiscale supplémentaire estimée à environ ${overviewMoney(additionalTaxSaving,true)} par année.`;
+  }else{
+    $('#overviewTax').innerHTML=`Votre potentiel estimé de 3e pilier est déjà largement utilisé dans cette simulation. L’optimisation devra surtout être recherchée dans la structure globale de votre prévoyance et de votre patrimoine.`;
+  }
+
+  const conclusions=[];
+  if(invalidityPct<80)conclusions.push('renforcer la protection du revenu en cas d’invalidité');
+  if(maxDeathHousingNeed>0)conclusions.push('sécuriser le logement en cas de décès');
+  if(retPct<75)conclusions.push('préparer davantage la baisse de revenu à la retraite');
+  if(retirementReduction>0)conclusions.push('constituer progressivement le capital nécessaire à l’amortissement du logement');
+  if(taxPotential.additionalTotal>0)conclusions.push('utiliser davantage le potentiel du 3e pilier');
+  if(!conclusions.length)conclusions.push('maintenir votre organisation actuelle tout en contrôlant régulièrement l’évolution de vos besoins');
+
+  const first=conclusions.slice(0,3);
+  $('#overviewConclusion').innerHTML=`Les principales pistes qui ressortent sont de <b>${first.join('</b>, de <b>')}</b>. Les autres onglets permettent d’ouvrir chaque sujet et de comprendre les montants utilisés par PrevIA.`;
+}
+
 function render(){
  const c=data,b=benefits(c),m=mortgage(c,b),co=CONCERNS[c.concern];
  const taxCalc=taxCalculation(c);
@@ -1743,7 +1966,7 @@ function render(){
  };
  const rec=(orderByConcern[c.concern]||orderByConcern.family).flatMap(category=>priorityBuckets[category]);
  $('#priorities').innerHTML=rec.slice(0,4).map((item,index)=>`<div class="action"><div class="num">${index+1}</div><div><b>${item}</b></div></div>`).join('');
- renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();renderRecommendations();localStorage.setItem('previa-v9147',JSON.stringify(c))}
+ renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();renderRecommendations();renderOverview();localStorage.setItem('previa-v9147',JSON.stringify(c))}
 function groupHtml(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmt(total)}</strong></div></div>`}
 function valueOrAnalysis(value,known=true){return known?fmt(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
 function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
@@ -2770,7 +2993,7 @@ $('#calculate').onclick=()=>{
   $$('[data-origin]').forEach(x=>x.classList.toggle('active',x.dataset.origin==='illness'));
   $$('[data-evo-origin]').forEach(x=>x.classList.toggle('active',x.dataset.evoOrigin==='illness'));
   render();
-  show('protection');
+  show('overview');
 };
 bindSwissMoneyInputs();
 refreshPersonNames();
