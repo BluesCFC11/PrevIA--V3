@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.16.8 — Prototype interactif</title>
+<title>PrevIA V9.16.9 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.16.8 — évolution long terme : personne touchée puis vue ménage */
+/* V9.16.9 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.16.8 — lecture visuelle des priorités */
+/* V9.16.9 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.16.8 — graphiques plus lisibles */
+/* V9.16.9 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.16.8 — accueil rassurant et saisie suisse */
+/* V9.16.9 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.16.8 — couleurs dynamiques des taux de couverture */
+/* V9.16.9 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,9 +264,9 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.16.8 — rôles et accès */
+/* V9.16.9 — rôles et accès */
 
-/* V9.16.8 — aperçu narratif : hiérarchie visuelle */
+/* V9.16.9 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:20px;line-height:1.55;max-width:1000px;margin:6px 0 0}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
@@ -313,7 +313,7 @@ body.role-client .report-btn{display:inline-flex}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.8</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.9</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -331,7 +331,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.16.8</div>
+      <div class="eyebrow">PrevIA V9.16.9</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -1069,7 +1069,7 @@ function tmi(canton,income){
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 /*
- V9.16.8 — Bonifications pour tâches éducatives (règle métier PrevIA)
+ V9.16.9 — Bonifications pour tâches éducatives (règle métier PrevIA)
 
  1) L’année de naissance du premier enfant ne compte pas.
     Années acquises = âge actuel de l’aîné - 1.
@@ -1151,7 +1151,39 @@ function person(income,job,educationAverage=0,epl=0){
  const noActivity=job==='Sans activité',avs12=avsFromIncome(income,educationAverage),l=lppEstimate(income,job,epl);
  return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,repaymentCap:l.repaymentProjectedCapital,repaymentPension:l.repaymentAnnualPension,lpp:l.retirementPension,lppInv:l.invalidityPension}
 }
-function scaleComponents(parts,limit){const raw=Object.values(parts).reduce((a,b)=>a+b,0),factor=raw>limit&&raw>0?limit/raw:1,out={};for(const[k,v]of Object.entries(parts))out[k]=v*factor;out.total=Math.min(raw,limit);return out}
+/*
+ V9.16.9 — Règle de coordination PrevIA
+
+ Le 1er pilier n'est jamais réduit :
+ - rente AI de l'assuré ;
+ - rentes AI pour enfants ;
+ - rente AVS de veuve / veuf ;
+ - rentes AVS d'orphelins.
+
+ Si une limite de coordination doit être appliquée, PrevIA conserve d'abord
+ l'intégralité du 1er pilier puis réduit uniquement les prestations des autres
+ piliers (LPP, LAA ou couvertures complémentaires selon le scénario).
+*/
+function coordinateAfterFirstPillar(firstPillarParts,otherPillarParts,limit){
+ const firstRaw=Object.values(firstPillarParts).reduce((a,b)=>a+(Number(b)||0),0);
+ const otherRaw=Object.values(otherPillarParts).reduce((a,b)=>a+(Number(b)||0),0);
+
+ // Le 1er pilier est verrouillé à 100 %, même s'il dépasse déjà la limite.
+ const remaining=Math.max(0,(Number.isFinite(limit)?limit:Infinity)-firstRaw);
+ const otherPayable=Math.min(otherRaw,remaining);
+ const factor=otherRaw>0?otherPayable/otherRaw:0;
+
+ const out={};
+ for(const [k,v] of Object.entries(firstPillarParts))out[k]=Number(v)||0;
+ for(const [k,v] of Object.entries(otherPillarParts))out[k]=(Number(v)||0)*factor;
+
+ out.firstPillarTotal=firstRaw;
+ out.otherPillarRaw=otherRaw;
+ out.otherPillarPayable=otherPayable;
+ out.total=firstRaw+otherPayable;
+ out.limit=limit;
+ return out;
+}
 function retirementAvs(c,p1,p2){
  const individual1=Math.max(0,p1.avs12||0);
  const individual2=c.status==='Célibataire'?0:Math.max(0,p2.avs12||0);
@@ -1186,10 +1218,32 @@ function benefits(c){
  function invalidity(disabled,survivor){
   const aiKnown=disabled.ai!==null;
   const aiBase=aiKnown?disabled.ai:0;
-  const raw={ai:aiBase,aiKids:kids*aiBase*.4,lpp:disabled.lppInv,lppKids:kids*disabled.lppInv*.2};
+
+  const firstPillar={
+    ai:aiBase,
+    aiKids:kids*aiBase*.4
+  };
+  const otherPillars={
+    lpp:disabled.lppInv,
+    lppKids:kids*disabled.lppInv*.2
+  };
+
+  const raw={...firstPillar,...otherPillars};
   const limit=disabled.income>0?disabled.income*.9:Infinity;
-  const adj=scaleComponents(raw,limit);
-  return{annual:survivor.income+adj.total,otherIncome:survivor.income,raw,adj,aiKnown,needsDeepAnalysis:!aiKnown,aiChildEach:aiKnown?aiBase*.4:null,lppChildEach:disabled.lppInv*.2};
+
+  // Le 1er pilier reste toujours entier.
+  // Seule la LPP est réduite si le total dépasse la limite retenue.
+  const adj=coordinateAfterFirstPillar(firstPillar,otherPillars,limit);
+
+  return{
+    annual:survivor.income+adj.total,
+    otherIncome:survivor.income,
+    raw,adj,
+    aiKnown,
+    needsDeepAnalysis:!aiKnown,
+    aiChildEach:aiKnown?aiBase*.4:null,
+    lppChildEach:disabled.lppInv*.2
+  };
  }
  function death(dec,surv,isP1){
   const married=c.status==='Mariés';
@@ -1198,14 +1252,21 @@ function benefits(c){
   const avsAmountKnown=!dec.noActivity;
   const avsBase=avsAmountKnown?dec.avs12:0;
   const avsSurvivorKnown=!survivorRight||avsAmountKnown;
-  const raw={
+  const firstPillar={
     avsSurv:survivorRight&&avsAmountKnown?avsBase*.8:0,
-    avsKids:avsAmountKnown?kids*avsBase*.4:0,
+    avsKids:avsAmountKnown?kids*avsBase*.4:0
+  };
+  const otherPillars={
     lppSurv:married&&survivorRight?dec.lppInv*.6:0,
     lppKids:kids*dec.lppInv*.2
   };
+  const raw={...firstPillar,...otherPillars};
   const limit=dec.income>0?dec.income*.9:Infinity;
-  const adj=scaleComponents(raw,limit),capital=isP1?c.p3p1:c.p3p2;
+
+  // Les rentes AVS de survivants restent intégrales.
+  // La coordination s'applique uniquement à la LPP.
+  const adj=coordinateAfterFirstPillar(firstPillar,otherPillars,limit),
+        capital=isP1?c.p3p1:c.p3p2;
   let warning='';
   if(!married)warning='Aucune rente AVS de concubin. Une éventuelle prestation LPP de concubin doit être confirmée par le règlement de la caisse.';
   else if(!survivorRight)warning='Aucune rente de conjoint estimée : absence d’enfant et condition de 45 ans avec 5 années de mariage non remplie. Une éventuelle indemnité unique LPP doit être confirmée.';
@@ -1302,7 +1363,8 @@ function accidentBenefits(c){
    // Premier plafond : total LAA familial limité à 70 % du gain assuré.
    const laaFamilyLimit=insured*.70;
 
-   // Deuxième plafond PrevIA : AVS + LAA limité à 90 % du gain assuré.
+   // Deuxième plafond PrevIA : les rentes AVS restent intégrales.
+   // Seule la LAA est réduite pour respecter la coordination à 90 % du gain assuré.
    const totalBenefitsLimit=insured*.90;
    const availableForLaa=Math.max(0,totalBenefitsLimit-avsSpouse-avsChildren);
 
@@ -1366,9 +1428,9 @@ function accidentBenefits(c){
    if(job!=='Salarié'){
      warning='Aucune rente LAA n’est estimée, car la personne n’est pas salariée. Les prestations du 1er pilier restent prises en compte. Une assurance-accidents facultative ou privée doit être vérifiée séparément.';
    }else if(salary>LAA_MAX){
-     warning=`Le salaire dépasse le plafond LAA de ${fmt(LAA_MAX)}. AI + rentes AI pour enfants + LAA sont plafonnées à 90 % du gain assuré LAA, soit ${fmt(coordinationCap)}. La rente LPP subsidiaire estimée s’ajoute ensuite.`;
+     warning=`Le salaire dépasse le plafond LAA de ${fmt(LAA_MAX)}. Les prestations AI et les rentes AI pour enfants restent intégralement prises en compte. La LAA est ajustée afin que la coordination AI + LAA respecte au maximum 90 % du gain assuré LAA, soit ${fmt(coordinationCap)}. Une éventuelle rente LPP subsidiaire est ensuite calculée sur la lacune restante.`;
    }else{
-     warning='AI + rentes AI pour enfants + LAA sont plafonnées à 90 % du gain assuré LAA. La rente LAA seule ne peut pas dépasser 80 % de ce gain assuré. La rente LPP subsidiaire estimée s’ajoute ensuite.';
+     warning='Les prestations AI et les rentes AI pour enfants ne sont jamais réduites. La LAA est ajustée afin que la coordination avec le 1er pilier respecte au maximum 90 % du gain assuré LAA. La rente LAA seule ne peut pas dépasser 80 % du gain assuré. Une éventuelle rente LPP subsidiaire est ensuite calculée sur la lacune restante.';
    }
 
    return{
