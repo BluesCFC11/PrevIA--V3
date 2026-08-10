@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.16.6 — Prototype interactif</title>
+<title>PrevIA V9.16.8 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.16.6 — évolution long terme : personne touchée puis vue ménage */
+/* V9.16.8 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.16.6 — lecture visuelle des priorités */
+/* V9.16.8 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.16.6 — graphiques plus lisibles */
+/* V9.16.8 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.16.6 — accueil rassurant et saisie suisse */
+/* V9.16.8 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.16.6 — couleurs dynamiques des taux de couverture */
+/* V9.16.8 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,9 +264,9 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.16.6 — rôles et accès */
+/* V9.16.8 — rôles et accès */
 
-/* V9.16.6 — aperçu narratif : hiérarchie visuelle */
+/* V9.16.8 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:20px;line-height:1.55;max-width:1000px;margin:6px 0 0}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
@@ -313,7 +313,7 @@ body.role-client .report-btn{display:inline-flex}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.6</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.16.8</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -331,7 +331,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.16.6</div>
+      <div class="eyebrow">PrevIA V9.16.8</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -369,7 +369,7 @@ body.role-client .report-btn{display:inline-flex}
 <div><label>Nombre total d'enfants</label><input id="fChildren" required type="number" min="0" value="" placeholder="Exemple : 2"></div>
 <div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" required type="number" min="0" max="28" value="" placeholder="Exemple : 4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
 <div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
-<div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" required type="number" min="0" max="25" value="" placeholder="Exemple : 8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé uniquement pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
+<div id="youngestAgeWrap"><label>Âge du plus jeune enfant encore à charge</label><div style="display:flex;align-items:center;gap:8px"><input id="fYoungestAge" required type="number" min="0" max="25" value="" placeholder="Exemple : 8"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">Utilisé pour les bonifications éducatives déjà acquises et pour visualiser quand les rentes pour enfants pourraient prendre fin.</div></div>
 <div><label>Épargne disponible (CHF)</label><input id="fSavings" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 100’000.-" autocomplete="off"></div><div><label id="labelP3P1">Capital décès / 3e pilier – personne 1 (CHF) *</label><input id="fP3P1" type="text" inputmode="numeric" class="money-input" value="" placeholder="Exemple : 55’000.-" autocomplete="off"></div><div id="p3p2Wrap"><label id="labelP3P2">Capital décès / 3e pilier – personne 2 (CHF) *</label><input id="fP3P2" type="text" inputmode="numeric" class="money-input" value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
 <div><label>Êtes-vous propriétaire ?</label><select id="fOwner"><option value="yes">Oui</option><option value="no">Non</option></select></div><div><label>Canton</label><select id="fCanton"><option value="ZH">Zurich</option><option value="BE">Berne</option><option value="LU">Lucerne</option><option value="UR">Uri</option><option value="SZ">Schwytz</option><option value="OW">Obwald</option><option value="NW">Nidwald</option><option value="GL">Glaris</option><option value="ZG">Zoug</option><option value="FR">Fribourg</option><option value="SO">Soleure</option><option value="BS">Bâle-Ville</option><option value="BL">Bâle-Campagne</option><option value="SH">Schaffhouse</option><option value="AR">Appenzell Rhodes-Extérieures</option><option value="AI">Appenzell Rhodes-Intérieures</option><option value="SG">Saint-Gall</option><option value="GR">Grisons</option><option value="AG">Argovie</option><option value="TG">Thurgovie</option><option value="TI">Tessin</option><option value="VD">Vaud</option><option value="VS" selected>Valais</option><option value="NE">Neuchâtel</option><option value="GE">Genève</option><option value="JU">Jura</option></select></div>
 <div class="ownerField"><label>Valeur approximative du logement (CHF)</label><input id="fHome" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 1’000’000.-" autocomplete="off"></div><div class="ownerField"><label>Dette hypothécaire restante (CHF)</label><input id="fMortgage" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 800’000.-" autocomplete="off"></div>
@@ -1068,17 +1068,59 @@ function tmi(canton,income){
  }
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
-function educationYears(children,gap){
- if(children<=0)return 0;
- return Math.min(44,16+(children>1?Math.max(0,gap):0));
+/*
+ V9.16.8 — Bonifications pour tâches éducatives (règle métier PrevIA)
+
+ 1) L’année de naissance du premier enfant ne compte pas.
+    Années acquises = âge actuel de l’aîné - 1.
+
+ 2) Avec plusieurs enfants, l’âge de l’aîné est estimé à partir de :
+    âge du plus jeune + écart d’âge entre le premier et le dernier enfant.
+
+ 3) Le nombre d’années acquises est plafonné à :
+    16 + écart d’âge entre le premier et le dernier enfant.
+
+ 4) Bonification annuelle 2026 :
+    3 × rente minimale annuelle du 1er pilier
+    = 3 × 15’120 CHF = 45’360 CHF.
+
+ 5) Moyenne annuelle des bonifications :
+    (années de bonifications acquises × 45’360) / durée effective de cotisations.
+
+    Durée effective de cotisations PrevIA : âge de la personne - 21 ans.
+    Exemple : 34 ans => 13 années.
+
+ 6) Pour une personne mariée : résultat / 2.
+
+ 7) Cette moyenne est ajoutée au revenu professionnel moyen estimé PrevIA
+    (revenu annuel actuel × 70 %) avant lecture sur l’échelle 44.
+*/
+const AVS_MIN_ANNUAL_2026=15120;
+const EDUCATION_CREDIT_ANNUAL_2026=AVS_MIN_ANNUAL_2026*3; // 45’360 CHF
+
+function effectiveContributionYears(age){
+ return Math.max(1,(Number(age)||21)-21);
 }
-function educationCreditAverage(children,gap,share=1){
- const years=educationYears(children,gap);
- const annualCredit=45360;
- return annualCredit*years/44*Math.max(0,Math.min(1,share));
+function educationYears(children,gap,youngestAge){
+ const count=Math.max(0,Number(children)||0);
+ if(count<=0)return 0;
+ const ageYoungest=Math.max(0,Number(youngestAge)||0);
+ const ageGap=count>1?Math.max(0,Number(gap)||0):0;
+ const oldestAge=ageYoungest+ageGap;
+ const acquiredYears=Math.max(0,oldestAge-1);
+ const maximumYears=16+ageGap;
+ return Math.min(acquiredYears,maximumYears);
+}
+function educationCreditAverage(children,gap,youngestAge,share=1,contributionYears=44){
+ const years=educationYears(children,gap,youngestAge);
+ if(years<=0)return 0;
+ const cotisationYears=Math.max(1,Number(contributionYears)||1);
+ const average=EDUCATION_CREDIT_ANNUAL_2026*years/cotisationYears;
+ return average*Math.max(0,Math.min(1,share));
 }
 function avsFromIncome(income,educationAverage=0){
  if(income<=0)return 0;
+ // Moyenne déterminante PrevIA = revenu actuel -30 % + moyenne des bonifications éducatives.
  const effectiveIncome=income*.70+educationAverage;
  const min=15120,max=30240,referenceIncome=92555.56;
  const scaled=min+(Math.min(effectiveIncome,referenceIncome)/referenceIncome)*(max-min);
@@ -1133,9 +1175,12 @@ function retirementAvs(c,p1,p2){
  };
 }
 function benefits(c){
- const creditShare=c.status==='Célibataire'?1:.5;
- const eduAverage=educationCreditAverage(c.children,c.childGap,creditShare);
- const p1=person(c.income1,c.job1,eduAverage,c.epl1),p2=person(c.income2,c.job2,c.status==='Célibataire'?0:eduAverage,c.epl2);
+ const creditShare=c.status==='Mariés'?.5:1;
+ const contributionYears1=effectiveContributionYears(c.age1);
+ const contributionYears2=effectiveContributionYears(c.age2);
+ const eduAverage1=educationCreditAverage(c.children,c.childGap,c.youngestAge,creditShare,contributionYears1);
+ const eduAverage2=c.status==='Célibataire'?0:educationCreditAverage(c.children,c.childGap,c.youngestAge,creditShare,contributionYears2);
+ const p1=person(c.income1,c.job1,eduAverage1,c.epl1),p2=person(c.income2,c.job2,eduAverage2,c.epl2);
  const kids=c.dependentChildren,retAvs=retirementAvs(c,p1,p2);
  p1.avsRet=retAvs.p1.total;p2.avsRet=retAvs.p2.total;p1.ret=p1.avsRet+p1.lpp;p2.ret=p2.avsRet+p2.lpp;
  function invalidity(disabled,survivor){
@@ -2216,7 +2261,7 @@ function renderRetirement(){
  const avsRows=[[`Rente AVS de ${c.firstName1} sur 12 mois`,b.retAvs.p1.annual12]];
  if(c.status!=='Célibataire')avsRows.push([`Rente AVS de ${c.firstName2} sur 12 mois`,b.retAvs.p2.annual12]);
  avsRows.push(['13e rente AVS',b.retAvs.thirteenth]);
- const familyHistoryNote=c.children>0?`<div class="callout" style="margin-top:10px"><b>Historique familial pris en compte</b><br><span class="tiny muted">PrevIA intègre en arrière-plan environ ${educationYears(c.children,c.childGap)} années de bonifications pour tâches éducatives. Pour un couple, l'estimation est répartie à parts égales. Les rentes restent plafonnées aux maximums AVS applicables et devront être confirmées avec les extraits de compte AVS.</span></div>`:'';
+ const familyHistoryNote=c.children>0?`<div class="callout" style="margin-top:10px"><b>Historique familial pris en compte</b><br><span class="tiny muted">PrevIA intègre en arrière-plan environ ${educationYears(c.children,c.childGap,c.youngestAge)} années de bonifications pour tâches éducatives déjà acquises. L’année de naissance du premier enfant n’est pas comptée. La moyenne est calculée sur la durée effective de cotisations de chaque personne et, pour un couple marié, répartie à parts égales entre les deux conjoints. Les rentes restent plafonnées aux maximums AVS applicables et devront être confirmées avec les extraits de compte AVS.</span></div>`:'';
  const avsHtml=groupHtml('1er pilier – AVS',avsRows,'Total du 1er pilier',b.retAvs.total)+(b.retAvs.estimatedCoupleMaximum?'<div class="callout" style="margin-top:10px">Estimation simplifiée pour un couple marié : rente maximale de couple, splitting et 13e rente AVS compris. À confirmer avec les extraits de compte AVS.</div>':'')+familyHistoryNote;
  const lppRows=[[`Rente LPP de ${c.firstName1}`,b.p1.lpp]];
  if(c.status!=='Célibataire')lppRows.push([`Rente LPP de ${c.firstName2}`,b.p2.lpp]);
