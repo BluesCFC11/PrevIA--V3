@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.17.1 — Prototype interactif</title>
+<title>PrevIA V9.17.2 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.17.1 — évolution long terme : personne touchée puis vue ménage */
+/* V9.17.2 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.17.1 — lecture visuelle des priorités */
+/* V9.17.2 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.17.1 — graphiques plus lisibles */
+/* V9.17.2 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.17.1 — accueil rassurant et saisie suisse */
+/* V9.17.2 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.17.1 — couleurs dynamiques des taux de couverture */
+/* V9.17.2 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,33 +264,33 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.17.1 — rôles et accès */
+/* V9.17.2 — rôles et accès */
 
 
-/* V9.17.1 — ligne de vie épurée */
-.life-timeline-card{margin-top:15px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px #18274408}
-.life-timeline-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:16px}
-.life-timeline-head h3{margin:2px 0 4px}.life-timeline-years{font-size:12px;font-weight:900;color:#5b62e8;background:#eef0ff;padding:7px 10px;border-radius:999px}
-.life-timeline-scroll{overflow-x:auto;padding:10px 2px 6px}.life-timeline{position:relative;min-width:760px;height:205px;margin:0 14px}
-.life-timeline-line{position:absolute;left:3%;right:3%;top:70px;height:3px;border-radius:999px;background:linear-gradient(90deg,#655be6,#8a85ee 52%,#d9dcef)}
-.life-timeline-event{position:absolute;top:56px;transform:translateX(-50%);width:145px;text-align:center}
-.life-timeline-dot{width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #8990a4;margin:7px auto 10px;position:relative;z-index:3}
-.life-timeline-event.current .life-timeline-dot{width:22px;height:22px;margin-top:4px;margin-bottom:7px;border:5px solid #655be6;box-shadow:0 0 0 6px #655be615}
-.life-timeline-event.future .life-timeline-dot{border-color:#655be6}.life-timeline-event.optional .life-timeline-dot{border-style:dashed;border-color:#aeb4c3}
-.life-timeline-event.retirement .life-timeline-dot{border-color:#278b57;background:#eaf8ef}
-.life-timeline-year{font-size:10px;font-weight:900;color:#7a8497;margin-bottom:2px}.life-timeline-title{font-size:11px;font-weight:900;line-height:1.25;color:#222d45}
-.life-timeline-sub{font-size:10px;color:#7b8495;line-height:1.3;margin-top:3px}
-.life-timeline-current-box{position:absolute;left:3%;top:108px;display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:12px;background:#f7f7ff;border:1px solid #e1e3ff;max-width:250px}
-.life-timeline-current-icon{font-size:24px}.life-timeline-current-box b{display:block;font-size:11px}.life-timeline-current-box span{display:block;margin-top:2px;font-size:10px;color:#707a8d;line-height:1.3}
-.life-timeline-message{margin-top:7px;padding-top:12px;border-top:1px solid #edf0f5;font-size:12px;color:#586277;line-height:1.5}.life-timeline-message b{color:#17223d}
+/* V9.17.2 — ligne de vie : mise en page aérée */
+.life-timeline-card{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px 18px;box-shadow:0 10px 28px #18274409}
+.life-timeline-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}
+.life-timeline-head h3{margin:2px 0 5px}.life-timeline-years{font-size:12px;font-weight:900;color:#5b62e8;background:#eef0ff;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.life-timeline-scroll{overflow-x:auto;padding:8px 2px 4px}.life-timeline{position:relative;min-width:900px;height:315px;margin:0 18px}
+.life-timeline-line{position:absolute;left:4%;right:4%;top:145px;height:10px;border-radius:999px;background:linear-gradient(90deg,#655be6 0%,#7c72e9 55%,#d9dcef 100%);box-shadow:inset 0 1px 2px #00000012}
+.life-timeline-event{position:absolute;transform:translateX(-50%);width:158px;text-align:center;z-index:3}
+.life-timeline-event.above{top:24px}.life-timeline-event.below{top:154px}
+.life-timeline-dot{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid #8990a4;margin:7px auto 9px;position:relative;z-index:4;box-shadow:0 2px 8px #27304b18}
+.life-timeline-event.current .life-timeline-dot{width:26px;height:26px;border:6px solid #655be6;box-shadow:0 0 0 7px #655be617}
+.life-timeline-event.future .life-timeline-dot{border-color:#655be6}.life-timeline-event.optional .life-timeline-dot{border-style:dashed;border-color:#aeb4c3}.life-timeline-event.retirement .life-timeline-dot{border-color:#278b57;background:#eaf8ef}
+.life-timeline-label{background:#fff;border:1px solid #e8ebf2;border-radius:12px;padding:8px 9px;box-shadow:0 5px 16px #18274408;min-height:58px}
+.life-timeline-event.current .life-timeline-label{background:#f7f7ff;border-color:#dfe1ff}.life-timeline-event.retirement .life-timeline-label{background:#f4fbf6;border-color:#d8efdf}.life-timeline-event.optional .life-timeline-label{border-style:dashed;background:#fbfbfd}
+.life-timeline-year{font-size:10px;font-weight:900;color:#7a8497;margin-bottom:3px}.life-timeline-title{font-size:11px;font-weight:900;line-height:1.25;color:#222d45}.life-timeline-sub{font-size:10px;color:#7b8495;line-height:1.3;margin-top:3px}
+.life-timeline-connector{position:absolute;left:50%;width:2px;background:#d9ddea;transform:translateX(-50%);z-index:1}
+.life-timeline-event.above .life-timeline-connector{top:98px;height:47px}.life-timeline-event.below .life-timeline-connector{top:-9px;height:28px}
+.life-timeline-current-box{position:absolute;left:4%;bottom:5px;display:flex;align-items:center;gap:10px;padding:10px 13px;border-radius:13px;background:#f7f7ff;border:1px solid #e1e3ff;max-width:285px;box-shadow:0 5px 16px #18274408}
+.life-timeline-current-icon{font-size:26px;line-height:1}.life-timeline-current-box b{display:block;font-size:11px}.life-timeline-current-box span{display:block;margin-top:2px;font-size:10px;color:#707a8d;line-height:1.35}
+.life-timeline-message{margin-top:8px;padding-top:13px;border-top:1px solid #edf0f5;font-size:12px;color:#586277;line-height:1.55}.life-timeline-message b{color:#17223d}
 @media(max-width:700px){
-.life-timeline-head{flex-direction:column;margin-bottom:8px}.life-timeline-scroll{overflow:visible}.life-timeline{min-width:0;height:auto;margin:10px 0 0 13px;padding-left:28px}
-.life-timeline-line{left:7px;top:8px;bottom:8px;right:auto;width:2px;height:auto;background:#dfe3ed}
-.life-timeline-event{position:relative!important;left:auto!important;top:auto;transform:none;width:auto;min-height:62px;text-align:left;padding:0 0 17px 14px}
-.life-timeline-dot{position:absolute;left:-28px;top:0;margin:0}.life-timeline-event.current .life-timeline-dot{left:-31px;top:-3px;margin:0}
-.life-timeline-current-box{position:relative;left:auto;top:auto;margin:2px 0 16px 0;max-width:none}}
+.life-timeline-card{padding:18px 16px}.life-timeline-head{flex-direction:column;margin-bottom:8px}.life-timeline-years{white-space:normal}.life-timeline-scroll{overflow:visible}.life-timeline{min-width:0;height:auto;margin:12px 0 0 12px;padding-left:30px}.life-timeline-line{left:9px;top:8px;bottom:8px;right:auto;width:6px;height:auto}
+.life-timeline-event,.life-timeline-event.above,.life-timeline-event.below{position:relative!important;left:auto!important;top:auto;transform:none;width:auto;min-height:82px;text-align:left;padding:0 0 18px 16px}.life-timeline-dot{position:absolute!important;left:-29px!important;top:5px!important;margin:0!important}.life-timeline-event.current .life-timeline-dot{left:-32px!important;top:2px!important}.life-timeline-label{display:inline-block;min-width:190px;max-width:100%}.life-timeline-connector{display:none}.life-timeline-current-box{position:relative;left:auto;bottom:auto;margin:2px 0 16px;max-width:none}}
 
-/* V9.17.1 — aperçu narratif : hiérarchie visuelle */
+/* V9.17.2 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:20px;line-height:1.55;max-width:1000px;margin:6px 0 0}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
@@ -337,7 +337,7 @@ body.role-client .report-btn{display:inline-flex}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.17.1</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.17.2</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -355,7 +355,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.17.1</div>
+      <div class="eyebrow">PrevIA V9.17.2</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -1107,7 +1107,7 @@ function tmi(canton,income){
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 /*
- V9.17.1 — Bonifications pour tâches éducatives (règle métier PrevIA)
+ V9.17.2 — Bonifications pour tâches éducatives (règle métier PrevIA)
 
  1) L’année de naissance du premier enfant ne compte pas.
     Années acquises = âge actuel de l’aîné - 1.
@@ -1190,7 +1190,7 @@ function person(income,job,educationAverage=0,epl=0){
  return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,repaymentCap:l.repaymentProjectedCapital,repaymentPension:l.repaymentAnnualPension,lpp:l.retirementPension,lppInv:l.invalidityPension}
 }
 /*
- V9.17.1 — Règle de coordination PrevIA
+ V9.17.2 — Règle de coordination PrevIA
 
  Le 1er pilier n'est jamais réduit :
  - rente AI de l'assuré ;
@@ -1911,6 +1911,13 @@ function lifeTimelineOptionalGoals(c,currentYear){
   }
   return goals.slice(0,2);
 }
+/*
+ V9.17.2 — Timeline visuelle
+ - ligne plus épaisse ;
+ - événements alternés au-dessus / dessous ;
+ - cartes compactes pour éviter les chevauchements ;
+ - aucun calcul métier modifié.
+*/
 function renderLifeTimeline(){
   const c=data;if(!c||!c.name)return;
   const currentYear=new Date().getFullYear();
@@ -1953,11 +1960,17 @@ function renderLifeTimeline(){
 
   $('#lifeTimeline').innerHTML=
     `<div class="life-timeline-line"></div>`+
-    sorted.map(e=>{
+    sorted.map((e,index)=>{
       const cls=e.type==='current'?'current':e.type==='optional'?'optional':e.type==='retirement'?'retirement':'future';
-      return `<div class="life-timeline-event ${cls}" style="left:${pos(e.year)}%">
-        <div class="life-timeline-year">${e.year}</div><div class="life-timeline-dot"></div>
-        <div class="life-timeline-title">${e.title}</div><div class="life-timeline-sub">${e.sub||''}</div>
+      const vertical=index%2===0?'above':'below';
+      return `<div class="life-timeline-event ${cls} ${vertical}" style="left:${pos(e.year)}%">
+        ${vertical==='below'?'<div class="life-timeline-connector"></div><div class="life-timeline-dot"></div>':''}
+        <div class="life-timeline-label">
+          <div class="life-timeline-year">${e.year}</div>
+          <div class="life-timeline-title">${e.title}</div>
+          <div class="life-timeline-sub">${e.sub||''}</div>
+        </div>
+        ${vertical==='above'?'<div class="life-timeline-dot"></div><div class="life-timeline-connector"></div>':''}
       </div>`;
     }).join('')+
     `<div class="life-timeline-current-box"><div class="life-timeline-current-icon">${lifeTimelineHouseholdIcon(c)}</div>
@@ -2516,7 +2529,7 @@ function makeLifeStages(baseStages, ages, childTotal){
  return result;
 }
 /*
- V9.17.1 — Évolution invalidité maladie
+ V9.17.2 — Évolution invalidité maladie
 
  Important :
  la coordination LPP n'est plus figée au jour de l'événement.
