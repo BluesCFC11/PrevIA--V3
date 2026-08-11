@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.18.0 — Prototype interactif</title>
+<title>PrevIA V9.18.1 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.18.0 — évolution long terme : personne touchée puis vue ménage */
+/* V9.18.1 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.18.0 — lecture visuelle des priorités */
+/* V9.18.1 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.18.0 — graphiques plus lisibles */
+/* V9.18.1 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.18.0 — accueil rassurant et saisie suisse */
+/* V9.18.1 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.18.0 — couleurs dynamiques des taux de couverture */
+/* V9.18.1 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,10 +264,10 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.18.0 — rôles et accès */
+/* V9.18.1 — rôles et accès */
 
 
-/* V9.18.0 — ligne de vie épurée, entièrement visible */
+/* V9.18.1 — ligne de vie épurée, entièrement visible */
 .life-timeline-card{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px 18px;box-shadow:0 10px 28px #18274409;overflow:hidden}
 .life-timeline-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}
 .life-timeline-head h3{margin:2px 0 5px}
@@ -334,7 +334,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   .life-timeline-connector{display:none}
   .home-project-grid{grid-template-columns:1fr}
 }
-/* V9.18.0 — aperçu narratif : hiérarchie visuelle */
+/* V9.18.1 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:20px;line-height:1.55;max-width:1000px;margin:6px 0 0}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
@@ -381,9 +381,25 @@ body.role-client .report-btn{display:inline-flex}
 
 
 .ret-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.ret-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:850;cursor:pointer;color:#59637a}.ret-tab.active{background:#5b5be9;color:#fff;border-color:#5b5be9}.early-panel{display:none}.early-panel.active{display:block}.early-slider{width:100%;accent-color:#5b5be9}.early-age{font-size:42px;font-weight:950;color:#17223d}.early-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.early-kpi{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff}.early-kpi span{display:block;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.early-kpi b{display:block;font-size:20px;margin-top:5px;color:#17223d}.loss{color:#c94e49!important}.gain{color:#278b57!important}.early-person{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfcff}.early-person h3{margin-bottom:4px}.early-person.disabled{opacity:.6}.early-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:800}.early-break-even{padding:14px;border-radius:13px;background:#f4f1ff;border:1px solid #ded8ff;margin-top:12px}@media(max-width:900px){.early-kpis{grid-template-columns:1fr 1fr}}@media(max-width:560px){.early-kpis{grid-template-columns:1fr}}
+
+/* V9.18.1 — navigation par personne puis par événement */
+.person-scenario-nav{margin:14px 0 16px}
+.person-switch{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+.person-switch button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font-weight:900;color:#59637a;min-width:110px}
+.person-switch button.active{background:linear-gradient(90deg,var(--p),var(--p2));color:#fff;border-color:transparent}
+.event-switch{display:flex;gap:8px;flex-wrap:wrap}
+.event-switch button{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 12px;font-weight:800;color:#59637a}
+.event-switch button.active{background:#eef0ff;border-color:#cbd0ff;color:#4f56cb}
+.event-switch button.retirement-event{border-style:dashed;background:#f7fbf8;color:#278b57}
+.event-switch button.retirement-event.active{background:#eaf8ef;border-color:#8bc7a4;color:#278b57}
+@media(max-width:700px){
+  .person-switch,.event-switch{overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px}
+  .person-switch button,.event-switch button{white-space:nowrap;flex:0 0 auto}
+}
+
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.18.0</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.18.1</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -401,7 +417,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.18.0</div>
+      <div class="eyebrow">PrevIA V9.18.1</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -570,7 +586,20 @@ body.role-client .report-btn{display:inline-flex}
 
 <section id="protection" class="screen">
 <div class="top"><div><div class="eyebrow">Votre famille</div><h1 id="protectionTitle">Que se passerait-il si l'un de vous ne pouvait plus travailler ou décédait ?</h1></div></div>
-<div class="card">
+<div class="person-scenario-nav" id="protectionScenarioNav">
+  <div class="person-switch" id="protectionPersonTabs">
+    <button class="active" data-prot-person="1">Personne 1</button>
+    <button data-prot-person="2">Personne 2</button>
+  </div>
+  <div class="event-switch" id="protectionEventTabs">
+    <button class="active" data-prot-event="invalidity-illness">Invalidité par maladie</button>
+    <button data-prot-event="invalidity-accident">Invalidité par accident</button>
+    <button data-prot-event="death-illness">Décès par maladie</button>
+    <button data-prot-event="death-accident">Décès par accident</button>
+  </div>
+</div>
+
+<div class="card hidden">
   <div class="eyebrow">Origine de l’événement</div>
   <div class="seg" id="protectionOriginTabs" style="margin-top:10px">
     <button class="active" data-origin="illness">Maladie</button>
@@ -578,7 +607,7 @@ body.role-client .report-btn{display:inline-flex}
   </div>
   <p class="muted tiny" id="protectionOriginNote" style="margin:10px 0 0">Maladie : estimation fondée sur l’AI, l’AVS et les prestations minimales LPP.</p>
 </div>
-<div class="seg" id="riskTabs" style="margin-top:15px">
+<div class="seg hidden" id="riskTabs" style="margin-top:15px">
   <button class="active" data-risk="invalidity1">Invalidité personne 1</button>
   <button data-risk="invalidity2">Invalidité personne 2</button>
   <button data-risk="death1">Décès personne 1</button>
@@ -615,7 +644,21 @@ body.role-client .report-btn{display:inline-flex}
     </div>
   </div>
 
-  <div class="card" style="margin-bottom:15px">
+  <div class="person-scenario-nav" id="evolutionScenarioNav">
+    <div class="person-switch" id="evolutionPersonTabs">
+      <button class="active" data-evolution-person="1">Personne 1</button>
+      <button data-evolution-person="2">Personne 2</button>
+    </div>
+    <div class="event-switch" id="evolutionEventTabs">
+      <button data-evolution-event="invalidity-illness">Invalidité par maladie</button>
+      <button data-evolution-event="invalidity-accident">Invalidité par accident</button>
+      <button class="active" data-evolution-event="death-illness">Décès par maladie</button>
+      <button data-evolution-event="death-accident">Décès par accident</button>
+      <button class="retirement-event" data-evolution-event="retirement">Retraite du couple</button>
+    </div>
+  </div>
+
+  <div class="card hidden" style="margin-bottom:15px">
     <div class="eyebrow">Origine de l’événement</div>
     <div class="seg" id="evolutionOriginTabs" style="margin-top:10px">
       <button class="active" data-evo-origin="illness">Maladie</button>
@@ -624,13 +667,11 @@ body.role-client .report-btn{display:inline-flex}
     <p class="muted tiny" id="evolutionOriginNote" style="margin:10px 0 0">Maladie : évolution calculée avec l’AI, l’AVS et les prestations minimales LPP.</p>
   </div>
 
-  <div class="evo-tabs" id="evoTabs">
+  <div class="evo-tabs hidden" id="evoTabs">
     <button class="active" data-evo="death1">Décès personne 1</button>
     <button data-evo="death2">Décès personne 2</button>
     <button data-evo="invalidity1">Invalidité personne 1</button>
     <button data-evo="invalidity2">Invalidité personne 2</button>
-    
-    
     <button data-evo="retirementCouple">Retraite du couple</button>
   </div>
 
@@ -980,6 +1021,70 @@ function personName1(){
 function personName2(){
   return ($('#fFirstName2')?.value || '').trim() || 'Personne 2';
 }
+
+function protectionSelectedPerson(){return risk.endsWith('2')?'2':'1'}
+function evolutionSelectedPerson(){if(evoMode==='retirementCouple')return '1';return evoMode.endsWith('2')?'2':'1'}
+function protectionEventKey(){
+  const kind=risk.startsWith('death')?'death':'invalidity';
+  return `${kind}-${protectionOrigin==='accident'?'accident':'illness'}`;
+}
+function evolutionEventKey(){
+  if(evoMode==='retirementCouple')return 'retirement';
+  const kind=evoMode.startsWith('death')?'death':'invalidity';
+  return `${kind}-${evolutionOrigin==='accident'?'accident':'illness'}`;
+}
+function syncScenarioNavigation(){
+  const single=$('#fStatus').value==='Célibataire',n1=personName1(),n2=personName2();
+
+  $$('[data-prot-person="1"],[data-evolution-person="1"]').forEach(b=>b.textContent=n1);
+  $$('[data-prot-person="2"],[data-evolution-person="2"]').forEach(b=>{
+    b.textContent=n2;
+    b.classList.toggle('hidden',single);
+  });
+
+  const pp=protectionSelectedPerson();
+  $$('[data-prot-person]').forEach(b=>b.classList.toggle('active',b.dataset.protPerson===pp));
+  const pe=protectionEventKey();
+  $$('[data-prot-event]').forEach(b=>b.classList.toggle('active',b.dataset.protEvent===pe));
+
+  const ep=evolutionSelectedPerson();
+  $$('[data-evolution-person]').forEach(b=>b.classList.toggle('active',evoMode!=='retirementCouple'&&b.dataset.evolutionPerson===ep));
+  const ee=evolutionEventKey();
+  $$('[data-evolution-event]').forEach(b=>b.classList.toggle('active',b.dataset.evolutionEvent===ee));
+
+  const showDeath=shouldShowDeathScenario();
+  $$('[data-prot-event^="death"],[data-evolution-event^="death"]').forEach(b=>b.classList.toggle('hidden',!showDeath));
+}
+function applyProtectionSelection(person,eventKey){
+  const [kind,origin]=eventKey.split('-');
+  protectionOrigin=origin;
+  risk=`${kind}${person}`;
+  $$('[data-origin]').forEach(x=>x.classList.toggle('active',x.dataset.origin===origin));
+  $$('[data-risk]').forEach(x=>x.classList.toggle('active',x.dataset.risk===risk));
+  syncScenarioNavigation();
+  renderProtection();
+}
+function applyEvolutionSelection(person,eventKey){
+  if(eventKey==='retirement'){
+    evoMode='retirementCouple';
+  }else{
+    const [kind,origin]=eventKey.split('-');
+    evolutionOrigin=origin;
+    evoMode=`${kind}${person}`;
+    $$('[data-evo-origin]').forEach(x=>x.classList.toggle('active',x.dataset.evoOrigin===origin));
+  }
+  $$('[data-evo]').forEach(x=>x.classList.toggle('active',x.dataset.evo===evoMode));
+  syncScenarioNavigation();
+  renderEvolution();
+}
+$$('[data-prot-person]').forEach(b=>b.onclick=()=>applyProtectionSelection(b.dataset.protPerson,protectionEventKey()));
+$$('[data-prot-event]').forEach(b=>b.onclick=()=>applyProtectionSelection(protectionSelectedPerson(),b.dataset.protEvent));
+$$('[data-evolution-person]').forEach(b=>b.onclick=()=>{
+  const current=evolutionEventKey()==='retirement'?'invalidity-illness':evolutionEventKey();
+  applyEvolutionSelection(b.dataset.evolutionPerson,current);
+});
+$$('[data-evolution-event]').forEach(b=>b.onclick=()=>applyEvolutionSelection(evolutionSelectedPerson(),b.dataset.evolutionEvent));
+
 function refreshPersonNames(){
   const n1=personName1();
   const n2=personName2();
@@ -1026,6 +1131,7 @@ function refreshPersonNames(){
     const el=document.querySelector(`[data-evo="${key}"]`);
     if(el)el.textContent=value;
   });
+  syncScenarioNavigation();
 }
 function show(id){
  if(!accessAllows(id)){
@@ -1156,7 +1262,7 @@ function tmi(canton,income){
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 /*
- V9.18.0 — Bonifications pour tâches éducatives (règle métier PrevIA)
+ V9.18.1 — Bonifications pour tâches éducatives (règle métier PrevIA)
 
  1) L’année de naissance du premier enfant ne compte pas.
     Années acquises = âge actuel de l’aîné - 1.
@@ -1239,7 +1345,7 @@ function person(income,job,educationAverage=0,epl=0){
  return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,repaymentCap:l.repaymentProjectedCapital,repaymentPension:l.repaymentAnnualPension,lpp:l.retirementPension,lppInv:l.invalidityPension}
 }
 /*
- V9.18.0 — Règle de coordination PrevIA
+ V9.18.1 — Règle de coordination PrevIA
 
  Le 1er pilier n'est jamais réduit :
  - rente AI de l'assuré ;
@@ -1962,7 +2068,7 @@ function lifeTimelineOptionalGoals(c,currentYear){
   return goals.slice(0,2);
 }
 /*
- V9.18.0 — Timeline visuelle
+ V9.18.1 — Timeline visuelle
  - ligne plus épaisse ;
  - événements alternés au-dessus / dessous ;
  - cartes compactes pour éviter les chevauchements ;
@@ -2503,11 +2609,12 @@ function renderProtection(){
     ?'Estimation indicative à confirmer avec les documents personnels.'
     :'Les prestations LPP réelles dépendent du certificat de prévoyance et du règlement de la caisse.';
 }
-$$('[data-risk]').forEach(b=>b.onclick=()=>{$$('[data-risk]').forEach(x=>x.classList.remove('active'));b.classList.add('active');risk=b.dataset.risk;renderProtection()});
+$$('[data-risk]').forEach(b=>b.onclick=()=>{$$('[data-risk]').forEach(x=>x.classList.remove('active'));b.classList.add('active');risk=b.dataset.risk;syncScenarioNavigation();renderProtection()});
 $$('[data-origin]').forEach(b=>b.onclick=()=>{
   $$('[data-origin]').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
   protectionOrigin=b.dataset.origin;
+  syncScenarioNavigation();
   renderProtection();
 });
 const TRANSITION_RATES={
@@ -2527,7 +2634,7 @@ function renderEarlyRetirement(){
  const people=[{n:c.firstName1,age:c.age1,sex:c.sex1||'M',income:c.income1,avs:b.retAvs.p1.annual12,lpp:b.p1.lpp,edu:b.p1.educationAverage}];
  if(c.status!=='Célibataire')people.push({n:c.firstName2,age:c.age2,sex:c.sex2||'F',income:c.income2,avs:b.retAvs.p2.annual12,lpp:b.p2.lpp,edu:b.p2.educationAverage});
  wrap.innerHTML=people.map((p,i)=>{const by=approxBirthYear(p.age),ref=referenceAgeMonths(p.sex,by),min=earliestAgeMonths(p.sex,by),def=Math.max(min,ref-24);return `<div class="early-person"><div class="eyebrow">${p.n} · né${p.sex==='F'?'e':''} vers ${by}</div><h3>Âge de départ souhaité</h3><div class="early-age" id="earlyAge${i}">${fmtAgeMonths(def)}</div><input class="early-slider" id="earlySlider${i}" type="range" min="${min}" max="${ref}" step="1" value="${def}"><div class="early-scale"><span>${fmtAgeMonths(min)}</span><span>Âge de référence : ${fmtAgeMonths(ref)}</span></div><div id="earlyResult${i}"></div></div>`}).join('');
- people.forEach((p,i)=>{const el=$(`#earlySlider${i}`);const calc=()=>{const by=approxBirthYear(p.age),ref=referenceAgeMonths(p.sex,by),chosen=+el.value,months=Math.max(0,ref-chosen);$(`#earlyAge${i}`).textContent=fmtAgeMonths(chosen);const ram=Math.max(0,(p.income||0)*.70+(p.edu||0));const trans=p.sex==='F'&&by>=1961&&by<=1969;const rate=trans?transitionReduction(months,ram):standardAvsReduction(months);const avsLoss=p.avs*rate/100,avsEarly=p.avs-avsLoss,receivedEarly=avsEarly*(months/12),breakYears=avsLoss>0?receivedEarly/avsLoss:Infinity;const l=lppEarlyLoss(p.income,months);const totalLoss=avsLoss+l.pensionLoss;const note=trans?`Grille femmes génération transitoire · revenu annuel moyen déterminant estimé ${fmt(ram)}.`:`Taux AVS ordinaire selon ${months} mois d’anticipation.`;$(`#earlyResult${i}`).innerHTML=`<div class="early-kpis" style="margin-top:14px"><div class="early-kpi"><span>Réduction AVS</span><b class="loss">${rate.toFixed(1)} %</b></div><div class="early-kpi"><span>Rente AVS anticipée</span><b>${fmt(avsEarly/12)}/mois</b></div><div class="early-kpi"><span>Perte AVS</span><b class="loss">− ${fmt(avsLoss/12)}/mois</b><small>− ${fmt(avsLoss)}/an</small></div><div class="early-kpi"><span>AVS reçue plus tôt</span><b class="gain">${fmt(receivedEarly)}</b></div></div><div class="early-break-even"><b>Point d’équilibre AVS</b><br>${Number.isFinite(breakYears)?`L’avance de rente serait absorbée après environ <b>${breakYears.toFixed(1)} ans</b> suivant l’âge de référence, soit vers <b>${(ref/12+breakYears).toFixed(1)} ans</b>.`:'Aucune réduction AVS dans ce scénario.'}<div class="tiny muted" style="margin-top:5px">${note}</div></div><div class="early-kpis" style="margin-top:12px"><div class="early-kpi"><span>Salaire coordonné LPP</span><b>${fmt(l.coordinated)}</b></div><div class="early-kpi"><span>Capital LPP non constitué</span><b class="loss">− ${fmt(l.capitalLoss)}</b></div><div class="early-kpi"><span>Perte rente LPP</span><b class="loss">− ${fmt(l.pensionLoss/12)}/mois</b><small>− ${fmt(l.pensionLoss)}/an</small></div><div class="early-kpi"><span>Perte totale estimée</span><b class="loss">− ${fmt(totalLoss/12)}/mois</b><small>AVS + LPP</small></div></div><div class="tiny muted" style="margin-top:8px">LPP PrevIA : salaire coordonné × 18 % × durée anticipée × 120 % × 5,5 %. La bonification de 18 % correspond à la tranche 55–65 ans du minimum LPP.</div>`};el.oninput=calc;calc()})
+ people.forEach((p,i)=>{const el=$(`#earlySlider${i}`);const calc=()=>{const by=approxBirthYear(p.age),ref=referenceAgeMonths(p.sex,by),chosen=+el.value,months=Math.max(0,ref-chosen);$(`#earlyAge${i}`).textContent=fmtAgeMonths(chosen);const ram=Math.max(0,(p.income||0)*.70+(p.edu||0));const trans=p.sex==='F'&&by>=1961&&by<=1969;const rate=trans?transitionReduction(months,ram):standardAvsReduction(months);const avsLoss=p.avs*rate/100,avsEarly=p.avs-avsLoss,receivedEarly=avsEarly*(months/12),breakYears=avsLoss>0?receivedEarly/avsLoss:Infinity;const l=lppEarlyLoss(p.income,months);const totalLoss=avsLoss+l.pensionLoss;const note=trans?`Grille femmes génération transitoire · revenu annuel moyen déterminant estimé ${fmt(ram)}.`:`Taux AVS ordinaire selon ${months} mois d’anticipation.`;$(`#earlyResult${i}`).innerHTML=`<div class="early-kpis" style="margin-top:14px"><div class="early-kpi"><span>Réduction AVS</span><b class="loss">${rate.toFixed(1)} %</b></div><div class="early-kpi"><span>Rente AVS anticipée</span><b>${fmt(avsEarly/12)}/mois</b></div><div class="early-kpi"><span>Perte AVS</span><b class="loss">− ${fmt(avsLoss/12)}/mois</b><small>− ${fmt(avsLoss)}/an</small></div><div class="early-kpi"><span>AVS reçue plus tôt</span><b class="gain">${fmt(receivedEarly)}</b></div></div><div class="early-break-even"><b>Point d’équilibre AVS</b><br>${Number.isFinite(breakYears)?`L’avance de rente serait absorbée après environ <b>${breakYears.toFixed(1)} ans</b> suivant l’âge de référence, soit vers <b>${(ref/12+breakYears).toFixed(1)} ans</b>.`:'Aucune réduction AVS dans ce scénario.'}<div class="tiny muted" style="margin-top:5px">${note}</div></div><div class="early-kpis" style="margin-top:12px"><div class="early-kpi"><span>Capital LPP non constitué</span><b class="loss">− ${fmt(l.capitalLoss)}</b></div><div class="early-kpi"><span>Perte rente LPP</span><b class="loss">− ${fmt(l.pensionLoss/12)}/mois</b><small>− ${fmt(l.pensionLoss)}/an</small></div><div class="early-kpi"><span>Perte totale estimée</span><b class="loss">− ${fmt(totalLoss/12)}/mois</b><small>AVS + LPP</small></div></div>`};el.oninput=calc;calc()})
 }
 $$('[data-ret-tab]').forEach(btn=>btn.onclick=()=>{$$('[data-ret-tab]').forEach(x=>x.classList.toggle('active',x===btn));const early=btn.dataset.retTab==='early';$('#earlyRetirementPanel').classList.toggle('active',early);$('#normalRetirementPanel').style.display=early?'none':'block';if(early)renderEarlyRetirement()});
 function renderRetirement(){
@@ -2613,7 +2720,7 @@ function makeLifeStages(baseStages, ages, childTotal){
  return result;
 }
 /*
- V9.18.0 — Évolution invalidité maladie
+ V9.18.1 — Évolution invalidité maladie
 
  Important :
  la coordination LPP n'est plus figée au jour de l'événement.
@@ -2963,6 +3070,7 @@ $$('[data-evo-origin]').forEach(b=>b.onclick=()=>{
   $$('[data-evo-origin]').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
   evolutionOrigin=b.dataset.evoOrigin;
+  syncScenarioNavigation();
   renderEvolution();
 });
 
@@ -2979,6 +3087,7 @@ $$('[data-evo]').forEach(b=>b.onclick=()=>{
   const activeButton=$(`[data-evo="${evoMode}"]`);
   if(activeButton)activeButton.classList.add('active');
 
+  syncScenarioNavigation();
   renderEvolution();
 });
 
