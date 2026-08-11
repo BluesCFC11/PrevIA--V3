@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.17.3 — Prototype interactif</title>
+<title>PrevIA V9.18.0 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.17.3 — évolution long terme : personne touchée puis vue ménage */
+/* V9.18.0 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.17.3 — lecture visuelle des priorités */
+/* V9.18.0 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.17.3 — graphiques plus lisibles */
+/* V9.18.0 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.17.3 — accueil rassurant et saisie suisse */
+/* V9.18.0 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.17.3 — couleurs dynamiques des taux de couverture */
+/* V9.18.0 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,10 +264,10 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.17.3 — rôles et accès */
+/* V9.18.0 — rôles et accès */
 
 
-/* V9.17.3 — ligne de vie épurée, entièrement visible */
+/* V9.18.0 — ligne de vie épurée, entièrement visible */
 .life-timeline-card{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px 18px;box-shadow:0 10px 28px #18274409;overflow:hidden}
 .life-timeline-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}
 .life-timeline-head h3{margin:2px 0 5px}
@@ -334,7 +334,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   .life-timeline-connector{display:none}
   .home-project-grid{grid-template-columns:1fr}
 }
-/* V9.17.3 — aperçu narratif : hiérarchie visuelle */
+/* V9.18.0 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:20px;line-height:1.55;max-width:1000px;margin:6px 0 0}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
@@ -379,9 +379,11 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 body.role-client .report-btn{display:inline-flex}
 @media print{aside,.btn,.access-panel,.analysis-upgrade{display:none!important}.app{display:block}main{padding:0;max-width:none}.screen{display:block!important;page-break-after:always}.screen#home,.screen#form,.screen#partner,.screen#locked{display:none!important}}
 
+
+.ret-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.ret-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:850;cursor:pointer;color:#59637a}.ret-tab.active{background:#5b5be9;color:#fff;border-color:#5b5be9}.early-panel{display:none}.early-panel.active{display:block}.early-slider{width:100%;accent-color:#5b5be9}.early-age{font-size:42px;font-weight:950;color:#17223d}.early-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.early-kpi{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff}.early-kpi span{display:block;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.early-kpi b{display:block;font-size:20px;margin-top:5px;color:#17223d}.loss{color:#c94e49!important}.gain{color:#278b57!important}.early-person{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfcff}.early-person h3{margin-bottom:4px}.early-person.disabled{opacity:.6}.early-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:800}.early-break-even{padding:14px;border-radius:13px;background:#f4f1ff;border:1px solid #ded8ff;margin-top:12px}@media(max-width:900px){.early-kpis{grid-template-columns:1fr 1fr}}@media(max-width:560px){.early-kpis{grid-template-columns:1fr}}
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.17.3</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.18.0</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -399,7 +401,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.17.3</div>
+      <div class="eyebrow">PrevIA V9.18.0</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -431,6 +433,7 @@ body.role-client .report-btn{display:inline-flex}
 <div><label>Situation familiale</label><select id="fStatus"><option value="">Sélectionner</option><option>Mariés</option><option>Concubins</option><option>Célibataire</option></select></div>
 <div id="firstName2Wrap" class="hidden"><label>Prénom de la personne 2</label><input id="fFirstName2" required value="" placeholder="Exemple : Sophie" autocomplete="given-name"></div>
 <div id="marriageYearsWrap" class="hidden"><label>Date du mariage</label><input id="fMarriageDate" required type="date" value=""><div class="tiny muted" id="marriageDurationHint" style="margin-top:5px">La durée du mariage sera calculée automatiquement.</div></div>
+<div><label>Sexe de la personne 1</label><select id="fSex1"><option value="M">Homme</option><option value="F">Femme</option></select></div><div id="sex2Wrap"><label>Sexe de la personne 2</label><select id="fSex2"><option value="F">Femme</option><option value="M">Homme</option></select></div>
 <div><label id="labelAge1">Âge de la personne 1</label><input id="fAge1" required type="number" value="" placeholder="Exemple : 40"></div><div id="age2Wrap"><label id="labelAge2">Âge de la personne 2</label><input id="fAge2" required type="number" value="" placeholder="Exemple : 38"></div>
 <div><label id="labelIncome1">Revenu brut annuel de la personne 1 (CHF)</label><input id="fIncome1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 120’000.-" autocomplete="off"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de la personne 2 (CHF)</label><input id="fIncome2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 90’000.-" autocomplete="off"></div>
 <div><label id="labelJob1">Statut professionnel de la personne 1</label><select id="fJob1"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div><div id="job2Wrap"><label id="labelJob2">Statut professionnel de la personne 2</label><select id="fJob2"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div>
@@ -599,7 +602,7 @@ body.role-client .report-btn{display:inline-flex}
 </div>
 </section>
 
-<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted" id="retMonthlyNote">AVS et LPP comprises, hors 13e rente AVS versée séparément</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card coverage-card" id="retPctCard"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. La rente de retraite est estimée avec un taux de conversion global de 5,5 %. Les prestations de risque utilisent séparément 6,8 % sur le capital sans intérêts. Le montant EPL déclaré est utilisé uniquement pour montrer le potentiel d’un remboursement. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></section>
+<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="ret-tabs"><button class="ret-tab active" data-ret-tab="normal">Retraite à l’âge de référence</button><button class="ret-tab" data-ret-tab="early">Retraite anticipée</button></div><div id="earlyRetirementPanel" class="early-panel"><div class="card"><div class="eyebrow">Simulateur de retraite anticipée</div><h2>Et si vous arrêtiez de travailler plus tôt ?</h2><p class="muted">Déplacez le curseur pour mesurer immédiatement l'impact estimé sur l'AVS et le 2e pilier.</p><div id="earlyPersons"></div><div class="callout" style="margin-top:14px"><b>Comment lire cette simulation ?</b><p class="tiny muted">L’AVS applique le taux de réduction correspondant à la durée d’anticipation. Pour les femmes nées entre 1961 et 1969, PrevIA utilise la grille transitoire selon le revenu annuel moyen déterminant. Pour la LPP, PrevIA estime les bonifications qui ne seraient plus constituées, ajoute 20 % d’effet de capitalisation selon l’hypothèse PrevIA, puis applique un taux de conversion estimatif de 5,5 %. À confirmer avec la caisse de pension.</p></div></div></div><div id="normalRetirementPanel"><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted" id="retMonthlyNote">AVS et LPP comprises, hors 13e rente AVS versée séparément</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS comprise</div></div><div class="card coverage-card" id="retPctCard"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché comprend une majoration indicative de 20 % pour représenter les intérêts cumulés. La rente de retraite est estimée avec un taux de conversion global de 5,5 %. Les prestations de risque utilisent séparément 6,8 % sur le capital sans intérêts. Le montant EPL déclaré est utilisé uniquement pour montrer le potentiel d’un remboursement. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></div></section>
 
 
 
@@ -957,7 +960,9 @@ function generatePdfReport(){
  <section class="report-page"><div class="report-section-label">Les éléments essentiels</div><h2 class="report-title">Vos principaux indicateurs</h2><div class="report-kpis"><div class="report-kpi"><span>Revenu actuel</span><b>${fmt(c.totalIncome)}</b></div><div class="report-kpi"><span>Retraite prévue</span><b>${fmt(ret)}</b></div><div class="report-kpi"><span>Taux de remplacement</span><b>${pct.toFixed(0)} %</b></div><div class="report-kpi"><span>Épargne disponible</span><b>${fmt(c.savings)}</b></div></div><div class="report-grid"><div class="report-card"><h3>🌅 Retraite</h3><div class="big">${fmt(ret/12)}/mois</div><p>Revenu mensuel moyen estimé.</p></div><div class="report-card"><h3>🏠 Logement</h3><div class="big">${c.owner?fmt(reduction):'Non applicable'}</div><p>${c.owner&&reduction>0?`Effort indicatif : ${fmt(monthly)}/mois sur ${years} ans, stratégie ${esc(strategy.name)}.`:'Aucun besoin spécifique identifié.'}</p></div><div class="report-card"><h3>💰 Potentiel 3a restant</h3><div class="big">${fmt(tax.potential.additionalTotal||0)}</div><p>Potentiel estimé selon les informations renseignées.</p></div><div class="report-card"><h3>📌 Statut</h3><div class="big">Analyse complète</div><p>Résultats à confirmer avec vos documents personnels.</p></div></div>${footer(3)}</section>
  <section class="report-page"><div class="report-section-label">Vos pistes d’optimisation</div><h2 class="report-title">Votre plan d’action</h2><p class="report-lead">Les pistes suivantes ressortent de votre analyse et servent de base de réflexion.</p>${recs.length?recs.map(r=>`<div class="report-action"><div class="report-num">${r.i}</div><div>${esc(r.text)}</div></div>`).join(''):'<div class="report-callout">Aucune recommandation spécifique générée.</div>'}${footer(4)}</section>
  <section class="report-page"><div class="report-section-label">Informations importantes</div><h2 class="report-title">À propos de cette analyse</h2><div class="report-callout">PrevIA fournit une première estimation pédagogique. Les prestations réelles, la fiscalité et la capacité hypothécaire peuvent différer selon les documents, règlements, commune fiscale et conditions de financement.</div><p class="report-disclaimer" style="margin-top:18px">Ce rapport ne constitue ni une garantie de prestations, ni une décision de financement, ni un conseil juridique, fiscal ou financier personnalisé. Les résultats doivent être confirmés avec les documents correspondants.</p>${footer(5)}</section></div>`;
- const w=window.open('','_blank');if(!w)return alert('Votre navigateur a bloqué l’ouverture du rapport.');const css=[...document.querySelectorAll('style')].map(s=>s.innerHTML).join('\n');w.document.write(`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport PrevIA — ${esc(c.name)}</title><style>${css}</style></head><body>${report}<script>window.onload=()=>setTimeout(()=>window.print(),600)<\/script></body></html>`);w.document.close();
+ const w=window.open('','_blank');if(!w)return alert('Votre navigateur a bloqué l’ouverture du rapport.');const css=[...document.querySelectorAll('style')].map(s=>s.innerHTML).join('\n');w.document.write(`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport PrevIA — ${esc(c.name)}</title><style>${css}
+.ret-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.ret-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:850;cursor:pointer;color:#59637a}.ret-tab.active{background:#5b5be9;color:#fff;border-color:#5b5be9}.early-panel{display:none}.early-panel.active{display:block}.early-slider{width:100%;accent-color:#5b5be9}.early-age{font-size:42px;font-weight:950;color:#17223d}.early-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.early-kpi{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff}.early-kpi span{display:block;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.early-kpi b{display:block;font-size:20px;margin-top:5px;color:#17223d}.loss{color:#c94e49!important}.gain{color:#278b57!important}.early-person{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfcff}.early-person h3{margin-bottom:4px}.early-person.disabled{opacity:.6}.early-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:800}.early-break-even{padding:14px;border-radius:13px;background:#f4f1ff;border:1px solid #ded8ff;margin-top:12px}@media(max-width:900px){.early-kpis{grid-template-columns:1fr 1fr}}@media(max-width:560px){.early-kpis{grid-template-columns:1fr}}
+</style></head><body>${report}<script>window.onload=()=>setTimeout(()=>window.print(),600)<\/script></body></html>`);w.document.close();
 }
 
 const CONCERNS={family:{title:'Ma famille sera-t-elle protégée si quelque chose m’arrive ?',intro:'Vous cherchez avant tout à éviter qu’un décès ou une invalidité fragilise le quotidien de votre famille.',emotion:['Protection','Responsabilité familiale'],belief:'« Si je décède, ma famille sera automatiquement protégée. »',reality:'Les prestations peuvent laisser une baisse de revenu importante, surtout en concubinage. PrevIA vérifie les deux décès séparément.'},home:{title:'Pourrons-nous conserver notre logement quoi qu’il arrive ?',intro:'Vous souhaitez savoir si votre logement restera supportable aujourd’hui, à la retraite et dans les coups durs.',emotion:['Sécurité','Attachement au logement'],belief:'« Tant que nous payons l’hypothèque, tout va bien. »',reality:'La banque regarde les charges théoriques par rapport aux revenus, avec une limite de 33 %.'},retirement:{title:'Pourrons-nous vivre sereinement à la retraite ?',intro:'Vous souhaitez mesurer la baisse de revenu future et agir suffisamment tôt.',emotion:['Anticipation','Besoin de visibilité'],belief:'« Mon 2e pilier suffira probablement. »',reality:'PrevIA estime la LPP sans demander au client de connaître son avoir, puis confirme avec le certificat.'},tax:{title:'Comment réduire intelligemment mes impôts ?',intro:'Vous souhaitez connaître l’effet concret d’un versement déductible.',emotion:['Efficacité','Optimisation'],belief:'« Le 3e pilier sert uniquement à payer moins d’impôts. »',reality:'L’avantage fiscal doit aussi renforcer votre retraite et votre capital.'},wealth:{title:'Comment développer durablement mon patrimoine ?',intro:'Vous souhaitez mieux utiliser votre capacité d’épargne.',emotion:['Progression','Maîtrise'],belief:'« Il faut choisir entre sécurité et rendement. »',reality:'Une stratégie peut combiner réserve disponible, horizon de placement et objectifs.'}};
@@ -1151,7 +1156,7 @@ function tmi(canton,income){
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 /*
- V9.17.3 — Bonifications pour tâches éducatives (règle métier PrevIA)
+ V9.18.0 — Bonifications pour tâches éducatives (règle métier PrevIA)
 
  1) L’année de naissance du premier enfant ne compte pas.
     Années acquises = âge actuel de l’aîné - 1.
@@ -1234,7 +1239,7 @@ function person(income,job,educationAverage=0,epl=0){
  return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,repaymentCap:l.repaymentProjectedCapital,repaymentPension:l.repaymentAnnualPension,lpp:l.retirementPension,lppInv:l.invalidityPension}
 }
 /*
- V9.17.3 — Règle de coordination PrevIA
+ V9.18.0 — Règle de coordination PrevIA
 
  Le 1er pilier n'est jamais réduit :
  - rente AI de l'assuré ;
@@ -1725,6 +1730,7 @@ function gather(){
   marriageDate:status==='Mariés'?$('#fMarriageDate').value:'',
   marriageYears:status==='Mariés'?completedYearsSince($('#fMarriageDate').value):0,
   age1:+$('#fAge1').value||0,age2:hasPartner?(+$('#fAge2').value||0):0,
+  sex1:$('#fSex1').value||'M',sex2:hasPartner?($('#fSex2').value||'F'):'',
   income1,income2,
   job1:$('#fJob1').value,job2:hasPartner?$('#fJob2').value:'Sans activité',
   children,
@@ -1956,7 +1962,7 @@ function lifeTimelineOptionalGoals(c,currentYear){
   return goals.slice(0,2);
 }
 /*
- V9.17.3 — Timeline visuelle
+ V9.18.0 — Timeline visuelle
  - ligne plus épaisse ;
  - événements alternés au-dessus / dessous ;
  - cartes compactes pour éviter les chevauchements ;
@@ -2504,6 +2510,26 @@ $$('[data-origin]').forEach(b=>b.onclick=()=>{
   protectionOrigin=b.dataset.origin;
   renderProtection();
 });
+const TRANSITION_RATES={
+ low:{0:[0,0,0,0,0,0,0,0,0,0,0,0],1:[0,0.2,0.3,0.5,0.7,0.8,1.0,1.2,1.3,1.5,1.7,1.8],2:[2.0,2.1,2.2,2.3,2.3,2.4,2.5,2.6,2.7,2.8,2.8,2.9],3:[3.0]},
+ mid:{0:[0,0.2,0.4,0.6,0.8,1.0,1.3,1.5,1.7,1.9,2.1,2.3],1:[2.5,2.7,2.8,3.0,3.2,3.3,3.5,3.7,3.8,4.0,4.2,4.3],2:[4.5,4.7,4.8,5.0,5.2,5.3,5.5,5.7,5.8,6.0,6.2,6.3],3:[6.5]},
+ high:{0:[0,0.3,0.6,0.9,1.2,1.5,1.8,2.0,2.3,2.6,2.9,3.2],1:[3.5,3.8,4.0,4.3,4.5,4.8,5.0,5.3,5.5,5.8,6.0,6.3],2:[6.5,6.8,7.2,7.5,7.8,8.2,8.5,8.8,9.2,9.5,9.8,10.2],3:[10.5]}
+};
+function approxBirthYear(age){return new Date().getFullYear()-Math.max(0,Number(age)||0)}
+function referenceAgeMonths(sex,birthYear){if(sex!=='F')return 65*12;if(birthYear===1961)return 64*12+3;if(birthYear===1962)return 64*12+6;if(birthYear===1963)return 64*12+9;return 65*12}
+function earliestAgeMonths(sex,birthYear){return sex==='F'&&birthYear>=1961&&birthYear<=1969?62*12:63*12}
+function standardAvsReduction(months){months=Math.max(0,Math.min(24,Math.round(months)));const table=[0,.6,1.1,1.7,2.3,2.8,3.4,4.0,4.5,5.1,5.7,6.2,6.8,7.4,7.9,8.5,9.1,9.6,10.2,10.8,11.3,11.9,12.5,13.0,13.6];return table[months]||0}
+function transitionReduction(months,ram){months=Math.max(0,Math.round(months));const years=Math.floor(months/12),m=months%12,key=ram<=60480?'low':ram<=75600?'mid':'high';const row=TRANSITION_RATES[key][years];return row&&row[m]!=null?row[m]:standardAvsReduction(Math.min(months,24))}
+function fmtAgeMonths(m){const y=Math.floor(m/12),mo=m%12;return mo?`${y} ans et ${mo} mois`:`${y} ans`}
+function lppEarlyLoss(income,months){const years=Math.max(0,months/12);const coordinated=Math.max(0,Math.min(64260,(Number(income)||0)-26460));const annualSaving=coordinated*.18;const raw=annualSaving*years;const capitalLoss=raw*1.20;const pensionLoss=capitalLoss*.055;return{coordinated,annualSaving,raw,capitalLoss,pensionLoss}}
+function renderEarlyRetirement(){
+ const c=data,b=benefits(c),wrap=$('#earlyPersons');if(!wrap)return;
+ const people=[{n:c.firstName1,age:c.age1,sex:c.sex1||'M',income:c.income1,avs:b.retAvs.p1.annual12,lpp:b.p1.lpp,edu:b.p1.educationAverage}];
+ if(c.status!=='Célibataire')people.push({n:c.firstName2,age:c.age2,sex:c.sex2||'F',income:c.income2,avs:b.retAvs.p2.annual12,lpp:b.p2.lpp,edu:b.p2.educationAverage});
+ wrap.innerHTML=people.map((p,i)=>{const by=approxBirthYear(p.age),ref=referenceAgeMonths(p.sex,by),min=earliestAgeMonths(p.sex,by),def=Math.max(min,ref-24);return `<div class="early-person"><div class="eyebrow">${p.n} · né${p.sex==='F'?'e':''} vers ${by}</div><h3>Âge de départ souhaité</h3><div class="early-age" id="earlyAge${i}">${fmtAgeMonths(def)}</div><input class="early-slider" id="earlySlider${i}" type="range" min="${min}" max="${ref}" step="1" value="${def}"><div class="early-scale"><span>${fmtAgeMonths(min)}</span><span>Âge de référence : ${fmtAgeMonths(ref)}</span></div><div id="earlyResult${i}"></div></div>`}).join('');
+ people.forEach((p,i)=>{const el=$(`#earlySlider${i}`);const calc=()=>{const by=approxBirthYear(p.age),ref=referenceAgeMonths(p.sex,by),chosen=+el.value,months=Math.max(0,ref-chosen);$(`#earlyAge${i}`).textContent=fmtAgeMonths(chosen);const ram=Math.max(0,(p.income||0)*.70+(p.edu||0));const trans=p.sex==='F'&&by>=1961&&by<=1969;const rate=trans?transitionReduction(months,ram):standardAvsReduction(months);const avsLoss=p.avs*rate/100,avsEarly=p.avs-avsLoss,receivedEarly=avsEarly*(months/12),breakYears=avsLoss>0?receivedEarly/avsLoss:Infinity;const l=lppEarlyLoss(p.income,months);const totalLoss=avsLoss+l.pensionLoss;const note=trans?`Grille femmes génération transitoire · revenu annuel moyen déterminant estimé ${fmt(ram)}.`:`Taux AVS ordinaire selon ${months} mois d’anticipation.`;$(`#earlyResult${i}`).innerHTML=`<div class="early-kpis" style="margin-top:14px"><div class="early-kpi"><span>Réduction AVS</span><b class="loss">${rate.toFixed(1)} %</b></div><div class="early-kpi"><span>Rente AVS anticipée</span><b>${fmt(avsEarly/12)}/mois</b></div><div class="early-kpi"><span>Perte AVS</span><b class="loss">− ${fmt(avsLoss/12)}/mois</b><small>− ${fmt(avsLoss)}/an</small></div><div class="early-kpi"><span>AVS reçue plus tôt</span><b class="gain">${fmt(receivedEarly)}</b></div></div><div class="early-break-even"><b>Point d’équilibre AVS</b><br>${Number.isFinite(breakYears)?`L’avance de rente serait absorbée après environ <b>${breakYears.toFixed(1)} ans</b> suivant l’âge de référence, soit vers <b>${(ref/12+breakYears).toFixed(1)} ans</b>.`:'Aucune réduction AVS dans ce scénario.'}<div class="tiny muted" style="margin-top:5px">${note}</div></div><div class="early-kpis" style="margin-top:12px"><div class="early-kpi"><span>Salaire coordonné LPP</span><b>${fmt(l.coordinated)}</b></div><div class="early-kpi"><span>Capital LPP non constitué</span><b class="loss">− ${fmt(l.capitalLoss)}</b></div><div class="early-kpi"><span>Perte rente LPP</span><b class="loss">− ${fmt(l.pensionLoss/12)}/mois</b><small>− ${fmt(l.pensionLoss)}/an</small></div><div class="early-kpi"><span>Perte totale estimée</span><b class="loss">− ${fmt(totalLoss/12)}/mois</b><small>AVS + LPP</small></div></div><div class="tiny muted" style="margin-top:8px">LPP PrevIA : salaire coordonné × 18 % × durée anticipée × 120 % × 5,5 %. La bonification de 18 % correspond à la tranche 55–65 ans du minimum LPP.</div>`};el.oninput=calc;calc()})
+}
+$$('[data-ret-tab]').forEach(btn=>btn.onclick=()=>{$$('[data-ret-tab]').forEach(x=>x.classList.toggle('active',x===btn));const early=btn.dataset.retTab==='early';$('#earlyRetirementPanel').classList.toggle('active',early);$('#normalRetirementPanel').style.display=early?'none':'block';if(early)renderEarlyRetirement()});
 function renderRetirement(){
  const c=data,b=benefits(c),lppTotal=b.p1.lpp+b.p2.lpp,ret=b.retAvs.total+lppTotal,pct=c.totalIncome?ret/c.totalIncome*100:0;
  const regularAnnual=Math.max(0,ret-b.retAvs.thirteenth);
@@ -2557,6 +2583,7 @@ function renderRetirement(){
    <div class="tiny muted" style="margin-top:10px">Projection PrevIA : montant retiré × 120 % × taux de conversion de 5,5 %. Cette estimation ne remplace pas le calcul de la caisse de pension.</div>
  </div>`:''}`;
  $('#retDetail1').insertAdjacentHTML('beforeend',capitalHtml);
+ if($('#earlyRetirementPanel')?.classList.contains('active'))renderEarlyRetirement();
 }
 
 
@@ -2586,7 +2613,7 @@ function makeLifeStages(baseStages, ages, childTotal){
  return result;
 }
 /*
- V9.17.3 — Évolution invalidité maladie
+ V9.18.0 — Évolution invalidité maladie
 
  Important :
  la coordination LPP n'est plus figée au jour de l'événement.
