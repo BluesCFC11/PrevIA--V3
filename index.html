@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.18.3 — Prototype interactif</title>
+<title>PrevIA V9.18.4 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.18.3 — évolution long terme : personne touchée puis vue ménage */
+/* V9.18.4 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.18.3 — lecture visuelle des priorités */
+/* V9.18.4 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.18.3 — graphiques plus lisibles */
+/* V9.18.4 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.18.3 — accueil rassurant et saisie suisse */
+/* V9.18.4 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.18.3 — couleurs dynamiques des taux de couverture */
+/* V9.18.4 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,10 +264,10 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.18.3 — rôles et accès */
+/* V9.18.4 — rôles et accès */
 
 
-/* V9.18.3 — ligne de vie épurée, entièrement visible */
+/* V9.18.4 — ligne de vie épurée, entièrement visible */
 .life-timeline-card{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px 18px;box-shadow:0 10px 28px #18274409;overflow:hidden}
 .life-timeline-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}
 .life-timeline-head h3{margin:2px 0 5px}
@@ -335,7 +335,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   .home-project-grid{grid-template-columns:1fr}
 }
 
-/* V9.18.3 — projets de vie sans échéance */
+/* V9.18.4 — projets de vie sans échéance */
 .life-timeline{height:355px}
 .life-projects-zone{position:absolute;left:18%;right:18%;top:205px;padding:10px 12px 12px;border-radius:15px;background:linear-gradient(180deg,#fbfbff,#fff);border:1px dashed #dfe2ee}
 .life-projects-zone-title{text-align:center;font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:#7a8497;font-weight:900;margin-bottom:8px}
@@ -347,7 +347,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.life-projects-zone{left:12%;right:12%}}
 @media(max-width:700px){.life-timeline{height:auto}.life-projects-zone{position:relative;left:auto;right:auto;top:auto;margin:10px 0 15px}.life-projects-list{justify-content:flex-start}}
 
-/* V9.18.3 — projet immobilier simplifié */
+/* V9.18.4 — projet immobilier simplifié */
 .home-project-grid.home-project-simplified{grid-template-columns:repeat(3,minmax(0,1fr))}
 .home-project-stat.highlight-equity{border-color:#cfd3ff;background:#f8f8ff}
 .home-project-stat.highlight-cash{border-color:#d8e8de;background:#f7fcf8}
@@ -359,7 +359,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:600px){.home-project-grid.home-project-simplified{grid-template-columns:1fr}}
 
 
-/* V9.18.3 — ligne de vie : événements séparés + projets en zone dédiée */
+/* V9.18.4 — ligne de vie : événements séparés + projets en zone dédiée */
 .life-timeline-card{overflow:visible}
 .life-timeline-scroll{overflow:visible}
 .life-timeline{position:relative;width:100%;height:455px;margin:0}
@@ -420,7 +420,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   .life-projects-list{justify-content:flex-start}
 }
 
-/* V9.18.3 — aperçu narratif : hiérarchie visuelle */
+/* V9.18.4 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:20px;line-height:1.55;max-width:1000px;margin:6px 0 0}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
@@ -468,7 +468,7 @@ body.role-client .report-btn{display:inline-flex}
 
 .ret-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.ret-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:850;cursor:pointer;color:#59637a}.ret-tab.active{background:#5b5be9;color:#fff;border-color:#5b5be9}.early-panel{display:none}.early-panel.active{display:block}.early-slider{width:100%;accent-color:#5b5be9}.early-age{font-size:42px;font-weight:950;color:#17223d}.early-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.early-kpi{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff}.early-kpi span{display:block;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.early-kpi b{display:block;font-size:20px;margin-top:5px;color:#17223d}.loss{color:#c94e49!important}.gain{color:#278b57!important}.early-person{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfcff}.early-person h3{margin-bottom:4px}.early-person.disabled{opacity:.6}.early-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:800}.early-break-even{padding:14px;border-radius:13px;background:#f4f1ff;border:1px solid #ded8ff;margin-top:12px}@media(max-width:900px){.early-kpis{grid-template-columns:1fr 1fr}}@media(max-width:560px){.early-kpis{grid-template-columns:1fr}}
 
-/* V9.18.3 — navigation par personne puis par événement */
+/* V9.18.4 — navigation par personne puis par événement */
 .person-scenario-nav{margin:14px 0 16px}
 .person-switch{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:10px}
 .person-switch button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font-weight:900;color:#59637a;min-width:110px}
@@ -485,7 +485,7 @@ body.role-client .report-btn{display:inline-flex}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.18.3</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.18.4</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -503,7 +503,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.18.3</div>
+      <div class="eyebrow">PrevIA V9.18.4</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -539,6 +539,32 @@ body.role-client .report-btn{display:inline-flex}
 <div><label id="labelAge1">Âge de la personne 1</label><input id="fAge1" required type="number" value="" placeholder="Exemple : 40"></div><div id="age2Wrap"><label id="labelAge2">Âge de la personne 2</label><input id="fAge2" required type="number" value="" placeholder="Exemple : 38"></div>
 <div><label id="labelIncome1">Revenu brut annuel de la personne 1 (CHF)</label><input id="fIncome1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 120’000.-" autocomplete="off"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de la personne 2 (CHF)</label><input id="fIncome2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 90’000.-" autocomplete="off"></div>
 <div><label id="labelJob1">Statut professionnel de la personne 1</label><select id="fJob1"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div><div id="job2Wrap"><label id="labelJob2">Statut professionnel de la personne 2</label><select id="fJob2"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div>
+<div>
+  <label id="labelAvsFull1">Cotisez-vous à l’AVS sans interruption depuis le 1er janvier suivant votre 20e anniversaire ?</label>
+  <select id="fAvsFull1">
+    <option value="yes">Oui</option>
+    <option value="no">Non</option>
+  </select>
+  <div class="tiny muted" style="margin-top:5px">Cette information permet d’estimer d’éventuelles années de cotisations manquantes.</div>
+</div>
+<div id="avsFull2Wrap">
+  <label id="labelAvsFull2">Cotisez-vous à l’AVS sans interruption depuis le 1er janvier suivant votre 20e anniversaire ?</label>
+  <select id="fAvsFull2">
+    <option value="yes">Oui</option>
+    <option value="no">Non</option>
+  </select>
+  <div class="tiny muted" style="margin-top:5px">Cette information permet d’estimer d’éventuelles années de cotisations manquantes.</div>
+</div>
+<div id="avsStart1Wrap" class="hidden">
+  <label id="labelAvsStart1">Depuis quelle année cotisez-vous à l’AVS en Suisse ?</label>
+  <input id="fAvsStart1" type="number" min="1948" max="2100" value="" placeholder="Exemple : 2013">
+  <div class="tiny muted" style="margin-top:5px">PrevIA comparera cette année avec le début théorique de l’obligation de cotiser.</div>
+</div>
+<div id="avsStart2Wrap" class="hidden">
+  <label id="labelAvsStart2">Depuis quelle année cotisez-vous à l’AVS en Suisse ?</label>
+  <input id="fAvsStart2" type="number" min="1948" max="2100" value="" placeholder="Exemple : 2015">
+  <div class="tiny muted" style="margin-top:5px">PrevIA comparera cette année avec le début théorique de l’obligation de cotiser.</div>
+</div>
 <div><label>Nombre total d'enfants</label><input id="fChildren" required type="number" min="0" value="" placeholder="Exemple : 2"></div>
 <div id="childGapWrap"><label>Écart d'âge entre le premier et le dernier enfant</label><div style="display:flex;align-items:center;gap:8px"><input id="fChildGap" required type="number" min="0" max="28" value="" placeholder="Exemple : 4"><span class="muted">ans</span></div><div class="tiny muted" style="margin-top:5px">PrevIA estimera automatiquement la durée des bonifications éducatives.</div></div>
 <div id="childrenDependentWrap"><label>Vos enfants sont-ils encore à charge ?</label><select id="fChildrenDependent"><option value="yes">Oui</option><option value="no">Non</option></select><div class="tiny muted" style="margin-top:5px">Cette réponse sert uniquement aux rentes pour enfants et aux rentes d'orphelins.</div></div>
@@ -551,7 +577,7 @@ body.role-client .report-btn{display:inline-flex}
 <div class="ownerField eplField hidden" id="epl2Wrap"><label id="labelEpl2">Montant retiré du 2e pilier – personne 2 (CHF)</label><input id="fEpl2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
 <div><label id="labelContribution1">Versement annuel actuel au 3e pilier – personne 1 (CHF)</label><input id="fContribution1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 3’000.-" autocomplete="off"></div>
 <div id="contribution2Wrap"><label id="labelContribution2">Versement annuel actuel au 3e pilier – personne 2 (CHF)</label><input id="fContribution2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 0.-" autocomplete="off"></div>
-</div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. Les résultats devront ensuite être confirmés avec les documents personnels.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
+</div><div class="callout" style="margin-top:16px"><b>Première estimation</b><p class="muted tiny">Les prestations de retraite, d'invalidité et de décès seront calculées automatiquement. Les enfants encore à charge servent aux rentes pour enfants et d'orphelins, tandis que l'historique de tous les enfants sert en arrière-plan aux bonifications éducatives AVS/AI. En cas de cotisations AVS potentiellement incomplètes, PrevIA estimera également l'impact sur la rente de retraite. Les résultats devront ensuite être confirmés avec les documents personnels et, si nécessaire, avec l'extrait du compte individuel AVS.</p></div><button class="btn primary" id="calculate" style="margin-top:16px">Analyser ma situation →</button></div></section>
 
 
 <section id="overview" class="screen">
@@ -1218,6 +1244,7 @@ function refreshPersonNames(){
     if(el)el.textContent=value;
   });
   syncScenarioNavigation();
+  updateAvsContributionFields();
 }
 function show(id){
  if(!accessAllows(id)){
@@ -1292,7 +1319,29 @@ function updateFamily(){
 
   if(data&&typeof renderProtection==='function')renderProtection();
 }
-$('#fStatus').onchange=()=>{updateFamily();updateMarriageDurationHint();};
+
+function updateAvsContributionFields(){
+  const single=$('#fStatus').value==='Célibataire';
+  const no1=$('#fAvsFull1').value==='no';
+  const no2=!single&&$('#fAvsFull2').value==='no';
+
+  $('#avsStart1Wrap').classList.toggle('hidden',!no1);
+  $('#fAvsStart1').required=no1;
+
+  $('#avsFull2Wrap').classList.toggle('hidden',single);
+  $('#avsStart2Wrap').classList.toggle('hidden',!no2);
+  $('#fAvsStart2').required=no2;
+
+  const n1=personName1(),n2=personName2();
+  $('#labelAvsFull1').textContent=`${n1} : cotisez-vous à l’AVS sans interruption depuis le 1er janvier suivant votre 20e anniversaire ?`;
+  $('#labelAvsStart1').textContent=`${n1} : depuis quelle année cotisez-vous à l’AVS en Suisse ?`;
+  $('#labelAvsFull2').textContent=`${n2} : cotisez-vous à l’AVS sans interruption depuis le 1er janvier suivant votre 20e anniversaire ?`;
+  $('#labelAvsStart2').textContent=`${n2} : depuis quelle année cotisez-vous à l’AVS en Suisse ?`;
+}
+$('#fAvsFull1').onchange=updateAvsContributionFields;
+$('#fAvsFull2').onchange=updateAvsContributionFields;
+
+$('#fStatus').onchange=()=>{updateFamily();updateMarriageDurationHint();updateAvsContributionFields();};
 $('#fMarriageDate').onchange=updateMarriageDurationHint;
 $('#fFirstName1').oninput=()=>{
   refreshPersonNames();
@@ -1348,7 +1397,7 @@ function tmi(canton,income){
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 /*
- V9.18.3 — Bonifications pour tâches éducatives (règle métier PrevIA)
+ V9.18.4 — Bonifications pour tâches éducatives (règle métier PrevIA)
 
  1) L’année de naissance du premier enfant ne compte pas.
     Années acquises = âge actuel de l’aîné - 1.
@@ -1376,6 +1425,37 @@ function tmi(canton,income){
 */
 const AVS_MIN_ANNUAL_2026=15120;
 const EDUCATION_CREDIT_ANNUAL_2026=AVS_MIN_ANNUAL_2026*3; // 45’360 CHF
+
+
+function currentCalendarYear(){return new Date().getFullYear()}
+function expectedAvsStartYear(age){
+  const a=Math.max(0,Number(age)||0);
+  if(!a)return 0;
+  const estimatedBirthYear=currentCalendarYear()-a;
+  return estimatedBirthYear+21;
+}
+function avsContributionGap(age,full,startYear){
+  if(full!==false)return{years:0,reductionRate:0,expectedStartYear:expectedAvsStartYear(age),startYear:0,latestMissingYear:0,withinFiveYears:false};
+  const expected=expectedAvsStartYear(age);
+  const start=Math.max(0,Number(startYear)||0);
+  if(!expected||!start)return{years:0,reductionRate:0,expectedStartYear:expected,startYear:start,latestMissingYear:0,withinFiveYears:false};
+  const years=Math.max(0,Math.min(44,start-expected));
+  const latestMissingYear=years>0?start-1:0;
+  const withinFiveYears=latestMissingYear>0&&(currentCalendarYear()-latestMissingYear)<=5;
+  return{
+    years,
+    reductionRate:years/44,
+    expectedStartYear:expected,
+    startYear:start,
+    latestMissingYear,
+    withinFiveYears
+  };
+}
+function applyAvsContributionGap(annual12,gap){
+  const base=Math.max(0,Number(annual12)||0);
+  const years=Math.max(0,Number(gap?.years)||0);
+  return Math.max(0,base*(44-years)/44);
+}
 
 function effectiveContributionYears(age){
  return Math.max(1,(Number(age)||21)-21);
@@ -1431,7 +1511,7 @@ function person(income,job,educationAverage=0,epl=0){
  return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,repaymentCap:l.repaymentProjectedCapital,repaymentPension:l.repaymentAnnualPension,lpp:l.retirementPension,lppInv:l.invalidityPension}
 }
 /*
- V9.18.3 — Règle de coordination PrevIA
+ V9.18.4 — Règle de coordination PrevIA
 
  Le 1er pilier n'est jamais réduit :
  - rente AI de l'assuré ;
@@ -1464,8 +1544,12 @@ function coordinateAfterFirstPillar(firstPillarParts,otherPillarParts,limit){
  return out;
 }
 function retirementAvs(c,p1,p2){
- const individual1=Math.max(0,p1.avs12||0);
- const individual2=c.status==='Célibataire'?0:Math.max(0,p2.avs12||0);
+ const gap1=avsContributionGap(c.age1,c.avsFull1,c.avsStart1);
+ const gap2=c.status==='Célibataire'?avsContributionGap(0,true,0):avsContributionGap(c.age2,c.avsFull2,c.avsStart2);
+ const theoretical1=Math.max(0,p1.avs12||0);
+ const theoretical2=c.status==='Célibataire'?0:Math.max(0,p2.avs12||0);
+ const individual1=applyAvsContributionGap(theoretical1,gap1);
+ const individual2=c.status==='Célibataire'?0:applyAvsContributionGap(theoretical2,gap2);
  if(c.status==='Mariés'){
   const coupleCap12=30240*1.5;
   const rawTotal=individual1+individual2;
@@ -1475,14 +1559,16 @@ function retirementAvs(c,p1,p2){
   return{
    p1:{individualAnnual12:individual1,individualThirteenth:individual1/12,individualTotal:individual1+individual1/12,annual12:a1,thirteenth:t1,total:a1+t1},
    p2:{individualAnnual12:individual2,individualThirteenth:individual2/12,individualTotal:individual2+individual2/12,annual12:a2,thirteenth:t2,total:a2+t2},
-   annual12:a1+a2,thirteenth:t1+t2,total:a1+a2+t1+t2,estimatedCoupleMaximum:rawTotal>coupleCap12
+   annual12:a1+a2,thirteenth:t1+t2,total:a1+a2+t1+t2,estimatedCoupleMaximum:rawTotal>coupleCap12,
+   gap1,gap2,theoretical1,theoretical2
   };
  }
  const t1=individual1/12,t2=individual2/12;
  return{
   p1:{individualAnnual12:individual1,individualThirteenth:t1,individualTotal:individual1+t1,annual12:individual1,thirteenth:t1,total:individual1+t1},
   p2:{individualAnnual12:individual2,individualThirteenth:t2,individualTotal:individual2+t2,annual12:individual2,thirteenth:t2,total:individual2+t2},
-  annual12:individual1+individual2,thirteenth:t1+t2,total:individual1+individual2+t1+t2,estimatedCoupleMaximum:false
+  annual12:individual1+individual2,thirteenth:t1+t2,total:individual1+individual2+t1+t2,estimatedCoupleMaximum:false,
+  gap1,gap2,theoretical1,theoretical2
  };
 }
 function benefits(c){
@@ -1925,6 +2011,10 @@ function gather(){
   sex1:$('#fSex1').value||'M',sex2:hasPartner?($('#fSex2').value||'F'):'',
   income1,income2,
   job1:$('#fJob1').value,job2:hasPartner?$('#fJob2').value:'Sans activité',
+  avsFull1:$('#fAvsFull1').value!=='no',
+  avsFull2:hasPartner?$('#fAvsFull2').value!=='no':true,
+  avsStart1:$('#fAvsFull1').value==='no'?(+$('#fAvsStart1').value||0):0,
+  avsStart2:hasPartner&&$('#fAvsFull2').value==='no'?(+$('#fAvsStart2').value||0):0,
   children,
   childGap:children>1?(+$('#fChildGap').value||0):0,
   childrenDependent:$('#fChildrenDependent').value==='yes',
@@ -2154,14 +2244,14 @@ function lifeTimelineOptionalGoals(c){
 }
 
 /*
- V9.18.3 — Ligne de vie
+ V9.18.4 — Ligne de vie
  - seules les échéances réelles conservent une année ;
  - les projets personnels sont affichés sans date ;
  - logement, mariage, enfants, indépendance et voyage ;
  - le projet logement reste cliquable vers Votre logement.
 */
 /*
- V9.18.3 — Mise en page de la ligne de vie
+ V9.18.4 — Mise en page de la ligne de vie
  - plus d'espace vertical entre les événements datés ;
  - zone des projets repoussée sous la timeline ;
  - suppression de la mention « sans échéance » ;
@@ -2821,7 +2911,7 @@ function makeLifeStages(baseStages, ages, childTotal){
  return result;
 }
 /*
- V9.18.3 — Évolution invalidité maladie
+ V9.18.4 — Évolution invalidité maladie
 
  Important :
  la coordination LPP n'est plus figée au jour de l'événement.
@@ -3309,6 +3399,27 @@ function renderRecommendations(){
 
   // RETRAITE
   const retirement=[];
+
+  const avsGapPeople=[
+    {name:c.firstName1,gap:avsContributionGap(c.age1,c.avsFull1,c.avsStart1)},
+    ...(c.status==='Célibataire'?[]:[{name:c.firstName2,gap:avsContributionGap(c.age2,c.avsFull2,c.avsStart2)}])
+  ].filter(x=>x.gap.years>0);
+
+  avsGapPeople.forEach(({name,gap})=>{
+    const reductionPct=gap.years/44*100;
+    retirement.push(recItem(
+      gap.withinFiveYears?'essential':'important',
+      `AVS · ${name}`,
+      gap.withinFiveYears?'Vérifier rapidement une éventuelle régularisation':'Vérifier les lacunes sur le compte individuel AVS',
+      [
+        {label:'Années potentiellement manquantes',value:`${gap.years}`},
+        {label:'Réduction AVS estimée',value:`− ${reductionPct.toFixed(2)} %`}
+      ],
+      gap.withinFiveYears
+        ?`Une partie des lacunes potentielles se situe dans les cinq dernières années. Demandez rapidement un extrait du compte individuel AVS et vérifiez auprès de la caisse de compensation si des cotisations peuvent encore être régularisées.`
+        :`Demandez un extrait du compte individuel AVS afin de confirmer les périodes réellement manquantes. L’estimation PrevIA ne remplace pas le contrôle officiel de la caisse de compensation.`
+    ));
+  });
   if(p.additionalTotal>0){
     retirement.push(recItem(
       'important',
@@ -3732,6 +3843,7 @@ bindSwissMoneyInputs();
 refreshPersonNames();
 updateFamily();
 updateMarriageDurationHint();
+updateAvsContributionFields();
 updateChildren();
 updateOwner();
 updateEpl();
