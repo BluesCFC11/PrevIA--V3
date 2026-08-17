@@ -459,32 +459,11 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .overview-retain b{color:#fff}.overview-retain p{color:#eef2ff!important}
 @media(max-width:800px){.overview-grid{grid-template-columns:1fr}.overview-intro{font-size:17px}}
 
-.legal-shell,.contact-shell{max-width:980px;margin:0 auto}
-.legal-card,.contact-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 12px 36px #1827440d}
-.legal-card h2,.contact-card h2{margin:0 0 8px;color:#17223d}
-.legal-card h3{margin:24px 0 8px;color:#253b64;font-size:18px}
-.legal-card p,.legal-card li,.contact-card p{color:#556176;line-height:1.65}
-.legal-card ul{padding-left:20px}
-.legal-notice{padding:14px 16px;border:1px solid #e4e8f1;border-radius:14px;background:#f8f9fc;margin:14px 0}
-.legal-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.contact-grid .full{grid-column:1/-1}
-.contact-grid textarea{min-height:150px;resize:vertical}
-.contact-consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;color:#556176;font-size:13px;line-height:1.5}
-.contact-consent input{margin-top:3px;width:auto}
-.contact-status{margin-top:12px;padding:11px 13px;border-radius:12px;display:none}
-.contact-status.show{display:block}
-.contact-status.ok{background:#eef9f2;border:1px solid #ccebd8;color:#246b45}
-.contact-status.error{background:#fff2f1;border:1px solid #efc8c5;color:#9b332f}
-.legal-mini{font-size:12px;color:#778196;margin-top:12px}
-@media(max-width:760px){.contact-grid{grid-template-columns:1fr}.contact-grid .full{grid-column:auto}.legal-card,.contact-card{padding:18px}}
-
-
 .access-panel{margin-top:14px;padding:12px;border:1px solid #ffffff1f;border-radius:13px;background:#ffffff0d}
 .access-panel label{color:#fff;font-size:10px;opacity:.8;margin-bottom:5px}
 .access-panel select{padding:8px 9px;background:#fff;color:#17223d;border:0}
 .access-panel small{display:block;margin-top:7px;color:#d8def3;line-height:1.35}
-.nav.premium-locked::after{content:"��";float:right;font-size:11px}
+.nav.premium-locked::after{content:"🔒";float:right;font-size:11px}
 .nav.partner-only.hidden-role{display:none!important}
 .role-badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
 .role-free{background:#fff3e8;color:#9a3412}.role-client{background:#eaf8ef;color:#278b57}.role-admin{background:#eef0ff;color:#5058c6}.role-partner{background:#eaf4fb;color:#2879b8}
@@ -517,10 +496,19 @@ body.role-client .report-btn{display:inline-flex}
   .person-switch button,.event-switch button{white-space:nowrap;flex:0 0 auto}
 }
 
+
+/* V9.20.0 — Contact + informations légales */
+.legal-grid{display:grid;grid-template-columns:1fr;gap:16px}.legal-card,.contact-card{background:#fff;border:1px solid #dfe6ef;border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(31,55,88,.05)}
+.legal-card h3,.contact-card h3{margin:0 0 10px;color:#172033}.legal-card p,.legal-card li,.contact-card p{color:#536278;line-height:1.65}.legal-card ul{padding-left:20px}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.contact-form .full{grid-column:1/-1}.contact-form label{display:block;font-weight:800;color:#26364d;margin-bottom:6px}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;box-sizing:border-box;border:1px solid #ccd7e6;border-radius:12px;padding:12px 13px;font:inherit;background:#fff;color:#172033}
+.contact-form textarea{min-height:150px;resize:vertical}.contact-consent{display:flex;gap:10px;align-items:flex-start;color:#536278;font-size:14px;line-height:1.5}.contact-consent input{width:auto;margin-top:3px}
+.contact-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.contact-status{font-weight:700}.contact-status.ok{color:#23834d}.contact-status.error{color:#b63b35}
+.legal-note{background:#f6f8fc;border-radius:13px;padding:14px 16px;color:#536278;line-height:1.55}@media(max-width:700px){.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}}
 </style></head>
 <body><div class="app">
 <aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.20.0</small></div><nav>
-<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button><button class="nav" data-s="contact">Contact</button><button class="nav" data-s="legal">Informations légales</button><button class="nav" data-s="privacy">Protection des données</button></nav>
+<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button><button class="nav" data-s="contact">Contact</button><button class="nav" data-s="legal">Informations légales</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
   <select id="accessRole">
@@ -555,10 +543,10 @@ body.role-client .report-btn{display:inline-flex}
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
 <div class="card"><div class="choicegrid" id="choices">
 <button class="choice active" data-concern="family"><span style="font-size:27px">❤️</span><b>Protéger ma famille</b><small class="muted">Décès, invalidité, revenus du ménage</small></button>
-<button class="choice" data-concern="home"><span style="font-size:27px">��</span><b>Conserver mon logement</b><small class="muted">Aujourd'hui et dans les coups durs</small></button>
-<button class="choice" data-concern="retirement"><span style="font-size:27px">��</span><b>Préparer ma retraite</b><small class="muted">Revenus et niveau de vie futur</small></button>
-<button class="choice" data-concern="tax"><span style="font-size:27px">��</span><b>Réduire mes impôts</b><small class="muted">3e pilier et économie fiscale</small></button>
-<button class="choice" data-concern="wealth"><span style="font-size:27px">��</span><b>Développer mon patrimoine</b><small class="muted">Épargne et investissement</small></button>
+<button class="choice" data-concern="home"><span style="font-size:27px">🏠</span><b>Conserver mon logement</b><small class="muted">Aujourd'hui et dans les coups durs</small></button>
+<button class="choice" data-concern="retirement"><span style="font-size:27px">🌅</span><b>Préparer ma retraite</b><small class="muted">Revenus et niveau de vie futur</small></button>
+<button class="choice" data-concern="tax"><span style="font-size:27px">💰</span><b>Réduire mes impôts</b><small class="muted">3e pilier et économie fiscale</small></button>
+<button class="choice" data-concern="wealth"><span style="font-size:27px">📈</span><b>Développer mon patrimoine</b><small class="muted">Épargne et investissement</small></button>
 </div></div>
 <div class="card" style="margin-top:15px">
 <h2>Votre situation</h2>
@@ -653,19 +641,19 @@ body.role-client .report-btn{display:inline-flex}
     </div>
 
     <div class="overview-card">
-      <div class="overview-heading"><span class="overview-icon retirement">��</span><h3>Votre retraite</h3></div>
+      <div class="overview-heading"><span class="overview-icon retirement">🌅</span><h3>Votre retraite</h3></div>
       <p id="overviewRetirement"></p>
       <div class="overview-link"><button class="btn" data-s="retraite">Voir le détail retraite →</button></div>
     </div>
 
     <div class="overview-card">
-      <div class="overview-heading"><span class="overview-icon home">��</span><h3>Votre logement</h3></div>
+      <div class="overview-heading"><span class="overview-icon home">🏠</span><h3>Votre logement</h3></div>
       <p id="overviewHome"></p>
       <div class="overview-link"><button class="btn" data-s="immobilier">Voir le détail logement →</button></div>
     </div>
 
     <div class="overview-card">
-      <div class="overview-heading"><span class="overview-icon tax">��</span><h3>Votre prévoyance et vos impôts</h3></div>
+      <div class="overview-heading"><span class="overview-icon tax">💰</span><h3>Votre prévoyance et vos impôts</h3></div>
       <p id="overviewTax"></p>
       <div class="overview-link"><button class="btn" data-s="fiscalite">Voir le détail fiscalité →</button></div>
     </div>
@@ -695,12 +683,12 @@ body.role-client .report-btn{display:inline-flex}
     <p class="muted tiny">Les montants ci-dessous sont des premières estimations. Ils doivent être confirmés avec les certificats LPP, contrats, règlements et données fiscales personnelles.</p>
   </div>
   <div class="recommendation-grid">
-    <div class="card recommendation-card"><div class="recommendation-icon">��️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à compléter selon les lacunes constatées.</p><div class="recommendation-list" id="recProtection"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et réserve de sécurité.</p><div class="recommendation-list" id="recRetirement"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-list" id="recHome"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-list" id="recTax"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement et niveau de risque cohérents avec l’onglet Logement.</p><div class="recommendation-list" id="recInvestment"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-list" id="recAdmin"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🛡️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à compléter selon les lacunes constatées.</p><div class="recommendation-list" id="recProtection"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🌅</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et réserve de sécurité.</p><div class="recommendation-list" id="recRetirement"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">🏠</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-list" id="recHome"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">💰</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-list" id="recTax"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">📈</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement et niveau de risque cohérents avec l’onglet Logement.</p><div class="recommendation-list" id="recInvestment"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">📋</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-list" id="recAdmin"></div></div>
   </div>
 </section>
 
@@ -886,7 +874,7 @@ body.role-client .report-btn{display:inline-flex}
 
 <section id="locked" class="screen">
   <div class="paywall">
-    <div class="paywall-icon">��</div>
+    <div class="paywall-icon">🔒</div>
     <div class="eyebrow">Analyse complète</div>
     <h2>Cette partie est réservée à l’analyse complète</h2>
     <p class="muted" id="lockedText">Débloquez les résultats détaillés, les projections et les recommandations personnalisées.</p>
@@ -895,76 +883,6 @@ body.role-client .report-btn{display:inline-flex}
       <button class="btn" data-s="dashboard">Retour à la synthèse</button>
     </div>
     <p class="tiny muted" style="margin-top:14px">Prototype : le paiement sera relié ultérieurement au passage du rôle FREE vers CLIENT.</p>
-  </div>
-</section>
-
-
-<section id="contact" class="screen">
-  <div class="contact-shell">
-    <div class="top"><div><div class="eyebrow">Contact</div><h1>Comment pouvons-nous vous aider ?</h1><p class="muted">Envoyez votre demande directement depuis PrevIA.</p></div></div>
-    <div class="contact-card">
-      <form id="contactForm" novalidate>
-        <div class="contact-grid">
-          <div><label for="contactFirstName">Prénom</label><input id="contactFirstName" name="firstName" type="text" maxlength="80" autocomplete="given-name" required></div>
-          <div><label for="contactLastName">Nom</label><input id="contactLastName" name="lastName" type="text" maxlength="80" autocomplete="family-name" required></div>
-          <div class="full"><label for="contactEmail">Adresse e-mail</label><input id="contactEmail" name="email" type="email" maxlength="160" autocomplete="email" required></div>
-          <div class="full"><label for="contactSubject">Sujet</label><select id="contactSubject" name="subject" required><option value="">Sélectionner un sujet</option><option>Question sur mon analyse</option><option>Question sur la prévoyance</option><option>Problème technique</option><option>Partenariat / professionnel</option><option>Protection des données</option><option>Autre demande</option></select></div>
-          <div class="full"><label for="contactMessage">Message</label><textarea id="contactMessage" name="message" maxlength="5000" placeholder="Décrivez votre demande…" required></textarea></div>
-        </div>
-        <label class="contact-consent"><input id="contactPrivacy" type="checkbox" required><span>J’ai pris connaissance de la <button type="button" class="linklike" data-s="privacy">Déclaration de protection des données</button> et j’accepte que les informations saisies soient traitées afin de répondre à ma demande.</span></label>
-        <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
-        <button class="btn primary" id="contactSubmit" type="submit">Envoyer ma demande</button>
-        <div id="contactStatus" class="contact-status" role="status" aria-live="polite"></div>
-        <p class="legal-mini">Les informations du formulaire sont utilisées uniquement pour traiter votre demande. Elles sont transmises au service de messagerie utilisé par PrevIA pour l’envoi et la réception du message.</p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<section id="legal" class="screen">
-  <div class="legal-shell">
-    <div class="top"><div><div class="eyebrow">Informations légales</div><h1>Informations importantes sur les estimations PrevIA</h1></div></div>
-    <div class="legal-card">
-      <div class="legal-notice"><b>PrevIA est un outil d’information et de simulation.</b> Les résultats affichés ne remplacent pas les décisions, certificats, règlements ou calculs officiels des institutions compétentes.</div>
-      <p>Les calculs effectués dans les outils de prévoyance, de retraite, d’invalidité, de décès, de logement et de fiscalité de PrevIA sont des <b>modèles et estimations</b>. Ils résultent des paramètres saisis par l’utilisateur, de règles intégrées dans l’application ainsi que d’hypothèses et de valeurs indicatives non individualisées.</p>
-      <p>Certains paramètres peuvent ne pas être pris en considération, être inconnus ou ne pas correspondre exactement à votre situation. Ils peuvent modifier de manière significative le résultat. Les prestations réelles doivent être confirmées notamment au moyen des documents officiels applicables : extrait de compte AVS, décisions AVS/AI, certificat et règlement de prévoyance LPP, polices d’assurance, documents fiscaux et décisions des institutions compétentes.</p>
-      <p>Toutes les informations sont fournies <b>à titre indicatif et sans garantie</b> quant à leur exactitude, exhaustivité, actualité ou évolution future. Elles ne constituent ni une offre, ni une promesse de prestation, ni un conseil juridique, fiscal, financier, bancaire ou d’assurance personnalisé. Aucune prétention contractuelle ou extracontractuelle ne peut être fondée sur les seules estimations générées par PrevIA, sous réserve des dispositions impératives du droit applicable.</p>
-      <h3>Méthodologie</h3>
-      <p>Lorsque les données réelles d’une institution ne sont pas disponibles, PrevIA peut utiliser des paramètres légaux minimaux, des hypothèses prudentes ou des méthodes simplifiées. Les écrans concernés signalent, lorsque cela est pertinent, que le résultat doit être confirmé au moyen des documents personnels de l’utilisateur.</p>
-      <div class="legal-links"><button class="btn" data-s="privacy">Protection des données</button><button class="btn" data-s="contact">Contact</button></div>
-    </div>
-  </div>
-</section>
-
-<section id="privacy" class="screen">
-  <div class="legal-shell">
-    <div class="top"><div><div class="eyebrow">Protection des données</div><h1>Déclaration de protection des données</h1><p class="muted">Version adaptée au prototype PrevIA.</p></div></div>
-    <div class="legal-card">
-      <div class="legal-notice"><b>Principe :</b> PrevIA limite le traitement des données aux informations nécessaires au fonctionnement de l’application et aux services demandés par l’utilisateur.</div>
-      <h3>1. Cadre légal</h3>
-      <p>Le traitement des données personnelles est conçu conformément à la Loi fédérale suisse sur la protection des données (LPD) et à ses dispositions d’exécution applicables. Lorsque d’autres réglementations sont applicables en raison du lieu où le service est proposé ou utilisé, leurs exigences doivent également être prises en compte.</p>
-      <h3>2. Responsable du traitement</h3>
-      <p>Le responsable du traitement est l’éditeur de PrevIA. Les demandes relatives aux données personnelles peuvent être adressées au moyen de l’onglet <b>Contact</b>. L’identité juridique complète et les coordonnées officielles du responsable doivent être publiées avant la mise en production commerciale du service.</p>
-      <h3>3. Données pouvant être traitées</h3>
-      <p>Selon les fonctionnalités utilisées, PrevIA peut traiter les informations saisies dans les questionnaires et simulations, notamment des données d’identité, de situation familiale, professionnelle, financière, de prévoyance, de logement et de fiscalité, ainsi que les informations communiquées dans le formulaire de contact ou dans des documents importés.</p>
-      <h3>4. Finalités</h3>
-      <p>Les données sont traitées afin de fournir les simulations et analyses demandées, afficher les résultats, générer les fonctionnalités choisies, permettre le suivi technique du service, répondre aux demandes de contact et assurer la sécurité et le bon fonctionnement de l’application.</p>
-      <h3>5. Conservation</h3>
-      <p>PrevIA applique un principe de minimisation. La durée de conservation dépend de la fonctionnalité utilisée. Les données qui ne sont pas nécessaires à une conservation durable doivent être supprimées ou anonymisées dès que leur conservation n’est plus nécessaire. Les messages envoyés via le formulaire de contact peuvent être conservés dans les systèmes de messagerie pendant la durée nécessaire au traitement et au suivi de la demande.</p>
-      <h3>6. Prestataires techniques et destinataires</h3>
-      <p>Des prestataires techniques peuvent intervenir pour l’hébergement, l’envoi d’e-mails, la sécurité, la génération de documents ou d’autres fonctions nécessaires au service. Ils ne doivent recevoir que les données nécessaires à la prestation concernée et doivent être encadrés par des mesures contractuelles et techniques appropriées. Les données ne sont pas utilisées à des fins incompatibles avec les finalités annoncées.</p>
-      <h3>7. Transferts à l’étranger</h3>
-      <p>Si un prestataire traite des données dans un pays autre que la Suisse, le traitement doit respecter les exigences légales applicables aux communications de données à l’étranger, notamment en matière de niveau de protection adéquat ou de garanties appropriées.</p>
-      <h3>8. Sécurité et protection dès la conception</h3>
-      <p>PrevIA vise à appliquer les principes de protection des données dès la conception et par défaut, de proportionnalité et de minimisation, ainsi que des mesures techniques et organisationnelles adaptées au risque.</p>
-      <h3>9. Vos droits</h3>
-      <p>Dans les limites prévues par le droit applicable, une personne concernée peut notamment demander des informations sur les données la concernant, leur rectification ou leur suppression, ainsi que faire valoir les autres droits prévus par la législation applicable. Les demandes peuvent être adressées via l’onglet Contact.</p>
-      <h3>10. Formulaire de contact</h3>
-      <p>Lorsque vous utilisez le formulaire Contact, le prénom, le nom, l’adresse e-mail, le sujet et le message sont transmis afin de répondre à la demande. Ces informations peuvent transiter par un prestataire de messagerie. Elles ne doivent pas être utilisées pour une finalité différente sans information ou base juridique appropriée.</p>
-      <h3>11. Évolution de la présente déclaration</h3>
-      <p>Cette déclaration peut être adaptée lorsque les fonctionnalités, prestataires ou exigences légales évoluent. La version publiée dans PrevIA est la version applicable au moment de la consultation.</p>
-      <div class="legal-links"><button class="btn" data-s="contact">Contact</button><button class="btn" data-s="legal">Informations légales</button></div>
-    </div>
   </div>
 </section>
 
@@ -998,6 +916,45 @@ body.role-client .report-btn{display:inline-flex}
     <div class="analysis-tier premium"><span class="tier-badge">Analyse complète</span><b>Calcul précis à partir de vos documents</b><ul><li>Lecture du certificat de prévoyance</li><li>Prise en compte des prestations réelles</li><li>Analyse des polices d’assurance</li><li>Rapport personnalisé et recommandations</li></ul><button class="analysis-upgrade-btn" type="button" id="upgradeAnalysisBtn">Débloquer l’analyse complète</button></div>
   </div>
 </div>
+
+<section id="contact" class="screen">
+ <div class="eyebrow">CONTACT</div><h1>Comment pouvons-nous vous aider ?</h1>
+ <p class="lead">Utilisez ce formulaire pour une question concernant PrevIA, son fonctionnement ou votre expérience dans l’application.</p>
+ <div class="contact-card"><h3>Votre demande</h3><p>Les informations saisies ci-dessous sont utilisées uniquement pour traiter et répondre à votre demande.</p>
+ <form id="contactForm" class="contact-form" novalidate>
+  <div><label for="contactFirstName">Prénom</label><input id="contactFirstName" name="firstName" autocomplete="given-name" maxlength="80" required></div>
+  <div><label for="contactLastName">Nom</label><input id="contactLastName" name="lastName" autocomplete="family-name" maxlength="80" required></div>
+  <div class="full"><label for="contactEmail">Adresse e-mail</label><input id="contactEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="160" required></div>
+  <div class="full"><label for="contactSubject">Sujet</label><select id="contactSubject" name="subject" required><option value="">Sélectionner un sujet</option><option>Question sur PrevIA</option><option>Question sur une analyse</option><option>Problème technique</option><option>Protection des données</option><option>Partenariat / professionnel</option><option>Autre demande</option></select></div>
+  <div class="full"><label for="contactMessage">Message</label><textarea id="contactMessage" name="message" maxlength="5000" required placeholder="Décrivez votre demande…"></textarea></div>
+  <div class="full contact-consent"><input id="contactConsent" name="consent" type="checkbox" required><label for="contactConsent">J’ai pris connaissance des informations relatives à la protection des données et j’accepte que les données de ce formulaire soient traitées afin de répondre à ma demande.</label></div>
+  <div class="full contact-actions"><button class="primary" id="contactSubmit" type="submit">Envoyer ma demande</button><span id="contactStatus" class="contact-status" aria-live="polite"></span></div>
+ </form></div>
+</section>
+
+<section id="legal" class="screen">
+ <div class="eyebrow">INFORMATIONS LÉGALES</div><h1>Informations importantes et protection des données</h1>
+ <p class="lead">Ces informations encadrent l’utilisation des estimations et simulations proposées par PrevIA.</p>
+ <div class="legal-grid">
+  <div class="legal-card"><h3>Caractère indicatif des calculs</h3>
+   <p>Les calculs effectués dans PrevIA concernant notamment la prévoyance, l’invalidité, le décès, la retraite, le logement et la fiscalité sont des modèles et des estimations. Ils résultent des paramètres indiqués par l’utilisateur ainsi que d’hypothèses, de règles et de valeurs indicatives qui peuvent ne pas correspondre exactement à une situation individuelle.</p>
+   <p>Des paramètres non pris en considération par le modèle, des données incomplètes ou inexactes, des particularités réglementaires ou contractuelles ainsi que des modifications légales peuvent modifier sensiblement les résultats.</p>
+   <p>Les informations et résultats sont fournis à titre indicatif et sans garantie quant à leur exactitude, leur exhaustivité ou leur évolution future. Ils ne constituent ni une décision officielle d’une caisse AVS/AI, d’une institution de prévoyance, d’une autorité fiscale ou d’un autre organisme, ni une garantie de prestations, ni un conseil juridique, fiscal, financier ou de placement individualisé.</p>
+   <p>Les prestations et droits effectifs doivent être vérifiés au moyen des documents officiels et, lorsque cela est nécessaire, auprès des institutions ou professionnels compétents. Aucune prétention contractuelle ou extracontractuelle ne peut découler des seules estimations fournies par PrevIA.</p>
+  </div>
+  <div class="legal-card"><h3>Protection des données</h3>
+   <p>Les données personnelles saisies dans PrevIA sont traitées uniquement dans la mesure nécessaire au fonctionnement de l’application, à la réalisation des analyses demandées et, pour le formulaire de contact, au traitement et à la réponse à la demande transmise.</p>
+   <p>Le traitement des données doit être organisé conformément à la Loi fédérale suisse sur la protection des données (LPD) et à ses dispositions d’exécution applicables. PrevIA vise notamment les principes de transparence, de proportionnalité, de minimisation des données, de sécurité et de protection des données dès la conception et par défaut.</p>
+   <p>Les données ne doivent pas être utilisées à des fins incompatibles avec celles annoncées. Les éventuels prestataires techniques nécessaires à l’hébergement, à l’envoi de messages ou à d’autres fonctions ne doivent recevoir que les données nécessaires à la prestation concernée et doivent être encadrés conformément aux exigences applicables.</p>
+   <p>Si des données sont traitées ou hébergées à l’étranger, les informations requises sur les pays concernés et, lorsque nécessaire, les garanties applicables doivent être précisées dans la déclaration de protection des données correspondant à l’architecture technique effectivement utilisée.</p>
+  </div>
+  <div class="legal-card"><h3>Vos droits</h3>
+   <p>Dans les limites prévues par le droit applicable, une personne concernée peut notamment demander des informations sur le traitement de ses données personnelles ainsi que, selon les circonstances, leur rectification ou leur suppression. Les demandes relatives à la protection des données peuvent être adressées au moyen de l’onglet Contact.</p>
+   <div class="legal-note"><strong>Important :</strong> la politique de confidentialité définitive devra être ajustée avant commercialisation aux prestataires réellement utilisés par PrevIA, à l’hébergement, aux éventuels services d’intelligence artificielle, aux durées de conservation, aux cookies et aux transferts internationaux effectivement mis en œuvre.</div>
+  </div>
+ </div>
+</section>
+
 </main></div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -1214,8 +1171,8 @@ function generatePdfReport(){
  const footer=n=>`<div class="report-footer"><span>PrevIA · Analyse indicative à confirmer avec vos documents</span><span>${n}</span></div>`;
  const report=`<div class="report-shell">
  <section class="report-page report-cover"><div class="report-brand">✦ PrevIA<small>Votre copilote financier intelligent</small></div><div><div class="report-section-label" style="color:#cdd6ff">Rapport personnel</div><h1 class="report-cover-title">Comprendre aujourd’hui ce que demain pourrait changer.</h1><p class="report-cover-sub">Une lecture simple de votre protection familiale, de votre retraite, de votre logement et de votre prévoyance.</p><div class="report-client" style="margin-top:24px"><b>${esc(c.name)}</b><span>Analyse générée le ${generated}</span></div></div>${footer(1)}</section>
- <section class="report-page"><div class="report-section-label">Votre aperçu</div><h2 class="report-title">Votre situation en quelques mots</h2><p class="report-lead">${esc(txt('overviewIntro'))}</p><div class="report-grid"><div class="report-card"><h3>❤️ Votre famille</h3><p>${esc(txt('overviewFamily'))}</p></div><div class="report-card"><h3>�� Votre retraite</h3><p>${esc(txt('overviewRetirement'))}</p></div><div class="report-card"><h3>�� Votre logement</h3><p>${esc(txt('overviewHome'))}</p></div><div class="report-card"><h3>�� Prévoyance & fiscalité</h3><p>${esc(txt('overviewTax'))}</p></div></div><div class="report-callout" style="margin-top:16px"><b>Ce qu’il faut retenir</b><br>${esc(txt('overviewConclusion'))}</div>${footer(2)}</section>
- <section class="report-page"><div class="report-section-label">Les éléments essentiels</div><h2 class="report-title">Vos principaux indicateurs</h2><div class="report-kpis"><div class="report-kpi"><span>Revenu actuel</span><b>${fmt(c.totalIncome)}</b></div><div class="report-kpi"><span>Retraite prévue</span><b>${fmt(ret)}</b></div><div class="report-kpi"><span>Taux de remplacement</span><b>${pct.toFixed(0)} %</b></div><div class="report-kpi"><span>Épargne disponible</span><b>${fmt(c.savings)}</b></div></div><div class="report-grid"><div class="report-card"><h3>�� Retraite</h3><div class="big">${fmt(ret/12)}/mois</div><p>Revenu mensuel moyen estimé.</p></div><div class="report-card"><h3>�� Logement</h3><div class="big">${c.owner?fmt(reduction):'Non applicable'}</div><p>${c.owner&&reduction>0?`Effort indicatif : ${fmt(monthly)}/mois sur ${years} ans, stratégie ${esc(strategy.name)}.`:'Aucun besoin spécifique identifié.'}</p></div><div class="report-card"><h3>�� Potentiel 3a restant</h3><div class="big">${fmt(tax.potential.additionalTotal||0)}</div><p>Potentiel estimé selon les informations renseignées.</p></div><div class="report-card"><h3>�� Statut</h3><div class="big">Analyse complète</div><p>Résultats à confirmer avec vos documents personnels.</p></div></div>${footer(3)}</section>
+ <section class="report-page"><div class="report-section-label">Votre aperçu</div><h2 class="report-title">Votre situation en quelques mots</h2><p class="report-lead">${esc(txt('overviewIntro'))}</p><div class="report-grid"><div class="report-card"><h3>❤️ Votre famille</h3><p>${esc(txt('overviewFamily'))}</p></div><div class="report-card"><h3>🌅 Votre retraite</h3><p>${esc(txt('overviewRetirement'))}</p></div><div class="report-card"><h3>🏠 Votre logement</h3><p>${esc(txt('overviewHome'))}</p></div><div class="report-card"><h3>💰 Prévoyance & fiscalité</h3><p>${esc(txt('overviewTax'))}</p></div></div><div class="report-callout" style="margin-top:16px"><b>Ce qu’il faut retenir</b><br>${esc(txt('overviewConclusion'))}</div>${footer(2)}</section>
+ <section class="report-page"><div class="report-section-label">Les éléments essentiels</div><h2 class="report-title">Vos principaux indicateurs</h2><div class="report-kpis"><div class="report-kpi"><span>Revenu actuel</span><b>${fmt(c.totalIncome)}</b></div><div class="report-kpi"><span>Retraite prévue</span><b>${fmt(ret)}</b></div><div class="report-kpi"><span>Taux de remplacement</span><b>${pct.toFixed(0)} %</b></div><div class="report-kpi"><span>Épargne disponible</span><b>${fmt(c.savings)}</b></div></div><div class="report-grid"><div class="report-card"><h3>🌅 Retraite</h3><div class="big">${fmt(ret/12)}/mois</div><p>Revenu mensuel moyen estimé.</p></div><div class="report-card"><h3>🏠 Logement</h3><div class="big">${c.owner?fmt(reduction):'Non applicable'}</div><p>${c.owner&&reduction>0?`Effort indicatif : ${fmt(monthly)}/mois sur ${years} ans, stratégie ${esc(strategy.name)}.`:'Aucun besoin spécifique identifié.'}</p></div><div class="report-card"><h3>💰 Potentiel 3a restant</h3><div class="big">${fmt(tax.potential.additionalTotal||0)}</div><p>Potentiel estimé selon les informations renseignées.</p></div><div class="report-card"><h3>📌 Statut</h3><div class="big">Analyse complète</div><p>Résultats à confirmer avec vos documents personnels.</p></div></div>${footer(3)}</section>
  <section class="report-page"><div class="report-section-label">Vos pistes d’optimisation</div><h2 class="report-title">Votre plan d’action</h2><p class="report-lead">Les pistes suivantes ressortent de votre analyse et servent de base de réflexion.</p>${recs.length?recs.map(r=>`<div class="report-action"><div class="report-num">${r.i}</div><div>${esc(r.text)}</div></div>`).join(''):'<div class="report-callout">Aucune recommandation spécifique générée.</div>'}${footer(4)}</section>
  <section class="report-page"><div class="report-section-label">Informations importantes</div><h2 class="report-title">À propos de cette analyse</h2><div class="report-callout">PrevIA fournit une première estimation pédagogique. Les prestations réelles, la fiscalité et la capacité hypothécaire peuvent différer selon les documents, règlements, commune fiscale et conditions de financement.</div><p class="report-disclaimer" style="margin-top:18px">Ce rapport ne constitue ni une garantie de prestations, ni une décision de financement, ni un conseil juridique, fiscal ou financier personnalisé. Les résultats doivent être confirmés avec les documents correspondants.</p>${footer(5)}</section></div>`;
  const w=window.open('','_blank');if(!w)return alert('Votre navigateur a bloqué l’ouverture du rapport.');const css=[...document.querySelectorAll('style')].map(s=>s.innerHTML).join('\n');w.document.write(`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport PrevIA — ${esc(c.name)}</title><style>${css}
@@ -1351,7 +1308,6 @@ function refreshPersonNames(){
   syncScenarioNavigation();
   updateAvsContributionFields();
 }
-/* V9.20.0 — Ajouts : Contact, Informations légales, Déclaration de protection des données. Aucun calcul métier n'est modifié. */
 function show(id){
  if(!accessAllows(id)){
    requestedPremiumScreen=id;
@@ -2665,13 +2621,13 @@ function taxCalculation(c){
 
 function overviewMoney(value,sensitive=false){
   if(accessRole==='FREE'&&sensitive){
-    return '<span class="overview-locked">�� montant dans l’analyse complète</span>';
+    return '<span class="overview-locked">🔒 montant dans l’analyse complète</span>';
   }
   return `<span class="overview-amount">${fmt(value)}</span>`;
 }
 function overviewMonthly(value,sensitive=false){
   if(accessRole==='FREE'&&sensitive){
-    return '<span class="overview-locked">�� détail dans l’analyse complète</span>';
+    return '<span class="overview-locked">🔒 détail dans l’analyse complète</span>';
   }
   return `<span class="overview-amount">${fmt(Math.max(0,value))} par mois</span>`;
 }
@@ -2706,11 +2662,11 @@ function cleanOverviewText(html){
 
 function lifeTimelineHouseholdIcon(c){
   if(c.status==='Célibataire'){
-    if(c.children>0)return c.owner?'�� �� ��':'�� ��';
-    return c.owner?'�� ��':'��';
+    if(c.children>0)return c.owner?'👤 👧 🏠':'👤 👧';
+    return c.owner?'👤 🏠':'👤';
   }
-  if(c.children>0)return c.owner?'��‍��‍��‍�� ��':'��‍��‍��‍��';
-  return c.owner?'�� ��':'��';
+  if(c.children>0)return c.owner?'👨‍👩‍👧‍👦 🏠':'👨‍👩‍👧‍👦';
+  return c.owner?'👫 🏠':'👫';
 }
 function lifeTimelineHouseholdText(c){
   const parts=[c.status==='Célibataire'?c.firstName1:`${c.firstName1} & ${c.firstName2}`];
@@ -2720,11 +2676,11 @@ function lifeTimelineHouseholdText(c){
 }
 function lifeTimelineOptionalGoals(c){
   const goals=[];
-  if(!c.owner)goals.push({icon:'��',title:'Devenir propriétaire',action:'housing'});
-  if(c.status!=='Mariés')goals.push({icon:'��',title:'Se marier'});
-  if(c.children===0)goals.push({icon:'��',title:'Avoir des enfants'});
+  if(!c.owner)goals.push({icon:'🏠',title:'Devenir propriétaire',action:'housing'});
+  if(c.status!=='Mariés')goals.push({icon:'💍',title:'Se marier'});
+  if(c.children===0)goals.push({icon:'👶',title:'Avoir des enfants'});
   const hasEmployee=c.job1==='Salarié'||(c.status!=='Célibataire'&&c.job2==='Salarié');
-  if(hasEmployee)goals.push({icon:'��',title:'Devenir indépendant'});
+  if(hasEmployee)goals.push({icon:'💼',title:'Devenir indépendant'});
   goals.push({icon:'✈️',title:'Voyage / grand projet'});
   return goals.slice(0,5);
 }
@@ -3071,10 +3027,10 @@ function renderOverview(){
   }
 
   const keypoints=[];
-  keypoints.push(invalidityPct>=80?'�� Invalidité plutôt bien couverte':invalidityPct>=65?'�� Invalidité à surveiller':'�� Invalidité à renforcer');
-  if(deathScenarios.length)keypoints.push(deathPct>=80?'�� Décès plutôt bien couvert':deathPct>=65?'�� Décès à surveiller':'�� Décès à renforcer');
-  keypoints.push(retPct>=75?'�� Retraite relativement équilibrée':retPct>=60?'�� Retraite à préparer':'�� Retraite à renforcer');
-  if(c.owner)keypoints.push(retirementReduction<=0?'�� Logement viable à la retraite':'�� Amortissement à préparer');
+  keypoints.push(invalidityPct>=80?'🟢 Invalidité plutôt bien couverte':invalidityPct>=65?'🟠 Invalidité à surveiller':'🔴 Invalidité à renforcer');
+  if(deathScenarios.length)keypoints.push(deathPct>=80?'🟢 Décès plutôt bien couvert':deathPct>=65?'🟠 Décès à surveiller':'🔴 Décès à renforcer');
+  keypoints.push(retPct>=75?'🟢 Retraite relativement équilibrée':retPct>=60?'🟠 Retraite à préparer':'🔴 Retraite à renforcer');
+  if(c.owner)keypoints.push(retirementReduction<=0?'🟢 Logement viable à la retraite':'🟠 Amortissement à préparer');
   $('#overviewKeypoints').innerHTML=keypoints.map(x=>`<span class="overview-keypoint">${x}</span>`).join('');
   const conclusions=[];
   if(invalidityPct<80)conclusions.push('renforcer la protection du revenu en cas d’invalidité');
@@ -3114,7 +3070,7 @@ function render(){
 
  $('#sideName').textContent=c.name;
  $('#sideSub').textContent=`${c.age1} ans · ${c.status}`;
- $('#hello').textContent=c.status==='Célibataire'?`Bonjour ${c.firstName1} ��`:`Bonjour ${c.firstName1} et ${c.firstName2} ��`;
+ $('#hello').textContent=c.status==='Célibataire'?`Bonjour ${c.firstName1} 👋`:`Bonjour ${c.firstName1} et ${c.firstName2} 👋`;
  refreshPersonNames();
  $('#concernTitle').textContent=co.title;
  $('#humanIntro').textContent=co.intro;
@@ -4344,7 +4300,7 @@ function renderHome(){
    $('#noHome').innerHTML=
      `<div class="home-project-card">`+
        `<div class="home-project-head">`+
-         `<div class="home-project-icon">��</div>`+
+         `<div class="home-project-icon">🏠</div>`+
          `<div><div class="eyebrow">Projet de vie · Devenir propriétaire</div>`+
          `<h3>Quel logement pourriez-vous théoriquement envisager ?</h3>`+
          `<div class="tiny muted">Première estimation à partir de votre revenu brut actuel.</div></div>`+
@@ -4610,37 +4566,6 @@ window.addEventListener('unhandledrejection',event=>{
   console.error('PrevIA — promesse rejetée :',event.reason);
 });
 
-
-const contactForm=document.getElementById('contactForm');
-if(contactForm){
-  contactForm.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const status=document.getElementById('contactStatus');
-    const submit=document.getElementById('contactSubmit');
-    const firstName=document.getElementById('contactFirstName').value.trim();
-    const lastName=document.getElementById('contactLastName').value.trim();
-    const email=document.getElementById('contactEmail').value.trim();
-    const subject=document.getElementById('contactSubject').value.trim();
-    const message=document.getElementById('contactMessage').value.trim();
-    const privacy=document.getElementById('contactPrivacy').checked;
-    const website=document.getElementById('contactWebsite').value.trim();
-    const showStatus=(text,type)=>{status.textContent=text;status.className=`contact-status show ${type}`};
-    if(!firstName||!lastName||!email||!subject||!message||!privacy){showStatus('Merci de compléter tous les champs et de confirmer la déclaration de protection des données.','error');return;}
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showStatus('Merci d’indiquer une adresse e-mail valide.','error');return;}
-    submit.disabled=true;submit.textContent='Envoi en cours…';
-    try{
-      const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName,lastName,email,subject,message,privacy,website})});
-      const result=await response.json().catch(()=>({}));
-      if(!response.ok)throw new Error(result.error||'Envoi impossible');
-      contactForm.reset();
-      showStatus('Votre demande a bien été transmise.','ok');
-    }catch(err){
-      console.error('PrevIA contact:',err);
-      showStatus('La demande n’a pas pu être envoyée pour le moment. Merci de réessayer ultérieurement.','error');
-    }finally{submit.disabled=false;submit.textContent='Envoyer ma demande';}
-  });
-}
-
 bindSwissMoneyInputs();
 refreshPersonNames();
 updateFamily();
@@ -4668,5 +4593,17 @@ applyAccessRole(accessRole,false);
 
 const upgradeBtn=document.getElementById('upgradeAnalysisBtn');
 if(upgradeBtn){upgradeBtn.addEventListener('click',()=>{const old=upgradeBtn.textContent;upgradeBtn.textContent='Module d’importation bientôt disponible';upgradeBtn.disabled=true;setTimeout(()=>{upgradeBtn.textContent=old;upgradeBtn.disabled=false;},2600);});}
+
+
+async function submitPreviaContact(event){
+ event.preventDefault();const form=event.currentTarget,status=document.getElementById('contactStatus'),button=document.getElementById('contactSubmit');
+ const payload={firstName:(form.firstName?.value||'').trim(),lastName:(form.lastName?.value||'').trim(),email:(form.email?.value||'').trim(),subject:(form.subject?.value||'').trim(),message:(form.message?.value||'').trim(),consent:!!form.consent?.checked};
+ if(!payload.firstName||!payload.lastName||!payload.email||!payload.subject||!payload.message||!payload.consent){status.className='contact-status error';status.textContent='Merci de compléter tous les champs et de confirmer la protection des données.';return}
+ button.disabled=true;status.className='contact-status';status.textContent='Envoi en cours…';
+ try{const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Envoi impossible');form.reset();status.className='contact-status ok';status.textContent='Votre demande a bien été transmise.'}
+ catch(error){status.className='contact-status error';status.textContent='La demande n’a pas pu être envoyée pour le moment. Merci de réessayer ultérieurement.'}
+ finally{button.disabled=false}
+}
+document.getElementById('contactForm')?.addEventListener('submit',submitPreviaContact);
 
 </script></body></html>
