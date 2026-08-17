@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.19.5 — Prototype interactif</title>
+<title>PrevIA V9.20.0 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -145,7 +145,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 
 
-/* V9.19.5 — évolution long terme : personne touchée puis vue ménage */
+/* V9.20.0 — évolution long terme : personne touchée puis vue ménage */
 .evo-person-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
 .evo-person-summary>div{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}
 .evo-person-summary span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:5px}
@@ -180,7 +180,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .analysis-upgrade-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:9px 13px;border-radius:10px;background:#6d4ce8;color:#fff;font-size:11px;font-weight:900;text-decoration:none;border:0;cursor:pointer}.reliability-chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 8px;border-radius:999px;background:#fff3e8;color:#9a3412;font-size:10px;font-weight:900}
 @media(max-width:700px){.analysis-upgrade{grid-template-columns:1fr}}
 
-/* V9.19.5 — lecture visuelle des priorités */
+/* V9.20.0 — lecture visuelle des priorités */
 .summary-signal{border-width:2px!important;transition:border-color .2s,box-shadow .2s}
 .summary-signal.signal-green{border-color:#56b881!important;box-shadow:0 10px 28px rgba(39,139,87,.12)}
 .summary-signal.signal-orange{border-color:#e8a345!important;box-shadow:0 10px 28px rgba(196,122,22,.12)}
@@ -206,7 +206,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.investment-plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.investment-plan-grid{grid-template-columns:1fr}}
 
-/* V9.19.5 — graphiques plus lisibles */
+/* V9.20.0 — graphiques plus lisibles */
 .life-chart{gap:44px!important;min-width:1040px!important}
 .life-period{min-width:155px!important}
 .life-column{width:68%!important;max-width:150px;margin-inline:auto}
@@ -232,7 +232,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 
 @media(max-width:800px){.recommendation-grid{grid-template-columns:1fr}.life-chart{min-width:920px!important}}
 
-/* V9.19.5 — accueil rassurant et saisie suisse */
+/* V9.20.0 — accueil rassurant et saisie suisse */
 .home-hero{position:relative;min-height:570px;padding:0;overflow:hidden;background:#0e1835}
 .home-hero-copy{position:absolute;left:34px;bottom:34px;z-index:3;width:min(500px,calc(100% - 68px));padding:24px 26px;border-radius:20px;background:rgba(255,255,255,.93);box-shadow:0 18px 50px rgba(9,19,45,.24);backdrop-filter:blur(14px)}
 .home-hero-copy h1{font-size:36px;line-height:1.08;max-width:450px;margin:9px 0 14px}
@@ -252,7 +252,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .event-chart-summary .summary-item span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;margin-bottom:4px}
 .event-chart-summary .summary-item b{font-size:16px}
 
-/* V9.19.5 — couleurs dynamiques des taux de couverture */
+/* V9.20.0 — couleurs dynamiques des taux de couverture */
 .coverage-card{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .coverage-card.coverage-good{border:2px solid #45b978;background:linear-gradient(180deg,#fff,#f4fcf7)}
 .coverage-card.coverage-watch{border:2px solid #e5a23b;background:linear-gradient(180deg,#fff,#fff9ef)}
@@ -264,10 +264,10 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .life-chart.event-focused .life-segment{font-size:10px}
 @media(max-width:700px){.event-chart-summary{grid-template-columns:1fr}.life-chart.event-focused{min-width:700px}}
 
-/* V9.19.5 — rôles et accès */
+/* V9.20.0 — rôles et accès */
 
 
-/* V9.19.5 — ligne de vie épurée, entièrement visible */
+/* V9.20.0 — ligne de vie épurée, entièrement visible */
 .life-timeline-card{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px 18px;box-shadow:0 10px 28px #18274409;overflow:hidden}
 .life-timeline-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}
 .life-timeline-head h3{margin:2px 0 5px}
@@ -335,7 +335,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   .home-project-grid{grid-template-columns:1fr}
 }
 
-/* V9.19.5 — projets de vie sans échéance */
+/* V9.20.0 — projets de vie sans échéance */
 .life-timeline{height:355px}
 .life-projects-zone{position:absolute;left:18%;right:18%;top:205px;padding:10px 12px 12px;border-radius:15px;background:linear-gradient(180deg,#fbfbff,#fff);border:1px dashed #dfe2ee}
 .life-projects-zone-title{text-align:center;font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:#7a8497;font-weight:900;margin-bottom:8px}
@@ -347,7 +347,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:900px){.life-projects-zone{left:12%;right:12%}}
 @media(max-width:700px){.life-timeline{height:auto}.life-projects-zone{position:relative;left:auto;right:auto;top:auto;margin:10px 0 15px}.life-projects-list{justify-content:flex-start}}
 
-/* V9.19.5 — projet immobilier simplifié */
+/* V9.20.0 — projet immobilier simplifié */
 .home-project-grid.home-project-simplified{grid-template-columns:repeat(3,minmax(0,1fr))}
 .home-project-stat.highlight-equity{border-color:#cfd3ff;background:#f8f8ff}
 .home-project-stat.highlight-cash{border-color:#d8e8de;background:#f7fcf8}
@@ -359,7 +359,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 @media(max-width:600px){.home-project-grid.home-project-simplified{grid-template-columns:1fr}}
 
 
-/* V9.19.5 — ligne de vie : événements séparés + projets en zone dédiée */
+/* V9.20.0 — ligne de vie : événements séparés + projets en zone dédiée */
 .life-timeline-card{overflow:visible}
 .life-timeline-scroll{overflow:visible}
 .life-timeline{position:relative;width:100%;height:455px;margin:0}
@@ -420,7 +420,7 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
   .life-projects-list{justify-content:flex-start}
 }
 
-/* V9.19.5 — aperçu narratif : hiérarchie visuelle */
+/* V9.20.0 — aperçu narratif : hiérarchie visuelle */
 .overview-hero{background:linear-gradient(120deg,#eef0ff,#fff 62%,#edf7ff);border:1px solid #dfe3f2;border-radius:20px;padding:26px;box-shadow:0 12px 35px #1827440d}
 .overview-intro{font-size:19px;line-height:1.68;max-width:1040px;margin:8px 0 0;color:#36506f}
 .overview-intro p{margin:0 0 12px}
@@ -429,6 +429,13 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .overview-intro .overview-priority{margin-top:14px;padding:12px 14px;border-radius:13px;background:#f7f9fc;border:1px solid #e1e7ef}
 .overview-intro .overview-priority.critical,
 .overview-intro .overview-priority.good{background:#f7f9fc;border-color:#e1e7ef}
+.overview-intro .overview-bullets{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.overview-intro .overview-bullets li{position:relative;padding:13px 16px 13px 42px;border:1px solid #e1e7ef;border-radius:13px;background:#fff;color:#172033;font-size:17px;line-height:1.5}
+.overview-intro .overview-bullets li::before{content:"•";position:absolute;left:18px;top:8px;font-size:28px;line-height:1;color:#172033}
+.overview-intro .overview-bullets b,.overview-intro .overview-bullets strong{color:#172033!important;font-weight:800}
+.overview-intro .overview-bullets .overview-domain{color:#172033!important;font-weight:900}
+.overview-intro .overview-bullets .overview-status{color:#172033!important;font-weight:700}
+.overview-intro .overview-lead{color:#44546a;font-size:18px;line-height:1.55;margin-bottom:8px}
 .overview-status{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:10px}
 .overview-status.good{background:#eaf8ef;color:#278b57}.overview-status.watch{background:#fff4e4;color:#b66b0b}.overview-status.risk{background:#fff0ef;color:#c94e49}
 .overview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:15px}
@@ -452,11 +459,32 @@ label{font-size:12px;font-weight:750;color:#566177;display:block;margin-bottom:6
 .overview-retain b{color:#fff}.overview-retain p{color:#eef2ff!important}
 @media(max-width:800px){.overview-grid{grid-template-columns:1fr}.overview-intro{font-size:17px}}
 
+.legal-shell,.contact-shell{max-width:980px;margin:0 auto}
+.legal-card,.contact-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 12px 36px #1827440d}
+.legal-card h2,.contact-card h2{margin:0 0 8px;color:#17223d}
+.legal-card h3{margin:24px 0 8px;color:#253b64;font-size:18px}
+.legal-card p,.legal-card li,.contact-card p{color:#556176;line-height:1.65}
+.legal-card ul{padding-left:20px}
+.legal-notice{padding:14px 16px;border:1px solid #e4e8f1;border-radius:14px;background:#f8f9fc;margin:14px 0}
+.legal-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-grid .full{grid-column:1/-1}
+.contact-grid textarea{min-height:150px;resize:vertical}
+.contact-consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;color:#556176;font-size:13px;line-height:1.5}
+.contact-consent input{margin-top:3px;width:auto}
+.contact-status{margin-top:12px;padding:11px 13px;border-radius:12px;display:none}
+.contact-status.show{display:block}
+.contact-status.ok{background:#eef9f2;border:1px solid #ccebd8;color:#246b45}
+.contact-status.error{background:#fff2f1;border:1px solid #efc8c5;color:#9b332f}
+.legal-mini{font-size:12px;color:#778196;margin-top:12px}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}.contact-grid .full{grid-column:auto}.legal-card,.contact-card{padding:18px}}
+
+
 .access-panel{margin-top:14px;padding:12px;border:1px solid #ffffff1f;border-radius:13px;background:#ffffff0d}
 .access-panel label{color:#fff;font-size:10px;opacity:.8;margin-bottom:5px}
 .access-panel select{padding:8px 9px;background:#fff;color:#17223d;border:0}
 .access-panel small{display:block;margin-top:7px;color:#d8def3;line-height:1.35}
-.nav.premium-locked::after{content:"🔒";float:right;font-size:11px}
+.nav.premium-locked::after{content:"��";float:right;font-size:11px}
 .nav.partner-only.hidden-role{display:none!important}
 .role-badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
 .role-free{background:#fff3e8;color:#9a3412}.role-client{background:#eaf8ef;color:#278b57}.role-admin{background:#eef0ff;color:#5058c6}.role-partner{background:#eaf4fb;color:#2879b8}
@@ -474,7 +502,7 @@ body.role-client .report-btn{display:inline-flex}
 
 .ret-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.ret-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:850;cursor:pointer;color:#59637a}.ret-tab.active{background:#5b5be9;color:#fff;border-color:#5b5be9}.early-panel{display:none}.early-panel.active{display:block}.early-slider{width:100%;accent-color:#5b5be9}.early-age{font-size:42px;font-weight:950;color:#17223d}.early-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.early-kpi{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff}.early-kpi span{display:block;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.early-kpi b{display:block;font-size:20px;margin-top:5px;color:#17223d}.loss{color:#c94e49!important}.gain{color:#278b57!important}.early-person{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfcff}.early-person h3{margin-bottom:4px}.early-person.disabled{opacity:.6}.early-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:800}.early-break-even{padding:14px;border-radius:13px;background:#f4f1ff;border:1px solid #ded8ff;margin-top:12px}@media(max-width:900px){.early-kpis{grid-template-columns:1fr 1fr}}@media(max-width:560px){.early-kpis{grid-template-columns:1fr}}
 
-/* V9.19.5 — navigation par personne puis par événement */
+/* V9.20.0 — navigation par personne puis par événement */
 .person-scenario-nav{margin:14px 0 16px}
 .person-switch{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:10px}
 .person-switch button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font-weight:900;color:#59637a;min-width:110px}
@@ -491,8 +519,8 @@ body.role-client .report-btn{display:inline-flex}
 
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.19.5</small></div><nav>
-<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button></nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.20.0</small></div><nav>
+<button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button><button class="nav" data-s="contact">Contact</button><button class="nav" data-s="legal">Informations légales</button><button class="nav" data-s="privacy">Protection des données</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
   <select id="accessRole">
@@ -509,7 +537,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.19.5</div>
+      <div class="eyebrow">PrevIA V9.20.0</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -527,10 +555,10 @@ body.role-client .report-btn{display:inline-flex}
 <section id="form" class="screen"><div class="top"><div><div class="eyebrow">Analyse rapide gratuite</div><h1>Quelle question souhaitez-vous résoudre ?</h1><p class="muted">Choisissez votre préoccupation principale. Le questionnaire reste volontairement simple.</p></div></div>
 <div class="card"><div class="choicegrid" id="choices">
 <button class="choice active" data-concern="family"><span style="font-size:27px">❤️</span><b>Protéger ma famille</b><small class="muted">Décès, invalidité, revenus du ménage</small></button>
-<button class="choice" data-concern="home"><span style="font-size:27px">🏠</span><b>Conserver mon logement</b><small class="muted">Aujourd'hui et dans les coups durs</small></button>
-<button class="choice" data-concern="retirement"><span style="font-size:27px">🌅</span><b>Préparer ma retraite</b><small class="muted">Revenus et niveau de vie futur</small></button>
-<button class="choice" data-concern="tax"><span style="font-size:27px">💰</span><b>Réduire mes impôts</b><small class="muted">3e pilier et économie fiscale</small></button>
-<button class="choice" data-concern="wealth"><span style="font-size:27px">📈</span><b>Développer mon patrimoine</b><small class="muted">Épargne et investissement</small></button>
+<button class="choice" data-concern="home"><span style="font-size:27px">��</span><b>Conserver mon logement</b><small class="muted">Aujourd'hui et dans les coups durs</small></button>
+<button class="choice" data-concern="retirement"><span style="font-size:27px">��</span><b>Préparer ma retraite</b><small class="muted">Revenus et niveau de vie futur</small></button>
+<button class="choice" data-concern="tax"><span style="font-size:27px">��</span><b>Réduire mes impôts</b><small class="muted">3e pilier et économie fiscale</small></button>
+<button class="choice" data-concern="wealth"><span style="font-size:27px">��</span><b>Développer mon patrimoine</b><small class="muted">Épargne et investissement</small></button>
 </div></div>
 <div class="card" style="margin-top:15px">
 <h2>Votre situation</h2>
@@ -625,19 +653,19 @@ body.role-client .report-btn{display:inline-flex}
     </div>
 
     <div class="overview-card">
-      <div class="overview-heading"><span class="overview-icon retirement">🌅</span><h3>Votre retraite</h3></div>
+      <div class="overview-heading"><span class="overview-icon retirement">��</span><h3>Votre retraite</h3></div>
       <p id="overviewRetirement"></p>
       <div class="overview-link"><button class="btn" data-s="retraite">Voir le détail retraite →</button></div>
     </div>
 
     <div class="overview-card">
-      <div class="overview-heading"><span class="overview-icon home">🏠</span><h3>Votre logement</h3></div>
+      <div class="overview-heading"><span class="overview-icon home">��</span><h3>Votre logement</h3></div>
       <p id="overviewHome"></p>
       <div class="overview-link"><button class="btn" data-s="immobilier">Voir le détail logement →</button></div>
     </div>
 
     <div class="overview-card">
-      <div class="overview-heading"><span class="overview-icon tax">💰</span><h3>Votre prévoyance et vos impôts</h3></div>
+      <div class="overview-heading"><span class="overview-icon tax">��</span><h3>Votre prévoyance et vos impôts</h3></div>
       <p id="overviewTax"></p>
       <div class="overview-link"><button class="btn" data-s="fiscalite">Voir le détail fiscalité →</button></div>
     </div>
@@ -667,12 +695,12 @@ body.role-client .report-btn{display:inline-flex}
     <p class="muted tiny">Les montants ci-dessous sont des premières estimations. Ils doivent être confirmés avec les certificats LPP, contrats, règlements et données fiscales personnelles.</p>
   </div>
   <div class="recommendation-grid">
-    <div class="card recommendation-card"><div class="recommendation-icon">🛡️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à compléter selon les lacunes constatées.</p><div class="recommendation-list" id="recProtection"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">🌅</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et réserve de sécurité.</p><div class="recommendation-list" id="recRetirement"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">🏠</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-list" id="recHome"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">💰</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-list" id="recTax"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">📈</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement et niveau de risque cohérents avec l’onglet Logement.</p><div class="recommendation-list" id="recInvestment"></div></div>
-    <div class="card recommendation-card"><div class="recommendation-icon">📋</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-list" id="recAdmin"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">��️</div><div class="eyebrow">Protection de la famille</div><h3>Décès et invalidité</h3><p class="muted">Couvertures à compléter selon les lacunes constatées.</p><div class="recommendation-list" id="recProtection"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Retraite</div><h3>Capital et revenu futur</h3><p class="muted">Épargne, rachats LPP, remboursement EPL et réserve de sécurité.</p><div class="recommendation-list" id="recRetirement"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Logement</div><h3>Amortissement et viabilité</h3><p class="muted">Capital à constituer afin de conserver un financement supportable.</p><div class="recommendation-list" id="recHome"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Fiscalité</div><h3>Optimisation de la prévoyance</h3><p class="muted">Potentiel 3a, économie d’impôt et effort d’épargne net.</p><div class="recommendation-list" id="recTax"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Investissement</div><h3>Stratégie et effort mensuel</h3><p class="muted">Horizon, rendement et niveau de risque cohérents avec l’onglet Logement.</p><div class="recommendation-list" id="recInvestment"></div></div>
+    <div class="card recommendation-card"><div class="recommendation-icon">��</div><div class="eyebrow">Actions administratives</div><h3>Documents et bénéficiaires</h3><p class="muted">Règlements LPP, bénéficiaires, concubinage et documents à contrôler.</p><div class="recommendation-list" id="recAdmin"></div></div>
   </div>
 </section>
 
@@ -858,7 +886,7 @@ body.role-client .report-btn{display:inline-flex}
 
 <section id="locked" class="screen">
   <div class="paywall">
-    <div class="paywall-icon">🔒</div>
+    <div class="paywall-icon">��</div>
     <div class="eyebrow">Analyse complète</div>
     <h2>Cette partie est réservée à l’analyse complète</h2>
     <p class="muted" id="lockedText">Débloquez les résultats détaillés, les projections et les recommandations personnalisées.</p>
@@ -867,6 +895,76 @@ body.role-client .report-btn{display:inline-flex}
       <button class="btn" data-s="dashboard">Retour à la synthèse</button>
     </div>
     <p class="tiny muted" style="margin-top:14px">Prototype : le paiement sera relié ultérieurement au passage du rôle FREE vers CLIENT.</p>
+  </div>
+</section>
+
+
+<section id="contact" class="screen">
+  <div class="contact-shell">
+    <div class="top"><div><div class="eyebrow">Contact</div><h1>Comment pouvons-nous vous aider ?</h1><p class="muted">Envoyez votre demande directement depuis PrevIA.</p></div></div>
+    <div class="contact-card">
+      <form id="contactForm" novalidate>
+        <div class="contact-grid">
+          <div><label for="contactFirstName">Prénom</label><input id="contactFirstName" name="firstName" type="text" maxlength="80" autocomplete="given-name" required></div>
+          <div><label for="contactLastName">Nom</label><input id="contactLastName" name="lastName" type="text" maxlength="80" autocomplete="family-name" required></div>
+          <div class="full"><label for="contactEmail">Adresse e-mail</label><input id="contactEmail" name="email" type="email" maxlength="160" autocomplete="email" required></div>
+          <div class="full"><label for="contactSubject">Sujet</label><select id="contactSubject" name="subject" required><option value="">Sélectionner un sujet</option><option>Question sur mon analyse</option><option>Question sur la prévoyance</option><option>Problème technique</option><option>Partenariat / professionnel</option><option>Protection des données</option><option>Autre demande</option></select></div>
+          <div class="full"><label for="contactMessage">Message</label><textarea id="contactMessage" name="message" maxlength="5000" placeholder="Décrivez votre demande…" required></textarea></div>
+        </div>
+        <label class="contact-consent"><input id="contactPrivacy" type="checkbox" required><span>J’ai pris connaissance de la <button type="button" class="linklike" data-s="privacy">Déclaration de protection des données</button> et j’accepte que les informations saisies soient traitées afin de répondre à ma demande.</span></label>
+        <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
+        <button class="btn primary" id="contactSubmit" type="submit">Envoyer ma demande</button>
+        <div id="contactStatus" class="contact-status" role="status" aria-live="polite"></div>
+        <p class="legal-mini">Les informations du formulaire sont utilisées uniquement pour traiter votre demande. Elles sont transmises au service de messagerie utilisé par PrevIA pour l’envoi et la réception du message.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="legal" class="screen">
+  <div class="legal-shell">
+    <div class="top"><div><div class="eyebrow">Informations légales</div><h1>Informations importantes sur les estimations PrevIA</h1></div></div>
+    <div class="legal-card">
+      <div class="legal-notice"><b>PrevIA est un outil d’information et de simulation.</b> Les résultats affichés ne remplacent pas les décisions, certificats, règlements ou calculs officiels des institutions compétentes.</div>
+      <p>Les calculs effectués dans les outils de prévoyance, de retraite, d’invalidité, de décès, de logement et de fiscalité de PrevIA sont des <b>modèles et estimations</b>. Ils résultent des paramètres saisis par l’utilisateur, de règles intégrées dans l’application ainsi que d’hypothèses et de valeurs indicatives non individualisées.</p>
+      <p>Certains paramètres peuvent ne pas être pris en considération, être inconnus ou ne pas correspondre exactement à votre situation. Ils peuvent modifier de manière significative le résultat. Les prestations réelles doivent être confirmées notamment au moyen des documents officiels applicables : extrait de compte AVS, décisions AVS/AI, certificat et règlement de prévoyance LPP, polices d’assurance, documents fiscaux et décisions des institutions compétentes.</p>
+      <p>Toutes les informations sont fournies <b>à titre indicatif et sans garantie</b> quant à leur exactitude, exhaustivité, actualité ou évolution future. Elles ne constituent ni une offre, ni une promesse de prestation, ni un conseil juridique, fiscal, financier, bancaire ou d’assurance personnalisé. Aucune prétention contractuelle ou extracontractuelle ne peut être fondée sur les seules estimations générées par PrevIA, sous réserve des dispositions impératives du droit applicable.</p>
+      <h3>Méthodologie</h3>
+      <p>Lorsque les données réelles d’une institution ne sont pas disponibles, PrevIA peut utiliser des paramètres légaux minimaux, des hypothèses prudentes ou des méthodes simplifiées. Les écrans concernés signalent, lorsque cela est pertinent, que le résultat doit être confirmé au moyen des documents personnels de l’utilisateur.</p>
+      <div class="legal-links"><button class="btn" data-s="privacy">Protection des données</button><button class="btn" data-s="contact">Contact</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" class="screen">
+  <div class="legal-shell">
+    <div class="top"><div><div class="eyebrow">Protection des données</div><h1>Déclaration de protection des données</h1><p class="muted">Version adaptée au prototype PrevIA.</p></div></div>
+    <div class="legal-card">
+      <div class="legal-notice"><b>Principe :</b> PrevIA limite le traitement des données aux informations nécessaires au fonctionnement de l’application et aux services demandés par l’utilisateur.</div>
+      <h3>1. Cadre légal</h3>
+      <p>Le traitement des données personnelles est conçu conformément à la Loi fédérale suisse sur la protection des données (LPD) et à ses dispositions d’exécution applicables. Lorsque d’autres réglementations sont applicables en raison du lieu où le service est proposé ou utilisé, leurs exigences doivent également être prises en compte.</p>
+      <h3>2. Responsable du traitement</h3>
+      <p>Le responsable du traitement est l’éditeur de PrevIA. Les demandes relatives aux données personnelles peuvent être adressées au moyen de l’onglet <b>Contact</b>. L’identité juridique complète et les coordonnées officielles du responsable doivent être publiées avant la mise en production commerciale du service.</p>
+      <h3>3. Données pouvant être traitées</h3>
+      <p>Selon les fonctionnalités utilisées, PrevIA peut traiter les informations saisies dans les questionnaires et simulations, notamment des données d’identité, de situation familiale, professionnelle, financière, de prévoyance, de logement et de fiscalité, ainsi que les informations communiquées dans le formulaire de contact ou dans des documents importés.</p>
+      <h3>4. Finalités</h3>
+      <p>Les données sont traitées afin de fournir les simulations et analyses demandées, afficher les résultats, générer les fonctionnalités choisies, permettre le suivi technique du service, répondre aux demandes de contact et assurer la sécurité et le bon fonctionnement de l’application.</p>
+      <h3>5. Conservation</h3>
+      <p>PrevIA applique un principe de minimisation. La durée de conservation dépend de la fonctionnalité utilisée. Les données qui ne sont pas nécessaires à une conservation durable doivent être supprimées ou anonymisées dès que leur conservation n’est plus nécessaire. Les messages envoyés via le formulaire de contact peuvent être conservés dans les systèmes de messagerie pendant la durée nécessaire au traitement et au suivi de la demande.</p>
+      <h3>6. Prestataires techniques et destinataires</h3>
+      <p>Des prestataires techniques peuvent intervenir pour l’hébergement, l’envoi d’e-mails, la sécurité, la génération de documents ou d’autres fonctions nécessaires au service. Ils ne doivent recevoir que les données nécessaires à la prestation concernée et doivent être encadrés par des mesures contractuelles et techniques appropriées. Les données ne sont pas utilisées à des fins incompatibles avec les finalités annoncées.</p>
+      <h3>7. Transferts à l’étranger</h3>
+      <p>Si un prestataire traite des données dans un pays autre que la Suisse, le traitement doit respecter les exigences légales applicables aux communications de données à l’étranger, notamment en matière de niveau de protection adéquat ou de garanties appropriées.</p>
+      <h3>8. Sécurité et protection dès la conception</h3>
+      <p>PrevIA vise à appliquer les principes de protection des données dès la conception et par défaut, de proportionnalité et de minimisation, ainsi que des mesures techniques et organisationnelles adaptées au risque.</p>
+      <h3>9. Vos droits</h3>
+      <p>Dans les limites prévues par le droit applicable, une personne concernée peut notamment demander des informations sur les données la concernant, leur rectification ou leur suppression, ainsi que faire valoir les autres droits prévus par la législation applicable. Les demandes peuvent être adressées via l’onglet Contact.</p>
+      <h3>10. Formulaire de contact</h3>
+      <p>Lorsque vous utilisez le formulaire Contact, le prénom, le nom, l’adresse e-mail, le sujet et le message sont transmis afin de répondre à la demande. Ces informations peuvent transiter par un prestataire de messagerie. Elles ne doivent pas être utilisées pour une finalité différente sans information ou base juridique appropriée.</p>
+      <h3>11. Évolution de la présente déclaration</h3>
+      <p>Cette déclaration peut être adaptée lorsque les fonctionnalités, prestataires ou exigences légales évoluent. La version publiée dans PrevIA est la version applicable au moment de la consultation.</p>
+      <div class="legal-links"><button class="btn" data-s="contact">Contact</button><button class="btn" data-s="legal">Informations légales</button></div>
+    </div>
   </div>
 </section>
 
@@ -1116,8 +1214,8 @@ function generatePdfReport(){
  const footer=n=>`<div class="report-footer"><span>PrevIA · Analyse indicative à confirmer avec vos documents</span><span>${n}</span></div>`;
  const report=`<div class="report-shell">
  <section class="report-page report-cover"><div class="report-brand">✦ PrevIA<small>Votre copilote financier intelligent</small></div><div><div class="report-section-label" style="color:#cdd6ff">Rapport personnel</div><h1 class="report-cover-title">Comprendre aujourd’hui ce que demain pourrait changer.</h1><p class="report-cover-sub">Une lecture simple de votre protection familiale, de votre retraite, de votre logement et de votre prévoyance.</p><div class="report-client" style="margin-top:24px"><b>${esc(c.name)}</b><span>Analyse générée le ${generated}</span></div></div>${footer(1)}</section>
- <section class="report-page"><div class="report-section-label">Votre aperçu</div><h2 class="report-title">Votre situation en quelques mots</h2><p class="report-lead">${esc(txt('overviewIntro'))}</p><div class="report-grid"><div class="report-card"><h3>❤️ Votre famille</h3><p>${esc(txt('overviewFamily'))}</p></div><div class="report-card"><h3>🌅 Votre retraite</h3><p>${esc(txt('overviewRetirement'))}</p></div><div class="report-card"><h3>🏠 Votre logement</h3><p>${esc(txt('overviewHome'))}</p></div><div class="report-card"><h3>💰 Prévoyance & fiscalité</h3><p>${esc(txt('overviewTax'))}</p></div></div><div class="report-callout" style="margin-top:16px"><b>Ce qu’il faut retenir</b><br>${esc(txt('overviewConclusion'))}</div>${footer(2)}</section>
- <section class="report-page"><div class="report-section-label">Les éléments essentiels</div><h2 class="report-title">Vos principaux indicateurs</h2><div class="report-kpis"><div class="report-kpi"><span>Revenu actuel</span><b>${fmt(c.totalIncome)}</b></div><div class="report-kpi"><span>Retraite prévue</span><b>${fmt(ret)}</b></div><div class="report-kpi"><span>Taux de remplacement</span><b>${pct.toFixed(0)} %</b></div><div class="report-kpi"><span>Épargne disponible</span><b>${fmt(c.savings)}</b></div></div><div class="report-grid"><div class="report-card"><h3>🌅 Retraite</h3><div class="big">${fmt(ret/12)}/mois</div><p>Revenu mensuel moyen estimé.</p></div><div class="report-card"><h3>🏠 Logement</h3><div class="big">${c.owner?fmt(reduction):'Non applicable'}</div><p>${c.owner&&reduction>0?`Effort indicatif : ${fmt(monthly)}/mois sur ${years} ans, stratégie ${esc(strategy.name)}.`:'Aucun besoin spécifique identifié.'}</p></div><div class="report-card"><h3>💰 Potentiel 3a restant</h3><div class="big">${fmt(tax.potential.additionalTotal||0)}</div><p>Potentiel estimé selon les informations renseignées.</p></div><div class="report-card"><h3>📌 Statut</h3><div class="big">Analyse complète</div><p>Résultats à confirmer avec vos documents personnels.</p></div></div>${footer(3)}</section>
+ <section class="report-page"><div class="report-section-label">Votre aperçu</div><h2 class="report-title">Votre situation en quelques mots</h2><p class="report-lead">${esc(txt('overviewIntro'))}</p><div class="report-grid"><div class="report-card"><h3>❤️ Votre famille</h3><p>${esc(txt('overviewFamily'))}</p></div><div class="report-card"><h3>�� Votre retraite</h3><p>${esc(txt('overviewRetirement'))}</p></div><div class="report-card"><h3>�� Votre logement</h3><p>${esc(txt('overviewHome'))}</p></div><div class="report-card"><h3>�� Prévoyance & fiscalité</h3><p>${esc(txt('overviewTax'))}</p></div></div><div class="report-callout" style="margin-top:16px"><b>Ce qu’il faut retenir</b><br>${esc(txt('overviewConclusion'))}</div>${footer(2)}</section>
+ <section class="report-page"><div class="report-section-label">Les éléments essentiels</div><h2 class="report-title">Vos principaux indicateurs</h2><div class="report-kpis"><div class="report-kpi"><span>Revenu actuel</span><b>${fmt(c.totalIncome)}</b></div><div class="report-kpi"><span>Retraite prévue</span><b>${fmt(ret)}</b></div><div class="report-kpi"><span>Taux de remplacement</span><b>${pct.toFixed(0)} %</b></div><div class="report-kpi"><span>Épargne disponible</span><b>${fmt(c.savings)}</b></div></div><div class="report-grid"><div class="report-card"><h3>�� Retraite</h3><div class="big">${fmt(ret/12)}/mois</div><p>Revenu mensuel moyen estimé.</p></div><div class="report-card"><h3>�� Logement</h3><div class="big">${c.owner?fmt(reduction):'Non applicable'}</div><p>${c.owner&&reduction>0?`Effort indicatif : ${fmt(monthly)}/mois sur ${years} ans, stratégie ${esc(strategy.name)}.`:'Aucun besoin spécifique identifié.'}</p></div><div class="report-card"><h3>�� Potentiel 3a restant</h3><div class="big">${fmt(tax.potential.additionalTotal||0)}</div><p>Potentiel estimé selon les informations renseignées.</p></div><div class="report-card"><h3>�� Statut</h3><div class="big">Analyse complète</div><p>Résultats à confirmer avec vos documents personnels.</p></div></div>${footer(3)}</section>
  <section class="report-page"><div class="report-section-label">Vos pistes d’optimisation</div><h2 class="report-title">Votre plan d’action</h2><p class="report-lead">Les pistes suivantes ressortent de votre analyse et servent de base de réflexion.</p>${recs.length?recs.map(r=>`<div class="report-action"><div class="report-num">${r.i}</div><div>${esc(r.text)}</div></div>`).join(''):'<div class="report-callout">Aucune recommandation spécifique générée.</div>'}${footer(4)}</section>
  <section class="report-page"><div class="report-section-label">Informations importantes</div><h2 class="report-title">À propos de cette analyse</h2><div class="report-callout">PrevIA fournit une première estimation pédagogique. Les prestations réelles, la fiscalité et la capacité hypothécaire peuvent différer selon les documents, règlements, commune fiscale et conditions de financement.</div><p class="report-disclaimer" style="margin-top:18px">Ce rapport ne constitue ni une garantie de prestations, ni une décision de financement, ni un conseil juridique, fiscal ou financier personnalisé. Les résultats doivent être confirmés avec les documents correspondants.</p>${footer(5)}</section></div>`;
  const w=window.open('','_blank');if(!w)return alert('Votre navigateur a bloqué l’ouverture du rapport.');const css=[...document.querySelectorAll('style')].map(s=>s.innerHTML).join('\n');w.document.write(`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport PrevIA — ${esc(c.name)}</title><style>${css}
@@ -1253,6 +1351,7 @@ function refreshPersonNames(){
   syncScenarioNavigation();
   updateAvsContributionFields();
 }
+/* V9.20.0 — Ajouts : Contact, Informations légales, Déclaration de protection des données. Aucun calcul métier n'est modifié. */
 function show(id){
  if(!accessAllows(id)){
    requestedPremiumScreen=id;
@@ -1405,7 +1504,7 @@ function tmi(canton,income){
  return{rate:rows.at(-1)[1],source:'grille nationale indicative'};
 }
 /*
- V9.19.5 — AVS / AI : dernières règles validées
+ V9.20.0 — AVS / AI : dernières règles validées
 
  1) RAM estimé PrevIA :
     revenu annuel actuel × 70 % + moyenne des bonifications éducatives.
@@ -1528,7 +1627,7 @@ function effectiveContributionYears(age){
 }
 
 /*
- V9.19.5 — compatibilité iPhone :
+ V9.20.0 — compatibilité iPhone :
  le clavier numérique iOS peut proposer un point au lieu d'une virgule.
  PrevIA accepte désormais 2020,2024 ET 2020.2024.
 */
@@ -1623,7 +1722,7 @@ function avsFromIncome(income,educationAverage=0){
  return row.monthly*12;
 }
 
-/* V9.19.5 — moteur LPP minimum légal / hypothèses PrevIA validées
+/* V9.20.0 — moteur LPP minimum légal / hypothèses PrevIA validées
    - seuil d'entrée : CHF 22'680
    - salaire déterminant plafonné : CHF 90'720
    - déduction de coordination : CHF 26'460
@@ -1715,7 +1814,7 @@ function person(income,job,educationAverage=0,epl=0,age=40){
  return{income,job,noActivity,avs12,ai:noActivity?null:avs12,educationAverage,coordinated:l.coordinated,baseCap:l.baseCapital,capBeforeEpl:l.projectedCapitalBeforeEpl,cap:l.projectedCapital,riskCapBeforeEpl:l.riskCapitalBeforeEpl,riskCap:l.riskCapital,epl:l.eplApplied,repaymentCap:l.repaymentProjectedCapital,repaymentPension:l.repaymentAnnualPension,lpp:l.retirementPension,lppInv:l.invalidityPension}
 }
 /*
- V9.19.5 — Règle de coordination PrevIA
+ V9.20.0 — Règle de coordination PrevIA
 
  Lors d'une COORDINATION avec une limite de revenu, le 1er pilier
  n'est jamais réduit au profit des autres piliers :
@@ -2566,13 +2665,13 @@ function taxCalculation(c){
 
 function overviewMoney(value,sensitive=false){
   if(accessRole==='FREE'&&sensitive){
-    return '<span class="overview-locked">🔒 montant dans l’analyse complète</span>';
+    return '<span class="overview-locked">�� montant dans l’analyse complète</span>';
   }
   return `<span class="overview-amount">${fmt(value)}</span>`;
 }
 function overviewMonthly(value,sensitive=false){
   if(accessRole==='FREE'&&sensitive){
-    return '<span class="overview-locked">🔒 détail dans l’analyse complète</span>';
+    return '<span class="overview-locked">�� détail dans l’analyse complète</span>';
   }
   return `<span class="overview-amount">${fmt(Math.max(0,value))} par mois</span>`;
 }
@@ -2593,6 +2692,10 @@ function overviewLevelFromPct(pct,good=80,watch=65){
 function overviewIntroParagraph(text,cls=''){
   return `<p${cls?` class="${cls}"`:''}>${cleanOverviewText(text)}</p>`;
 }
+function overviewBullet(domain,text){
+  return `<li><span class="overview-domain">${domain}</span> : <span class="overview-status">${text}</span></li>`;
+}
+
 function cleanOverviewText(html){
   return String(html||'')
     .replace(/\bde de\b/gi,'de').replace(/\bdu du\b/gi,'du').replace(/\bdes des\b/gi,'des')
@@ -2603,11 +2706,11 @@ function cleanOverviewText(html){
 
 function lifeTimelineHouseholdIcon(c){
   if(c.status==='Célibataire'){
-    if(c.children>0)return c.owner?'👤 👧 🏠':'👤 👧';
-    return c.owner?'👤 🏠':'👤';
+    if(c.children>0)return c.owner?'�� �� ��':'�� ��';
+    return c.owner?'�� ��':'��';
   }
-  if(c.children>0)return c.owner?'👨‍👩‍👧‍👦 🏠':'👨‍👩‍👧‍👦';
-  return c.owner?'👫 🏠':'👫';
+  if(c.children>0)return c.owner?'��‍��‍��‍�� ��':'��‍��‍��‍��';
+  return c.owner?'�� ��':'��';
 }
 function lifeTimelineHouseholdText(c){
   const parts=[c.status==='Célibataire'?c.firstName1:`${c.firstName1} & ${c.firstName2}`];
@@ -2617,24 +2720,24 @@ function lifeTimelineHouseholdText(c){
 }
 function lifeTimelineOptionalGoals(c){
   const goals=[];
-  if(!c.owner)goals.push({icon:'🏠',title:'Devenir propriétaire',action:'housing'});
-  if(c.status!=='Mariés')goals.push({icon:'💍',title:'Se marier'});
-  if(c.children===0)goals.push({icon:'👶',title:'Avoir des enfants'});
+  if(!c.owner)goals.push({icon:'��',title:'Devenir propriétaire',action:'housing'});
+  if(c.status!=='Mariés')goals.push({icon:'��',title:'Se marier'});
+  if(c.children===0)goals.push({icon:'��',title:'Avoir des enfants'});
   const hasEmployee=c.job1==='Salarié'||(c.status!=='Célibataire'&&c.job2==='Salarié');
-  if(hasEmployee)goals.push({icon:'💼',title:'Devenir indépendant'});
+  if(hasEmployee)goals.push({icon:'��',title:'Devenir indépendant'});
   goals.push({icon:'✈️',title:'Voyage / grand projet'});
   return goals.slice(0,5);
 }
 
 /*
- V9.19.5 — Ligne de vie
+ V9.20.0 — Ligne de vie
  - seules les échéances réelles conservent une année ;
  - les projets personnels sont affichés sans date ;
  - logement, mariage, enfants, indépendance et voyage ;
  - le projet logement reste cliquable vers Votre logement.
 */
 /*
- V9.19.5 — Mise en page de la ligne de vie
+ V9.20.0 — Mise en page de la ligne de vie
  - plus d'espace vertical entre les événements datés ;
  - zone des projets repoussée sous la timeline ;
  - suppression de la mention « sans échéance » ;
@@ -2734,7 +2837,7 @@ function renderLifeTimeline(){
 }
 
 /*
- V9.19.5 — Votre aperçu
+ V9.20.0 — Votre aperçu
  - texte d'introduction plus lisible et plus marquant ;
  - vert = élément positif ;
  - orange = élément à surveiller / préparer ;
@@ -2743,11 +2846,19 @@ function renderLifeTimeline(){
  - aucun calcul métier modifié.
 */
 /*
- V9.19.5 — Aperçu allégé
+ V9.20.0 — Aperçu allégé
  - couleurs utilisées uniquement sur les statuts des 5 domaines :
    invalidité, décès, retraite, logement, fiscalité ;
  - texte général volontairement neutre ;
  - moins de gras et moins de couleurs dans les phrases ;
+ - aucun calcul métier modifié.
+*/
+/*
+ V9.20.0 — Aperçu en bullet points
+ - liste claire des domaines Invalidité, Décès, Retraite, Logement, Fiscalité ;
+ - intitulés et texte uniquement en noir / neutre ;
+ - aucun code couleur dans le texte ;
+ - contenu dynamique selon la situation ;
  - aucun calcul métier modifié.
 */
 function renderOverview(){
@@ -2842,97 +2953,70 @@ function renderOverview(){
   const homeLevel=!c.owner||retirementReduction<=0?'good':(retirementReduction<=150000?'watch':'risk');
 
   const introParts=[];
-
-  // Introduction volontairement neutre : aucune surcharge de couleurs.
   introParts.push(
     overviewIntroParagraph(
-      `Voici les principaux éléments à retenir de votre situation. Les couleurs servent uniquement à identifier rapidement les domaines qui sont satisfaisants, à surveiller ou à renforcer.`,
+      `Voici les éléments essentiels de votre situation. Chaque point résume un domaine important de votre prévoyance.`,
       'overview-lead'
     )
   );
 
-  // Famille : seules les conclusions de situation sont colorées.
-  let invalidityStatus='';
-  if(invalidityLevel==='good') invalidityStatus=positiveText('plutôt bien couverte');
-  else if(invalidityLevel==='watch') invalidityStatus=warningText('à surveiller');
-  else invalidityStatus=dangerText('à renforcer');
+  const bullets=[];
 
-  let deathStatus='';
-  if(deathScenarios.length){
-    if(deathLevel==='good') deathStatus=positiveText('plutôt bien couvert');
-    else if(deathLevel==='watch') deathStatus=warningText('à surveiller');
-    else deathStatus=dangerText('à renforcer');
+  let invalidityBulletText='';
+  if(invalidityLevel==='good'){
+    invalidityBulletText=`couverture plutôt satisfaisante dans le scénario le plus défavorable (${invalidityPct.toFixed(0)} % du revenu de référence).`;
+  }else if(invalidityLevel==='watch'){
+    invalidityBulletText=`couverture à surveiller ; le revenu maintenu est estimé à environ ${invalidityPct.toFixed(0)} % du revenu de référence.`;
+  }else{
+    invalidityBulletText=`protection à renforcer ; le revenu maintenu tombe à environ ${invalidityPct.toFixed(0)} % du revenu de référence dans le scénario le plus défavorable.`;
   }
-
-  introParts.push(
-    overviewIntroParagraph(
-      `Invalidité : ${invalidityStatus}${deathScenarios.length?` · Décès : ${deathStatus}`:''}.`
-    )
-  );
-
-  // Retraite : statut coloré, chiffres neutres.
-  let retirementStatus='';
-  if(retirementLevel==='good') retirementStatus=positiveText('situation relativement équilibrée');
-  else if(retirementLevel==='watch') retirementStatus=warningText('à préparer');
-  else retirementStatus=dangerText('à renforcer');
-
-  introParts.push(
-    overviewIntroParagraph(
-      `Retraite : ${retirementStatus}. Le revenu futur estimé représente environ ${strongText(`${retPct.toFixed(0)} %`)} du revenu actuel.`
-    )
-  );
-
-  // Logement : uniquement si propriétaire.
-  if(c.owner){
-    let homeStatus='';
-    if(homeLevel==='good') homeStatus=positiveText('viable à la retraite');
-    else if(homeLevel==='watch') homeStatus=warningText('à surveiller');
-    else homeStatus=dangerText('à renforcer');
-
-    introParts.push(
-      overviewIntroParagraph(`Logement : ${homeStatus}.`)
-    );
-  }
-
-  // Fiscalité : uniquement si un potentiel est effectivement détecté.
-  if(taxPotential.additionalTotal>0){
-    const taxStatus=taxPotential.additionalTotal>=3000
-      ?warningText('potentiel d’optimisation à exploiter')
-      :positiveText('situation déjà relativement optimisée');
-    introParts.push(
-      overviewIntroParagraph(`Fiscalité : ${taxStatus}.`)
-    );
-  }
-
-  // Priorité : texte neutre, uniquement les thèmes concernés gardent leur couleur.
-  const priorityBits=[];
-  if(invalidityLevel==='risk') priorityBits.push(dangerText('invalidité'));
-  else if(invalidityLevel==='watch') priorityBits.push(warningText('invalidité'));
+  bullets.push(overviewBullet('Invalidité',invalidityBulletText));
 
   if(deathScenarios.length){
-    if(deathLevel==='risk') priorityBits.push(dangerText('décès'));
-    else if(deathLevel==='watch') priorityBits.push(warningText('décès'));
+    let deathBulletText='';
+    if(deathLevel==='good'){
+      deathBulletText=`situation plutôt satisfaisante selon les prestations actuellement estimées.`;
+    }else if(deathLevel==='watch'){
+      deathBulletText=`situation à surveiller ; certaines conséquences financières peuvent nécessiter une protection complémentaire.`;
+    }else{
+      deathBulletText=`protection à renforcer ; le scénario le plus défavorable entraîne une baisse importante des ressources du ménage.`;
+    }
+    bullets.push(overviewBullet('Décès',deathBulletText));
   }
 
-  if(retirementLevel==='risk') priorityBits.push(dangerText('retraite'));
-  else if(retirementLevel==='watch') priorityBits.push(warningText('retraite'));
+  let retirementBulletText='';
+  if(retirementLevel==='good'){
+    retirementBulletText=`revenu futur relativement équilibré, estimé à environ ${retPct.toFixed(0)} % du revenu actuel.`;
+  }else if(retirementLevel==='watch'){
+    retirementBulletText=`préparation à poursuivre ; le revenu futur est estimé à environ ${retPct.toFixed(0)} % du revenu actuel.`;
+  }else{
+    retirementBulletText=`préparation à renforcer ; le revenu futur est estimé à environ ${retPct.toFixed(0)} % du revenu actuel.`;
+  }
+  bullets.push(overviewBullet('Retraite',retirementBulletText));
 
   if(c.owner){
-    if(homeLevel==='risk') priorityBits.push(dangerText('logement'));
-    else if(homeLevel==='watch') priorityBits.push(warningText('logement'));
+    let homeBulletText='';
+    if(homeLevel==='good'){
+      homeBulletText=`situation actuellement compatible avec la retraite selon les hypothèses retenues.`;
+    }else if(homeLevel==='watch'){
+      homeBulletText=`situation à surveiller ; un amortissement ou un effort financier devra être anticipé.`;
+    }else{
+      homeBulletText=`effort financier important à anticiper avant ou au moment de la retraite.`;
+    }
+    bullets.push(overviewBullet('Logement',homeBulletText));
   }
 
-  if(taxPotential.additionalTotal>0) priorityBits.push(warningText('fiscalité'));
-
-  if(priorityBits.length){
-    introParts.push(
-      overviewIntroParagraph(
-        `Priorités à suivre : ${priorityBits.join(' · ')}.`,
-        'overview-priority'
-      )
-    );
+  let taxBulletText='';
+  if(taxPotential.additionalTotal>3000){
+    taxBulletText=`potentiel d’optimisation identifié, notamment via les possibilités de prévoyance disponibles.`;
+  }else if(taxPotential.additionalTotal>0){
+    taxBulletText=`quelques possibilités d’optimisation restent disponibles.`;
+  }else{
+    taxBulletText=`aucun potentiel important supplémentaire ne ressort de cette première estimation.`;
   }
+  bullets.push(overviewBullet('Fiscalité',taxBulletText));
 
+  introParts.push(`<ul class="overview-bullets">${bullets.join('')}</ul>`);
   $('#overviewIntro').innerHTML=introParts.join('');
 
   let familyText='';
@@ -2987,10 +3071,10 @@ function renderOverview(){
   }
 
   const keypoints=[];
-  keypoints.push(invalidityPct>=80?'🟢 Invalidité plutôt bien couverte':invalidityPct>=65?'🟠 Invalidité à surveiller':'🔴 Invalidité à renforcer');
-  if(deathScenarios.length)keypoints.push(deathPct>=80?'🟢 Décès plutôt bien couvert':deathPct>=65?'🟠 Décès à surveiller':'🔴 Décès à renforcer');
-  keypoints.push(retPct>=75?'🟢 Retraite relativement équilibrée':retPct>=60?'🟠 Retraite à préparer':'🔴 Retraite à renforcer');
-  if(c.owner)keypoints.push(retirementReduction<=0?'🟢 Logement viable à la retraite':'🟠 Amortissement à préparer');
+  keypoints.push(invalidityPct>=80?'�� Invalidité plutôt bien couverte':invalidityPct>=65?'�� Invalidité à surveiller':'�� Invalidité à renforcer');
+  if(deathScenarios.length)keypoints.push(deathPct>=80?'�� Décès plutôt bien couvert':deathPct>=65?'�� Décès à surveiller':'�� Décès à renforcer');
+  keypoints.push(retPct>=75?'�� Retraite relativement équilibrée':retPct>=60?'�� Retraite à préparer':'�� Retraite à renforcer');
+  if(c.owner)keypoints.push(retirementReduction<=0?'�� Logement viable à la retraite':'�� Amortissement à préparer');
   $('#overviewKeypoints').innerHTML=keypoints.map(x=>`<span class="overview-keypoint">${x}</span>`).join('');
   const conclusions=[];
   if(invalidityPct<80)conclusions.push('renforcer la protection du revenu en cas d’invalidité');
@@ -3030,7 +3114,7 @@ function render(){
 
  $('#sideName').textContent=c.name;
  $('#sideSub').textContent=`${c.age1} ans · ${c.status}`;
- $('#hello').textContent=c.status==='Célibataire'?`Bonjour ${c.firstName1} 👋`:`Bonjour ${c.firstName1} et ${c.firstName2} 👋`;
+ $('#hello').textContent=c.status==='Célibataire'?`Bonjour ${c.firstName1} ��`:`Bonjour ${c.firstName1} et ${c.firstName2} ��`;
  refreshPersonNames();
  $('#concernTitle').textContent=co.title;
  $('#humanIntro').textContent=co.intro;
@@ -3300,7 +3384,7 @@ $$('[data-origin]').forEach(b=>b.onclick=()=>{
   renderProtection();
 });
 /*
- V9.19.5 — dernières règles retraite
+ V9.20.0 — dernières règles retraite
  - RAM PrevIA : revenu actuel × 70 % + bonifications éducatives attribuées ;
  - pas de splitting estimatif des revenus du couple ;
  - retraite AVS : réduction des lacunes sur 44 ans ;
@@ -3552,7 +3636,7 @@ function makeLifeStages(baseStages, ages, childTotal){
  return result;
 }
 /*
- V9.19.5 — Évolution invalidité maladie
+ V9.20.0 — Évolution invalidité maladie
 
  Important :
  la coordination LPP n'est plus figée au jour de l'événement.
@@ -3567,7 +3651,7 @@ function makeLifeStages(baseStages, ages, childTotal){
 */
 
 /*
- V9.19.5 — correctifs ciblés
+ V9.20.0 — correctifs ciblés
  - Votre évolution / Retraite du couple : correction de la première retraite.
  - Le champ individualTotal n'existait pas et provoquait NaN / 0 CHF.
  - Lorsqu'une seule personne est retraitée, PrevIA utilise sa rente AVS
@@ -4260,7 +4344,7 @@ function renderHome(){
    $('#noHome').innerHTML=
      `<div class="home-project-card">`+
        `<div class="home-project-head">`+
-         `<div class="home-project-icon">🏠</div>`+
+         `<div class="home-project-icon">��</div>`+
          `<div><div class="eyebrow">Projet de vie · Devenir propriétaire</div>`+
          `<h3>Quel logement pourriez-vous théoriquement envisager ?</h3>`+
          `<div class="tiny muted">Première estimation à partir de votre revenu brut actuel.</div></div>`+
@@ -4525,6 +4609,37 @@ window.addEventListener('error',event=>{
 window.addEventListener('unhandledrejection',event=>{
   console.error('PrevIA — promesse rejetée :',event.reason);
 });
+
+
+const contactForm=document.getElementById('contactForm');
+if(contactForm){
+  contactForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const status=document.getElementById('contactStatus');
+    const submit=document.getElementById('contactSubmit');
+    const firstName=document.getElementById('contactFirstName').value.trim();
+    const lastName=document.getElementById('contactLastName').value.trim();
+    const email=document.getElementById('contactEmail').value.trim();
+    const subject=document.getElementById('contactSubject').value.trim();
+    const message=document.getElementById('contactMessage').value.trim();
+    const privacy=document.getElementById('contactPrivacy').checked;
+    const website=document.getElementById('contactWebsite').value.trim();
+    const showStatus=(text,type)=>{status.textContent=text;status.className=`contact-status show ${type}`};
+    if(!firstName||!lastName||!email||!subject||!message||!privacy){showStatus('Merci de compléter tous les champs et de confirmer la déclaration de protection des données.','error');return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showStatus('Merci d’indiquer une adresse e-mail valide.','error');return;}
+    submit.disabled=true;submit.textContent='Envoi en cours…';
+    try{
+      const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName,lastName,email,subject,message,privacy,website})});
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(result.error||'Envoi impossible');
+      contactForm.reset();
+      showStatus('Votre demande a bien été transmise.','ok');
+    }catch(err){
+      console.error('PrevIA contact:',err);
+      showStatus('La demande n’a pas pu être envoyée pour le moment. Merci de réessayer ultérieurement.','error');
+    }finally{submit.disabled=false;submit.textContent='Envoyer ma demande';}
+  });
+}
 
 bindSwissMoneyInputs();
 refreshPersonNames();
