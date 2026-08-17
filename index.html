@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.20.0 — Prototype interactif</title>
+<title>PrevIA V9.21.0 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -507,7 +507,7 @@ body.role-client .report-btn{display:inline-flex}
 .legal-note{background:#f6f8fc;border-radius:13px;padding:14px 16px;color:#536278;line-height:1.55}@media(max-width:700px){.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}}
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.20.0</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.21.0</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button><button class="nav" data-s="contact">Contact</button><button class="nav" data-s="legal">Informations légales</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -525,7 +525,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.20.0</div>
+      <div class="eyebrow">PrevIA V9.21.0</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -559,7 +559,7 @@ body.role-client .report-btn{display:inline-flex}
 <div id="marriageYearsWrap" class="hidden"><label>Date du mariage</label><input id="fMarriageDate" required type="date" value=""><div class="tiny muted" id="marriageDurationHint" style="margin-top:5px">La durée du mariage sera calculée automatiquement.</div></div>
 <div><label>Sexe de la personne 1</label><select id="fSex1"><option value="M">Homme</option><option value="F">Femme</option></select></div><div id="sex2Wrap"><label>Sexe de la personne 2</label><select id="fSex2"><option value="F">Femme</option><option value="M">Homme</option></select></div>
 <div><label id="labelAge1">Âge de la personne 1</label><input id="fAge1" required type="number" value="" placeholder="Exemple : 40"></div><div id="age2Wrap"><label id="labelAge2">Âge de la personne 2</label><input id="fAge2" required type="number" value="" placeholder="Exemple : 38"></div>
-<div><label id="labelIncome1">Revenu brut annuel de la personne 1 (CHF)</label><input id="fIncome1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 120’000.-" autocomplete="off"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de la personne 2 (CHF)</label><input id="fIncome2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 90’000.-" autocomplete="off"></div>
+<div><label id="labelIncome1">Revenu brut annuel de la personne 1 (CHF · 13e salaire compris)</label><input id="fIncome1" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 120’000.-" autocomplete="off"></div><div id="income2Wrap"><label id="labelIncome2">Revenu brut annuel de la personne 2 (CHF · 13e salaire compris)</label><input id="fIncome2" type="text" inputmode="numeric" class="money-input" required value="" placeholder="Exemple : 90’000.-" autocomplete="off"></div>
 <div><label id="labelJob1">Statut professionnel de la personne 1</label><select id="fJob1"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div><div id="job2Wrap"><label id="labelJob2">Statut professionnel de la personne 2</label><select id="fJob2"><option>Salarié</option><option>Indépendant</option><option>Sans activité</option></select></div>
 <div>
   <label id="labelAvsFull1">Cotisez-vous à l’AVS sans interruption depuis le 1er janvier suivant votre 20e anniversaire ?</label>
@@ -750,7 +750,7 @@ body.role-client .report-btn{display:inline-flex}
 </div>
 <div class="grid4" style="margin-top:15px">
   <div class="card"><div class="eyebrow">Revenu actuel du ménage</div><div class="metric" id="protCurrent"></div></div>
-  <div class="card"><div class="eyebrow">Revenu annuel estimé</div><div class="metric" id="protIncome"></div></div>
+  <div class="card"><div class="eyebrow">Revenu mensuel estimé</div><div class="metric" id="protIncome"></div></div>
   <div class="card coverage-card" id="protPctCard"><div class="eyebrow">Revenu maintenu</div><div class="metric" id="protPct"></div></div>
   <div class="card" id="protCapitalCard"><div class="eyebrow" id="protCapitalLabel">Capital versé au décès</div><div class="metric" id="protCapital"></div></div>
 </div>
@@ -766,7 +766,7 @@ body.role-client .report-btn{display:inline-flex}
 </div>
 </section>
 
-<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="ret-tabs"><button class="ret-tab active" data-ret-tab="normal">Retraite à l’âge de référence</button><button class="ret-tab" data-ret-tab="early">Retraite anticipée</button></div><div id="earlyRetirementPanel" class="early-panel"><div class="card"><div class="eyebrow">Simulateur de retraite anticipée</div><h2>Et si vous arrêtiez de travailler plus tôt ?</h2><p class="muted">Déplacez le curseur pour mesurer immédiatement l'impact estimé sur l'AVS et le 2e pilier.</p><div id="earlyPersons"></div><div class="callout" style="margin-top:14px"><b>Comment lire cette simulation ?</b><p class="tiny muted">L’AVS applique le taux de réduction correspondant à la durée d’anticipation. Pour les femmes nées entre 1961 et 1969, PrevIA utilise la grille transitoire selon le revenu annuel moyen déterminant. Pour la LPP, PrevIA estime les bonifications minimales qui ne seraient plus constituées, les capitalise à 1,25 % selon l’hypothèse PrevIA, puis applique un taux de conversion de 6,8 %. À confirmer avec la caisse de pension.</p></div></div></div><div id="normalRetirementPanel"><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel annuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted" id="retMonthlyNote">AVS et LPP comprises, hors 13e rente AVS versée séparément</div></div><div class="card"><div class="eyebrow">Revenu annuel prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">AVS + LPP, 13e rente AVS et éventuel supplément transitoire compris</div></div><div class="card coverage-card" id="retPctCard"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché est une estimation du minimum légal, fondée sur le salaire coordonné et les bonifications de vieillesse, avec un intérêt de 1,25 %. La rente de retraite est estimée à 6,8 %. Les prestations de risque utilisent 6,8 % sur le capital projeté sans intérêts. Un retrait EPL déclaré est déduit du capital l’année du calcul et réduit également les intérêts futurs et les prestations de risque. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></div></section>
+<section id="retraite" class="screen"><div class="top"><div><div class="eyebrow">Votre retraite</div><h1>Quel revenu pourriez-vous conserver à 65 ans ?</h1></div></div><div class="ret-tabs"><button class="ret-tab active" data-ret-tab="normal">Retraite à l’âge de référence</button><button class="ret-tab" data-ret-tab="early">Retraite anticipée</button></div><div id="earlyRetirementPanel" class="early-panel"><div class="card"><div class="eyebrow">Simulateur de retraite anticipée</div><h2>Et si vous arrêtiez de travailler plus tôt ?</h2><p class="muted">Déplacez le curseur pour mesurer immédiatement l'impact estimé sur l'AVS et le 2e pilier.</p><div id="earlyPersons"></div><div class="callout" style="margin-top:14px"><b>Comment lire cette simulation ?</b><p class="tiny muted">L’AVS applique le taux de réduction correspondant à la durée d’anticipation. Pour les femmes nées entre 1961 et 1969, PrevIA utilise la grille transitoire selon le revenu annuel moyen déterminant. Pour la LPP, PrevIA estime les bonifications minimales qui ne seraient plus constituées, les capitalise à 1,25 % selon l’hypothèse PrevIA, puis applique un taux de conversion de 6,8 %. À confirmer avec la caisse de pension.</p></div></div></div><div id="normalRetirementPanel"><div class="grid4"><div class="card"><div class="eyebrow">Revenu actuel mensuel</div><div class="metric" id="retCurrent"></div></div><div class="card"><div class="eyebrow">Revenu mensuel prévu</div><div class="metric" id="retLppMonthly"></div><div class="tiny muted" id="retMonthlyNote">AVS et LPP comprises, hors 13e rente AVS versée séparément</div></div><div class="card"><div class="eyebrow">Revenu mensuel moyen prévu</div><div class="metric" id="retFuture"></div><div class="tiny muted">Moyenne mensuelle incluant la 13e rente AVS et l’éventuel supplément transitoire</div></div><div class="card coverage-card" id="retPctCard"><div class="eyebrow">Taux de remplacement</div><div class="metric" id="retPct"></div></div></div><div class="card" style="margin-top:15px"><div class="bar"><div id="retBar"></div></div><p id="retPhrase"></p><div class="callout warn" id="retMonthlyGap" style="margin-top:12px"></div></div><div class="grid2" style="margin-top:15px"><div class="card"><h3>Personne 1</h3><div id="retDetail1"></div></div><div class="card"><h3>Personne 2</h3><div id="retDetail2"></div></div></div><div class="callout" style="margin-top:15px"><b>Première estimation à confirmer</b><p class="muted tiny">Le capital LPP affiché est une estimation du minimum légal, fondée sur le salaire coordonné et les bonifications de vieillesse, avec un intérêt de 1,25 %. La rente de retraite est estimée à 6,8 %. Les prestations de risque utilisent 6,8 % sur le capital projeté sans intérêts. Un retrait EPL déclaré est déduit du capital l’année du calcul et réduit également les intérêts futurs et les prestations de risque. Cette première estimation devra être confirmée avec le certificat de caisse de pension.</p></div></div></section>
 
 
 
@@ -1267,8 +1267,8 @@ function refreshPersonNames(){
   const labels={
     labelAge1:`Âge de ${n1}`,
     labelAge2:`Âge de ${n2}`,
-    labelIncome1:`Revenu brut annuel de ${n1} (CHF)`,
-    labelIncome2:`Revenu brut annuel de ${n2} (CHF)`,
+    labelIncome1:`Revenu brut annuel de ${n1} (CHF · 13e salaire compris)`,
+    labelIncome2:`Revenu brut annuel de ${n2} (CHF · 13e salaire compris)`,
     labelJob1:`Statut professionnel de ${n1}`,
     labelJob2:`Statut professionnel de ${n2}`,
     labelP3P1:`Capital décès / 3e pilier – ${n1} (CHF) *`,
@@ -3152,10 +3152,12 @@ function render(){
  $('#priorities').innerHTML=rec.slice(0,4).map((item,index)=>`<div class="action"><div class="num">${index+1}</div><div><b>${item}</b></div></div>`).join('');
  renderProtection();renderRetirement();renderEvolution();renderHome();renderTax();renderRecommendations();renderOverview();renderLifeTimeline();localStorage.setItem('previa-v9147',JSON.stringify(c))}
 function groupHtml(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmt(total)}</strong></div></div>`}
-function valueOrAnalysis(value,known=true){return known?fmt(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
-function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
+function groupHtmlMonthly(title,rows,totalLabel,total){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${fmtMonthly(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${fmtMonthly(total)}</strong></div></div>`}
+function fmtMonthly(value){return fmt((Number(value)||0)/12)+'/mois'}
+function valueOrAnalysis(value,known=true){return known?fmtMonthly(value):'<span class="analysis-needed">Analyse approfondie nécessaire</span>'}
+function groupHtmlFlexible(title,rows,totalLabel,total,totalKnown=true){return`<div style="margin-top:14px;padding:12px 14px;background:#f6f7fb;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">Analyse approfondie nécessaire</span>':fmtMonthly(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmtMonthly(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`}
 function summaryBox(title,rows,totalLabel,total,totalKnown=true){
- return`<div style="margin-top:14px;padding:14px;background:#eef0ff;border:1px solid #dfe2ff;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">À confirmer</span>':fmt(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmt(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`;
+ return`<div style="margin-top:14px;padding:14px;background:#eef0ff;border:1px solid #dfe2ff;border-radius:12px"><div class="eyebrow">${title}</div>${rows.filter(Boolean).map(r=>`<div class="row"><span>${r[0]}</span><b>${r[2]===false?'<span class="analysis-needed">À confirmer</span>':fmtMonthly(r[1])}</b></div>`).join('')}<div class="row" style="border-bottom:0"><strong>${totalLabel}</strong><strong>${totalKnown?fmtMonthly(total):'<span class="analysis-needed">À confirmer</span>'}</strong></div></div>`;
 }
 function riskData(){
  const c=data;
@@ -3183,13 +3185,13 @@ function riskData(){
        summaryBox('Revenu total du ménage après l’accident',[
          [`Prestations AI + LAA + LPP de ${who}`,x.insuredPersonTotal,true],
          c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,x.otherIncome,true]
-       ],'Revenu annuel total du ménage',x.annual,true)+
+       ],'Revenu mensuel total du ménage',x.annual,true)+
        `<div class="callout ${x.job==='Salarié'?'':'warn'}" style="margin-top:12px">${x.warning}</div>`;
 
      return{
        income:x.annual,
        capital:x.insuredPersonTotal,
-       capitalLabel:'Prestations annuelles estimées',
+       capitalLabel:'Prestations mensuelles estimées',
        detail:`Invalidité accident de ${who}.`,
        html,
        uncertain:x.job!=='Salarié',
@@ -3216,13 +3218,13 @@ function riskData(){
      summaryBox(`Revenu total du ménage après le décès de ${who}`,[
        ['Prestations de survivants',d.combinedBenefits,d.avsKnown],
        c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,d.otherIncome,true]
-     ],'Revenu annuel total du ménage',d.annual,d.avsKnown)+
+     ],'Revenu mensuel total du ménage',d.annual,d.avsKnown)+
      `<div class="callout ${d.job==='Salarié'?'':'warn'}" style="margin-top:12px">${d.warning}</div>`;
 
    return{
      income:d.annual,
      capital:d.combinedBenefits,
-     capitalLabel:'Prestations annuelles estimées',
+     capitalLabel:'Prestations mensuelles estimées',
      detail:`Décès accident de ${who}.`,
      html,
      uncertain:d.needsDeepAnalysis||d.job!=='Salarié',
@@ -3246,11 +3248,11 @@ function riskData(){
     summaryBox(`Revenu de ${who}`,[
       ['Total du 1er pilier',firstTotal,x.aiKnown],
       ['Total du 2e pilier',secondTotal,true]
-    ],`Total annuel de ${who}`,personTotal,personKnown)+
+    ],`Total mensuel de ${who}`,personTotal,personKnown)+
     summaryBox('Revenu total du ménage',[
-      [`Prestations annuelles de ${who}`,personTotal,personKnown],
+      [`Prestations mensuelles de ${who}`,personTotal,personKnown],
       c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,x.otherIncome,true]
-    ],'Revenu annuel total du ménage',x.annual,personKnown)+
+    ],'Revenu mensuel total du ménage',x.annual,personKnown)+
     (x.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie des cotisations AVS est nécessaire pour déterminer la rente AI du 1er pilier de cette personne.</div>':'');
   return{income:x.annual,capital:0,capitalLabel:'Capital versé au décès',detail:`Invalidité à 100 % de ${who}.`,html,uncertain:x.needsDeepAnalysis,origin:'illness'};
  }
@@ -3269,11 +3271,11 @@ function riskData(){
    summaryBox('Prestations du conjoint survivant',[
      ['Total du 1er pilier',firstTotal,d.avsKnown],
      ['Total du 2e pilier',secondTotal,true]
-   ],'Total annuel des prestations',survivorBenefits,benefitsKnown)+
+   ],'Total mensuel des prestations',survivorBenefits,benefitsKnown)+
    summaryBox('Revenu total du ménage après le décès',[
-     ['Prestations annuelles de survivants',survivorBenefits,benefitsKnown],
+     ['Prestations mensuelles de survivants',survivorBenefits,benefitsKnown],
      c.status==='Célibataire'?null:[`Revenu professionnel maintenu de ${isP1?c.firstName2:c.firstName1}`,d.otherIncome,true]
-   ],'Revenu annuel total du ménage',d.annual,benefitsKnown)+
+   ],'Revenu mensuel total du ménage',d.annual,benefitsKnown)+
    (d.needsDeepAnalysis?'<div class="callout warn" style="margin-top:12px">Une analyse approfondie est nécessaire pour chiffrer les prestations AVS de survivants.</div>':'');
  return{income:d.annual,capital:d.capital,capitalLabel:'Capital versé au décès',detail:d.warning||label,html,uncertain:d.needsDeepAnalysis,origin:'illness'};
 }
@@ -3306,8 +3308,8 @@ function renderProtection(){
   }
 
   const c=data,x=riskData(),pct=c.totalIncome?x.income/c.totalIncome*100:0;
-  $('#protCurrent').textContent=fmt(c.totalIncome);
-  $('#protIncome').textContent=fmt(x.income);
+  $('#protCurrent').textContent=fmtMonthly(c.totalIncome);
+  $('#protIncome').textContent=fmtMonthly(x.income);
   $('#protPct').textContent=pct.toFixed(0)+' %';
   const coverageCard=$('#protPctCard');
   if(coverageCard){
@@ -3474,7 +3476,7 @@ function renderEarlyRetirement(){
     `<div class="early-kpis" style="margin-top:14px">
       <div class="early-kpi"><span>Réduction AVS</span><b class="loss">${rate.toFixed(1)} %</b></div>
       <div class="early-kpi"><span>Rente AVS ${months>0?'anticipée':'à l’âge de référence'}</span><b>${fmt(avsAtChosenAge/12)}/mois</b></div>
-      <div class="early-kpi"><span>Perte AVS</span><b class="loss">− ${fmt(totalAvsLoss/12)}/mois</b><small>− ${fmt(totalAvsLoss)}/an</small></div>
+      <div class="early-kpi"><span>Perte AVS</span><b class="loss">− ${fmt(totalAvsLoss/12)}/mois</b><small>Différence mensuelle estimée</small></div>
       <div class="early-kpi"><span>AVS reçue plus tôt</span><b class="gain">${fmt(receivedEarly)}</b></div>
       ${supplementHtml}
     </div>
@@ -3491,7 +3493,7 @@ function renderEarlyRetirement(){
 
     <div class="early-kpis" style="margin-top:12px">
       <div class="early-kpi"><span>Capital LPP non constitué</span><b class="loss">− ${fmt(l.capitalLoss)}</b></div>
-      <div class="early-kpi"><span>Perte rente LPP</span><b class="loss">− ${fmt(l.pensionLoss/12)}/mois</b><small>− ${fmt(l.pensionLoss)}/an</small></div>
+      <div class="early-kpi"><span>Perte rente LPP</span><b class="loss">− ${fmt(l.pensionLoss/12)}/mois</b><small>Différence mensuelle estimée</small></div>
       <div class="early-kpi"><span>Perte totale estimée</span><b class="loss">− ${fmt(totalLoss/12)}/mois</b><small>AVS + LPP</small></div>
     </div>`;
   };
@@ -3505,9 +3507,9 @@ function renderRetirement(){
  const c=data,b=benefits(c),lppTotal=b.p1.lpp+b.p2.lpp,ret=b.retAvs.total+lppTotal,pct=c.totalIncome?ret/c.totalIncome*100:0;
  const regularAnnual=Math.max(0,ret-b.retAvs.thirteenth);
  const monthly=regularAnnual/12,currentMonthly=c.totalIncome/12,gap=Math.max(0,currentMonthly-monthly);
- $('#retCurrent').textContent=fmt(c.totalIncome);
+ $('#retCurrent').textContent=fmt(currentMonthly)+'/mois';
  $('#retLppMonthly').textContent=fmt(monthly)+'/mois';
- $('#retFuture').textContent=fmt(ret);
+ $('#retFuture').textContent=fmt(ret/12)+'/mois';
  $('#retPct').textContent=pct.toFixed(0)+' %';
  const retPctCard=$('#retPctCard');
  if(retPctCard){
@@ -3529,14 +3531,14 @@ function renderRetirement(){
  }
  avsRows.push(['13e rente AVS',b.retAvs.thirteenth]);
  const familyHistoryNote=c.children>0?`<div class="callout" style="margin-top:10px"><b>Historique familial pris en compte</b><br><span class="tiny muted">PrevIA intègre en arrière-plan environ ${educationYears(c.children,c.childGap,c.youngestAge,c.childBirthYears)} années de bonifications pour tâches éducatives déjà acquises. L’année de naissance du premier enfant n’est pas comptée. La moyenne est calculée sur la durée effective de cotisations de chaque personne et, pour un couple marié, répartie à parts égales entre les deux conjoints. Les rentes restent plafonnées aux maximums AVS applicables et devront être confirmées avec les extraits de compte AVS.</span></div>`:'';
- const avsHtml=groupHtml('1er pilier – AVS',avsRows,'Total du 1er pilier',b.retAvs.total)+(b.retAvs.estimatedCoupleMaximum?'<div class="callout" style="margin-top:10px">Estimation simplifiée pour un couple marié : les rentes ordinaires sont calculées individuellement à partir du revenu actuel estimé à −30 %, puis plafonnées au maximum du couple. Le supplément éventuel de la génération transitoire est ajouté après le plafonnement. À confirmer avec les extraits de compte AVS.</div>':'')+familyHistoryNote;
+ const avsHtml=groupHtmlMonthly('1er pilier – AVS',avsRows,'Total mensuel moyen du 1er pilier',b.retAvs.total)+(b.retAvs.estimatedCoupleMaximum?'<div class="callout" style="margin-top:10px">Estimation simplifiée pour un couple marié : les rentes ordinaires sont calculées individuellement à partir du revenu actuel estimé à −30 %, puis plafonnées au maximum du couple. Le supplément éventuel de la génération transitoire est ajouté après le plafonnement. À confirmer avec les extraits de compte AVS.</div>':'')+familyHistoryNote;
  const lppRows=[[`Rente LPP de ${c.firstName1}`,b.p1.lpp]];
  if(c.status!=='Célibataire')lppRows.push([`Rente LPP de ${c.firstName2}`,b.p2.lpp]);
- const lppHtml=groupHtml('2e pilier – LPP',lppRows,'Total du 2e pilier',lppTotal);
+ const lppHtml=groupHtmlMonthly('2e pilier – LPP',lppRows,'Total mensuel du 2e pilier',lppTotal);
  const totalHtml=summaryBox('Revenu total prévu à la retraite',[
    ['Total du 1er pilier',b.retAvs.total,true],
    ['Total du 2e pilier',lppTotal,true]
- ],'Revenu annuel total prévu',ret,true)+`<div class="row"><span>Revenu mensuel moyen prévu</span><b>${fmtMonth(ret)}</b></div>`;
+ ],'Revenu mensuel moyen total prévu',ret,true);
  $('#retDetail1').parentElement.querySelector('h3').textContent='Prestations de retraite';
  $('#retDetail1').innerHTML=avsHtml+lppHtml+totalHtml;
  $('#retDetail2').parentElement.classList.toggle('hidden',true);
@@ -3859,17 +3861,17 @@ function renderEvolution(){
  if(x.eventMode){
    const first=x.stages[0];
    const coverage=x.target>0?first.personBenefits/x.target*100:0;
-   $('#evoReference').textContent=fmt(x.affectedIncome);
+   $('#evoReference').textContent=fmtMonthly(x.affectedIncome);
    $('#evoIncomeSplit').textContent=`Revenu actuel de ${x.affectedName}`;
-   $('#evoNeed').textContent=fmt(x.target);
-   $('#evoToday').textContent=fmt(first.personBenefits);
+   $('#evoNeed').textContent=fmtMonthly(x.target);
+   $('#evoToday').textContent=fmtMonthly(first.personBenefits);
    $('#evoCoverage').textContent=coverage.toFixed(0)+' %';
    const evoCoverageCard=$('#evoCoverageCard');
    if(evoCoverageCard){
      evoCoverageCard.classList.remove('coverage-good','coverage-watch','coverage-risk');
      evoCoverageCard.classList.add(coverage>=80?'coverage-good':coverage>=65?'coverage-watch':'coverage-risk');
    }
-   $('#evoGap').textContent=fmt(first.personalGap);
+   $('#evoGap').textContent=fmtMonthly(first.personalGap);
    $('#evoChartSubtitle').textContent=`Le graphique analyse uniquement le revenu de ${x.affectedName}. La vue du ménage est présentée séparément en dessous.`;
 
    const plot=300;
@@ -3878,7 +3880,7 @@ function renderEvolution(){
    const seg=(cls,val,label)=>{
      if(!(val>0))return'';
      const h=px(val);
-     return `<div class="life-segment ${cls}" style="height:${h}px" title="${label}: ${fmt(val)}">${h>=25?fmt(val):''}</div>`;
+     return `<div class="life-segment ${cls}" style="height:${h}px" title="${label}: ${fmtMonthly(val)}">${h>=25?fmtMonthly(val):''}</div>`;
    };
    const columns=x.stages.map(s=>`<div class="evo-longterm-period">
      <div class="evo-longterm-column" style="height:${plot}px">
@@ -3889,23 +3891,23 @@ function renderEvolution(){
        ${seg('life-gap',s.personalGap,'Lacune jusqu’à 100 %')}
      </div>
      <div class="evo-longterm-label"><b>${s.label}</b><br>${s.sub}<br><span class="muted">${s.event}</span></div>
-     <div class="evo-longterm-total"><strong>${fmt(s.personBenefits)}/an</strong>${s.personalGap>0?`<span class="gap-value">Lacune : ${fmt(s.personalGap)}</span>`:'<span style="color:var(--green);font-weight:900">Objectif atteint</span>'}</div>
+     <div class="evo-longterm-total"><strong>${fmtMonthly(s.personBenefits)}</strong>${s.personalGap>0?`<span class="gap-value">Lacune : ${fmtMonthly(s.personalGap)}</span>`:'<span style="color:var(--green);font-weight:900">Objectif atteint</span>'}</div>
    </div>`).join('');
 
    const householdCards=x.stages.map(s=>`<div class="evo-household-stage">
       <div class="stage-title">${s.label}</div>
-      <div class="mini-row"><span>Prestations de ${x.affectedName}</span><b>${fmt(s.personBenefits)}</b></div>
-      ${x.maintainedIncome>0?`<div class="mini-row"><span>Revenu de ${x.maintainedName}</span><b>${fmt(x.maintainedIncome)}</b></div>`:''}
-      <div class="mini-row"><span>Revenu du ménage</span><b>${fmt(s.householdTotal)}</b></div>
-      <div class="mini-row"><span>Baisse mensuelle</span><b>${fmt(s.householdLoss/12)}</b></div>
+      <div class="mini-row"><span>Prestations de ${x.affectedName}</span><b>${fmtMonthly(s.personBenefits)}</b></div>
+      ${x.maintainedIncome>0?`<div class="mini-row"><span>Revenu de ${x.maintainedName}</span><b>${fmtMonthly(x.maintainedIncome)}</b></div>`:''}
+      <div class="mini-row"><span>Revenu du ménage</span><b>${fmtMonthly(s.householdTotal)}</b></div>
+      <div class="mini-row"><span>Baisse mensuelle</span><b>${fmtMonthly(s.householdLoss)}</b></div>
    </div>`).join('');
 
    const maintainedPct=x.c.totalIncome>0?first.householdTotal/x.c.totalIncome*100:0;
    $('#coverageCascade').innerHTML=`
      <div class="evo-person-summary">
-       <div><span>Revenu de ${x.affectedName}</span><b>${fmt(x.affectedIncome)}/an</b></div>
-       <div><span>Besoin de prévoyance</span><b>${fmt(x.target)}/an · 100 %</b></div>
-       <div><span>Prestations au départ</span><b>${fmt(first.personBenefits)}/an</b></div>
+       <div><span>Revenu de ${x.affectedName}</span><b>${fmtMonthly(x.affectedIncome)}</b></div>
+       <div><span>Besoin de prévoyance</span><b>${fmtMonthly(x.target)} · 100 %</b></div>
+       <div><span>Prestations au départ</span><b>${fmtMonthly(first.personBenefits)}</b></div>
      </div>
      <div class="life-chart-wrap"><div class="evo-longterm-chart">
        ${grid}
@@ -3923,7 +3925,7 @@ function renderEvolution(){
        <h3>Impact sur le revenu du ménage</h3>
        <p class="muted tiny">Les prestations de ${x.affectedName} sont additionnées au revenu professionnel maintenu de ${x.maintainedName}.</p>
        <div class="evo-household-grid">${householdCards}</div>
-       <div class="evo-human-reading"><b>Lecture simple</b><br>Après l’événement, ${x.affectedName} percevrait environ <b>${fmt(first.personBenefits)}</b> par année. En ajoutant le revenu de ${x.maintainedName}, le ménage conserverait environ <b>${maintainedPct.toFixed(0)} %</b> de son revenu actuel, soit une baisse d’environ <b>${fmt(first.householdLoss/12)} par mois</b>.</div>
+       <div class="evo-human-reading"><b>Lecture simple</b><br>Après l’événement, ${x.affectedName} percevrait environ <b>${fmtMonthly(first.personBenefits)}</b>. En ajoutant le revenu de ${x.maintainedName}, le ménage conserverait environ <b>${maintainedPct.toFixed(0)} %</b> de son revenu actuel, soit une baisse d’environ <b>${fmtMonthly(first.householdLoss)}</b>.</div>
      </div>`;
 
    $('#evoBreakdown').innerHTML=[
@@ -3932,7 +3934,7 @@ function renderEvolution(){
      ['Lacune individuelle',first.personalGap],
      ['Revenu maintenu du conjoint',x.maintainedIncome],
      ['Revenu total du ménage',first.householdTotal]
-   ].map(v=>`<div class="evo-detail"><span class="tiny muted">${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('');
+   ].map(v=>`<div class="evo-detail"><span class="tiny muted">${v[0]}</span><b>${fmtMonthly(v[1])}</b></div>`).join('');
    $('#evoInsight').innerHTML='<b>Principe de lecture</b><br>Le graphique se concentre uniquement sur la personne touchée et sur l’évolution de ses prestations à long terme. Le revenu de l’autre personne intervient uniquement dans la vue familiale située sous le graphique.';
    return;
  }
@@ -3943,19 +3945,19 @@ function renderEvolution(){
  const firstRetirementTotal=Number(firstRetirementStage?.total)||0;
  const safeLast=Number(last)||0;
  const coverage=x.need>0?(firstRetirementTotal/x.need*100):0,gap=Math.max(0,x.need-safeLast);
- $('#evoReference').textContent=fmt(x.reference);$('#evoIncomeSplit').textContent=x.c.status==='Célibataire'?`${x.c.firstName1} : ${fmt(x.c.income1||0)}`:`${x.c.firstName1} : ${fmt(x.c.income1||0)} · ${x.c.firstName2} : ${fmt(x.c.income2||0)}`;
- $('#evoNeed').textContent=fmt(x.need);$('#evoToday').textContent=fmt(firstRetirementTotal);$('#evoCoverage').textContent=Number.isFinite(coverage)?coverage.toFixed(0)+' %':'0 %';
+ $('#evoReference').textContent=fmtMonthly(x.reference);$('#evoIncomeSplit').textContent=x.c.status==='Célibataire'?`${x.c.firstName1} : ${fmtMonthly(x.c.income1||0)}`:`${x.c.firstName1} : ${fmtMonthly(x.c.income1||0)} · ${x.c.firstName2} : ${fmtMonthly(x.c.income2||0)}`;
+ $('#evoNeed').textContent=fmtMonthly(x.need);$('#evoToday').textContent=fmtMonthly(firstRetirementTotal);$('#evoCoverage').textContent=Number.isFinite(coverage)?coverage.toFixed(0)+' %':'0 %';
  const evoCoverageCard=$('#evoCoverageCard');
  if(evoCoverageCard){
    evoCoverageCard.classList.remove('coverage-good','coverage-watch','coverage-risk');
    evoCoverageCard.classList.add(coverage>=80?'coverage-good':coverage>=65?'coverage-watch':'coverage-risk');
  }
- $('#evoGap').textContent=fmt(gap);$('#evoChartSubtitle').textContent=x.subtitle;
+ $('#evoGap').textContent=fmtMonthly(gap);$('#evoChartSubtitle').textContent=x.subtitle;
  const plot=330,px=v=>Math.max(0,Math.min(plot,v/Math.max(1,x.need)*plot));
  const lines=[0,20,40,60,80,100].map(p=>`<div class="life-gridline" style="bottom:${125+plot*p/100}px"><span>${p}%</span></div>`).join('');
- const columns=x.stages.map(s=>{const vals={income1:s.income1||0,income2:s.income2||0,income:s.income||0,avs:s.avs||0,lpp:s.lpp||0,child:s.child||0};const g=Math.max(0,x.need-s.total);const seg=(cls,val)=>val>0?`<div class="life-segment ${cls}" style="height:${px(val)}px">${px(val)>=25?fmt(val):''}</div>`:'';return `<div class="life-period"><div class="life-column" style="height:${plot}px">${seg('life-income-p1',vals.income1)}${seg('life-income-p2',vals.income2)}${seg('life-income',vals.income)}${seg('life-avs',vals.avs)}${seg('life-lpp',vals.lpp)}${seg('life-child',vals.child)}${seg('life-gap',g)}</div><div class="life-period-label"><b>${s.label}</b>${s.sub||''}<br><span class="muted">${s.event||''}</span></div><div class="life-period-total"><strong>${fmt(s.total)}/an</strong>${g>0?`<span class="gap-value">−${fmt(g)}/an</span>`:'<span style="color:var(--green);font-weight:900">Besoin couvert</span>'}</div></div>`}).join('');
+ const columns=x.stages.map(s=>{const vals={income1:s.income1||0,income2:s.income2||0,income:s.income||0,avs:s.avs||0,lpp:s.lpp||0,child:s.child||0};const g=Math.max(0,x.need-s.total);const seg=(cls,val)=>val>0?`<div class="life-segment ${cls}" style="height:${px(val)}px">${px(val)>=25?fmtMonthly(val):''}</div>`:'';return `<div class="life-period"><div class="life-column" style="height:${plot}px">${seg('life-income-p1',vals.income1)}${seg('life-income-p2',vals.income2)}${seg('life-income',vals.income)}${seg('life-avs',vals.avs)}${seg('life-lpp',vals.lpp)}${seg('life-child',vals.child)}${seg('life-gap',g)}</div><div class="life-period-label"><b>${s.label}</b>${s.sub||''}<br><span class="muted">${s.event||''}</span></div><div class="life-period-total"><strong>${fmtMonthly(s.total)}</strong>${g>0?`<span class="gap-value">−${fmtMonthly(g)}</span>`:'<span style="color:var(--green);font-weight:900">Besoin couvert</span>'}</div></div>`}).join('');
  $('#coverageCascade').innerHTML=`<div class="life-chart-wrap"><div class="life-chart">${lines}<div class="life-needline" style="bottom:${125+plot}px"><span>100%</span></div>${columns}</div></div>`;
- $('#evoBreakdown').innerHTML=[['Revenu professionnel après événement',x.breakdown.income],['AVS / AI',x.breakdown.avs],['LPP',x.breakdown.lpp],['Rentes enfants',x.breakdown.child],['Revenu final',x.breakdown.final]].map(v=>`<div class="evo-detail"><span class="tiny muted">${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('');
+ $('#evoBreakdown').innerHTML=[['Revenu professionnel après événement',x.breakdown.income],['AVS / AI',x.breakdown.avs],['LPP',x.breakdown.lpp],['Rentes enfants',x.breakdown.child],['Revenu final',x.breakdown.final]].map(v=>`<div class="evo-detail"><span class="tiny muted">${v[0]}</span><b>${fmtMonthly(v[1])}</b></div>`).join('');
  $('#evoInsight').innerHTML='<b>Comprendre ce graphique</b><br>Chaque colonne compare le revenu disponible au revenu actuel de référence.';
 }
 
@@ -4074,8 +4076,7 @@ function renderRecommendations(){
         `Invalidité · ${person.name}`,
         'Compléter la rente d’incapacité de gain',
         [
-          {label:'Besoin annuel',value:fmt(invAnnual)},
-          {label:'Besoin mensuel',value:fmt(invAnnual/12)}
+          {label:'Besoin mensuel',value:fmtMonthly(invAnnual)}
         ]
       ));
     }
