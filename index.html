@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.22.0 — Prototype interactif</title>
+<title>PrevIA V9.23.0 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -506,7 +506,7 @@ body.role-client .report-btn{display:inline-flex}
 .contact-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.contact-status{font-weight:700}.contact-status.ok{color:#23834d}.contact-status.error{color:#b63b35}
 .legal-note{background:#f6f8fc;border-radius:13px;padding:14px 16px;color:#536278;line-height:1.55}@media(max-width:700px){.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}}
 
-/* V9.22.0 — saisie manuelle des prestations LPP réservée Partner/Admin */
+/* V9.23.0 — prestations LPP réelles : risque + retraite réservées Partner/Admin */
 .lpp-manual-panel{margin-top:16px;border:1px solid #d9dcff;background:linear-gradient(135deg,#f8f8ff,#fff);border-radius:16px;padding:18px}
 .lpp-manual-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:14px}
 .lpp-manual-head h3{margin:2px 0 4px}
@@ -539,7 +539,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.22.0</div>
+      <div class="eyebrow">PrevIA V9.23.0</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -620,7 +620,7 @@ body.role-client .report-btn{display:inline-flex}
     <div>
       <div class="eyebrow">Partner / Admin</div>
       <h3>Prestations réelles du 2e pilier</h3>
-      <div class="tiny muted">Laissez un champ vide pour conserver l’estimation PrevIA. Une valeur saisie remplace uniquement la prestation LPP concernée ; les règles de coordination PrevIA restent ensuite appliquées sans modification.</div>
+      <div class="tiny muted">Laissez un champ vide pour conserver l’estimation PrevIA. Les valeurs de retraite remplacent uniquement le capital et/ou la rente à 65 ans correspondants. Les prestations de risque saisies remplacent uniquement la prestation LPP concernée ; les règles de coordination PrevIA restent ensuite appliquées sans modification.</div>
     </div>
     <button class="btn" type="button" id="resetLppManual">Réinitialiser les valeurs LPP</button>
   </div>
@@ -628,6 +628,8 @@ body.role-client .report-btn{display:inline-flex}
     <div class="lpp-manual-person" id="lppManualPerson1">
       <h4 id="lppManualTitle1">Personne 1</h4>
       <div class="lpp-manual-fields">
+        <div><label>Capital LPP projeté à 65 ans (CHF)</label><input id="fLppRetCapital1" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
+        <div><label>Rente LPP de retraite à 65 ans (CHF/an)</label><input id="fLppRetPension1" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
         <div><label>Rente LPP d’invalidité (CHF/an)</label><input id="fLppInv1" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
         <div><label>Rente LPP d’enfant d’invalide — par enfant (CHF/an)</label><input id="fLppInvChild1" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
         <div><label>Rente LPP de veuve / veuf (CHF/an)</label><input id="fLppSurvivor1" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
@@ -638,6 +640,8 @@ body.role-client .report-btn{display:inline-flex}
     <div class="lpp-manual-person" id="lppManualPerson2">
       <h4 id="lppManualTitle2">Personne 2</h4>
       <div class="lpp-manual-fields">
+        <div><label>Capital LPP projeté à 65 ans (CHF)</label><input id="fLppRetCapital2" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
+        <div><label>Rente LPP de retraite à 65 ans (CHF/an)</label><input id="fLppRetPension2" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
         <div><label>Rente LPP d’invalidité (CHF/an)</label><input id="fLppInv2" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
         <div><label>Rente LPP d’enfant d’invalide — par enfant (CHF/an)</label><input id="fLppInvChild2" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
         <div><label>Rente LPP de veuve / veuf (CHF/an)</label><input id="fLppSurvivor2" type="text" inputmode="numeric" class="money-input" placeholder="Vide = estimation PrevIA" autocomplete="off"></div>
@@ -1007,7 +1011,7 @@ body.role-client .report-btn{display:inline-flex}
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const fmt=n=>Math.round(Number(n)||0).toLocaleString('fr-CH').replace(/\u202f/g,"'")+' CHF';
 const fmtMonth=n=>Math.round((Number(n)||0)/12).toLocaleString('fr-CH').replace(/\u202f/g,"'")+' CHF/mois';
-const MONEY_INPUT_IDS=['fIncome1','fIncome2','fSavings','fP3P1','fP3P2','fHome','fMortgage','fEpl1','fEpl2','fContribution1','fContribution2','fLppInv1','fLppInvChild1','fLppSurvivor1','fLppOrphan1','fLppInv2','fLppInvChild2','fLppSurvivor2','fLppOrphan2'];
+const MONEY_INPUT_IDS=['fIncome1','fIncome2','fSavings','fP3P1','fP3P2','fHome','fMortgage','fEpl1','fEpl2','fContribution1','fContribution2','fLppRetCapital1','fLppRetPension1','fLppInv1','fLppInvChild1','fLppSurvivor1','fLppOrphan1','fLppRetCapital2','fLppRetPension2','fLppInv2','fLppInvChild2','fLppSurvivor2','fLppOrphan2'];
 function parseSwissValue(value){
  const digits=String(value??'').replace(/[^0-9]/g,'');
  return digits?Number(digits):0;
@@ -1185,8 +1189,8 @@ function applyCaseToForm(c){
   set('#fCanton',c.canton);
   set('#fContribution1',c.contribution1);set('#fContribution2',c.contribution2);
   const r1=c.lppRisk1||{},r2=c.lppRisk2||{};
-  setOptional('#fLppInv1',r1.invalidity);setOptional('#fLppInvChild1',r1.invalidityChild);setOptional('#fLppSurvivor1',r1.survivor);setOptional('#fLppOrphan1',r1.orphan);
-  setOptional('#fLppInv2',r2.invalidity);setOptional('#fLppInvChild2',r2.invalidityChild);setOptional('#fLppSurvivor2',r2.survivor);setOptional('#fLppOrphan2',r2.orphan);
+  setOptional('#fLppRetCapital1',r1.retirementCapital);setOptional('#fLppRetPension1',r1.retirementPension);setOptional('#fLppInv1',r1.invalidity);setOptional('#fLppInvChild1',r1.invalidityChild);setOptional('#fLppSurvivor1',r1.survivor);setOptional('#fLppOrphan1',r1.orphan);
+  setOptional('#fLppRetCapital2',r2.retirementCapital);setOptional('#fLppRetPension2',r2.retirementPension);setOptional('#fLppInv2',r2.invalidity);setOptional('#fLppInvChild2',r2.invalidityChild);setOptional('#fLppSurvivor2',r2.survivor);setOptional('#fLppOrphan2',r2.orphan);
   MONEY_INPUT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)formatSwissAmountInput(el)});
   refreshPersonNames();updateChildren();
 }
@@ -1255,10 +1259,12 @@ function personName2(){
 }
 
 function hasManualLppValues(obj){
- return !!obj&&['invalidity','invalidityChild','survivor','orphan'].some(k=>obj[k]!==null&&obj[k]!==undefined);
+ return !!obj&&['retirementCapital','retirementPension','invalidity','invalidityChild','survivor','orphan'].some(k=>obj[k]!==null&&obj[k]!==undefined);
 }
 function readManualLppPerson(index){
  return{
+   retirementCapital:parseOptionalSwissInput(`#fLppRetCapital${index}`),
+   retirementPension:parseOptionalSwissInput(`#fLppRetPension${index}`),
    invalidity:parseOptionalSwissInput(`#fLppInv${index}`),
    invalidityChild:parseOptionalSwissInput(`#fLppInvChild${index}`),
    survivor:parseOptionalSwissInput(`#fLppSurvivor${index}`),
@@ -1277,11 +1283,11 @@ function updateLppManualUi(){
    const src=$(`#lppManualSource${i}`);if(!src)return;
    const manual=hasManualLppValues(readManualLppPerson(i));
    src.classList.toggle('manual',manual);
-   src.textContent=manual?'Source LPP : valeur(s) manuelle(s) / certificat. Les champs laissés vides restent estimés par PrevIA.':'Source LPP : estimation PrevIA.';
+   src.textContent=manual?'Source LPP : valeur(s) manuelle(s) / certificat, retraite et/ou risque. Les champs laissés vides restent estimés par PrevIA.':'Source LPP : estimation PrevIA.';
  });
 }
 function resetManualLppValues(){
- ['fLppInv1','fLppInvChild1','fLppSurvivor1','fLppOrphan1','fLppInv2','fLppInvChild2','fLppSurvivor2','fLppOrphan2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+ ['fLppRetCapital1','fLppRetPension1','fLppInv1','fLppInvChild1','fLppSurvivor1','fLppOrphan1','fLppRetCapital2','fLppRetPension2','fLppInv2','fLppInvChild2','fLppSurvivor2','fLppOrphan2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
  updateLppManualUi();
 }
 
@@ -2078,6 +2084,25 @@ function lppSourceChip(riskValues){
  return `<div class="lpp-source-chip ${manual?'manual':''}">${manual?'✓ LPP réelle / manuelle':'≈ LPP estimée par PrevIA'}</div>`;
 }
 
+function applyManualLppRetirement(personResult,manual){
+ const m=manual||{};
+ const choose=(value,fallback)=>value!==null&&value!==undefined?Math.max(0,Number(value)||0):Math.max(0,Number(fallback)||0);
+ personResult.cap=choose(m.retirementCapital,personResult.cap);
+ personResult.lpp=choose(m.retirementPension,personResult.lpp);
+ personResult.lppRetirementSource={
+   capital:m.retirementCapital!==null&&m.retirementCapital!==undefined?'manual':'estimate',
+   pension:m.retirementPension!==null&&m.retirementPension!==undefined?'manual':'estimate'
+ };
+ return personResult;
+}
+function lppRetirementSourceChip(personResult,name=''){
+ if(!(accessRole==='PARTNER'||accessRole==='ADMIN'))return'';
+ const src=personResult?.lppRetirementSource||{};
+ const manual=src.capital==='manual'||src.pension==='manual';
+ const detail=manual?`${src.capital==='manual'?'capital':''}${src.capital==='manual'&&src.pension==='manual'?' + ':''}${src.pension==='manual'?'rente':''}`:'';
+ return `<div class="lpp-source-chip ${manual?'manual':''}">${manual?`✓ Retraite LPP réelle / manuelle${name?` · ${name}`:''}${detail?` (${detail})`:''}`:`≈ Retraite LPP estimée par PrevIA${name?` · ${name}`:''}`}</div>`;
+}
+
 function benefits(c){
  const creditShare=c.status==='Mariés'?.5:1;
  const contributionYears1=effectiveContributionYears(c.age1);
@@ -2085,6 +2110,8 @@ function benefits(c){
  const eduAverage1=educationCreditAverage(c.children,c.childBirthYears,c.childGap,c.youngestAge,creditShare,contributionYears1);
  const eduAverage2=c.status==='Célibataire'?0:educationCreditAverage(c.children,c.childBirthYears,c.childGap,c.youngestAge,creditShare,contributionYears2);
  const p1=person(c.income1,c.job1,eduAverage1,c.epl1,c.age1),p2=person(c.income2,c.job2,eduAverage2,c.epl2,c.age2);
+ applyManualLppRetirement(p1,c.lppRisk1);
+ applyManualLppRetirement(p2,c.lppRisk2);
  const lppRisk1=lppRiskValues(c,1,p1.lppInv),lppRisk2=lppRiskValues(c,2,p2.lppInv);
  const kids=c.dependentChildren,retAvs=retirementAvs(c,p1,p2);
  p1.avsRet=retAvs.p1.total;p2.avsRet=retAvs.p2.total;p1.ret=p1.avsRet+p1.lpp;p2.ret=p2.avsRet+p2.lpp;
@@ -2555,7 +2582,7 @@ function gather(){
  const income2=hasPartner?parseSwissInput('#fIncome2'):0;
  const children=+$('#fChildren').value||0;
  const lppRisk1=readManualLppPerson(1);
- const lppRisk2=hasPartner?readManualLppPerson(2):{invalidity:null,invalidityChild:null,survivor:null,orphan:null};
+ const lppRisk2=hasPartner?readManualLppPerson(2):{retirementCapital:null,retirementPension:null,invalidity:null,invalidityChild:null,survivor:null,orphan:null};
  return{
   firstName1:personName1(),firstName2:hasPartner?personName2():'',
   name:hasPartner?`${personName1()} & ${personName2()}`:personName1(),
@@ -3670,7 +3697,7 @@ function renderRetirement(){
  const avsHtml=groupHtmlMonthly('1er pilier – AVS',avsRows,'Total mensuel moyen du 1er pilier',b.retAvs.total)+(b.retAvs.estimatedCoupleMaximum?'<div class="callout" style="margin-top:10px">Estimation simplifiée pour un couple marié : les rentes ordinaires sont calculées individuellement à partir du revenu actuel estimé à −30 %, puis plafonnées au maximum du couple. Le supplément éventuel de la génération transitoire est ajouté après le plafonnement. À confirmer avec les extraits de compte AVS.</div>':'')+familyHistoryNote;
  const lppRows=[[`Rente LPP de ${c.firstName1}`,b.p1.lpp]];
  if(c.status!=='Célibataire')lppRows.push([`Rente LPP de ${c.firstName2}`,b.p2.lpp]);
- const lppHtml=groupHtmlMonthly('2e pilier – LPP',lppRows,'Total mensuel du 2e pilier',lppTotal);
+ const lppHtml=groupHtmlMonthly('2e pilier – LPP',lppRows,'Total mensuel du 2e pilier',lppTotal)+lppRetirementSourceChip(b.p1,c.firstName1)+(c.status!=='Célibataire'?lppRetirementSourceChip(b.p2,c.firstName2):'');
  const totalHtml=summaryBox('Revenu total prévu à la retraite',[
    ['Total du 1er pilier',b.retAvs.total,true],
    ['Total du 2e pilier',lppTotal,true]
@@ -4720,7 +4747,7 @@ if(resetLppManualBtn)resetLppManualBtn.addEventListener('click',()=>{
   resetManualLppValues();
   if(data&&data.name){data=gather();render();}
 });
-['fLppInv1','fLppInvChild1','fLppSurvivor1','fLppOrphan1','fLppInv2','fLppInvChild2','fLppSurvivor2','fLppOrphan2'].forEach(id=>{
+['fLppRetCapital1','fLppRetPension1','fLppInv1','fLppInvChild1','fLppSurvivor1','fLppOrphan1','fLppRetCapital2','fLppRetPension2','fLppInv2','fLppInvChild2','fLppSurvivor2','fLppOrphan2'].forEach(id=>{
  const el=document.getElementById(id);if(!el)return;
  el.addEventListener('input',updateLppManualUi);
  el.addEventListener('change',()=>{
