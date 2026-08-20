@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PrevIA V9.23.0 — Prototype interactif</title>
+<title>PrevIA V9.24.0 — Prototype interactif</title>
 <style>
 :root{--nav:#101b39;--ink:#17223d;--muted:#6d778c;--line:#e4e8f1;--bg:#f5f7fb;--p:#5b62e8;--p2:#745fe8;--red:#c94e49;--orange:#c47a16;--green:#278b57;--blue:#2879b8}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
@@ -506,7 +506,7 @@ body.role-client .report-btn{display:inline-flex}
 .contact-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.contact-status{font-weight:700}.contact-status.ok{color:#23834d}.contact-status.error{color:#b63b35}
 .legal-note{background:#f6f8fc;border-radius:13px;padding:14px 16px;color:#536278;line-height:1.55}@media(max-width:700px){.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}}
 
-/* V9.23.0 — prestations LPP réelles : risque + retraite réservées Partner/Admin */
+/* V9.24.0 — prestations LPP réelles : risque + retraite réservées Partner/Admin */
 .lpp-manual-panel{margin-top:16px;border:1px solid #d9dcff;background:linear-gradient(135deg,#f8f8ff,#fff);border-radius:16px;padding:18px}
 .lpp-manual-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:14px}
 .lpp-manual-head h3{margin:2px 0 4px}
@@ -521,7 +521,7 @@ body.role-client .report-btn{display:inline-flex}
 @media(max-width:800px){.lpp-manual-grid,.lpp-manual-fields{grid-template-columns:1fr}}
 </style></head>
 <body><div class="app">
-<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.22.0</small></div><nav>
+<aside><div class="brand">✦ PrevIA<small>Copilote financier intelligent · V9.24.0</small></div><nav>
 <button class="nav active" data-s="home">Commencer</button><button class="nav" data-s="overview">Votre aperçu</button><button class="nav" data-s="protection">Votre famille</button><button class="nav" data-s="retraite">Votre retraite</button><button class="nav" data-s="evolution">Votre évolution</button><button class="nav" data-s="immobilier">Votre logement</button><button class="nav" data-s="fiscalite">Vos impôts</button><button class="nav" data-s="recommendations">Nos recommandations</button><button class="nav" data-s="dashboard">Synthèse</button><button class="nav partner-only hidden-role" data-s="partner">Dossiers partenaires</button><button class="nav" data-s="contact">Contact</button><button class="nav" data-s="legal">Informations légales</button></nav>
 <div class="access-panel">
   <label>Mode d’accès — prototype</label>
@@ -539,7 +539,7 @@ body.role-client .report-btn{display:inline-flex}
   <div class="hero home-hero">
     <div class="home-hero-photo" role="img" aria-label="Famille heureuse, confiante et en sécurité dans un environnement calme et rassurant"></div>
     <div class="home-hero-copy">
-      <div class="eyebrow">PrevIA V9.23.0</div>
+      <div class="eyebrow">PrevIA V9.24.0</div>
       <h1>Comprenez aujourd’hui ce que demain pourrait changer.</h1>
       <p class="quote">Découvrez votre situation de prévoyance en seulement 90 secondes. Répondez à quelques questions simples et obtenez immédiatement une première estimation claire.</p>
       <div class="home-hero-actions">
@@ -1298,7 +1298,7 @@ function protectionEventKey(){
   return `${kind}-${protectionOrigin==='accident'?'accident':'illness'}`;
 }
 function evolutionEventKey(){
-  if(evoMode==='retirementCouple')return 'retirement';
+  if(evoMode==='retirementCouple'||evoMode==='retirement1'||evoMode==='retirement2')return 'retirement';
   const kind=evoMode.startsWith('death')?'death':'invalidity';
   return `${kind}-${evolutionOrigin==='accident'?'accident':'illness'}`;
 }
@@ -1323,6 +1323,9 @@ function syncScenarioNavigation(){
 
   const showDeath=shouldShowDeathScenario();
   $$('[data-prot-event^="death"],[data-evolution-event^="death"]').forEach(b=>b.classList.toggle('hidden',!showDeath));
+  const retirementBtn=$('[data-evolution-event="retirement"]');
+  if(retirementBtn)retirementBtn.textContent=single?`Retraite de ${n1}`:'Retraite du couple';
+  if(single&&evoMode==='retirementCouple')evoMode='retirement1';
 }
 function applyProtectionSelection(person,eventKey){
   const [kind,origin]=eventKey.split('-');
@@ -1335,7 +1338,8 @@ function applyProtectionSelection(person,eventKey){
 }
 function applyEvolutionSelection(person,eventKey){
   if(eventKey==='retirement'){
-    evoMode='retirementCouple';
+    const single=$('#fStatus').value==='Célibataire';
+    evoMode=single?`retirement${person}`:'retirementCouple';
   }else{
     const [kind,origin]=eventKey.split('-');
     evolutionOrigin=origin;
@@ -2216,28 +2220,29 @@ function benefits(c){
 }
 
 /*
- Règle métier PrevIA – LPP subsidiaire :
- - invalidité : capital projeté LPP sans intérêt × 6,8 %
- - invalidité accident : 20 % de la rente d'invalidité par enfant
- - décès accident : 60 % de la rente d'invalidité pour le conjoint survivant
- - décès accident : 20 % de la rente d'invalidité par orphelin
- - la prestation subsidiaire n'est retenue que dans la limite de la lacune restante.
+ V9.24.0 — règle métier PrevIA pour la LPP subsidiaire accident :
+ - cette base est TOUJOURS recalculée par PrevIA, indépendamment des valeurs LPP manuelles / certificat ;
+ - salaire déterminant plafonné à CHF 90'720 ;
+ - salaire coordonné = salaire déterminant - CHF 26'460, maximum CHF 64'260 ;
+ - capital final LPP de risque SANS intérêts = salaire coordonné × 500 % ;
+ - rente LPP invalidité = capital final × 6,8 % ;
+ - rente conjoint survivant = 60 % de la rente invalidité ;
+ - rente enfant d'invalide / orphelin = 20 % de la rente invalidité par enfant ;
+ - les prestations subsidiaires sont versées en plein tant que le plafond de coordination à 90 % n'est pas dépassé ;
+ - si le plafond est dépassé, seul le 2e pilier subsidiaire est réduit.
 */
-function lppSubsidyEstimate(income,job,epl=0){
+function lppSubsidyEstimate(income,job){
  const DEDUCTION_COORDINATION=26460;
+ const DETERMINING_SALARY_MAX=90720;
  const COORDINATED_MAX=64260;
  if(job!=='Salarié'||income<=DEDUCTION_COORDINATION){
-   return{coordinatedSalary:0,theoreticalCapital:0,subsidyPension:0,eplApplied:Math.max(0,epl||0)};
+   return{coordinatedSalary:0,theoreticalCapital:0,subsidyPension:0};
  }
- const coordinatedSalary=Math.max(0,Math.min(income-DEDUCTION_COORDINATION,COORDINATED_MAX));
- const theoreticalCapital=Math.max(0,coordinatedSalary*5-Math.max(0,epl||0));
+ const determiningSalary=Math.max(0,Math.min(Number(income)||0,DETERMINING_SALARY_MAX));
+ const coordinatedSalary=Math.max(0,Math.min(determiningSalary-DEDUCTION_COORDINATION,COORDINATED_MAX));
+ const theoreticalCapital=coordinatedSalary*5;
  const subsidyPension=theoreticalCapital*.068;
- return{
-   coordinatedSalary,
-   theoreticalCapital,
-   subsidyPension,
-   eplApplied:Math.max(0,epl||0)
- };
+ return{coordinatedSalary,theoreticalCapital,subsidyPension};
 }
 
 function lppSurvivorSubsidyEstimate(disabilityPension,survivorRight,childCount,spousePension=null,orphanPensionEach=null){
@@ -2346,18 +2351,14 @@ function accidentBenefits(c){
    const laa=job==='Salarié'
      ?Math.max(0,Math.min(laaBase,coordinationCap-aiTotal))
      :0;
-
-   const lppEstimate=lppSubsidyEstimate(salary,job,epl);
-   const riskValues=lppRiskValues(c,isP1?1:2,lppEstimate.subsidyPension);
+   // La LPP subsidiaire accident est toujours issue de la base légale PrevIA,
+   // jamais des prestations manuelles du certificat.
+   const lppEstimate=lppSubsidyEstimate(salary,job);
+   const theoreticalInvalidity=lppEstimate.subsidyPension;
    const aiLaaTotal=aiTotal+laa;
    const target=Math.max(0,salary)*.90;
    const gapBeforeLpp=Math.max(0,target-aiLaaTotal);
-   const lppInvalidity=lppInvaliditySubsidyEstimate(
-     riskValues.invalidity,
-     kids,
-     gapBeforeLpp,
-     riskValues.invalidityChild
-   );
+   const lppInvalidity=lppInvaliditySubsidyEstimate(theoreticalInvalidity,kids,gapBeforeLpp);
    const payableLppSubsidy=lppInvalidity.total;
    const insuredPersonTotal=aiLaaTotal+payableLppSubsidy;
    const annual=otherIncome+insuredPersonTotal;
@@ -2377,8 +2378,8 @@ function accidentBenefits(c){
      lppSubsidy:payableLppSubsidy,
      lppSubsidyAdult:lppInvalidity.adult,
      lppSubsidyChildren:lppInvalidity.children,
-     lppSubsidyTheoretical:riskValues.invalidity,
-     lppRiskValues:riskValues,
+     lppSubsidyTheoretical:theoreticalInvalidity,
+     lppRiskValues:null,
      target,insuredPersonTotal,warning,job
    };
  }
@@ -2432,16 +2433,10 @@ function accidentBenefits(c){
    const laaTotal=initialLaa.laaTotal;
    const totalBenefitsLimit=initialLaa.totalBenefitsLimit;
    const combinedBenefitsBeforeLpp=initialLaa.combinedBenefits;
-   const epl=isP1?c.epl1:c.epl2;
-   const lppEstimate=lppSubsidyEstimate(salary,job,epl);
-   const riskValues=lppRiskValues(c,isP1?1:2,lppEstimate.subsidyPension);
-   const lppSurvivors=lppSurvivorSubsidyEstimate(
-     riskValues.invalidity,
-     diseaseDeath.survivorRight,
-     kids,
-     riskValues.survivor,
-     riskValues.orphan
-   );
+   // La LPP subsidiaire accident est recalculée indépendamment du certificat.
+   const lppEstimate=lppSubsidyEstimate(salary,job);
+   const theoreticalInvalidity=lppEstimate.subsidyPension;
+   const lppSurvivors=lppSurvivorSubsidyEstimate(theoreticalInvalidity,diseaseDeath.survivorRight,kids);
    const theoreticalLppSurvivors=lppSurvivors.total;
    const target=Math.max(0,salary)*.90;
    const gapBeforeLpp=Math.max(0,target-combinedBenefitsBeforeLpp);
@@ -2470,7 +2465,7 @@ function accidentBenefits(c){
      combinedBenefits,totalBenefitsLimit,
      lppSubsidy:payableLppSubsidy,
      lppSubsidyTheoretical:theoreticalLppSurvivors,
-     lppRiskValues:riskValues,
+     lppRiskValues:null,
      target,
      laaAtChildCount:childCount=>{
        const avsChildrenAtStage=activeChildrenAvsAmount(diseaseDeath,kids,childCount);
@@ -2490,13 +2485,7 @@ function accidentBenefits(c){
            laaTotal:0,
            combinedBenefits:avsSpouse+avsChildrenAtStage
          };
-       const theoreticalAtStage=lppSurvivorSubsidyEstimate(
-         riskValues.invalidity,
-         diseaseDeath.survivorRight,
-         childCount,
-         riskValues.survivor,
-         riskValues.orphan
-       ).total;
+       const theoreticalAtStage=lppSurvivorSubsidyEstimate(theoreticalInvalidity,diseaseDeath.survivorRight,childCount).total;
        const gapAtStage=Math.max(0,target-laaStage.combinedBenefits);
        const lppSubsidyAtStage=Math.min(theoreticalAtStage,gapAtStage);
        return{
@@ -3287,7 +3276,10 @@ function render(){
    priorityBuckets.retirement.push(`Étudier le remboursement EPL pour augmenter la rente estimée d’environ ${fmt(gain/12)} par mois`);
  }
  if(retPct<70)priorityBuckets.retirement.push('Renforcer progressivement le revenu de retraite');
- priorityBuckets.retirement.push('Contrôler le potentiel de rachat LPP');
+ const salariedForBuyin=[c.job1==='Salarié'?c.firstName1:null,c.status!=='Célibataire'&&c.job2==='Salarié'?c.firstName2:null].filter(Boolean);
+ if(salariedForBuyin.length)priorityBuckets.retirement.push(`Contrôler le potentiel de rachat LPP${salariedForBuyin.length===1?` de ${salariedForBuyin[0]}`:''}`);
+ const highIndependent=[c.job1==='Indépendant'&&c.income1>181440?c.firstName1:null,c.status!=='Célibataire'&&c.job2==='Indépendant'&&c.income2>181440?c.firstName2:null].filter(Boolean);
+ highIndependent.forEach(name=>priorityBuckets.retirement.push(`Réflexion autour de l’intégration de ${name} dans un 2e pilier au vu du revenu important`));
 
  if(m&&m.reductions.retirement>0)priorityBuckets.home.push(`Constituer ${fmt(m.reductions.retirement)} afin de maintenir le financement viable à la retraite`);
  if(m&&m.reductions.death>0)priorityBuckets.home.push(`Prévoir ${fmt(m.reductions.death)} de capital complémentaire pour le logement en cas de décès`);
@@ -3950,35 +3942,35 @@ function evolutionScenario(){
     });
 
   }else{
-    // DÉCÈS PAR MALADIE : logique existante conservée.
+    // DÉCÈS PAR MALADIE — V9.24.0 : recalcul dynamique à chaque étape.
+    // Les prestations LPP du certificat (si saisies) sont prioritaires ; sinon PrevIA garde son estimation.
+    // Le premier pilier reste intégral et seule la LPP est réduite si le plafond de 90 % est dépassé.
     const obj=isP1?illness.d1:illness.d2;
-    const avsAdult=obj.adj.avsSurv||0;
-    const lppAdult=obj.adj.lppSurv||0;
-    const initialChildTotal=(obj.adj.avsKids||0)+(obj.adj.lppKids||0);
     const initialKids=sortedAges.length;
-    const childEach=initialKids>0?initialChildTotal/initialKids:0;
+    const avsAdult=obj.raw.avsSurv||0;
+    const avsChildEach=initialKids>0?(obj.raw.avsKids||0)/initialKids:0;
+    const lppAdultTheoretical=obj.raw.lppSurv||0;
+    const lppChildEachTheoretical=initialKids>0?(obj.raw.lppKids||0)/initialKids:(obj.lppChildEach||0);
 
-    pushStage(
-      'Après l’événement',
-      `${initialKids} enfant${initialKids>1?'s':''} à charge`,
-      'Décès à long terme',
-      avsAdult,
-      lppAdult,
-      initialChildTotal
-    );
+    const addDeathIllnessStage=(activeChildren,label,sub,event)=>{
+      const avsChildren=avsChildEach*activeChildren;
+      const firstPillarTotal=avsAdult+avsChildren;
+      const theoreticalLppChildren=lppChildEachTheoretical*activeChildren;
+      const theoreticalLppTotal=lppAdultTheoretical+theoreticalLppChildren;
+      const availableForLpp=Math.max(0,coordinationTarget-firstPillarTotal);
+      const payableLppTotal=Math.min(theoreticalLppTotal,availableForLpp);
+      const factor=theoreticalLppTotal>0?payableLppTotal/theoreticalLppTotal:0;
+      const lppAdultPayable=lppAdultTheoretical*factor;
+      const lppChildrenPayable=theoreticalLppChildren*factor;
+      pushStage(label,sub,event,avsAdult,lppAdultPayable,avsChildren+lppChildrenPayable);
+    };
 
+    addDeathIllnessStage(initialKids,'Après l’événement',`${initialKids} enfant${initialKids>1?'s':''} à charge`,'Décès à long terme');
     let active=initialKids;
     sortedAges.forEach((age,index)=>{
       active--;
       const years=Math.max(0,18-age);
-      pushStage(
-        `Dans ${years} an${years>1?'s':''}`,
-        `${active} enfant${active>1?'s':''} à charge`,
-        `Fin de la rente enfant ${index+1}`,
-        avsAdult,
-        lppAdult,
-        childEach*active
-      );
+      addDeathIllnessStage(active,`Dans ${years} an${years>1?'s':''}`,`${active} enfant${active>1?'s':''} à charge`,`Fin de la rente enfant ${index+1}`);
     });
   }
 
@@ -3988,7 +3980,7 @@ function evolutionScenario(){
 
  // La retraite conserve la logique existante et reste séparée des scénarios de risque.
  const isP1=evoMode==='retirement1';
- const couple=evoMode==='retirementCouple';
+ const couple=evoMode==='retirementCouple'&&c.status!=='Célibataire';
  let reference=c.totalIncome,need=c.totalIncome,title='',subtitle='',stages=[],breakdown={};
  if(couple){
    const y1=Math.max(0,65-c.age1),y2=Math.max(0,65-c.age2),first=Math.min(y1,y2),second=Math.max(y1,y2),p1First=y1<=y2;
@@ -4307,12 +4299,13 @@ function renderRecommendations(){
     ));
   }
 
-  retirement.push(recItem(
-    'optimize',
-    'Rachat LPP',
-    'Demander le potentiel disponible',
-    [{label:'Montant',value:'À confirmer auprès de la caisse'}]
-  ));
+  const salariedPeople=[c.job1==='Salarié'?c.firstName1:null,c.status!=='Célibataire'&&c.job2==='Salarié'?c.firstName2:null].filter(Boolean);
+  if(salariedPeople.length){
+    retirement.push(recItem('optimize','Rachat LPP',salariedPeople.length===1?`Demander le potentiel disponible de ${salariedPeople[0]}`:'Demander les potentiels disponibles',[{label:'Montant',value:'À confirmer auprès de la caisse'}]));
+  }
+  const independentThreshold=181440;
+  const independentPeople=[{name:c.firstName1,job:c.job1,income:c.income1},...(c.status==='Célibataire'?[]:[{name:c.firstName2,job:c.job2,income:c.income2}])].filter(p=>p.job==='Indépendant'&&p.income>independentThreshold);
+  independentPeople.forEach(p=>retirement.push(recItem('important','2e pilier','Réflexion autour de l’intégration dans un 2e pilier au vu du revenu important',[{label:'Personne',value:p.name},{label:'Revenu annuel',value:fmt(p.income)}],'Une analyse de l’intérêt et des possibilités d’affiliation à une prévoyance professionnelle peut être pertinente.')));
 
   retirement.push(recItem(
     c.savings<reserve?'important':'optimize',
@@ -4437,7 +4430,7 @@ function renderRecommendations(){
 
   const preferredTitle={
     family:protection.length?'Renforcer la protection de la famille':'Consolider la protection de la famille',
-    retirement:c.epl1+c.epl2>0?'Étudier le remboursement EPL':p.additionalTotal>0?'Renforcer le pilier 3a':'Contrôler le potentiel de rachat LPP',
+    retirement:c.epl1+c.epl2>0?'Étudier le remboursement EPL':p.additionalTotal>0?'Renforcer le pilier 3a':independentPeople.length?'Évaluer l’intérêt d’un 2e pilier':salariedPeople.length?'Contrôler le potentiel de rachat LPP':'Consolider la prévoyance retraite',
     home:m&&m.reductions.retirement>0?'Préparer la viabilité du logement à la retraite':'Sécuriser durablement le financement du logement',
     tax:p.additionalTotal>0?'Optimiser la prévoyance 3a':'Consolider la stratégie fiscale',
     wealth:investable>0?'Investir l’épargne disponible':'Constituer la réserve de sécurité'
